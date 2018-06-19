@@ -10,10 +10,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_19_150352) do
+ActiveRecord::Schema.define(version: 2018_06_19_210605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.string "content"
+    t.bigint "question_id"
+    t.bigint "clause_id"
+    t.bigint "consultation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["clause_id"], name: "index_answers_on_clause_id"
+    t.index ["consultation_id"], name: "index_answers_on_consultation_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "clauses", force: :cascade do |t|
+    t.string "content"
+    t.bigint "section_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["section_id"], name: "index_clauses_on_section_id"
+  end
+
+  create_table "consultations", force: :cascade do |t|
+    t.bigint "legislation_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["legislation_id"], name: "index_consultations_on_legislation_id"
+    t.index ["user_id"], name: "index_consultations_on_user_id"
+  end
+
+  create_table "legislations", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_legislations_on_user_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.string "description"
+    t.integer "title"
+    t.bigint "legislation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["legislation_id"], name: "index_sections_on_legislation_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,4 +84,12 @@ ActiveRecord::Schema.define(version: 2018_06_19_150352) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "clauses"
+  add_foreign_key "answers", "consultations"
+  add_foreign_key "answers", "questions"
+  add_foreign_key "clauses", "sections"
+  add_foreign_key "consultations", "legislations"
+  add_foreign_key "consultations", "users"
+  add_foreign_key "legislations", "users"
+  add_foreign_key "sections", "legislations"
 end
