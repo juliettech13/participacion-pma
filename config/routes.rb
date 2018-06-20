@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :questions
   resources :answers
+  resources :consultations
 
 
   devise_for :users
