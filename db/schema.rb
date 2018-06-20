@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2018_06_19_210605) do
 
   create_table "legislations", force: :cascade do |t|
     t.string "title"
+    t.text "introduction"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -59,7 +60,6 @@ ActiveRecord::Schema.define(version: 2018_06_19_210605) do
   end
 
   create_table "sections", force: :cascade do |t|
-    t.string "description"
     t.string "title"
     t.bigint "legislation_id"
     t.datetime "created_at", null: false
