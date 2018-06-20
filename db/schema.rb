@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_20_075948) do
+ActiveRecord::Schema.define(version: 2018_06_19_210605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,13 +18,9 @@ ActiveRecord::Schema.define(version: 2018_06_20_075948) do
   create_table "answers", force: :cascade do |t|
     t.string "content"
     t.bigint "question_id"
-    t.bigint "clause_id"
-    t.bigint "consultation_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["clause_id"], name: "index_answers_on_clause_id"
-    t.index ["consultation_id"], name: "index_answers_on_consultation_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
@@ -56,10 +52,10 @@ ActiveRecord::Schema.define(version: 2018_06_20_075948) do
 
   create_table "questions", force: :cascade do |t|
     t.string "content"
+    t.bigint "clause_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "legislation_id"
-    t.index ["legislation_id"], name: "index_questions_on_legislation_id"
+    t.index ["clause_id"], name: "index_questions_on_clause_id"
   end
 
   create_table "sections", force: :cascade do |t|
@@ -88,14 +84,12 @@ ActiveRecord::Schema.define(version: 2018_06_20_075948) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "answers", "clauses"
-  add_foreign_key "answers", "consultations"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
   add_foreign_key "clauses", "sections"
   add_foreign_key "consultations", "legislations"
   add_foreign_key "consultations", "users"
   add_foreign_key "legislations", "users"
-  add_foreign_key "questions", "legislations"
+  add_foreign_key "questions", "clauses"
   add_foreign_key "sections", "legislations"
 end
