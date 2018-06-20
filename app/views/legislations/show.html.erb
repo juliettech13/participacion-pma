@@ -32,6 +32,7 @@
       <div id="consultation_box" style="display: show">
         <% @questions.each do |question| %>
           <li><%= question.id %> - <%= question.content %></li>
+          <%= link_to 'skip' %>
         <% end %>
       </div>
 
