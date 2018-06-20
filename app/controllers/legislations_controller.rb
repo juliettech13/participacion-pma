@@ -10,6 +10,7 @@ class LegislationsController < ApplicationController
   # GET /legislations/1
   # GET /legislations/1.json
   def show
+    @questions = Question.where(:legislation_id => @legislation).all
   end
 
   # GET /legislations/new

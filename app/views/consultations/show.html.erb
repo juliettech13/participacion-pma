@@ -1,6 +1,8 @@
-<p id="notice"><%= notice %>
-  <%= @legislation.title %>
-</p>
+<div class="container">
+  <p id="notice"><%= notice %>Thank you for your consultation on <%= @consultation.legislation.title %></p>
+  <p>share on facebook</p>
 
-<%= link_to 'Edit', edit_consultation_path(@consultation) %> |
-<%= link_to 'Back', consultations_path %>
+  <%= link_to 'Edit', edit_consultation_path(@consultation) %> |
+  <%= link_to 'Back to Home Page', root_path %>
+
+</div>
