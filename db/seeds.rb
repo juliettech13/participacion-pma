@@ -25,16 +25,36 @@ Section.destroy_all
   puts 'deleting all sections'
 
 
-Question.create!(content: 'Do you feel that this represents your views?')
-Question.create!(content: 'How well does this push your country in the direction?')
-Question.create!(content: 'Would you like to provide a suggestion?')
+
 
 User.create!(email: "bobstevens@charitize.com", password: 123456)
+
 Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Policy Vision', user_id: 1)
+
+Question.create!(content: 'Do you feel that this represents your views?', legislation_id: 1)
+Question.create!(content: 'How well does this push your country in the direction?', legislation_id: 1)
+Question.create!(content: 'Would you like to provide a suggestion?', legislation_id: 1)
+
 Section.create!(title: 'Digital Infrastructure', legislation_id: 1)
+Section.create!(title: 'R&D', legislation_id: 1)
+Section.create!(title: 'Education', legislation_id: 1)
+
+
 Clause.create!(content: '1. Mandate infrastructure sharing to achieve the economies of scale necessary for universal affordable access.
   No longer an optional recommendation, Government will support private sector providers to merge their infrastructure.', section_id: 1)
 Clause.create!(content: '2. Mandate infrastructure sharing to achieve the economies of scale necessary for universal affordable access.
   No longer an optional recommendation, Government will support private sector providers to merge their infrastructure.', section_id: 1)
+
+
+
+Clause.create!(content: '1. Mandate infrastructure sharing to achieve the economies of scale necessary for universal affordable access.
+  No longer an optional recommendation, Government will support private sector providers to merge their infrastructure.', section_id: 2)
+Clause.create!(content: '2. Mandate infrastructure sharing to achieve the economies of scale necessary for universal affordable access.
+  No longer an optional recommendation, Government will support private sector providers to merge their infrastructure.', section_id: 2)
+
+Clause.create!(content: '1. Mandate infrastructure sharing to achieve the economies of scale necessary for universal affordable access.
+  No longer an optional recommendation, Government will support private sector providers to merge their infrastructure.', section_id: 3)
+Clause.create!(content: '2. Mandate infrastructure sharing to achieve the economies of scale necessary for universal affordable access.
+  No longer an optional recommendation, Government will support private sector providers to merge their infrastructure.', section_id: 3)
 
 Consultation.create!(legislation_id: 1, user_id: 1)

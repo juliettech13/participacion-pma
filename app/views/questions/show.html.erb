@@ -1,11 +1,16 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<%= @question.content %>
+  <%= @questions.each do |question| %>
+    <%= question.id %> - <%= question.content %>
 
-<%#= form_for[@question, @answer] do |f| %>
-  <%#= f.text_field :content %>
-<%#= f.submit %>
-<%# end %>
+    <%= form_for Answer.create do |f| %>
+    <%= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %>
+        <%= f.submit %>
+    <% end %>
+  <% end %>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+  <%= link_to 'Edit', edit_question_path(@question) %> |
+  <%= link_to 'Back', questions_path %>
+
+</div>

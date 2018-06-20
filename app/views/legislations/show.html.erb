@@ -1,25 +1,55 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
+  <div class="row">
 
-  <div id="toc" class="col-lg-3">
-    <p>table of contents</p>
-  </div>
+    <div id="toc" class="col-lg-3">
+      <h3>table of contents</h3>
+        <ul>
+          <% @legislation.sections.each do |section| %>
+            <li>
+              <%= section.title %>
+            </li>
+          <% end %>
+        </ul>
 
-  <div id="document" class="col-lg-6">
-    <h1><%= @legislation.title %></h1>
-    <% @legislation.sections.each do |section| %>
-      <h3><%= section.title %></h3>
-        <% section.clauses.each do |clause| %>
-          <p><%=  link_to clause.content, question_path(1) %></p>
+    </div>
+
+    <div id="document" class="col-lg-6">
+      <h1><%= @legislation.title %></h1>
+      <% @legislation.sections.each do |section| %>
+        <h3><%= section.title %></h3>
+          <% section.clauses.each do |clause| %>
+            <p>
+              <%=  link_to clause.content, {}, :onclick => 'alert("this should toggle the question box")' %>
+            </p>
+          <% end %>
+      <% end %>
+    </div>
+
+
+    <div id="consultation_panel" class="col-lg-3">
+      <h3>Consultation Panel</h3>
+      <div id="consultation_box" style="display: show">
+        <% @questions.each do |question| %>
+          <li><%= question.id %> - <%= question.content %></li>
         <% end %>
-    <% end %>
+      </div>
+
+      <%= link_to "I'm Finished", consultation_path %>
+    </div>
+
+
+
   </div>
-
-  <div id="consultation_panel" class="col-lg-3">
-
-  </div>
-
 </div>
+
+<script type="text/javascript">
+
+  function toggleQuestion() {
+    document.getElementById("consultation_box").style.display = "show";
+  };
+
+</script>
 
 
 <%#= link_to 'Edit', edit_legislation_path(@legislation) %> |
