@@ -1,38 +1,50 @@
 include Facebook::Messenger
 Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
 
-# this presents a quick reply option for people to choice multiple choice options, or click a button
-## THIS IS A TEST
+
+## PLEASE SEE chatbot_mapping_reference for some inspiration
+
+# to handle messages
 
 Bot.on :message do |message|
+  # this is too define what happens on message
+  # here is sample text to test out
   message.typing_on
 
-  message.reply(text: Clause.find(1).content)
-
   message.reply(
-  text: Question.find(1).content
+  text: Question.find(1).content,
   quick_replies: [
     {
-      content_type: 'text',
+      type: 'postback',
       title: 'Yo',
-      payload: 'HARMLESS'
+      payload: 'YES'
     },
      {
-      content_type: 'text',
+      type: 'postback',
       title: 'No',
-      payload: 'HARMLESS'
+      payload: 'NO'
     }
   ]
 )
 end
 
-## Messenger bot logic
+Bot.on :postback do |postback|
+  # this for postbacks on the webhook, which is mostly what we'll be working with
+
+  #should trigger the start of a consultation
+  # i.e.: start_consultation(postback)
+end
+
+## Messenger bot logic with methods
 
 # have a method to execute our consultation
 
-def start_consultation
+def start_consultation postback
+  # set_answer(@user)
+
   # should create a new user object
   # should create a new consultation object
+  # get_started
 end
 
 # get started menu
@@ -41,6 +53,7 @@ def get_started
   # displays instructions and introduction
   # displays a menu of the sections with a get started button (can choose
   # a specific section or get started defaults to section one)
+  section_read(@section)
 end
 
 # this loops through the selected section with each clause being shown followed by the question method
@@ -49,110 +62,63 @@ def section_read
   # loop through the clauses of the selected section
   # ask question series after each clause
   # post responses as Answer object?
+    ask_questions(clause)
 end
+
 
 # consultation questions and answers
 
-# this can potentially be one method with a conditional loop?
-# ideally, answers should store as Answer objects with question_id
+def initialize_question
+  #not sure if this can be one method or separate methods for questioning
+  #initialize the consultation of a clause
 
-def ask_first_question
+  answer = postback.payload
+
+  case answer
+  when "OPTION 1"
+    # i.e. Answer.new(content: answer)
+    ask_next_question
+  when "OPTION 2"
+    puts 'Ask zeroth question'
+    ask_next_question
+  else
+    puts "Not a valid response!"
+    ask_next_question
+  end
 end
 
-def ask_second_question
+def ask_next_question
+  # to go to the next question in the sequence
 end
-
-# when user is done with individual sections, it gives them the stage to provide Feedback.new for the legislation
 
 def legislation_feedback
+  # to provide Feedback.new for the legislation at end of consultation
 end
 
-### BELOW ARE REFERENCES TO CODE SNIPPETS AND DECISION TREE
+def done
+  #potentially, if we need
+end
 
-## SAMPLE CODE
-# here is a sample of some question logic
+private
 
-# def ask_second_question postback
-#   postback.reply(
-#     attachment: {
-#       type: 'template',
-#       payload: {
-#         template_type: 'button',
-#         text: 'This is the second question. It works just like the first one ;)',
-#         buttons: [
-#           { type: 'postback', title: 'Button one', payload: 'ANSWER_TWO_ONE' },
-#           { type: 'postback', title: 'Button two', payload: 'ANSWER_TWO_TWO' },
-#           { type: 'postback', title: 'Button three', payload: 'ANSWER_TWO_THREE' }
-#         ]
-#       }
-#     }
-#   )
-# end
+# sample create user function
 
-## SAMPLE CODE
-# this repeats whatever you type back to you
+def create_new_user(messenger_id)
+  @user = User.new(messenger_id: messenger_id)
+  #should we add messenger_id to the users table so that we can distinguish which are messenger and which are webapp?
 
-# Bot.on :message do |message|
-#   Bot.deliver({
-#     recipient: message.sender,
-#     message: {
-#       text: message.text
-#     }
-#   }, access_token: ENV["ACCESS_TOKEN"])
-# end
+  # Get user info from Messenger User Profile API
+  url = "https://graph.facebook.com/v2.6/#{messenger_id}?fields=first_name,last_name,gender&access_token=#{ENV["ACCESS_TOKEN"]}"
+  user_data = api_call(url)
 
-## DECISION TREE
+  # Store user's info
+  @user.save
+end
 
-## Written Commands
-# 'skip' - skip to the next section
-# 'done' - skip to the end and provide feedback on full policy
-# 'menu' - go back to the menu of the sections
+def set_answer user
+  user_id = user.id
+  @answer = Answer.where(user_id: user_id).first
+  # If answer does not exist, create new
+  create_new_answer(user_id) unless @answer
+end
 
-## Welcome
-
-# Welcome {first_name} to the consultation for the National ICT Innovation and Entrepreneurship Policy Vision. Message me anytime to continue, your input matters!
-# Action: Get Started [button]
-
-
-## Overview
-# The vision intends to create a unifying policy vision for transforming Nigeria's economy and accelerating economic growth. The vision is composed of an introduction and four chapters, and you are invited to feedback on specific policy recommendations, on chapters, on the introduction and on the entire policy.
-
-# You will be able to interact with each section and sub-section, if you want to get an overview of the policy at any time type ‘menu’. All of your input on each section is saved as you go. You will be asked two questions before having the opportunity to provide a suggested revision. Write ‘skip’ if you ever want to skip to the next section.
-# Action: See Overview [button]
-
-# Menu
-# Introduction
-# Section 1
-# Section 2
-# Section 3
-# Section 4
-
-
-## Example
-
-# Introduction (1 of 2): Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-
-# Question 1: Do you feel this is representative of your views?
-# Options: Yes, No
-# Question 2: Does this push the future of Nigeria ICT in the right direction?
-# Options: Definitely, Yes, Somewhat, No
-# Question 3: Please provide your suggested revision?
-# *NLP, we can capture the data of numbers with Facebook built-in NLP
-
-
-## Action: written response
-
-# Section Review
-# **If it is the last sub-section in the section,
-
-# Please provide your general feedback on Section 1: Digital Infrastructure.
-# Action: written response
-
-
-## Policy Review
-# Please provide us your overall feedback on the National ICT Innovation and Entrepreneurship Policy Vision.”
-# Action: written response
-
-
-## Completion
-# Thank you for your time and participation, blah blah blah.
