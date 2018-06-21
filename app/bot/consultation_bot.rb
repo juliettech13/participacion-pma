@@ -1,15 +1,20 @@
 include Facebook::Messenger
 Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
 
+# this presents a quick reply option for people to choice multiple choice options, or click a button
+## THIS IS A TEST
+
 Bot.on :message do |message|
   message.typing_on
 
+  message.reply(text: Clause.find(1).content)
+
   message.reply(
-  text: Question.find(1).content ,
+  text: Question.find(1).content
   quick_replies: [
     {
       content_type: 'text',
-      title: 'Yes',
+      title: 'Yo',
       payload: 'HARMLESS'
     },
      {
@@ -20,6 +25,83 @@ Bot.on :message do |message|
   ]
 )
 end
+
+## Messenger bot logic
+
+# have a method to execute our consultation
+
+def start_consultation
+  # should create a new user object
+  # should create a new consultation object
+end
+
+# get started menu
+
+def get_started
+  # displays instructions and introduction
+  # displays a menu of the sections with a get started button (can choose
+  # a specific section or get started defaults to section one)
+end
+
+# this loops through the selected section with each clause being shown followed by the question method
+
+def section_read
+  # loop through the clauses of the selected section
+  # ask question series after each clause
+  # post responses as Answer object?
+end
+
+# consultation questions and answers
+
+# this can potentially be one method with a conditional loop?
+# ideally, answers should store as Answer objects with question_id
+
+def ask_first_question
+end
+
+def ask_second_question
+end
+
+# when user is done with individual sections, it gives them the stage to provide Feedback.new for the legislation
+
+def legislation_feedback
+end
+
+### BELOW ARE REFERENCES TO CODE SNIPPETS AND DECISION TREE
+
+## SAMPLE CODE
+# here is a sample of some question logic
+
+# def ask_second_question postback
+#   postback.reply(
+#     attachment: {
+#       type: 'template',
+#       payload: {
+#         template_type: 'button',
+#         text: 'This is the second question. It works just like the first one ;)',
+#         buttons: [
+#           { type: 'postback', title: 'Button one', payload: 'ANSWER_TWO_ONE' },
+#           { type: 'postback', title: 'Button two', payload: 'ANSWER_TWO_TWO' },
+#           { type: 'postback', title: 'Button three', payload: 'ANSWER_TWO_THREE' }
+#         ]
+#       }
+#     }
+#   )
+# end
+
+## SAMPLE CODE
+# this repeats whatever you type back to you
+
+# Bot.on :message do |message|
+#   Bot.deliver({
+#     recipient: message.sender,
+#     message: {
+#       text: message.text
+#     }
+#   }, access_token: ENV["ACCESS_TOKEN"])
+# end
+
+## DECISION TREE
 
 ## Written Commands
 # 'skip' - skip to the next section
