@@ -1,17 +1,12 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
 
-<<<<<<< HEAD
+
   resources :legislations, only: [:show] do
     resources :sections, only: [:show]
     resources :consultations, only: [:show, :new, :create, :destroy]
   end
-=======
-  resources :questions
-  resources :consultations
-  resources :answers
-  resources :consultations
->>>>>>> origin/master
+
 
 
   devise_for :users
