@@ -1,5 +1,19 @@
-<h1>New Consultation</h1>
+<div class="container">
+  <h1>New Consultation</h1>
 
-<%= render 'form', consultation: @consultation %>
+  <p>Here is how it works</p>
 
-<%= link_to 'Back', consultations_path %>
+  <p>If you would like to be reminded to complete this at a better time, please provide when you would like receive a reminder.</p>
+
+  <p>The vision intends to create a unifying policy vision for transforming [COUNTRY] economy and accelerating economic growth. The vision is composed of four chapters, and you are invited to comment on specific policy recommendations, on chapters, on the introduction and on the entire policy.</p>
+
+  <p>Leave and come back anytime, your progress is saved.</p>
+
+  <p>Click on any of the sections or clauses. If you like something, please let us know. If you think we can improve anything to support innovation, entrepreneurship or ICT developmemt, please let us know how. Thanks for your participation!</p>
+
+  <%#= render 'form', consultation: @consultation %>
+  <p> <%= link_to 'Start Your Consultation', legislation_path(1), :controller => 'consultations', :action => 'create', consultation: { user_id: current_user.id, legislation_id: 1 } %></p>
+
+  <p><%= link_to 'Back', root_path %></p>
+</div>
+
