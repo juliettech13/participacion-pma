@@ -15,12 +15,12 @@ Bot.on :message do |message|
   text: Question.find(1).content,
   quick_replies: [
     {
-      type: 'postback',
+      content_type: 'text',
       title: 'Yo',
       payload: 'YES'
     },
      {
-      type: 'postback',
+      content_type: 'text',
       title: 'No',
       payload: 'NO'
     }
