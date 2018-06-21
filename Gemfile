@@ -9,9 +9,6 @@ gem 'puma'
 gem 'rails', '5.2.0'
 gem 'devise'
 gem 'facebook-messenger'
-gem 'dotenv'
-gem 'dotenv-rails', groups: [:development, :test]
-
 
 
 gem 'autoprefixer-rails'
