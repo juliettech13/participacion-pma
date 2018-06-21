@@ -1,6 +1,6 @@
 class ConsultationsController < ApplicationController
   before_action :set_consultation, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:create]
 
   # GET /consultations
   # GET /consultations.json
@@ -79,7 +79,6 @@ class ConsultationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def consultation_params
-      # params.fetch(:consultation, {})
-      # params.require(:consultation).permit(:user_id, :legislation_id, :id)
+      params.require(:consultation).permit(:user_id, :legislation_id)
     end
 end
