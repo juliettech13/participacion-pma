@@ -3,11 +3,15 @@ Rails.application.routes.draw do
 
 
   resources :legislations, only: [:show] do
-    resources :sections, only: [:show]
     resources :consultations, only: [:show, :new, :create, :destroy]
+    resources :sections, only: [:show]
   end
 
-
+  resources :clauses, only: [:show] do
+    resources :questions, only: [:show] do
+      resources :answers
+    end
+  end
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
