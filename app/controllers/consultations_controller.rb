@@ -25,9 +25,9 @@ class ConsultationsController < ApplicationController
   def create
     # should redirect to the start of the consultation, which is the legislation/show.
     @consultation = Consultation.new(consultation_params)
-# <<<<<<< HEAD
+
 #     @legislation = legislation.find(params[:legislation_id])
-# =======
+
     @consultation.legislation_id = Legislation.find(1)
     @consultation.user_id = current_user
 
