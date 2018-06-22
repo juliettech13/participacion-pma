@@ -1,20 +1,24 @@
-<div class="container">
+<div class="container" data-controller="instruction">
   <h1>New Consultation</h1>
 
-  <p>Here is how it works</p>
+  <div class="instruction-slide-through">
+    <p>Here is how it works</p>
 
-  <p>If you would like to be reminded to complete this at a better time, please provide when you would like receive a reminder.</p>
+    <!-- <p>If you would like to be reminded to complete this at a better time, please provide when you would like receive a reminder.</p> -->
 
-  <p>The vision intends to create a unifying policy vision for transforming [COUNTRY] economy and accelerating economic growth. The vision is composed of four chapters, and you are invited to comment on specific policy recommendations, on chapters, on the introduction and on the entire policy.</p>
+    <p id ="instructions">The vision intends to create a unifying policy vision for transforming [COUNTRY] economy and accelerating economic growth. The vision is composed of four chapters, and you are invited to comment on specific policy recommendations, on chapters, on the introduction and on the entire policy.</p>
 
-  <p>Leave and come back anytime, your progress is saved.</p>
+    <!-- <p>Leave and come back anytime, your progress is saved.</p>
 
-  <p>Click on any of the sections or clauses. If you like something, please let us know. If you think we can improve anything to support innovation, entrepreneurship or ICT developmemt, please let us know how. Thanks for your participation!</p>
-
+    <p>Click on any of the sections or clauses. If you like something, please let us know. If you think we can improve anything to support innovation, entrepreneurship or ICT developmemt, please let us know how. Thanks for your participation!</p> -->
+  </div>
   <%#= render 'form', consultation: @consultation %>
-  <p> <%= link_to 'Start Your Consultation', legislation_path(@legislation), :controller => 'consultations', :action => 'create' %></p>
 
-  <p><%= link_to 'Back', root_path %></p>
+  <button id = "backbutton" data-action="click->instruction#toggleBack">Back</button>
+  <button id= "nextbutton" data-action="click->instruction#toggleForward">Next</button>
+
+  <button id="start" style="display: none;"><%= link_to 'Start Your Consultation', legislation_path(@legislation), :controller => 'consultations', :action => 'create' %></button>
+
 </div>
 
 <!-- , consultation: { user_id: current_user.id, legislation_id: 1 } -->

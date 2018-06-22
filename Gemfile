@@ -12,6 +12,8 @@ gem 'devise'
 gem 'facebook-messenger'
 gem 'omniauth-facebook'
 gem 'turbolinks', '~> 5.0.0'
+gem 'social-share-button'
+
 
 
 
