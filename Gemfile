@@ -7,8 +7,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.0'
-gem 'redis'
 gem 'devise'
+
+gem 'facebook-messenger'
 gem 'omniauth-facebook'
 gem 'turbolinks', '~> 5.0.0'
 
