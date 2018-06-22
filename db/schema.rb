@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_20_075948) do
+ActiveRecord::Schema.define(version: 2018_06_21_171326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,13 +18,9 @@ ActiveRecord::Schema.define(version: 2018_06_20_075948) do
   create_table "answers", force: :cascade do |t|
     t.string "content"
     t.bigint "question_id"
-    t.bigint "clause_id"
-    t.bigint "consultation_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["clause_id"], name: "index_answers_on_clause_id"
-    t.index ["consultation_id"], name: "index_answers_on_consultation_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
@@ -46,8 +42,17 @@ ActiveRecord::Schema.define(version: 2018_06_20_075948) do
     t.index ["user_id"], name: "index_consultations_on_user_id"
   end
 
+  create_table "general_feedbacks", force: :cascade do |t|
+    t.text "content"
+    t.bigint "legislation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["legislation_id"], name: "index_general_feedbacks_on_legislation_id"
+  end
+
   create_table "legislations", force: :cascade do |t|
     t.string "title"
+    t.text "introduction"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -56,14 +61,13 @@ ActiveRecord::Schema.define(version: 2018_06_20_075948) do
 
   create_table "questions", force: :cascade do |t|
     t.string "content"
+    t.bigint "clause_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "legislation_id"
-    t.index ["legislation_id"], name: "index_questions_on_legislation_id"
+    t.index ["clause_id"], name: "index_questions_on_clause_id"
   end
 
   create_table "sections", force: :cascade do |t|
-    t.string "description"
     t.string "title"
     t.bigint "legislation_id"
     t.datetime "created_at", null: false
@@ -84,18 +88,24 @@ ActiveRecord::Schema.define(version: 2018_06_20_075948) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
+    t.string "facebook_picture_url"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "token"
+    t.datetime "token_expiry"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "answers", "clauses"
-  add_foreign_key "answers", "consultations"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
   add_foreign_key "clauses", "sections"
   add_foreign_key "consultations", "legislations"
   add_foreign_key "consultations", "users"
+  add_foreign_key "general_feedbacks", "legislations"
   add_foreign_key "legislations", "users"
-  add_foreign_key "questions", "legislations"
+  add_foreign_key "questions", "clauses"
   add_foreign_key "sections", "legislations"
 end

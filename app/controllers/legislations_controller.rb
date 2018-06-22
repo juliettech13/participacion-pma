@@ -10,7 +10,7 @@ class LegislationsController < ApplicationController
   # GET /legislations/1
   # GET /legislations/1.json
   def show
-    @questions = Question.where(:legislation_id => @legislation).all
+    @questions = Question.where(:clause_id => @legislation.sections.each(&:clauses)).all
   end
 
   # GET /legislations/new

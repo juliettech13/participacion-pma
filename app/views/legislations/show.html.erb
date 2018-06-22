@@ -11,44 +11,38 @@
             </li>
           <% end %>
         </ul>
-
     </div>
 
-    <div id="document" class="col-lg-6">
+    <div id="document" class="col-lg-6" data-controller="legislation">
       <h1><%= @legislation.title %></h1>
       <% @legislation.sections.each do |section| %>
         <h3><%= section.title %></h3>
           <% section.clauses.each do |clause| %>
             <p>
-              <%=  link_to clause.content, {}, :onclick => 'alert("this should toggle the question box")' %>
+              <button data-action="click->legislation#toggleQuestion"><%= clause.content %></button>
+              <%#=  link_to clause.content, {}, :onclick => 'alert("this should toggle the question box")' %>
+
+              <div id="questions" style="display: none;">
+              <% clause.questions.each do |question| %>
+                <%= question.id %> - <%= question.content %>
+                  <%= form_for :answer do |f| %>
+                    <p><%= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %></p>
+                    <%= f.submit %>
+                    <%= link_to 'skip' %>
+                  <% end %>
+                <% end %>
+              </div>
+
             </p>
           <% end %>
       <% end %>
     </div>
 
-
- <!-- store the @clause object that was clicked as the clause_id,
-  and the user_id as current_user,
-  and legislation_id as @clause.legislation
-  when the answer is created -->
-
     <div id="consultation_panel" class="col-lg-3">
-      <h3>Consultation Panel</h3>
-      <div id="consultation_box" style="display: show">
-        <% @questions.each do |question| %>
-          <li><%= question.id %> - <%= question.content %></li>
-          <div>
-            <%= form_for Answer.create do |f| %>
-              <p><%= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %></p>
-              <%= f.submit %>
-            <% end %>
-          </div>
-
-          <%= link_to 'skip' %>
-        <% end %>
+     <div class="container">
+      <%#= render 'consultation_panel' %>
+      <%= link_to "I'm Finished", legislation_consultation_path(@legislation), :class => 'btn-treehouse im-finished' %>
       </div>
-
-      <%= link_to "I'm Finished", consultation_path %>
     </div>
 
 
@@ -56,14 +50,6 @@
   </div>
 </div>
 
-<script type="text/javascript">
 
-  function toggleQuestion() {
-    document.getElementById("consultation_box").style.display = "show";
-  };
-
-</script>
-
-
-<%#= link_to 'Edit', edit_legislation_path(@legislation) %> |
+<%#= link_to 'Edit', edit_legislation_path(@legislation) %>
 <%#= link_to 'Back', legislations_path %>

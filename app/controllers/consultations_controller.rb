@@ -1,33 +1,40 @@
 class ConsultationsController < ApplicationController
-  before_action :set_consultation, only: [:show, :edit, :update, :destroy]
 
-  # GET /consultations
-  # GET /consultations.json
-  def index
-    @consultations = Consultation.all
-  end
+  before_action :set_consultation, only: [:show, :destroy]
+  before_action :authenticate_user!, only: [:create]
 
-  # GET /consultations/1
-  # GET /consultations/1.json
+
+  # def index
+  #   @consultations = Consultation.all
+  # end
+
   def show
   end
 
-  # GET /consultations/new
   def new
     @consultation = Consultation.new
+    @legislation = Legislation.find(1)
+    #   respond_to do |format|
+    #     format.html  # new.html.erb
+    #     format.json  { render :json => @user }
+    # end
   end
 
-  # GET /consultations/1/edit
-  def edit
-  end
+  # def edit
+  # end
 
-  # POST /consultations
-  # POST /consultations.json
   def create
+    # should redirect to the start of the consultation, which is the legislation/show.
     @consultation = Consultation.new(consultation_params)
+#     @legislation = legislation.find(params[:legislation_id])
+    @consultation.legislation_id = Legislation.find(1).id
+    @consultation.user_id = current_user.id
+
 
     respond_to do |format|
+      raise
       if @consultation.save
+        flash[:success] = "Thanks! I'll be in touch soon!"
         format.html { redirect_to @consultation, notice: 'Consultation was successfully created.' }
         format.json { render :show, status: :created, location: @consultation }
       else
@@ -37,22 +44,18 @@ class ConsultationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /consultations/1
-  # PATCH/PUT /consultations/1.json
-  def update
-    respond_to do |format|
-      if @consultation.update(consultation_params)
-        format.html { redirect_to @consultation, notice: 'Consultation was successfully updated.' }
-        format.json { render :show, status: :ok, location: @consultation }
-      else
-        format.html { render :edit }
-        format.json { render json: @consultation.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @consultation.update(consultation_params)
+  #       format.html { redirect_to @consultation, notice: 'Consultation was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @consultation }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @consultation.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
-  # DELETE /consultations/1
-  # DELETE /consultations/1.json
   def destroy
     @consultation.destroy
     respond_to do |format|
@@ -69,6 +72,6 @@ class ConsultationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def consultation_params
-      params.fetch(:consultation, {})
+      params.require(:consultation).permit(:user_id, :legislation_id)
     end
 end

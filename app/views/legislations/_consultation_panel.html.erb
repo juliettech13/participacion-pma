@@ -1,0 +1,13 @@
+  <h3>Consultation Panel</h3>
+    <div id="consultation_box" style="display: show">
+      <% @questions.each do |question| %>
+        <li><%= question.id %> - <%= question.content %></li>
+          <div>
+            <%= form_for Answer.new do |f| %>
+              <p><%= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %></p>
+              <%= f.submit %>
+            <% end %>
+          </div>
+        <%= link_to 'skip' %>
+    <% end %>
+  </div>

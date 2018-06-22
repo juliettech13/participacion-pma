@@ -1,6 +1,10 @@
 <div class="container">
-  <h1>Welcome to the Policy Consultation</h1>
 
-  <p><%= link_to 'Start Consultation', legislation_path(1) %></p>
-  <p><%= link_to 'Sign Up', new_user_registration_path %></p>
+  <div class="home-content">
+    <h3>Welcome to the Policy Consultation for the</h3>
+    <h1>National ICT Innovation and Entrepreneurship Policy Vision</h1>
+    <%= link_to 'Get Started', new_legislation_consultation_path(@legislation), :class => 'btn-treehouse' %>
+    <h3>powered by NIDTA and i4Policy</h3>
+  </div>
+
 </div>
