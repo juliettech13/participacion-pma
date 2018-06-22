@@ -1,19 +1,14 @@
 class ConsultationsController < ApplicationController
-  before_action :set_consultation, only: [:show, :edit, :update, :destroy]
+  before_action :set_consultation, only: [:show, :destroy]
   before_action :authenticate_user!, only: [:create]
 
-  # GET /consultations
-  # GET /consultations.json
   def index
     @consultations = Consultation.all
   end
 
-  # GET /consultations/1
-  # GET /consultations/1.json
   def show
   end
 
-  # GET /consultations/new
   def new
     @consultation = Consultation.new
     #   respond_to do |format|
@@ -22,12 +17,9 @@ class ConsultationsController < ApplicationController
     # end
   end
 
-  # GET /consultations/1/edit
   def edit
   end
 
-  # POST /consultations
-  # POST /consultations.json
   def create
     # should redirect to the start of the consultation, which is the legislation/show.
     @consultation = Consultation.new(consultation_params)
@@ -47,8 +39,6 @@ class ConsultationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /consultations/1
-  # PATCH/PUT /consultations/1.json
   def update
     respond_to do |format|
       if @consultation.update(consultation_params)
@@ -61,8 +51,6 @@ class ConsultationsController < ApplicationController
     end
   end
 
-  # DELETE /consultations/1
-  # DELETE /consultations/1.json
   def destroy
     @consultation.destroy
     respond_to do |format|
