@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
-  resources :legislations do
-    resources :sections do
-      resources :clauses
-    end
+  root to: 'pages#home'
+
+
+  resources :legislations, only: [:show] do
+    resources :consultations, only: [:show, :new, :create, :destroy]
+    resources :sections, only: [:show]
   end
 
-
-  resources :questions
-  resources :consultations
-  resources :answers
-  resources :consultations
-
+  resources :clauses, only: [:show] do
+    resources :questions, only: [:show] do
+      resources :answers
+    end
+  end
 
   devise_for :users
     # controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
