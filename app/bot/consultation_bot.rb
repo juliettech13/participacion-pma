@@ -1,5 +1,5 @@
-include Facebook::Messenger
-Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
+# include Facebook::Messenger
+# Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
 
 
 ## PLEASE SEE chatbot_mapping_reference for some inspiration
