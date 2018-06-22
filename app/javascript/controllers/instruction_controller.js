@@ -20,16 +20,19 @@ export default class extends Controller {
     var middleInstruction = "Leave and come back anytime, your progress is saved.";
     var lastInstruction = "Click on any of the sections or clauses. If you like something, please let us know. If you think we can improve anything to support innovation, entrepreneurship or ICT developmemt, please let us know how. Thanks for your participation!";
     var next = document.getElementById("nextbutton");
+    var back = document.getElementById("backbutton");
+
+
 
       switch (activeInstruction.innerHTML)
       {
         case firstInstruction:
           activeInstruction.innerHTML = middleInstruction;
+          back.style.display = 'none' ? '' : 'none';
           break;
         case middleInstruction:
           activeInstruction.innerHTML = lastInstruction;
-          break;
-        case lastInstruction:
+          document.getElementById("start").style.display = 'none' ? '' : 'none';
           next.style.display = 'none';
           break;
         default:
@@ -45,17 +48,19 @@ export default class extends Controller {
     var middleInstruction = "Leave and come back anytime, your progress is saved.";
     var lastInstruction = "Click on any of the sections or clauses. If you like something, please let us know. If you think we can improve anything to support innovation, entrepreneurship or ICT developmemt, please let us know how. Thanks for your participation!";
     var back = document.getElementById("backbutton");
+    var next = document.getElementById("nextbutton");
+
 
      switch (activeInstruction.innerHTML)
       {
-        case firstInstruction:
-          back.style.display = 'none';
-          break;
         case middleInstruction:
           activeInstruction.innerHTML = firstInstruction;
+          back.style.display = 'none';
           break;
         case lastInstruction:
           activeInstruction.innerHTML = middleInstruction;
+          document.getElementById("start").style.display = 'none';
+          next.style.display = 'none' ? '' : 'none';
           break;
         default:
           alert('Default case');
