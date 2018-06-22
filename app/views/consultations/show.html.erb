@@ -1,8 +1,11 @@
-<div class="container">
-  <p id="notice"><%= notice %>Thank you for your consultation on <%= @consultation.legislation.title %></p>
-  <p>share on facebook</p>
+<div class="container"  data-controller="legislation">
 
-  <%= link_to 'Edit', edit_consultation_path(@consultation) %> |
-  <%= link_to 'Back to Home Page', root_path %>
+  <div class="home-content">
+   <button data-action="click->legislation#greet"><%= notice %>Thank you for your consultation on <%= @consultation.legislation.title %></button>
+   <button data-action="click->legislation#toggleQuestion"><%= notice %>Thank you for your consultation on <%= @consultation.legislation.title %></button>
+   <p id="notice"><%= notice %>Thank you for your consultation on <%= @consultation.legislation.title %></p>
+    <p>share on facebook</p>
 
+    <%= link_to 'Home', root_path %>
+  </div>
 </div>

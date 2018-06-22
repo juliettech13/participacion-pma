@@ -9,6 +9,9 @@ gem 'puma'
 gem 'rails', '5.2.0'
 gem 'redis'
 gem 'devise'
+gem 'omniauth-facebook'
+gem 'turbolinks', '~> 5.0.0'
+
 
 
 gem 'autoprefixer-rails'
