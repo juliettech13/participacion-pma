@@ -7,13 +7,14 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
-    <script src="/application-cbd3cd4.js" defer></script>
   </head>
   <body>
     <%= render 'shared/navbar' %>
     <%= yield %>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
+    <%#= javascript_include_tag 'application' %>
+    <%#= javascript_pack_tag 'application' %>
   </body>
 </html>

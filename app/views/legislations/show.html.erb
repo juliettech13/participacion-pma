@@ -13,7 +13,7 @@
         </ul>
     </div>
 
-    <div id="document" class="col-lg-6">
+    <div id="document" class="col-lg-6" data-controller="hello">
       <h1><%= @legislation.title %></h1>
       <% @legislation.sections.each do |section| %>
         <h3><%= section.title %></h3>
