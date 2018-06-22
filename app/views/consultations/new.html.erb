@@ -12,8 +12,9 @@
   <p>Click on any of the sections or clauses. If you like something, please let us know. If you think we can improve anything to support innovation, entrepreneurship or ICT developmemt, please let us know how. Thanks for your participation!</p>
 
   <%#= render 'form', consultation: @consultation %>
-  <p> <%= link_to 'Start Your Consultation', legislation_path(1), :controller => 'consultations', :action => 'create', consultation: { user_id: current_user.id, legislation_id: 1 } %></p>
+  <p> <%= link_to 'Start Your Consultation', legislation_path(@legislation), :controller => 'consultations', :action => 'create' %></p>
 
   <p><%= link_to 'Back', root_path %></p>
 </div>
 
+<!-- , consultation: { user_id: current_user.id, legislation_id: 1 } -->

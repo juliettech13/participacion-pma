@@ -1,18 +1,18 @@
 Rails.application.routes.draw do
-  resources :legislations do
-    resources :sections do
-      resources :clauses
+  root to: 'pages#home'
+
+
+  resources :legislations, only: [:show] do
+    resources :consultations, only: [:show, :new, :create, :destroy]
+    resources :sections, only: [:show]
+  end
+
+  resources :clauses, only: [:show] do
+    resources :questions, only: [:show] do
+      resources :answers
     end
   end
 
-
-  resources :questions
-  resources :consultations
-  resources :answers
-  resources :consultations
-
-
   devise_for :users
-  root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
