@@ -10,9 +10,16 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  connect() {
+  greet() {
     console.log("Hello, Stimulus!", this.element)
   }
+
+  toggleQuestion() {
+    console.log("grabbbbbb it!", this.element)
+
+    document.getElementById("notice").style.display = "none";
+  };
+
 }
 
 // export default class extends Controller {
