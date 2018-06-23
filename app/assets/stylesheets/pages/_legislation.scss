@@ -1,0 +1,18 @@
+#consultation_panel {
+  background: white;
+  height: 100vh;
+}
+
+#toc {
+  background: white;
+  height: 100vh;
+}
+
+.im-finished {
+  display: inline-block;
+}
+
+.scrollable {
+    height: 100vh; /* or any value */
+    overflow-y: auto;
+}
