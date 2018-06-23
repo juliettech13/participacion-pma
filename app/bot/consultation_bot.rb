@@ -1,124 +1,90 @@
-# include Facebook::Messenger
-# Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
+include Facebook::Messenger
+Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
 
+# Message variables
 
-# ## PLEASE SEE chatbot_mapping_reference for some inspiration
+chatbot_description = "National ICT Innovation and Entrepreneurship Policy Vision wants to give citizens the chance to participate and shape national economic policy."
 
-# # to handle messages
+# Settings for chatbot presentation page - adds a description and a Get Started button
+Facebook::Messenger::Profile.set({
+  greeting: [
+    {
+      locale: 'default',
+      text: chatbot_description
+    }
+  ],
+  get_started: {
+      payload: "GET_STARTED"
+  }
 
-# Bot.on :message do |message|
-#   # this is too define what happens on message
-#   # here is sample text to test out
-#   message.typing_on
+}, access_token: ENV['ACCESS_TOKEN'])
 
-#   message.reply(
-#   text: Question.find(1).content,
-#   quick_replies: [
-#     {
-#       content_type: 'text',
-#       title: 'Yo',
-#       payload: 'YES'
-#     },
-#      {
-#       content_type: 'text',
-#       title: 'No',
-#       payload: 'NO'
-#     }
-#   ]
-# )
-# end
+Bot.on :message do |message|
+  # this is too define what happens on message
+  # here is sample text to test out
+  # puts "--message"
+  # p message
+  # messenger_id = message.sender["id"]
+  # current_user = get_user(messenger_id)
 
-# Bot.on :postback do |postback|
-#   # this for postbacks on the webhook, which is mostly what we'll be working with
+end
 
-#   #should trigger the start of a consultation
-#   # i.e.: start_consultation(postback)
-# end
+Bot.on :postback do |postback|
+  # greet the current user when clicking on 'Get Started button'
+  if postback.payload == "GET_STARTED"
+    puts "--postback"
+    p postback
+    greet_current_user(postback)
+  end
+end
 
-# ## Messenger bot logic with methods
+# Message methods
 
-# # have a method to execute our consultation
+def greet_current_user(postback)
+  messenger_id = postback.sender["id"]
+  p current_user = User.where(messenger_id: messenger_id).first
+  postback.reply(
+    text: "Welcome #{current_user.first_name} to the consultation for the National ICT Innovation and Entrepreneurship Policy Vision."
+  )
+  sleep(1)
+  postback.reply(
+    attachment:{
+      type: 'template',
+      payload: {
+        template_type: 'button',
+        text: "We need your help to create and shape a unifying policy vision for transforming Nigeria's economy and accelerating economic growth. Your input matters!",
+        buttons: [
+          {type: 'postback', title:"Let's go!", payload: 'START_CONSULTATION'}
+        ]
+      }
+    }
+  )
+end
 
-# def start_consultation postback
-#   # set_answer(@user)
+# User methods
 
-#   # should create a new user object
-#   # should create a new consultation object
-#   # get_started
-# end
+def get_user(messenger_id)
+  @user = User.where(messenger_id: messenger_id).first
+  # If user does not exist, create new
+  create_new_user(messenger_id) unless @user
+end
 
-# # get started menu
+def create_new_user(messenger_id)
+  @user = User.new(messenger_id: messenger_id)
+  # Get user info from Messenger User Profile API
+  url = "https://graph.facebook.com/v2.6/#{messenger_id}?fields=first_name,last_name&access_token=#{ENV["ACCESS_TOKEN"]}"
+  user_data = api_call(url)
+  # Store user's name
+  @user.first_name = user_data["first_name"]
+  @user.last_name = user_data["last_name"]
+  @user.email = "#{messenger_id}@mail.com"
+  @user.password = "#{messenger_id}"
+  @user
+  @user.save!
+end
 
-# def get_started
-#   # displays instructions and introduction
-#   # displays a menu of the sections with a get started button (can choose
-#   # a specific section or get started defaults to section one)
-#   section_read(@section)
-# end
-
-# # this loops through the selected section with each clause being shown followed by the question method
-
-# def section_read
-#   # loop through the clauses of the selected section
-#   # ask question series after each clause
-#   # post responses as Answer object?
-#     ask_questions(clause)
-# end
-
-
-# # consultation questions and answers
-
-# def initialize_question
-#   #not sure if this can be one method or separate methods for questioning
-#   #initialize the consultation of a clause
-
-#   answer = postback.payload
-
-#   case answer
-#   when "OPTION 1"
-#     # i.e. Answer.new(content: answer)
-#     ask_next_question
-#   when "OPTION 2"
-#     puts 'Ask zeroth question'
-#     ask_next_question
-#   else
-#     puts "Not a valid response!"
-#     ask_next_question
-#   end
-# end
-
-# def ask_next_question
-#   # to go to the next question in the sequence
-# end
-
-# def legislation_feedback
-#   # to provide Feedback.new for the legislation at end of consultation
-# end
-
-# def done
-#   #potentially, if we need
-# end
-
-# private
-
-# # sample create user function
-
-# def create_new_user(messenger_id)
-#   @user = User.new(messenger_id: messenger_id)
-#   #should we add messenger_id to the users table so that we can distinguish which are messenger and which are webapp?
-
-#   # Get user info from Messenger User Profile API
-#   url = "https://graph.facebook.com/v2.6/#{messenger_id}?fields=first_name,last_name,gender&access_token=#{ENV["ACCESS_TOKEN"]}"
-#   user_data = api_call(url)
-
-#   # Store user's info
-#   @user.save
-# end
-
-# def set_answer user
-#   user_id = user.id
-#   @answer = Answer.where(user_id: user_id).first
-#   # If answer does not exist, create new
-#   create_new_answer(user_id) unless @answer
-# end
-
+def api_call(url)
+  require 'json'
+  require 'open-uri'
+  user_data = JSON.parse(open(url).read)
+end
