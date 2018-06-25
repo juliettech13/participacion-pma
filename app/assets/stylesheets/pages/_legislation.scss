@@ -16,3 +16,11 @@
     height: 100vh; /* or any value */
     overflow-y: auto;
 }
+
+.slide {
+  display: none;
+}
+
+.slide.slide--current {
+  display: block;
+}

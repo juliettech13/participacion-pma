@@ -15,25 +15,6 @@
         </ul>
     </div>
 
-
-<!-- <div class="btn-group">
-  <button type="button" class="btn btn-danger">section title</button>
-    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <span class="caret"></span>
-      <span class="sr-only">Toggle Dropdown</span>
-    </button>
-  <ul class="dropdown-menu">
-
-    <li>Introduction</li>
-    <li role="separator" class="divider"></li>
-    <% @legislation.sections.each do |section| %>
-      <li><a href=""><%= section.title %></a></li>
-    <% end %>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Full Document</a></li>
-  </ul>
-</div> -->
-
   <div class="consultation-box">
      <div id="document" class="col-lg-8 scrollable" data-controller="legislation">
       <%= @legislation.sections[0].title %>
@@ -43,21 +24,21 @@
         <div id="<%= section.title %>" style="display: none;">
           <h3><%= section.title %></h3>
           <% section.clauses.each do |clause| %>
-
+              <button data-action="click->legislation#toggleQuestion">
+                <%= clause.content %>
+              </button>
             <p>
-              <button data-action="click->legislation#toggleQuestion"><%= clause.content %></button>
               <div id="questions" style="display: none;">
               <% clause.questions.each do |question| %>
                 <%= question.id %> - <%= question.content %>
-                  <%= form_for :answer do |f| %>
+                  <%= form_with :answer do |f| %>
                     <p><%= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %></p>
-                    <%= f.submit %>
-                    <%= link_to 'skip' %>
+                  <%= f.submit %>
+                  <%= link_to 'skip' %>
                   <% end %>
                 <% end %>
               </div>
             </p>
-
           <% end %>
       <% end %>
 
@@ -79,6 +60,26 @@
     </div>
 </div>
 
+<!-- breadcrumbs -->
+<!-- event.preventDefault() -->
 
 <%#= link_to 'Edit', edit_legislation_path(@legislation) %>
 <%#= link_to 'Back', legislations_path %>
+
+<!-- <div class="btn-group">
+  <button type="button" class="btn btn-danger">section title</button>
+    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="caret"></span>
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+  <ul class="dropdown-menu">
+
+    <li>Introduction</li>
+    <li role="separator" class="divider"></li>
+    <% @legislation.sections.each do |section| %>
+      <li><a href=""><%= section.title %></a></li>
+    <% end %>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Full Document</a></li>
+  </ul>
+</div> -->
