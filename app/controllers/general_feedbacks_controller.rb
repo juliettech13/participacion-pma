@@ -13,6 +13,7 @@ class GeneralFeedbacksController < ApplicationController
   def create
     @general_feedback = GeneralFeedback.new(general_feedback_params)
     @consultation = Consultation.find(params[:consultation_id])
+    @general_feedback.consultation = @consultation
     if @general_feedback.save!
       redirect_to consultation_path(@consultation)
     else
