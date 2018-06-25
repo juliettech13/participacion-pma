@@ -1,27 +1,51 @@
 <p id="notice"><%= notice %></p>
-<div class="container">
+<div class="container" data-controller="legislation">
+
+  <h1><%#= @legislation.title %></h1>
   <div class="row">
 
-    <div id="toc" class="col-lg-3">
+    <div id="toc" class="col-lg-4">
       <h3>table of contents</h3>
         <ul>
           <% @legislation.sections.each do |section| %>
             <li>
-              <%= section.title %>
+              <a data-action="click->legislation#showSection"><%= section.title %></a>
             </li>
           <% end %>
         </ul>
     </div>
 
-    <div id="document" class="col-lg-6 scrollable" data-controller="legislation">
-      <h1><%= @legislation.title %></h1>
+
+<!-- <div class="btn-group">
+  <button type="button" class="btn btn-danger">section title</button>
+    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="caret"></span>
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+  <ul class="dropdown-menu">
+
+    <li>Introduction</li>
+    <li role="separator" class="divider"></li>
+    <% @legislation.sections.each do |section| %>
+      <li><a href=""><%= section.title %></a></li>
+    <% end %>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Full Document</a></li>
+  </ul>
+</div> -->
+
+  <div class="consultation-box">
+     <div id="document" class="col-lg-8 scrollable" data-controller="legislation">
+      <%= @legislation.sections[0].title %>
+      <div id="active_section">
+
       <% @legislation.sections.each do |section| %>
-        <h3><%= section.title %></h3>
+        <div id="<%= section.title %>" style="display: none;">
+          <h3><%= section.title %></h3>
           <% section.clauses.each do |clause| %>
+
             <p>
               <button data-action="click->legislation#toggleQuestion"><%= clause.content %></button>
-              <%#=  link_to clause.content, {}, :onclick => 'alert("this should toggle the question box")' %>
-
               <div id="questions" style="display: none;">
               <% clause.questions.each do |question| %>
                 <%= question.id %> - <%= question.content %>
@@ -32,22 +56,27 @@
                   <% end %>
                 <% end %>
               </div>
-
             </p>
+
           <% end %>
       <% end %>
-    </div>
 
-    <div id="consultation_panel" class="col-lg-3">
-     <div class="container">
-      <%#= render 'consultation_panel' %>
-      <%= link_to "I'm Finished", legislation_consultation_path(@legislation), :class => 'btn-treehouse im-finished' %>
+      </div>
       </div>
     </div>
+  </div>
 
-
+  <div class="section-store">
 
   </div>
+
+  </div>
+      <div id="">
+     <div class="container">
+      <%#= render 'consultation_panel' %>
+      <%= link_to "I'm Finished", legislation_consultation_path(@legislation), :class => 'btn-treehouse' %>
+      </div>
+    </div>
 </div>
 
 
