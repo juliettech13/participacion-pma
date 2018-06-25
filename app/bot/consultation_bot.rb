@@ -1,16 +1,13 @@
 include Facebook::Messenger
 Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
 
-# Message variables
-
-chatbot_description = "National ICT Innovation and Entrepreneurship Policy Vision wants to give citizens the chance to participate and shape national economic policy."
 
 # Settings for chatbot presentation page - adds a description and a Get Started button
 Facebook::Messenger::Profile.set({
   greeting: [
     {
       locale: 'default',
-      text: "#{chatbot_description}"
+      text: "National ICT Innovation and Entrepreneurship Policy Vision wants to give citizens the chance to participate and shape national economic policy."
     }
   ],
   get_started: {
@@ -36,8 +33,15 @@ Bot.on :message do |message|
     when "QUESTION_1"
       question_one(message)
 
-    when "QUESTION_2"
+    when "ANSWER_QUESTION_ONE"
       question_two(message)
+
+    when "ANSWER_QUESTION_TWO_INTRO"
+      transition(message)
+
+    when "ANSWER_QUESTION_TWO"
+      next_section(message)
+
   end
 
 end
@@ -113,6 +117,48 @@ def start_consultation(message)
   )
 end
 
+def transition(message)
+  message.typing_on
+  message.reply(
+    text: "Cool! FYI, with these first simple responses, you just helped shape policy on a national level. Pretty cool, right?",
+    quick_replies: [
+      {
+        content_type: 'text',
+        title: "Let's keep going!",
+        payload: "END_TRANSITION"
+      }
+    ]
+  )
+  message.typing_on
+  message.reply(
+    text: "Let's get into the details of the policy. This is where your input matters the most !"
+  )
+  section_one(message)
+end
+
+def section_one(message)
+  message.typing_on
+  message.reply(
+    text: "The policy is composed of 3 main sections. Let's go over each one together to get things going in the right direction."
+  )
+  message.typing_on
+  message.reply(
+    text: "This is a sample text that gives the overall aim of section 1.",
+    quick_replies:[
+      {
+        content_type: "text",
+        title: "Got it!",
+        payload: 'QUESTION_1'
+      },
+      {
+        content_type: "text",
+        title: "Tell me more",
+        payload: 'DETAIL_SECTION_ONE'
+      }
+    ]
+  )
+end
+
 # Question messages
 
 def question_one(message)
@@ -152,7 +198,68 @@ end
 def question_two(message)
   message.typing_on
   message.reply(
-    text: "Next question. Using the same scale, do you feel that  this pushes the future of Nigeria ICT in the right direction ?"
+    text: "Next question. Using the same scale, do you feel that this pushes the future of Nigeria ICT in the right direction ?",
+    quick_replies:[
+      {
+        content_type: "text",
+        title: "1",
+        payload: 'ANSWER_QUESTION_TWO'
+      },
+      {
+        content_type: "text",
+        title: "2",
+        payload: 'ANSWER_QUESTION_TWO'
+      },
+      {
+        content_type: "text",
+        title: "3",
+        payload: 'ANSWER_QUESTION_TWO'
+      },
+      {
+        content_type: "text",
+        title: "4",
+        payload: 'ANSWER_QUESTION_TWO'
+      },
+      {
+        content_type: "text",
+        title: "5",
+        payload: 'ANSWER_QUESTION_TWO'
+      }
+    ]
+  )
+end
+
+def question_two_intro(message)
+  message.typing_on
+  message.reply(
+    text: "Next question. Using the same scale, do you feel that this pushes the future of Nigeria ICT in the right direction ?",
+    quick_replies:[
+      {
+        content_type: "text",
+        title: "1",
+        payload: 'ANSWER_QUESTION_TWO_INTRO'
+      },
+      {
+        content_type: "text",
+        title: "2",
+        payload: 'ANSWER_QUESTION_TWO_INTRO'
+      },
+      {
+        content_type: "text",
+        title: "3",
+        payload: 'ANSWER_QUESTION_TWO_INTRO'
+      },
+      {
+        content_type: "text",
+        title: "4",
+        payload: 'ANSWER_QUESTION_TWO_INTRO'
+      },
+      {
+        content_type: "text",
+        title: "5",
+        payload: 'ANSWER_QUESTION_TWO_INTRO'
+      }
+    ]
   )
 end
 
