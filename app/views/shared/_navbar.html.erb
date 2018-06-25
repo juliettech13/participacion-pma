@@ -2,7 +2,6 @@
   <!-- Logo -->
   <a href="/" class="navbar-wagon-brand">
     <%= image_tag("nidta_logo_full.png") %>
-    <!-- <img src="images/nidta_logo_full.png" alt="logo"> -->
   </a>
 
   <!-- Right Navigation -->
@@ -13,7 +12,7 @@
     <%= link_to 'Log Out', destroy_user_session_path, method: :delete, :class => 'navbar-wagon-item navbar-wagon-link' %>
 
     <!-- Profile picture with dropdown list -->
-    <div class="navbar-wagon-item">
+ <!--    <div class="navbar-wagon-item">
       <div class="dropdown">
         <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
@@ -22,7 +21,7 @@
           <li><a href="#">Log Out</a></li>
         </ul>
       </div>
-    </div>
+    </div> -->
   </div>
 
   <!-- Dropdown appearing on mobile only -->
@@ -30,9 +29,15 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Sign Up</a></li>
-        <li><a href="#">Trips</a></li>
-        <li><a href="#">Messagese</a></li>
+        <li>
+          <%= link_to 'Sign Up', new_user_registration_path, :class => 'navbar-wagon-item navbar-wagon-link' %>
+        </li>
+        <li>
+          <%= link_to 'Sign In', user_session_path, :class => 'navbar-wagon-item navbar-wagon-link'  %>
+        </li>
+        <li>
+          <%= link_to 'Log Out', destroy_user_session_path, method: :delete, :class => 'navbar-wagon-item navbar-wagon-link' %>
+        </li>
       </ul>
     </div>
   </div>
