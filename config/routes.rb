@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
 
+  root to: 'pages#home'
 
   resources :legislations, only: [:show] do
     resources :sections, only: [:show]
@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :consultations, only: [:show] do
-    resources :general_feedback, only: [:show, :new, :create]
+    resources :general_feedbacks, only: [:show, :new, :create]
   end
 
   resources :clauses, only: [:show] do
