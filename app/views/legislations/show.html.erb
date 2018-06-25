@@ -19,20 +19,28 @@
         <h3><%= section.title %></h3>
           <% section.clauses.each do |clause| %>
             <p>
-              <button data-action="click->legislation#toggleQuestion"><%= clause.content %></button>
+              <%= clause.content %>
               <%#=  link_to clause.content, {}, :onclick => 'alert("this should toggle the question box")' %>
 
-              <div id="questions" style="display: none;">
+              <div id="questions" data-controller="slideshow">
               <% clause.questions.each do |question| %>
-                <%= question.id %> - <%= question.content %>
+                <div data-target="slideshow.slide" class="slide">
+                  <%= question.id %> - <%= question.content %>
+                </div>
                   <%= form_for :answer do |f| %>
-                    <p><%= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %></p>
+                    <button data-action="slideshow#yes">
+                      <%= f.select(:content, [["Yes"]], {}, {:multiple => true}) %>
+                    </button>
+                    <button data-action="slideshow#no">
+                      <%= f.select(:content, [["No"]], {}, {:multiple => true}) %>
+                    </button>
+                    <button data-action="slideshow#no">
+                      <%= link_to 'skip' %>
+                    </button>
                     <%= f.submit %>
-                    <%= link_to 'skip' %>
                   <% end %>
                 <% end %>
               </div>
-
             </p>
           <% end %>
       <% end %>
