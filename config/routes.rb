@@ -3,8 +3,12 @@ Rails.application.routes.draw do
 
 
   resources :legislations, only: [:show] do
-    resources :consultations, only: [:show, :new, :create, :destroy]
     resources :sections, only: [:show]
+    resources :consultations, only: [:new, :create, :destroy]
+  end
+
+  resources :consultations, only: [:show] do
+    resources :general_feedback, only: [:show, :new, :create]
   end
 
   resources :clauses, only: [:show] do
