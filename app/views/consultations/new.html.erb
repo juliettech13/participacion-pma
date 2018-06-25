@@ -1,24 +1,27 @@
 <div class="container" data-controller="instruction">
-  <h1>New Consultation</h1>
 
+  <div class="page-header">
+    <h1>Welcome<small>to your policy consultation</small></h1>
+  </div>
   <div class="instruction-slide-through">
-    <p>Here is how it works</p>
-
-    <!-- <p>If you would like to be reminded to complete this at a better time, please provide when you would like receive a reminder.</p> -->
-
     <p id ="instructions">The vision intends to create a unifying policy vision for transforming [COUNTRY] economy and accelerating economic growth. The vision is composed of four chapters, and you are invited to comment on specific policy recommendations, on chapters, on the introduction and on the entire policy.</p>
-
-    <!-- <p>Leave and come back anytime, your progress is saved.</p>
-
-    <p>Click on any of the sections or clauses. If you like something, please let us know. If you think we can improve anything to support innovation, entrepreneurship or ICT developmemt, please let us know how. Thanks for your participation!</p> -->
   </div>
   <%#= render 'form', consultation: @consultation %>
+  <!-- <a href="#" class="btn-medium">Write a story</a> -->
+  <!-- <div class="btn-group btn-group-lg" role="group" aria-label="..."> -->
 
-  <button id = "backbutton" data-action="click->instruction#toggleBack">Back</button>
-  <button id= "nextbutton" data-action="click->instruction#toggleForward">Next</button>
+    <div class="instruction-buttons">
+      <button type="button" class="btn btn-primary btn-lg" id="backbutton" data-action="click->instruction#toggleBack">Back</button>
+      <button type="button" class="btn btn-primary btn-lg" id="nextbutton" data-action="click->instruction#toggleForward">Next</button>
+      <button type="button" class="btn btn-primary btn-lg" id="start" style="display: none;">
+        <%= link_to 'Start Your Consultation', legislation_path(@legislation), :controller => 'consultations', :action => 'create' %>
+      </button>
+    </div>
 
-  <button id="start" style="display: none;"><%= link_to 'Start Your Consultation', legislation_path(@legislation), :controller => 'consultations', :action => 'create' %></button>
-
+  <!-- </div> -->
 </div>
 
 <!-- , consultation: { user_id: current_user.id, legislation_id: 1 } -->
+<!-- <p>Leave and come back anytime, your progress is saved.</p>
+<p>Click on any of the sections or clauses. If you like something, please let us know. If you think we can improve anything to support innovation, entrepreneurship or ICT developmemt, please let us know how. Thanks for your participation!</p> -->
+<!-- <p>If you would like to be reminded to complete this at a better time, please provide when you would like receive a reminder.</p> -->
