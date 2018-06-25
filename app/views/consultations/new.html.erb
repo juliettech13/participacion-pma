@@ -17,7 +17,13 @@
   <button id = "backbutton" data-action="click->instruction#toggleBack">Back</button>
   <button id= "nextbutton" data-action="click->instruction#toggleForward">Next</button>
 
-  <button id="start" style="display: none;"><%= link_to 'Start Your Consultation', legislation_path(@legislation), :controller => 'consultations', :action => 'create' %></button>
+<!--   <button id="start" style="display: none;"><%#= link_to 'Start Your Consultation', legislation_path(@legislation), :controller => 'consultations', :action => 'create' %></button> -->
+
+  <%= simple_form_for [@legislation, @consultation] do |f| %>
+    <%#= f.input :legislation_id, as: :hidden, input_html: { value: params[:legislation_id] } %>
+    <%= f.input :user_id, as: :hidden %>
+    <%= f.submit "Start your consultation" %>
+  <% end %>
 
 </div>
 
