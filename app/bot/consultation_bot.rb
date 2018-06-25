@@ -10,7 +10,7 @@ Facebook::Messenger::Profile.set({
   greeting: [
     {
       locale: 'default',
-      text: chatbot_description
+      text: "#{chatbot_description}"
     }
   ],
   get_started: {
@@ -20,12 +20,25 @@ Facebook::Messenger::Profile.set({
 }, access_token: ENV['ACCESS_TOKEN'])
 
 Bot.on :message do |message|
-  # this is too define what happens on message
-  # here is sample text to test out
-  # puts "--message"
-  # p message
-  # messenger_id = message.sender["id"]
-  # current_user = get_user(messenger_id)
+  puts "--message"
+  p message
+  messenger_id = message.sender["id"]
+  p current_user = User.where(messenger_id: messenger_id).first
+
+  case message.quick_reply
+
+    when "USAGE_EXPLANATION"
+      usage_explanation(message)
+
+    when "START_CONSULTATION"
+      start_consultation(message)
+
+    when "QUESTION_1"
+      question_one(message)
+
+    when "QUESTION_2"
+      question_two(message)
+  end
 
 end
 
@@ -48,16 +61,98 @@ def greet_current_user(postback)
   )
   sleep(1)
   postback.reply(
-    attachment:{
-      type: 'template',
-      payload: {
-        template_type: 'button',
-        text: "We need your help to create and shape a unifying policy vision for transforming Nigeria's economy and accelerating economic growth. Your input matters!",
-        buttons: [
-          {type: 'postback', title:"Let's go!", payload: 'START_CONSULTATION'}
-        ]
+    text: "We need your help to create and shape a unifying policy vision for transforming Nigeria's economy and accelerating economic growth. Your input matters!",
+    quick_replies:[
+      {
+        content_type: 'text',
+        title: "I want to help",
+        payload: 'USAGE_EXPLANATION'
       }
-    }
+    ]
+  )
+end
+
+def usage_explanation(message)
+  message.typing_on
+  message.reply(
+  text: "The vision is composed of an introduction and four chapters, and you are invited to feedback on each part, on specific policy recommendations, and on the entire policy."
+  )
+  message.typing_on
+  message.reply(
+    text: "You will be able to interact with each section and sub-section, if you want to get an overview of the policy at any time type ‘menu’. All of your input on each section is saved as you go. You will be asked two questions before having the opportunity to provide a suggested revision. Write ‘skip’ if you ever want to skip to the next section.",
+    quick_replies:[
+      {
+        content_type: "text",
+        title: "I'm ready",
+        payload: 'START_CONSULTATION'
+      }
+    ]
+  )
+end
+
+def start_consultation(message)
+  message.typing_on
+  message.reply(
+    text: "Awesome ! Let's start with the overall aim of the policy vision."
+  )
+  message.typing_on
+  message.reply(
+    text: "This is a sample summary of the intro with the main points. Make it short and sweet to frame the goal of the policy.",
+    quick_replies:[
+      {
+        content_type: "text",
+        title: "Got it!",
+        payload: 'QUESTION_1'
+      },
+      {
+        content_type: "text",
+        title: "Tell me more",
+        payload: 'DETAIL_POLICY_INTRO'
+      }
+    ]
+  )
+end
+
+# Question messages
+
+def question_one(message)
+  message.typing_on
+  message.reply(
+    text: "On a scale of 1 to 5, do you feel that this policy is representative of your views ? 1 means that it is not at all representative, while 5 means it is completely representative.",
+    quick_replies:[
+      {
+        content_type: "text",
+        title: "1",
+        payload: 'ANSWER_QUESTION_ONE'
+      },
+      {
+        content_type: "text",
+        title: "2",
+        payload: 'ANSWER_QUESTION_ONE'
+      },
+      {
+        content_type: "text",
+        title: "3",
+        payload: 'ANSWER_QUESTION_ONE'
+      },
+      {
+        content_type: "text",
+        title: "4",
+        payload: 'ANSWER_QUESTION_ONE'
+      },
+      {
+        content_type: "text",
+        title: "5",
+        payload: 'ANSWER_QUESTION_ONE'
+      }
+    ]
+  )
+end
+
+def question_two(message)
+  message.typing_on
+  message.reply(
+    text: "Next question. Using the same scale, do you feel that  this pushes the future of Nigeria ICT in the right direction ?"
   )
 end
 
