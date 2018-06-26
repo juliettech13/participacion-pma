@@ -8,12 +8,14 @@ Rails.application.routes.draw do
   end
 
   resources :clauses, only: [:show] do
-    resources :questions, only: [:show] do
-      resources :answers
-    end
+    resources :questions, only: [:show]
   end
 
+
   get "/pages/finished", to: 'pages#finished'
+
+  resources :answers
+
 
   devise_for :users
     # controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
