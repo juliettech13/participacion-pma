@@ -1,10 +1,16 @@
 <div class="container">
 
-  <div class="home-content">
-    <h3>Welcome to the Policy Consultation for the</h3>
+<div class="jumbotron">
+  <h1>Welcome,</h1>
+  <p>to the consultation for the National ICT Innovation and Entrepreneurship Policy Vision by the Office for ICT Innovation and Entrepreneurship (OIIE) established under NITDA</p>
+  <p><%= link_to 'get started', new_legislation_consultation_path(@legislation), :class => 'btn btn-primary btn-lg', :role => 'button' %></p>
+</div>
+<!--   <div class="home-content">
+    <h4>Welcome to the consultation for the</h4>
     <h1>National ICT Innovation and Entrepreneurship Policy Vision</h1>
-    <%= link_to 'Get Started', new_legislation_consultation_path(@legislation), :class => 'btn-treehouse' %>
-    <h3>powered by NIDTA and i4Policy</h3>
-  </div>
-
+      <div class="get-started-button">
+        <%= link_to 'get started', new_legislation_consultation_path(@legislation), :class => 'btn-treehouse' %>
+      </div>
+    <p>Office for ICT Innovation and Entrepreneurship (OIIE) is established under NITDA with the responsibilities of continuing to nurture, cultivate and expand the ICT innovation and entrepreneurship within Nigeria in line with National ICT Policy and NITDA Act 2007. We want your participation in co-creating this national Policy Vision.</p>
+  </div> -->
 </div>
