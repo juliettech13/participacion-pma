@@ -1,5 +1,7 @@
 // Specific CSS for your home-page
-
+.container {
+  width: 70%;
+}
 .home-content {
   display: block;
   // justify-content: space-around;
@@ -8,19 +10,28 @@
   width: 60%;
 }
 
+.card {
+  border: none !important;
+}
 
-.get-started-button .btn-treehouse {
+.get-started-button {
     color: white;
-    padding: 20px 200px;
-    border-radius: 4px;
+    // padding: 20px 200px;
+    max-height: 50px;
+    border-radius: 10px;
     width: 200px;
     background: #037200;
     transition: background 0.3s ease;
 }
 
+.btn-content {
+  display:flex;
+  justify-content: center;
+  // align-items: center;
+}
 
 .get-started-button {
-  margin: 60px 0px;
+  margin: 60px;
 }
 
 .banner {
