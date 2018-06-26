@@ -14,9 +14,6 @@ gem 'omniauth-facebook'
 gem 'turbolinks', '~> 5.0.0'
 gem 'social-share-button'
 
-
-
-
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'font-awesome-sass', '~> 5.0.9'
@@ -24,6 +21,8 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+
+gem 'activeadmin'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -36,3 +35,4 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
