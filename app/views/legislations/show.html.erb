@@ -1,3 +1,13 @@
+<script>
+  $(document).ready(function(){
+    $('#reportform').on('ajax:success', function(e, data, status, xhr){
+      $(console.log("Hello, Stimulus!"));
+    }).on('ajax:error',function(e, xhr, status, error){
+      $(console.log("Hello, Failed!"));
+    });
+  });
+</script>
+
     <p id="notice"><%= notice %></p>
     <div class="container" data-controller="legislation">
 
@@ -38,18 +48,31 @@
 
 
                 <div id="collapse_<%= clause.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
-                  <div class="card-body" data-controller="slideshow">
+                  <div class="card-body" data-controller="slideshow answerslideshow">
                     <% clause.questions.each do |question| %>
                     <div data-target="slideshow.slide" class="slide">
                       <%= question.content %>
-                      <%= form_for :answer, html: { id: "reportform" }, remote: true, update:
-                      { success: "response", failure: "error"} do |f| %>
-                      <p><%#= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %></p>
-                      <button data-action="slideshow#next"><%= f.submit 'A' %></button>
-                      <button data-action="slideshow#next"><%= f.submit 'B' %></button>
-                      <button data-action="slideshow#next"><%= f.submit 'C' %></button>
                     </div>
+
+                    <div data-target="answerslideshow.answerslide" class="slide">
+                     <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
+                     <%= f.hidden_field :user_id, :value => current_user.id  %>
+                     <%= f.hidden_field :question_id, :value => question.id  %>
+                     <%= f.select(:content, [["Bum"],["Dum"]], {}, {:multiple => true}) %>
+                     <button data-action="slideshow#next answerslideshow#next"><%= f.submit %></button>
+                     <% end %>
+                   </div>
+
+                   <div data-target="answerslideshow.answerslide" class="slide">
+                    <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
+                    <%= f.hidden_field :user_id, :value => current_user.id  %>
+                    <%= f.hidden_field :question_id, :value => question.id  %>
+                    <%= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %>
+                    <button data-action="slideshow#next answerslideshow#next"><%= f.submit %></button>
                     <% end %>
+                  </div>
+
+
                     <% end %>
                   </div>
                 </div>
@@ -65,15 +88,7 @@
   </div>
 </div>
 
-<script>
-  $(document).ready(function(){
-    $('#reportform').on('ajax:success', function(e, data, status, xhr){
-      $(console.log("Hello, Stimulus!"));
-    }).on('ajax:error',function(e, xhr, status, error){
-      $(console.log("Hello, Failed!"));
-    });
-  });
-</script>
+
 
 <!-- event.preventDefault()
  -->
