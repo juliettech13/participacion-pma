@@ -55,55 +55,53 @@
                 <div data-target="slideshow.slide" class="slide">
                   <%= clause.questions[0].content %>
                   <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
-                   <%= f.hidden_field :user_id, :value => current_user.id  %>
-                   <%= f.hidden_field :question_id, :value => clause.questions[0].id  %>
-                   <%= f.select(:content, [["Bum"],["Dum"]], {}, {:multiple => true}) %>
-                   <button data-action="slideshow#next"><%= f.submit %></button>
-                   <% end %>
+                  <%= f.hidden_field :user_id, :value => current_user.id  %>
+                  <%= f.hidden_field :question_id, :value => clause.questions[0].id  %>
+                  <%= f.select(:content, [["Bum"],["Dum"]], {}, {:multiple => true}) %>
+                  <button data-action="slideshow#next"><%= f.submit %></button>
+                  <% end %>
                 </div>
 
                 <div data-target="slideshow.slide" class="slide">
                   <%= clause.questions[1].content %>
                   <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
-                   <%= f.hidden_field :user_id, :value => current_user.id  %>
-                   <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
-                   <%= f.select(:content, [["Yo"],["No"]], {}, {:multiple => true}) %>
-                   <button data-action="slideshow#next"><%= f.submit %></button>
-                   <% end %>
+                  <%= f.hidden_field :user_id, :value => current_user.id  %>
+                  <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
+                  <%= f.select(:content, [["Yo"],["No"]], {}, {:multiple => true}) %>
+                  <button data-action="slideshow#next"><%= f.submit %></button>
+                  <% end %>
                 </div>
 
                 <div data-target="slideshow.slide" class="slide">
                   <%= clause.questions[2].content %>
                   <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
-                   <%= f.hidden_field :user_id, :value => current_user.id  %>
-                   <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
-                   <%= f.select(:content, [["Yo"],["No"]], {}, {:multiple => true}) %>
-                   <button data-action="slideshow#next"><%= f.submit %></button>
-                   <% end %>
+                  <%= f.hidden_field :user_id, :value => current_user.id  %>
+                  <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
+                  <%= f.select(:content, [["Yo"],["No"]], {}, {:multiple => true}) %>
+                  <button data-action="slideshow#next"><%= f.submit %></button>
+                  <% end %>
                 </div>
 
                 <div data-target="slideshow.slide" class="slide">
                   <%= clause.questions[3].content %>
                   <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
-                   <%= f.hidden_field :user_id, :value => current_user.id  %>
-                   <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
-                   <%= f.text_area :content %>
-                   <button data-action="slideshow#next"><%= f.submit %></button>
-                   <% end %>
+                  <%= f.hidden_field :user_id, :value => current_user.id  %>
+                  <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
+                  <%= f.text_area :content %>
+                  <button data-action="slideshow#next"><%= f.submit %></button>
+                  <% end %>
                 </div>
 
-
-              <%# end %>
+              </div>
             </div>
-          </div>
 
+          </div>
         </div>
+        <% end %>
+        <% end %>
       </div>
-      <% end %>
-      <% end %>
     </div>
   </div>
-</div>
 </div>
 </div>
 </div>
