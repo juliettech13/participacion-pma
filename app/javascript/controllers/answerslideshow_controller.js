@@ -21,4 +21,5 @@ export default class extends Controller {
       el.classList.toggle("slide--current", index == i)
     })
   }
+
 }
