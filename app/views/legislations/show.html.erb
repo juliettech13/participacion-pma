@@ -23,6 +23,7 @@
       <% @legislation.sections.each do |section| %>
         <div id="<%= section.title %>" style="display: none;">
           <h3><%= section.title %></h3>
+
           <% section.clauses.each do |clause| %>
               <button data-action="click->legislation#toggleQuestion">
                 <%= clause.content %>
@@ -31,7 +32,7 @@
               <div id="questions" style="display: none;">
               <% clause.questions.each do |question| %>
                 <%= question.id %> - <%= question.content %>
-                  <%= form_with :answer do |f| %>
+                  <%= form_for :answer do |f| %>
                     <p><%= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %></p>
                   <%= f.submit %>
                   <%= link_to 'skip' %>
@@ -60,26 +61,40 @@
     </div>
 </div>
 
-<!-- breadcrumbs -->
-<!-- event.preventDefault() -->
+<div class="container">
+  <div id="accordion">
+
+  <% @legislation.sections[0].clauses.each do |clause| %>
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <a class="btn btn-link" data-toggle="collapse" data-target="#collapse_<%= clause.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
+          <%= clause.content %>
+        </a>
+      </h5>
+    </div>
+
+    <div id="collapse_<%= clause.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <%= clause.questions[0].content %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+  </div>
+
+  </div>
+
+
+
+</div>
+
+
+<!-- event.preventDefault()
+ -->
 
 <%#= link_to 'Edit', edit_legislation_path(@legislation) %>
 <%#= link_to 'Back', legislations_path %>
 
-<!-- <div class="btn-group">
-  <button type="button" class="btn btn-danger">section title</button>
-    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <span class="caret"></span>
-      <span class="sr-only">Toggle Dropdown</span>
-    </button>
-  <ul class="dropdown-menu">
 
-    <li>Introduction</li>
-    <li role="separator" class="divider"></li>
-    <% @legislation.sections.each do |section| %>
-      <li><a href=""><%= section.title %></a></li>
-    <% end %>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Full Document</a></li>
-  </ul>
-</div> -->
