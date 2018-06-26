@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
   root to: 'pages#home'
 
-
   resources :legislations, only: [:show] do
-    resources :consultations, only: [:show, :new, :create, :destroy]
     resources :sections, only: [:show]
+    resources :consultations, only: [:new, :create, :destroy]
+  end
+
+  resources :consultations, only: [:show] do
+    resources :general_feedbacks, only: [:show, :new, :create]
   end
 
   resources :clauses, only: [:show] do
