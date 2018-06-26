@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_26_102553) do
+ActiveRecord::Schema.define(version: 2018_06_25_232955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,17 @@ ActiveRecord::Schema.define(version: 2018_06_26_102553) do
     t.index ["user_id"], name: "index_legislations_on_user_id"
   end
 
+  create_table "metadata", force: :cascade do |t|
+    t.text "vision"
+    t.string "agency"
+    t.string "rationale"
+    t.text "status"
+    t.bigint "clause_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["clause_id"], name: "index_metadata_on_clause_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string "content"
     t.bigint "clause_id"
@@ -137,6 +148,7 @@ ActiveRecord::Schema.define(version: 2018_06_26_102553) do
   add_foreign_key "consultations", "users"
   add_foreign_key "general_feedbacks", "legislations"
   add_foreign_key "legislations", "users"
+  add_foreign_key "metadata", "clauses"
   add_foreign_key "questions", "clauses"
   add_foreign_key "sections", "legislations"
 end

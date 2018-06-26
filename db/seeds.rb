@@ -7,6 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+puts 'deleting all consultation'
+Consultation.destroy_all
+
 puts 'deleting all legislation'
 Legislation.destroy_all
 
@@ -63,26 +66,32 @@ puts "creating questions"
 Question.create!(content: 'Do you feel that this represents your views?', clause_id: 1)
 Question.create!(content: 'How well does this push your country in the direction?', clause_id: 1)
 Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 1)
+Question.create!(content: 'Please suggest a revision', clause_id: 1)
 
 Question.create!(content: 'Do you feel that this represents your views?', clause_id: 2)
 Question.create!(content: 'How well does this push your country in the direction?', clause_id: 2)
 Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 2)
+Question.create!(content: 'Please suggest a revision', clause_id: 2)
 
 Question.create!(content: 'Do you feel that this represents your views?', clause_id: 3)
 Question.create!(content: 'How well does this push your country in the direction?', clause_id: 3)
 Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 3)
+Question.create!(content: 'Please suggest a revision', clause_id: 3)
 
 Question.create!(content: 'Do you feel that this represents your views?', clause_id: 4)
 Question.create!(content: 'How well does this push your country in the direction?', clause_id: 4)
 Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 4)
+Question.create!(content: 'Please suggest a revision', clause_id: 4)
 
 Question.create!(content: 'Do you feel that this represents your views?', clause_id: 5)
 Question.create!(content: 'How well does this push your country in the direction?', clause_id: 5)
 Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 5)
+Question.create!(content: 'Please suggest a revision', clause_id: 5)
 
 Question.create!(content: 'Do you feel that this represents your views?', clause_id: 6)
 Question.create!(content: 'How well does this push your country in the direction?', clause_id: 6)
 Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 6)
+Question.create!(content: 'Please suggest a revision', clause_id: 6)
 
 puts "creating dummy general feedback"
 GeneralFeedback.create!(content: 'My custom feedback 1', legislation_id: 1)
