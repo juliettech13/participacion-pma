@@ -14,3 +14,12 @@
 @import "pages/index";
 
 @import "social-share-button";
+
+.social-share-button {
+  .ssb-icon {
+    background-size: 40px 40px;
+    height: 40px;
+    width: 40px;
+    margin: 0px 3px;
+  }
+}
