@@ -61,6 +61,16 @@
     </div>
 </div>
 
+<script>
+  $(document).ready(function(){
+    $('#reportform').on('ajax:success', function(e, data, status, xhr){
+      $(console.log("Hello, Stimulus!"));
+    }).on('ajax:error',function(e, xhr, status, error){
+      $(console.log("Hello, Failed!"));
+    });
+  });
+</script>
+
 <div class="container">
   <div id="accordion">
 
@@ -77,6 +87,11 @@
     <div id="collapse_<%= clause.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
         <%= clause.questions[0].content %>
+        <%= form_for :answer, html: { id: "reportform" }, remote: true, update:
+          { success: "response", failure: "error"} do |f| %>
+          <p><%= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %></p>
+          <%= f.submit %>
+        <% end %>
       </div>
     </div>
   </div>
