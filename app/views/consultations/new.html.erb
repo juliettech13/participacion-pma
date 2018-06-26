@@ -10,9 +10,7 @@
   <button id = "backbutton" data-action="click->instruction#toggleBack">Back</button>
   <button id= "nextbutton" data-action="click->instruction#toggleForward">Next</button>
 
-
   <%= simple_form_for [@legislation, @consultation] do |f| %>
-    <%#= f.input :legislation_id, as: :hidden, input_html: { value: params[:legislation_id] } %>
     <%= f.input :user_id, as: :hidden %>
     <%= f.submit "Start your consultation" %>
   <% end %>
