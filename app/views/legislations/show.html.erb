@@ -6,65 +6,63 @@
 
     <div id="toc" class="col-4">
       <h3>table of contents</h3>
-        <ul>
-          <% @legislation.sections.each do |section| %>
-            <li>
-              <a data-action="click->legislation#showSection"><%= section.title %></a>
-            </li>
-          <% end %>
-        </ul>
+      <ul>
+        <% @legislation.sections.each do |section| %>
+        <li>
+          <a data-action="click->legislation#showSection"><%= section.title %></a>
+        </li>
+        <% end %>
+      </ul>
     </div>
 
-  <div class="consultation-box col-8">
+    <div class="consultation-box col-8">
      <div id="document" class="scrollable" data-controller="legislation">
-      <%= @legislation.sections[0].title %>
       <div id="active_section">
-
-      <% @legislation.sections.each do |section| %>
+        <% @legislation.sections.each do |section| %>
         <div id="<%= section.title %>" style="display: none;">
           <h3><%= section.title %></h3>
 
-         <div id="accordion">
-          <% section.clauses.each do |clause| %>
-          <div class="card">
+          <div id="accordion">
+            <% section.clauses.each do |clause| %>
+            <div class="card">
 
-               <div class="card-header" id="headingOne">
-                  <h5 class="mb-0">
-                    <a class="btn btn-link" data-toggle="collapse" data-target="#collapse_<%= clause.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
-                    <%= clause.content %>
-                    </a>
-                  </h5>
-              </div>
+             <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <a class="btn btn-link" data-toggle="collapse" data-target="#collapse_<%= clause.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
+                  <%= clause.content %>
+                </a>
+              </h5>
+            </div>
 
 
 
-              <div id="collapse_<%= clause.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body" data-controller="slideshow">
-                  <% clause.questions.each do |question| %>
-                  <div data-target="slideshow.slide" class="slide">
-                    <%= question.content %>
-                    <%= form_for :answer, html: { id: "reportform" }, remote: true, update:
-                    { success: "response", failure: "error"} do |f| %>
-                    <p><%#= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %></p>
-                    <button data-action="slideshow#next"><%= f.submit 'A' %></button>
-                    <button data-action="slideshow#next"><%= f.submit 'B' %></button>
-                    <button data-action="slideshow#next"><%= f.submit 'C' %></button>
-                  </div>
-                  <% end %>
-                  <% end %>
+            <div id="collapse_<%= clause.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body" data-controller="slideshow">
+                <% clause.questions.each do |question| %>
+                <div data-target="slideshow.slide" class="slide">
+                  <%= question.content %>
+                  <%= form_for :answer, html: { id: "reportform" }, remote: true, update:
+                  { success: "response", failure: "error"} do |f| %>
+                  <p><%#= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %></p>
+                  <button data-action="slideshow#next"><%= f.submit 'A' %></button>
+                  <button data-action="slideshow#next"><%= f.submit 'B' %></button>
+                  <button data-action="slideshow#next"><%= f.submit 'C' %></button>
                 </div>
+                <% end %>
+                <% end %>
               </div>
+            </div>
+
           </div>
         </div>
+        <% end %>
+        <% end %>
 
-          <% end %>
-      <% end %>
-
-      </div>
       </div>
     </div>
   </div>
-  </div>
+</div>
+</div>
 
      <div class="container">
       <%#= render 'consultation_panel' %>
