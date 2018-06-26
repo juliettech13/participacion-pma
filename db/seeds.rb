@@ -94,12 +94,12 @@ Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 
 Question.create!(content: 'Please suggest a revision', clause_id: 6)
 
 puts "creating dummy general feedback"
-GeneralFeedback.create!(content: 'My custom feedback 1', legislation_id: 1)
-GeneralFeedback.create!(content: 'I really like it because...', legislation_id: 1)
-GeneralFeedback.create!(content: 'I totally disagree becasue', legislation_id: 1)
-GeneralFeedback.create!(content: 'My custom feedback 4', legislation_id: 1)
-GeneralFeedback.create!(content: 'My custom feedback 5', legislation_id: 1)
-GeneralFeedback.create!(content: 'My custom feedback xyz 6', legislation_id: 1)
+GeneralFeedback.create!(content: 'My custom feedback 1', consultation_id: 1)
+GeneralFeedback.create!(content: 'I really like it because...', consultation_id: 1)
+GeneralFeedback.create!(content: 'I totally disagree becasue', consultation_id: 1)
+GeneralFeedback.create!(content: 'My custom feedback 4', consultation_id: 1)
+GeneralFeedback.create!(content: 'My custom feedback 5', consultation_id: 1)
+GeneralFeedback.create!(content: 'My custom feedback xyz 6', consultation_id: 1)
 
 puts "creating dummy answers"
 Answer.create!(content: 'yes', question_id: 1, user_id: 1)
