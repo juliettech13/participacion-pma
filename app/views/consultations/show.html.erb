@@ -6,16 +6,15 @@
 
 
   <div class="home-content">
-   <p id="notice"><%= notice %>Thank you for your consultation on <%= @consultation.legislation.title %></p>
-   <p>Share to your networks:</p>
+    <p id="notice"><%= notice %>Thank you for your consultation on <%= @consultation.legislation.title %></p>
+    <p>Share to your networks:</p>
     <div class="social-media-share">
       <%= social_share_button_tag(@consultation.user) %>
-<!-- Google+ -->
     </div>
-
-    <!--   <a href=""><i class="fab fa-twitter-square"></i></a>
-      <a href=""><i class="fab fa-facebook-square"></i></a>
-      <a href=""><i class="fab fa-linkedin"></i></a> -->
-            <%#= social_share_button_tag('Share to Facebook', :url => legislation_consultation_path(@consultation), desc: @consultation.user) %>
+<!--
+    <a href=""><i class="fab fa-twitter-square"></i></a>
+    <a href=""><i class="fab fa-facebook-square"></i></a>
+    <a href=""><i class="fab fa-linkedin"></i></a> -->
+   <!--  <%= social_share_button_tag('Share to Facebook', :url => legislation_consultation_path(@consultation), desc: @consultation.user) %> -->
   </div>
 </div>
