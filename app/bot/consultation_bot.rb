@@ -4,7 +4,7 @@ Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
 
 # Settings for chatbot presentation page - adds a description and a Get Started button
 Facebook::Messenger::Profile.set({
-  greeting: [
+  greeting:[
     {
       locale: 'default',
       text: "National ICT Innovation and Entrepreneurship Policy Vision wants to give citizens the chance to participate and shape national economic policy."
@@ -12,18 +12,45 @@ Facebook::Messenger::Profile.set({
   ],
   get_started: {
       payload: "GET_STARTED"
-  }
-
+  },
+  persistent_menu: [
+    { locale: 'default',
+      composer_input_disabled: false,
+      call_to_actions: [
+        { title:"Policy Table of Contents",
+          type:"nested",
+          call_to_actions:[
+            { title: 'Digital Infrastructure',
+              type: 'postback',
+              payload: 'SECTION_1'
+            },
+            { title: 'Education',
+              type: 'postback',
+              payload: 'SECTION_2'
+            },
+            { title: 'R&D',
+              type: 'postback',
+              payload: 'SECTION_3'
+            }
+          ]
+        },
+        {
+          type:"web_url",
+          title:"Visit our website",
+          url:"http://www.messenger.com/",
+          webview_height_ratio:"full"
+        }
+      ]
+    }
+  ]
 }, access_token: ENV['ACCESS_TOKEN'])
 
 Bot.on :message do |message|
-  puts "--message"
-  p message
   messenger_id = message.sender["id"]
-  p current_user = get_user(messenger_id)
+  current_user = get_user(messenger_id)
   legislation = Legislation.last
   if message.quick_reply
-    p commands = message.quick_reply.split('/')
+    commands = message.quick_reply.split('/')
   else
     commands = []
   end
@@ -47,9 +74,7 @@ Bot.on :message do |message|
       set_answer(message, user_id: current_user.id, clause_id: clause_id, question_index: question_index)
 
       if last_question?(clause_id, question_index)
-        p "THIS IS THE LAST QUESTION"
         if last_clause?(section_id, clause_id)
-          p "THIS IS THE LAST CLAUSE"
           if last_section?(section_id)
             outboard(message)
           else
@@ -61,7 +86,6 @@ Bot.on :message do |message|
       else
         question_index = question_index.to_i + 1
         ids = [consultation_id, section_id, clause_id, question_index]
-        p "---------IDs being sent are: #{ids}"
         show_question(message, options: ids.join(','))
       end
 
@@ -70,11 +94,26 @@ Bot.on :message do |message|
 end
 
 Bot.on :postback do |postback|
-  # greet the current user when clicking on 'Get Started button'
-  if postback.payload == "GET_STARTED"
-    puts "--postback"
-    p postback
-    greet_current_user(postback)
+
+  case postback.payload
+
+    when "GET_STARTED"
+      greet_current_user(postback)
+    when "SECTION_1"
+      messenger_id = postback.sender["id"]
+      current_user = User.where(messenger_id: messenger_id).first
+      consultation_id = Consultation.where(user_id: current_user.id).first
+      skip_to_section(postback, consultation_id, 1)
+    when "SECTION_2"
+      messenger_id = postback.sender["id"]
+      current_user = User.where(messenger_id: messenger_id).first
+      consultation_id = Consultation.where(user_id: current_user.id).first
+      skip_to_section(postback, consultation_id, 2)
+    when "SECTION_3"
+      messenger_id = postback.sender["id"]
+      current_user = User.where(messenger_id: messenger_id).first
+      consultation_id = Consultation.where(user_id: current_user.id).first
+      skip_to_section(postback, consultation_id, 3)
   end
 end
 
@@ -82,7 +121,7 @@ end
 
 def greet_current_user(postback)
   messenger_id = postback.sender["id"]
-  p current_user = User.where(messenger_id: messenger_id).first
+  current_user = User.where(messenger_id: messenger_id).first
   postback.reply(
     text: "Welcome #{current_user.first_name} to the consultation for the National ICT Innovation and Entrepreneurship Policy Vision."
   )
@@ -102,7 +141,7 @@ end
 def usage_explanation(message)
   message.typing_on
   message.reply(
-  text: "The vision is composed of an introduction and four chapters, and you are invited to feedback on each part, on specific policy recommendations, and on the entire policy."
+  text: "The vision is composed three sections, and you are invited to feedback on each part, on specific policy recommendations, and on the entire policy."
   )
   message.typing_on
   message.reply(
@@ -122,6 +161,23 @@ def outboard(message)
   message.reply(
     text: "That's it ! Thanks for taking the time to answer all our questions. Your input has been super valuable to us and will serve to help shape Nigerian economic policy."
   )
+  message.typing_on
+  message.reply(
+    attachment: {
+      type: 'template',
+      payload: {
+        template_type: 'button',
+        text: 'If you want to dive deeper into the process, please visit our web app by clicking on the button below.',
+        buttons: [
+          { type: 'web_url',
+            url:"https://www.facebook.com",
+            title: 'Policy Pulse',
+            webview_height_ratio: "full"
+          }
+        ]
+      }
+    }
+  )
 end
 
 #NAVIGATION
@@ -129,14 +185,15 @@ end
 def start_consultation(message, user, legislation)
   consultation = Consultation.find_or_create_by(user: user, legislation: legislation)
   ids = [consultation.id, 1, 1, 1]
-
+  section = Section.find(1)
+  clause = Clause.find(1)
   message.typing_on
   message.reply(
-    text: "Awesome ! Let's start with the overall aim of the policy vision."
+    text: "Awesome ! Let's dive into the first section of the policy. It has to do with #{section.title}. "
   )
   message.typing_on
   message.reply(
-    text: "This is a sample summary of the first clause in the first section with the main points. Make it short and sweet to frame the goal of the policy.",
+    text: "#{clause.content}",
     quick_replies:[
       {
         content_type: "text",
@@ -146,13 +203,16 @@ def start_consultation(message, user, legislation)
     ]
   )
 end
-#Replace clause_id with clause_index
+
 def next_clause(message, consultation_id:, section_id:, clause_id:)
   ids = [consultation_id, section_id, clause_id, 1]
-
+  clause = Clause.find(clause_id)
   message.typing_on
   message.reply(
-    text: "This is a sample text that gives the overall aim of clause #{clause_id} of section #{section_id}. It's probably better to send an image of the clause here in order to avoid a super lengthy message.",
+    text: "Moving on to the next clause of this section:")
+  message.typing_on
+  message.reply(
+    text: "#{clause.content}",
     quick_replies:[
       {
         content_type: "text",
@@ -163,15 +223,40 @@ def next_clause(message, consultation_id:, section_id:, clause_id:)
   )
 
 end
-#Replace section_id with section_index
-def next_section(message, consultation_id:, section_id:)
-  clause = Section.find(section_id).clauses.first.id
-  p "----------CLAUSE ID: #{clause}"
-  ids = [consultation_id, section_id, clause, 1]
 
+def next_section(message, consultation_id:, section_id:)
+  section = Section.find(section_id)
+  clause = section.clauses.first
+  ids = [consultation_id, section_id, clause.id, 1]
   message.typing_on
   message.reply(
-    text: "This is a sample text that gives the overall aim of section #{section_id}.",
+    text: "Next section ! Here we're going to talk about #{section.title}."
+  )
+  message.typing_on
+  message.reply(
+    text: "#{clause.content}",
+    quick_replies:[
+      {
+        content_type: "text",
+        title: "Got it!",
+        payload: "SHOW_QUESTION/#{ids.join(',')}"
+      }
+    ]
+  )
+end
+
+def skip_to_section(postback, consultation_id:, section_id:)
+  section = Section.find(section_id)
+  clause = section.clauses.first
+  ids = [consultation_id, section_id, clause.id, 1]
+  message.typing_on
+  message.reply(
+    text: "Skipping to the #{section.title} Section."
+  )
+  sleep(1)
+  message.typing_on
+  message.reply(
+    text: "#{clause.content}",
     quick_replies:[
       {
         content_type: "text",
@@ -188,17 +273,16 @@ def show_question(message, options:)
   ids = options.split(',')
   consultation_id, section_id, clause_id, question_index = ids
   clause = Clause.find(clause_id)
-  p "---------------------------CLAUSE----------------"
-  p clause
   message.typing_on
   message.reply(
     text: clause.questions[question_index.to_i - 1].content
   )
 
   if question_index == "1"
-    text = "On a scale of 1 to 5, do you feel that this policy is representative of your views ? 1 means that it is not at all representative, while 5 means it is completely representative."
+    text = "Please answer using a scale of 1 to 5.
+    1 means that it is not at all representative, while 5 means it is completely representative."
   else
-    text = "Next question. Using the same scale, do you feel that this pushes the future of Nigeria ICT in the right direction ?"
+    text = "Please answer the question using the same 1 to 5 scale."
   end
 
   message.reply(
