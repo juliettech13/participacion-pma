@@ -19,6 +19,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-linkedin'
 
+
 #twitter
 group :development, :test do
   gem 'dotenv-rails'
@@ -36,6 +37,8 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
+gem 'activeadmin'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
@@ -47,3 +50,4 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
