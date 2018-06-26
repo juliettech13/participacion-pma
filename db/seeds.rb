@@ -38,15 +38,34 @@ puts "creating consultation"
 Consultation.create!(legislation_id: 1, user_id: 1)
 
 puts "creating sections"
+Section.create(title: 'Introduction', legislation_id: 1)
 Section.create!(title: 'Digital Infrastructure', legislation_id: 1)
 Section.create!(title: 'R&D', legislation_id: 1)
 Section.create!(title: 'Education', legislation_id: 1)
 
 puts "creating clauses"
-Clause.create!(content: '1. Mandate infrastructure sharing to achieve the economies of scale necessary for universal affordable access.
-  No longer an optional recommendation, Government will support private sector providers to merge their infrastructure.', section_id: 1)
-Clause.create!(content: '2. Mandate infrastructure sharing to achieve the economies of scale necessary for universal affordable access.
-  No longer an optional recommendation, Government will support private sector providers to merge their infrastructure.', section_id: 1)
+
+Clause.create!("Technological change is accelerating and the global economy is
+transforming in response. Automation and artificial intelligence are in the
+process of making redundant the low-skilled jobs that many Nigerians have yet
+to take. The majority of Nigerians are at serious risk of being left behind
+unless there is an urgent technological revolution that can transform
+agriculture, education, and all other spheres of public life. Technology has
+the ability to unite all and remove barriers; therefore, to unlock Nigeria’s
+potential in innovative entrepreneurship, NITDA declares the entire nation of
+Nigeria the world’s largest Technology Park. This document provides the
+unifying policy vision for ICT Innovation and Entrepreneurship.", section_id: 1)
+
+Clause.create!(content: '1. Mandate infrastructure sharing to achieve the
+economies of scale necessary for universal affordable access.   No longer an
+optional recommendation, Government will support private sector providers to
+merge their infrastructure.', section_id: 1)
+
+Clause.create!(content: '2.
+Mandate infrastructure sharing to achieve the economies of scale necessary for
+universal affordable access.   No longer an optional recommendation,
+Government will support private sector providers to merge their
+infrastructure.', section_id: 1)
 
 Clause.create!(content: '1. Mandate infrastructure sharing to achieve the economies of scale necessary for universal affordable access.
   No longer an optional recommendation, Government will support private sector providers to merge their infrastructure.', section_id: 2)
