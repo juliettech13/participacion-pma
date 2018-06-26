@@ -31,6 +31,10 @@ User.destroy_all
 puts "creating user"
 User.create!(email: "bobstevens@charitize.com", password: 123456)
 
+puts "creating admin user"
+AdminUser.create!(email:"admin@charitize.com", password: 123456)
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
 puts "creating legislation"
 Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Policy Vision', user_id: 1)
 
@@ -88,4 +92,21 @@ Question.create!(content: 'Do you feel that this represents your views?', clause
 Question.create!(content: 'How well does this push your country in the direction?', clause_id: 6)
 Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 6)
 Question.create!(content: 'Please suggest a revision', clause_id: 6)
+
+puts "creating dummy general feedback"
+GeneralFeedback.create!(content: 'My custom feedback 1', legislation_id: 1)
+GeneralFeedback.create!(content: 'I really like it because...', legislation_id: 1)
+GeneralFeedback.create!(content: 'I totally disagree becasue', legislation_id: 1)
+GeneralFeedback.create!(content: 'My custom feedback 4', legislation_id: 1)
+GeneralFeedback.create!(content: 'My custom feedback 5', legislation_id: 1)
+GeneralFeedback.create!(content: 'My custom feedback xyz 6', legislation_id: 1)
+
+puts "creating dummy answers"
+Answer.create!(content: 'yes', question_id: 1, user_id: 1)
+Answer.create!(content: 'My custom feedback', question_id: 2, user_id: 1)
+Answer.create!(content: 'My custom feedback', question_id: 3, user_id: 1)
+
+Answer.create!(content: 'no', question_id: 4, user_id: 1)
+Answer.create!(content: 'My custom feedback', question_id: 5, user_id: 1)
+Answer.create!(content: 'My custom feedback', question_id: 6, user_id: 1)
 
