@@ -22,9 +22,8 @@ Bot.on :message do |message|
   messenger_id = message.sender["id"]
   p current_user = get_user(messenger_id)
   legislation = Legislation.last
-
   if message.quick_reply
-    commands = message.quick_reply.split('/')
+    p commands = message.quick_reply.split('/')
   else
     commands = []
   end
@@ -41,7 +40,6 @@ Bot.on :message do |message|
       show_question(message, options: commands.last)
 
     when "ANSWER"
-      p message
       options = commands.last
       ids = options.split(',')
       consultation_id, section_id, clause_id, question_index = ids
@@ -49,15 +47,21 @@ Bot.on :message do |message|
       set_answer(message, user_id: current_user.id, clause_id: clause_id, question_index: question_index)
 
       if last_question?(clause_id, question_index)
+        p "THIS IS THE LAST QUESTION"
         if last_clause?(section_id, clause_id)
-          # TO DO if last_section? => finish survey
-          next_section(message, consultation_id: consultation_id, section_id: section_id.to_i + 1)
+          p "THIS IS THE LAST CLAUSE"
+          if last_section?(section_id)
+            outboard(message)
+          else
+            next_section(message, consultation_id: consultation_id, section_id: section_id.to_i + 1)
+          end
         else
           next_clause(message, consultation_id: consultation_id, clause_id: clause_id.to_i + 1, section_id: section_id)
         end
       else
         question_index = question_index.to_i + 1
-        ids = [consultation_id, clause_id, section_id, question_index]
+        ids = [consultation_id, section_id, clause_id, question_index]
+        p "---------IDs being sent are: #{ids}"
         show_question(message, options: ids.join(','))
       end
 
@@ -113,6 +117,13 @@ def usage_explanation(message)
   )
 end
 
+def outboard(message)
+  message.typing_on
+  message.reply(
+    text: "That's it ! Thanks for taking the time to answer all our questions. Your input has been super valuable to us and will serve to help shape Nigerian economic policy."
+  )
+end
+
 #NAVIGATION
 
 def start_consultation(message, user, legislation)
@@ -135,7 +146,7 @@ def start_consultation(message, user, legislation)
     ]
   )
 end
-
+#Replace clause_id with clause_index
 def next_clause(message, consultation_id:, section_id:, clause_id:)
   ids = [consultation_id, section_id, clause_id, 1]
 
@@ -152,9 +163,11 @@ def next_clause(message, consultation_id:, section_id:, clause_id:)
   )
 
 end
-
+#Replace section_id with section_index
 def next_section(message, consultation_id:, section_id:)
-  ids = [consultation_id, section_id, 1, 1]
+  clause = Section.find(section_id).clauses.first.id
+  p "----------CLAUSE ID: #{clause}"
+  ids = [consultation_id, section_id, clause, 1]
 
   message.typing_on
   message.reply(
@@ -175,7 +188,8 @@ def show_question(message, options:)
   ids = options.split(',')
   consultation_id, section_id, clause_id, question_index = ids
   clause = Clause.find(clause_id)
-
+  p "---------------------------CLAUSE----------------"
+  p clause
   message.typing_on
   message.reply(
     text: clause.questions[question_index.to_i - 1].content
@@ -238,7 +252,6 @@ def set_answer(message, user_id:, clause_id:, question_index:)
   question = clause.questions[question_index.to_i - 1]
 
   answer = Answer.new(question: question, user_id: user_id, content: message.text)
-
   answer.save
 end
 
@@ -256,10 +269,14 @@ end
 def last_clause?(section_id, clause_id)
   section = Section.find(section_id)
   clause = Clause.find(clause_id)
-
   if section.clauses.last == clause
     true
   else
     false
   end
+end
+
+def last_section?(section_id)
+  section = Section.find(section_id)
+  return true if section == Section.last
 end
