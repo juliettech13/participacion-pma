@@ -85,13 +85,18 @@
     </div>
 
     <div id="collapse_<%= clause.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
-      <div class="card-body">
-        <%= clause.questions[0].content %>
-        <%= form_for :answer, html: { id: "reportform" }, remote: true, update:
+      <div class="card-body" data-controller="slideshow">
+        <% clause.questions.each do |question| %>
+        <div data-target="slideshow.slide" class="slide">
+          <%= question.content %>
+          <%= form_for :answer, html: { id: "reportform" }, remote: true, update:
           { success: "response", failure: "error"} do |f| %>
           <p><%= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %></p>
-          <%= f.submit %>
+          <button data-action="slideshow#next"><%= f.submit %></button>
+        </div>
         <% end %>
+        <% end %>
+        <!-- <button data-action="slideshow#next">→</button> -->
       </div>
     </div>
   </div>

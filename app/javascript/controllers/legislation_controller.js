@@ -17,8 +17,6 @@ export default class extends Controller {
     console.log("grab it", selectSection)
   };
 
-
-
   toggleQuestion() {
     console.log("grabbbbbb it!", this.element)
 
