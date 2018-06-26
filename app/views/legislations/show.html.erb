@@ -25,12 +25,11 @@
       </ul>
       <%= link_to "I'm Finished", legislation_consultation_path(@legislation), :class => 'btn-treehouse' %>
     </div>
-
     <div class="consultation-box col-9">
      <div id="document" class="scrollable" data-controller="legislation">
       <div id="active_section">
         <% @legislation.sections.each do |section| %>
-        <div id="<%= section.title %>">
+        <div id="<%= section.title %>"g>
           <h3><%= section.title %></h3>
 
           <div id="accordion">
@@ -44,14 +43,9 @@
                 </a>
               </h5>
             </div>
-
-
-
             <div id="collapse_<%= clause.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
               <div class="card-body" data-controller="slideshow">
-
                 <%# clause.questions.each do |question| %>
-
                 <div data-target="slideshow.slide" class="slide">
                   <%= clause.questions[0].content %>
                   <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
