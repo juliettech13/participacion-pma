@@ -14,6 +14,7 @@ class AnswersController < ApplicationController
 
   # GET /answers/new
   def new
+    # @question = Question.find(params[:question_id])
     @answer = Answer.new
   end
 
@@ -24,18 +25,29 @@ class AnswersController < ApplicationController
   # POST /answers
   # POST /answers.json
   def create
-    @answer = Answer.new(answer_params)
-    @answer.question = @question
+    @answer = Answer.new
+    @answer.content = params[:answer][:content]
+    @answer.user_id = current_user.id
+    @answer.question = Question.find(params[:answer][:question_id])
 
-    respond_to do |format|
-      if @answer.save
-        format.html { redirect_to questions_path }
-        format.json { render :show, status: :created, location: @question }
-      else
-        format.html { render :new }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
-      end
+    if current_user == nil
+      redirect_to new_user_registration_path
+    else
+      # @answer.user_id = current_user.id
+      # @answer.question_id = @question.id
     end
+    @answer.save!
+    # @answer.question = @question
+
+    # respond_to do |format|
+    #   if @answer.save
+    #     format.html { redirect_to questions_path }
+    #     format.json { render :show, status: :created, location: @question }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @answer.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /answers/1
@@ -70,7 +82,7 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:content, :question_id)
+      params.require(:answer).permit(:content, :user_id, :question_id)
       # params.fetch(:answer, {})
     end
 end

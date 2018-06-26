@@ -1,67 +1,110 @@
+<script>
+  $(document).ready(function(){
+    $('#reportform').on('ajax:success', function(e, data, status, xhr){
+      $(console.log("Hello, Stimulus!"));
+    }).on('ajax:error',function(e, xhr, status, error){
+      $(console.log("Hello, Failed!"));
+    });
+  });
+</script>
+
 <p id="notice"><%= notice %></p>
-<div class="container">
-  <!-- <div class="row"> -->
+<div class="container" data-controller="legislation">
 
-<!--     <div id="toc" class="col-lg-3 hidden-xs hidden-sm">
+  <h1><%#= @legislation.title %></h1>
+  <div class="row">
+
+    <div id="toc" class="col-3">
       <h3>table of contents</h3>
-        <ul>
-          <% @legislation.sections.each do |section| %>
-            <li>
-              <%= section.title %>
-            </li>
-          <% end %>
-        </ul>
-    </div> -->
-    <!-- On a mobile view -->
-
-    <div class="btn-group hidden-md hidden-lg">
-      <button type="button" class="btn btn-primary">section name</button>
-      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="caret"></span>
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <ul class="dropdown-menu">
+      <ul>
         <% @legislation.sections.each do |section| %>
         <li>
-          <%= section.title %>
+          <a data-action="click->legislation#showSection"><%= section.title %></a>
         </li>
         <% end %>
-        <li role="separator" class="divider"></li>
-        <li><a href="#">Separated link</a></li>
       </ul>
+      <%= link_to "I'm Finished", legislation_consultation_path(@legislation), :class => 'btn-treehouse' %>
     </div>
 
-    <div id="document" class="col-lg-8 scrollable col-sm-offset-2" data-controller="legislation">
-      <h1><%= @legislation.title %></h1>
-      <% @legislation.sections.each do |section| %>
-        <h3><%= section.title %></h3>
-          <% section.clauses.each do |clause| %>
-            <p>
-              <button data-action="click->legislation#toggleQuestion"><%= clause.content %></button>
-              <div id="questions" style="display: none;">
-              <% clause.questions.each do |question| %>
-                <%= question.id %> - <%= question.content %>
-                  <%= form_for :answer do |f| %>
-                    <p><%= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %></p>
-                    <%= f.submit %>
-                    <%= link_to 'skip' %>
-                  <% end %>
-                <% end %>
-              </div>
-            </p>
-          <% end %>
+    <div class="consultation-box col-9">
+     <div id="document" class="scrollable" data-controller="legislation">
+      <div id="active_section">
+        <% @legislation.sections.each do |section| %>
+        <div id="<%= section.title %>" style="display: none;">
+          <h3><%= section.title %></h3>
+
+          <div id="accordion">
+            <% section.clauses.each do |clause| %>
+            <div class="card">
+
+             <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <a class="btn btn-link" data-toggle="collapse" data-target="#collapse_<%= clause.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
+                  <%= clause.content %>
+                </a>
+              </h5>
+            </div>
+
+
+
+            <div id="collapse_<%= clause.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body" data-controller="slideshow">
+
+                <%# clause.questions.each do |question| %>
+
+                <div data-target="slideshow.slide" class="slide">
+                  <%= clause.questions[0].content %>
+                  <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
+                   <%= f.hidden_field :user_id, :value => current_user.id  %>
+                   <%= f.hidden_field :question_id, :value => clause.questions[0].id  %>
+                   <%= f.select(:content, [["Bum"],["Dum"]], {}, {:multiple => true}) %>
+                   <button data-action="slideshow#next"><%= f.submit %></button>
+                   <% end %>
+                </div>
+
+                <div data-target="slideshow.slide" class="slide">
+                  <%= clause.questions[1].content %>
+                  <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
+                   <%= f.hidden_field :user_id, :value => current_user.id  %>
+                   <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
+                   <%= f.select(:content, [["Yo"],["No"]], {}, {:multiple => true}) %>
+                   <button data-action="slideshow#next"><%= f.submit %></button>
+                   <% end %>
+                </div>
+
+                <div data-target="slideshow.slide" class="slide">
+                  <%= clause.questions[2].content %>
+                  <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
+                   <%= f.hidden_field :user_id, :value => current_user.id  %>
+                   <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
+                   <%= f.select(:content, [["Yo"],["No"]], {}, {:multiple => true}) %>
+                   <button data-action="slideshow#next"><%= f.submit %></button>
+                   <% end %>
+                </div>
+
+                <div data-target="slideshow.slide" class="slide">
+                  <%= clause.questions[3].content %>
+                  <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
+                   <%= f.hidden_field :user_id, :value => current_user.id  %>
+                   <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
+                   <%= f.text_area :content %>
+                   <button data-action="slideshow#next"><%= f.submit %></button>
+                   <% end %>
+                </div>
+
+
+              <%# end %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <% end %>
       <% end %>
     </div>
-
-    <div id="consultation_panel" class="">
-     <div class="container">
-      <%#= render 'consultation_panel' %>
-      <%= link_to "I'm Finished", legislation_consultation_path(@legislation), :class => 'btn-treehouse im-finished' %>
-      </div>
-    </div>
-
-    <!-- </div> -->
   </div>
+</div>
+</div>
+</div>
+</div>
 
-<%#= link_to 'Edit', edit_legislation_path(@legislation) %>
-<%#= link_to 'Back', legislations_path %>
