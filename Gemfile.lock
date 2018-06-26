@@ -70,6 +70,10 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.5.0)
+    dotenv-rails (2.5.0)
+      dotenv (= 2.5.0)
+      railties (>= 3.2, < 6.0)
     erubi (1.7.1)
     execjs (2.7.0)
     facebook-messenger (1.0.0)
@@ -250,6 +254,7 @@ DEPENDENCIES
   bootsnap
   bootstrap-sass (~> 3.3)
   devise
+  dotenv-rails
   facebook-messenger
   figaro
   font-awesome-sass (~> 5.0.9)
@@ -278,4 +283,4 @@ RUBY VERSION
    ruby 2.3.4p301
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
