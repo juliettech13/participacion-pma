@@ -21,6 +21,7 @@ Bot.on :message do |message|
   p message
   messenger_id = message.sender["id"]
   p current_user = get_user(messenger_id)
+  legislation = Legislation.last
 
   case message.quick_reply
 
@@ -28,7 +29,7 @@ Bot.on :message do |message|
       usage_explanation(message)
 
     when "START_CONSULTATION"
-      start_consultation(message)
+      start_consultation(message, current_user, legislation)
 
     #SECTION 1, CLAUSE 1, QUESTION 1
     when "S1_C1_Q1"
@@ -178,9 +179,9 @@ end
 
 #NAVIGATION
 
+def start_consultation(message, user, legislation)
+  consultation = Consultation.find_or_create_by(user: user, legislation: legislation)
 
-#TO DO: Create a new consultation
-def start_consultation(message)
   message.typing_on
   message.reply(
     text: "Awesome ! Let's start with the overall aim of the policy vision."
@@ -192,7 +193,7 @@ def start_consultation(message)
       {
         content_type: "text",
         title: "Got it!",
-        payload: 'S1_C1_Q1'
+        payload: "S1_C#{consultation.id}_Q1"
       }
     ]
   )
