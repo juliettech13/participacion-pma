@@ -20,7 +20,7 @@ Bot.on :message do |message|
   puts "--message"
   p message
   messenger_id = message.sender["id"]
-  p current_user = User.where(messenger_id: messenger_id).first
+  p current_user = get_user(messenger_id)
 
   case message.quick_reply
 
@@ -261,11 +261,13 @@ end
 
 
 # User methods
-
 def get_user(messenger_id)
-  @user = User.where(messenger_id: messenger_id).first
+  user = User.find_by(messenger_id: messenger_id)
+
   # If user does not exist, create new
-  create_new_user(messenger_id) unless @user
+  user = create_new_user(messenger_id) unless user
+
+  user
 end
 
 # TO DO: how do we set valid e-mail and password through Messenger (as these are
@@ -273,17 +275,17 @@ end
 # e-mail and password based on the user's unique Messenger ID.
 
 def create_new_user(messenger_id)
-  @user = User.new(messenger_id: messenger_id)
+  user = User.new(messenger_id: messenger_id)
   # Get user info from Messenger User Profile API
   url = "https://graph.facebook.com/v2.6/#{messenger_id}?fields=first_name,last_name&access_token=#{ENV["ACCESS_TOKEN"]}"
   user_data = api_call(url)
   # Store user's name
-  @user.first_name = user_data["first_name"]
-  @user.last_name = user_data["last_name"]
-  @user.email = "#{messenger_id}@mail.com"
-  @user.password = "#{messenger_id}"
-  @user
-  @user.save!
+  user.first_name = user_data["first_name"]
+  user.last_name = user_data["last_name"]
+  user.email = "#{messenger_id}@mail.com"
+  user.password = "#{messenger_id}"
+
+  user.save!
 end
 
 def api_call(url)
