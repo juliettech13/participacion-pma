@@ -1,32 +1,87 @@
-.login_form {
+// .form-login {
+//   background: white;
+//   padding: 10px 20px;
+//   margin-top: 50px;
+//   border-radius: 3px;
+//   // display: inline-block;
+//   box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+//   h2 {
+//     font-size: 25px;
+//     font-weight: bold;
+//     margin-bottom: 30px;
+//     text-align: center;
+//   }
+//   .btn {
+//     width: 100%;
+//     margin-bottom: 20px
+//   }
+// }
+
+// .btn-treehouse {
+//   color: white;
+//   padding: 10px 15px;
+//   border-radius: 4px;
+//   font-weight: bold;
+//   background: #037200;
+//   transition: background 0.3s ease;
+// }
+// .btn-treehouse:hover {
+//   opacity: 1;
+//   background: #3ac162;
+//   text-decoration: none;
+//   color: white;
+// }
+
+
+
+#edituser {
+  margin-left:100px;
+  margin-right:100px;
+}
+
+.form-login {
   background: white;
   padding: 10px 20px;
   margin-top: 50px;
+  margin-bottom: 50px;
   border-radius: 3px;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+
   h2 {
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 30px;
     text-align: center;
   }
+
   .btn {
     width: 100%;
     margin-bottom: 20px
   }
 }
 
-.btn-treehouse {
-  color: white;
-  padding: 10px 15px;
-  border-radius: 4px;
-  font-weight: bold;
-  background: #037200;
-  transition: background 0.3s ease;
+label.collection_check_boxes {
+  margin-right: 13px;
+  margin-left: 3px;
 }
-.btn-treehouse:hover {
-  opacity: 1;
-  background: #3ac162;
-  text-decoration: none;
-  color: white;
+
+
+.btn-primary.btn.facebook {
+  background: #3b5998;
+  border: none;
+}
+
+.btn-primary.btn.twitter {
+  background: #0084b4;
+  border: none;
+}
+
+.btn-primary.btn.instagram {
+  background: #bc2a8d;
+  border: none;
+}
+
+.btn-primary.btn.google {
+  background: #d62d20;
+  border: none;
 }

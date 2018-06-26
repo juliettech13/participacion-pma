@@ -13,12 +13,20 @@ gem 'rails', '5.2.0'
 gem 'devise'
 
 gem 'facebook-messenger'
+
+gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-linkedin'
+
+#twitter
+group :development, :test do
+  gem 'dotenv-rails'
+end
+
 gem 'turbolinks', '~> 5.0.0'
+
 gem 'social-share-button'
-
-
-
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
