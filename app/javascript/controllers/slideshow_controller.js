@@ -22,3 +22,5 @@ export default class extends Controller {
     })
   }
 }
+
+// if index is the last one, then toggleClassList to close the collapse

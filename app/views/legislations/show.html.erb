@@ -4,7 +4,7 @@
   <h1><%#= @legislation.title %></h1>
   <div class="row">
 
-    <div id="toc" class="col-lg-4">
+    <div id="toc" class="col-4">
       <h3>table of contents</h3>
         <ul>
           <% @legislation.sections.each do |section| %>
@@ -15,8 +15,8 @@
         </ul>
     </div>
 
-  <div class="consultation-box">
-     <div id="document" class="col-lg-8 scrollable" data-controller="legislation">
+  <div class="consultation-box col-8">
+     <div id="document" class="scrollable" data-controller="legislation">
       <%= @legislation.sections[0].title %>
       <div id="active_section">
 
@@ -24,22 +24,39 @@
         <div id="<%= section.title %>" style="display: none;">
           <h3><%= section.title %></h3>
 
+         <div id="accordion">
           <% section.clauses.each do |clause| %>
-              <button data-action="click->legislation#toggleQuestion">
-                <%= clause.content %>
-              </button>
-            <p>
-              <div id="questions" style="display: none;">
-              <% clause.questions.each do |question| %>
-                <%= question.id %> - <%= question.content %>
-                  <%= form_for :answer do |f| %>
-                    <p><%= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %></p>
-                  <%= f.submit %>
-                  <%= link_to 'skip' %>
-                  <% end %>
-                <% end %>
+          <div class="card">
+
+               <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <a class="btn btn-link" data-toggle="collapse" data-target="#collapse_<%= clause.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
+                    <%= clause.content %>
+                    </a>
+                  </h5>
               </div>
-            </p>
+
+
+
+              <div id="collapse_<%= clause.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body" data-controller="slideshow">
+                  <% clause.questions.each do |question| %>
+                  <div data-target="slideshow.slide" class="slide">
+                    <%= question.content %>
+                    <%= form_for :answer, html: { id: "reportform" }, remote: true, update:
+                    { success: "response", failure: "error"} do |f| %>
+                    <p><%#= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %></p>
+                    <button data-action="slideshow#next"><%= f.submit 'A' %></button>
+                    <button data-action="slideshow#next"><%= f.submit 'B' %></button>
+                    <button data-action="slideshow#next"><%= f.submit 'C' %></button>
+                  </div>
+                  <% end %>
+                  <% end %>
+                </div>
+              </div>
+          </div>
+        </div>
+
           <% end %>
       <% end %>
 
@@ -47,19 +64,13 @@
       </div>
     </div>
   </div>
-
-  <div class="section-store">
-
   </div>
 
-  </div>
-      <div id="">
      <div class="container">
       <%#= render 'consultation_panel' %>
       <%= link_to "I'm Finished", legislation_consultation_path(@legislation), :class => 'btn-treehouse' %>
       </div>
     </div>
-</div>
 
 <script>
   $(document).ready(function(){
@@ -70,48 +81,6 @@
     });
   });
 </script>
-
-<div class="container">
-  <div id="accordion">
-
-  <% @legislation.sections[0].clauses.each do |clause| %>
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-        <a class="btn btn-link" data-toggle="collapse" data-target="#collapse_<%= clause.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
-          <%= clause.content %>
-        </a>
-      </h5>
-    </div>
-
-    <div id="collapse_<%= clause.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
-      <div class="card-body" data-controller="slideshow">
-        <% clause.questions.each do |question| %>
-        <div data-target="slideshow.slide" class="slide">
-          <%= question.content %>
-          <%= form_for :answer, html: { id: "reportform" }, remote: true, update:
-          { success: "response", failure: "error"} do |f| %>
-          <p><%#= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %></p>
-          <button data-action="slideshow#next"><%= f.submit 'A' %></button>
-          <button data-action="slideshow#next"><%= f.submit 'B' %></button>
-          <button data-action="slideshow#next"><%= f.submit 'C' %></button>
-        </div>
-        <% end %>
-        <% end %>
-        <!-- <button data-action="slideshow#next">→</button> -->
-      </div>
-    </div>
-  </div>
-  <% end %>
-
-  </div>
-
-  </div>
-
-
-
-</div>
-
 
 <!-- event.preventDefault()
  -->

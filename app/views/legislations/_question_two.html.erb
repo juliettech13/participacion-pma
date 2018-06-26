@@ -1,0 +1,6 @@
+<%= form_for :answer, html: { id: "reportform answer2" }, remote: true, update:
+          { success: "response", failure: "error"} do |f| %>
+  <button data-action="slideshow#next"><%= f.submit 'A' %></button>
+  <button data-action="slideshow#next"><%= f.submit 'B' %></button>
+  <button data-action="slideshow#next"><%= f.submit 'C' %></button>
+  <% end %>
