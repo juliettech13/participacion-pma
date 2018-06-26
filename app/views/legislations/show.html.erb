@@ -30,7 +30,7 @@
      <div id="document" class="scrollable" data-controller="legislation">
       <div id="active_section">
         <% @legislation.sections.each do |section| %>
-        <div id="<%= section.title %>" style="display: none;">
+        <div id="<%= section.title %>">
           <h3><%= section.title %></h3>
 
           <div id="accordion">
