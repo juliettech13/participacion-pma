@@ -12,6 +12,19 @@
   display: inline-block;
 }
 
+.title {
+  .jumbotron {
+    margin-bottom: 2rem;
+  }
+  .display-4 {
+    font-size: 3rem;
+  }
+}
+
+.card-header {
+  padding: 1rem .5rem;
+}
+
 .scrollable {
     height: 100vh; /* or any value */
     overflow-y: auto;
@@ -33,3 +46,37 @@
 .buttonspacing {
   margin: 14px 0px;
 }
+
+.clause {
+  text-align: left;
+}
+
+.card-header {
+  background-color: white;
+}
+
+.finished {
+  margin: 20px 0px;
+  text-align: right;
+}
+
+.onesectionnav {
+  justify-content: space-evenly;
+  margin: 20px 0px;
+}
+
+.panel{
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sectionnav {
+  align-items: center;
+}
+
+@media (min-width: 576px) {
+.title .jumbotron {
+    padding: 0;
+}
+}
+

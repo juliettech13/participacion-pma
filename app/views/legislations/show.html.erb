@@ -10,43 +10,72 @@
 
 <p id="notice"><%= notice %></p>
 <div class="container" data-controller="legislation">
+  <div class="title jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4"><%= @legislation.title %></h1>
+    <p class="lead">Welcome to your personal consultation, we appreciate your input!</p>
+  </div>
+  </div>
 
-  <h1><%#= @legislation.title %></h1>
-
-    <div id="toc" class="">
-      <h3>table of contents</h3>
-      <ul>
-        <% @legislation.sections.each do |section| %>
-        <li>
-          <a data-action="click->legislation#showSection"><%= section.title %></a>
-        </li>
-        <% end %>
-      </ul>
+<div class="consultation-panel">
+<div class="row panel">
+  <div class="sectionnav col-6">
+    <div class="dropdown">
+    <button class="btn btn-lg btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      sections
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <% @legislation.sections.each do |section| %>
+        <a class="dropdown-item" data-action="click->legislation#showSection"><%= section.title %></a>
+      <% end %>
     </div>
+  </div>
+
+  </div>
+
+     <div class="finished col-6">
+      <%= link_to "im finished", legislation_consultation_path(@legislation), :class => 'btn btn-primary btn-lg' %>
+    </div>
+</div>
+
+
+
+  </div>
+
 
     <div class="consultation-box">
-     <div id="document" class="scrollable"">
+     <div id="document">
       <div id="active_section">
           <div class="card-header" id="headingOne">
               <h5 class="mb-0">
-                <a class="btn btn-link" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
+                <a class="btn btn-link" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal; text-align: left;">
                   <%= @legislation.sections[0].clauses[0].content %>
                 </a>
               </h5>
             </div>
       </div>
+
+      <div class="onesectionnav row">
+        <div class="previous_section">
+          <%= link_to "previous", legislation_consultation_path(@legislation) %>
+        </div>
+        <div class="next_section">
+          <%= link_to "next", legislation_consultation_path(@legislation) %>
+        </div>
+      </div>
+
         <% @legislation.sections.each do |section| %>
 
         <div id="<%= section.title %>" style="display: none;">
           <h3><%= section.title %></h3>
 
-          <div id="accordion">
+          <div id="accordion" class="">
             <% section.clauses.each do |clause| %>
             <div class="card">
 
              <div class="card-header" id="headingOne">
               <h5 class="mb-0">
-                <a class="btn btn-link" data-toggle="collapse" data-target="#collapse_<%= clause.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
+                <a class="btn btn-link clause" data-toggle="collapse" data-target="#collapse_<%= clause.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
                   <%= clause.content %>
                 </a>
               </h5>
@@ -127,7 +156,19 @@
   </div>
 </div>
 
-<%= link_to "i'm finished", legislation_consultation_path(@legislation), :class => 'btn btn-primary btn-lg' %>
 
 </div>
 
+
+
+<!--   <div id="toc" class="">
+    <h3>table of contents</h3>
+    <ul>
+      <% @legislation.sections.each do |section| %>
+      <li>
+        <a data-action="click->legislation#showSection"><%= section.title %></a>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+ -->
