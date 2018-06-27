@@ -9,6 +9,6 @@ class PagesController < ApplicationController
   end
   
   def dashboard
-
+    #@sections = Sections.all
   end
 end

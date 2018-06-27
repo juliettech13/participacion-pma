@@ -7,6 +7,19 @@
   <div class="container">
     <h3><strong>Policy</strong></h3>
     <!-- Dropdown Section -->
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Pick a Section
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <button class="dropdown-item" type="button">Section 1</button>
+        <button class="dropdown-item" type="button">Section 2</button>
+        <button class="dropdown-item" type="button">Section 3</button>
+        <%# @sections.each do |section| %>
+        <%#= section.title %>
+        <%# end %>
+      </div>
+    </div>
 
     <!-- Dropdown Clause -->
 
@@ -17,7 +30,7 @@
 
   <div class="container">
     <h3><strong>Deliberated</strong></h3>
-    <!-- Dynamic # of intercations -->
+    <!-- Dynamic # of interactions -->
     <p> x interactions</p>
 
     <h3><strong>Representation</strong></h3>
@@ -39,6 +52,9 @@
     <p> x revisions</p>
     <p>Does this move toward the goal of ICT innovation? </p>
     <!-- Display a scrollable box with revisons for this paricular clause -->
+    <%# @answers.each do |answer| %>
+      <!--content(where question_id) -->
+    <%# end  %>
     <p>most frequent words:</p>
     <!-- dynamically scan most words used in provided revisions per clause -->
   </div>
