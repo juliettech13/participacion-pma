@@ -83,18 +83,15 @@
               </div>
               <div id="collapse_<%= clause.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body" data-controller="slideshow">
-                  <% unless clause.questions[0].answers.exists?(user_id: current_user.id) %>
+                <% unless clause.questions[0].answers.exists?(user_id: current_user.id) %>
                   <div data-target="slideshow.slide" class="slide">
                     <%= clause.questions[0].content %>
                     <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
                     <%= f.hidden_field :user_id, :value => current_user.id  %>
                     <%= f.hidden_field :question_id, :value => clause.questions[0].id  %>
                     <div class="buttonspacing">
-                      <a data-action="slideshow#next"><%= f.submit '1', :class => 'btn-primary' %></a>
-                      <a data-action="slideshow#next"><%= f.submit '2', :class => 'btn-primary' %></a>
-                      <a data-action="slideshow#next"><%= f.submit '3', :class => 'btn-primary' %></a>
-                      <a data-action="slideshow#next"><%= f.submit '4', :class => 'btn-primary' %></a>
-                      <a data-action="slideshow#next"><%= f.submit '5', :class => 'btn-primary' %></a>
+                      <%= f.select(:content, options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5']])) %>
+                      <a data-action="slideshow#next"><%= f.submit "submit", :class => 'btn-primary' %></a>
                     </div>
                     <% end %>
                   </div>
@@ -128,8 +125,8 @@
                     <%= f.hidden_field :user_id, :value => current_user.id  %>
                     <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
                     <div class="buttonspacing">
-                      <a data-action="slideshow#next"><%= f.submit 'Yes', :class => 'btn-primary' %></a>
-                      <a data-action="slideshow#next"><%= f.submit 'No', :class => 'btn-primary' %></a>
+                       <%= f.select(:content, options_for_select([['no', 'no'], ['yes', 'yes']])) %>
+                      <a data-action="slideshow#next"><%= f.submit 'submit', :class => 'btn-primary' %></a>
                     </div>
                     <%#= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %>
                     <% end %>

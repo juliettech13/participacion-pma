@@ -26,6 +26,9 @@ class AnswersController < ApplicationController
       @answer.user_id = current_user.id
       @answer.question = Question.find(params[:answer][:question_id])
     end
+    respond_to do |format|
+      format.js
+    end
      @answer.save!
      # redirect_to legislation(@legislation)
   end
