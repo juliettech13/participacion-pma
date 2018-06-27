@@ -10,13 +10,15 @@
 
 <p id="notice"><%= notice %></p>
 <div class="container" data-controller="legislation">
-  <div class="title jumbotron jumbotron-fluid">
+<!--   <div class="title jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4"><%= @legislation.title %></h1>
     <p class="lead">Welcome to your personal consultation, we appreciate your input!</p>
   </div>
-  </div>
+  </div> -->
 
+    <h1 class="display-4"><%= @legislation.title %></h1>
+    <p class="lead">Welcome <%= current_user.email %> to your personal consultation, we appreciate your input. You have answered <%= Answer.count %> questions so far.</p>
 <div class="consultation-panel">
 <div class="row panel">
   <div class="sectionnav col-6">
@@ -43,9 +45,11 @@
   </div>
 
 
+
     <div class="consultation-box">
      <div id="document">
       <div id="active_section">
+        <h3><%= @legislation.sections[0].title %></h3>
           <div class="card-header" id="headingOne">
               <h5 class="mb-0">
                 <a class="btn btn-link" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal; text-align: left;">
@@ -58,9 +62,11 @@
       <div class="onesectionnav row">
         <div class="previous_section">
           <%= link_to "previous", legislation_consultation_path(@legislation) %>
+          <!-- slideshow#previous -->
         </div>
         <div class="next_section">
           <%= link_to "next", legislation_consultation_path(@legislation) %>
+          <!-- slideshow#next -->
         </div>
       </div>
 
