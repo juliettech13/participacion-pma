@@ -21,8 +21,12 @@
   }
 }
 
+.card {
+  border-radius: 0rem;
+}
 .card-header {
   padding: 1rem .5rem;
+  border-bottom:.5px solid rgba(0, 0, 0, 0.125);
 }
 
 .scrollable {
