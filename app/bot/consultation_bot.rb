@@ -161,6 +161,7 @@ def outboard(message)
   message.reply(
     text: "That's it ! Thanks for taking the time to answer all our questions. Your input has been super valuable to us and will serve to help shape Nigerian economic policy."
   )
+
   message.typing_on
   message.reply(
     attachment: {
@@ -175,6 +176,58 @@ def outboard(message)
             webview_height_ratio: "full"
           }
         ]
+      }
+    }
+  )
+
+  message.typing_on
+  message.reply(
+    {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: [
+            {
+              title: "Share Policy Pulse",
+              #subtitle: "<TEMPLATE_SUBTITLE>",
+              #image_url: "<IMAGE_URL_TO_DISPLAY>",
+              buttons: [
+                {
+                  type: "element_share",
+                  share_contents: {
+                    attachment: {
+                      type: "template",
+                      payload: {
+                        template_type: "generic",
+                        elements: [
+                          {
+                            title: "I just completed the policy consultation",
+                            subtitle: "I'm helping shape democracy, join me",
+                            #To Do: add image to share dialog and default action link to website
+                            #image_url: "https://bot.peters-hats.com/img/hats/fez.jpg",
+                            # default_action: {
+                            #   type: "web_url",
+                            #   url: "https://www.facebook.com"
+                            # },
+                            buttons: [
+                              {
+                                type: "web_url",
+                                #this url is the id of the consultation bot, it needs to be changed if we use a different FB bot
+                                url: "https://www.facebook.com/messages/t/635113713524558",
+                                title: "Start Consultation"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
       }
     }
   )
