@@ -107,11 +107,6 @@
                     <div class="buttonspacing">
                       <%= f.select(:content, options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5']])) %>
                       <a data-action="slideshow#next"><%= f.submit "submit", :class => 'btn-primary' %></a>
-                      <%# raise if @answer.content == nil %>
-                    <!-- <a data-action="slideshow#next"><%#= f.submit '2', :class => 'btn-primary' %></a>
-                    <a data-action="slideshow#next"><%#= f.submit '3', :class => 'btn-primary' %></a>
-                    <a data-action="slideshow#next"><%#= f.submit '4', :class => 'btn-primary' %></a>
-                    <a data-action="slideshow#next"><%#= f.submit '5', :class => 'btn-primary' %></a> -->
                   </div>
                   <% end %>
                 </div>
@@ -125,15 +120,15 @@
                     <%= f.hidden_field :user_id, :value => current_user.id  %>
                     <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
                     <div class="buttonspacing">
-                       <%= f.select(:content, options_for_select([['no', 'no'], ['yes', 'yes']])) %>
+                       <%= f.select(:content, options_for_select([['No', 'No'], ['Yes', 'Yes']])) %>
                       <a data-action="slideshow#next"><%= f.submit 'submit', :class => 'btn-primary' %></a>
                     </div>
-                    <%#= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %>
                     <% end %>
                   </div>
                 </div>
                 <% end %>
 
+              <% if Answer.last.content == 'Yes' %>
                 <% unless clause.questions[3].answers.exists?(user_id: current_user.id) %>
                 <div data-target="slideshow.slide" class="slide">
                   <%= clause.questions[3].content %>
@@ -148,12 +143,12 @@
                     <% end %>
                   </div>
                   <% end %>
-
                 </div>
-
+              <% else %>
+                <a data-action="slideshow#next"></a>
+                <% end %>
               </div>
             </div>
-
           </div>
           <% end %>
         </div>
@@ -162,8 +157,6 @@
     <% end %>
   </div>
 </div>
-
-
 </div>
 
 
