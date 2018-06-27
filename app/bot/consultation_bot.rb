@@ -101,19 +101,19 @@ Bot.on :postback do |postback|
       greet_current_user(postback)
     when "SECTION_1"
       messenger_id = postback.sender["id"]
-      current_user = User.where(messenger_id: messenger_id).first
-      consultation_id = Consultation.where(user_id: current_user.id).first
-      skip_to_section(postback, consultation_id, 1)
+      current_user = User.find_by(messenger_id: messenger_id)
+      consultation_id = Consultation.find_by(user_id: current_user.id)
+      skip_to_section(postback, consultation_id: consultation_id, section_id: 1)
     when "SECTION_2"
       messenger_id = postback.sender["id"]
-      current_user = User.where(messenger_id: messenger_id).first
-      consultation_id = Consultation.where(user_id: current_user.id).first
-      skip_to_section(postback, consultation_id, 2)
+      current_user = User.find_by(messenger_id: messenger_id)
+      consultation_id = Consultation.find_by(user_id: current_user.id)
+      skip_to_section(postback, consultation_id: consultation_id, section_id: 2)
     when "SECTION_3"
       messenger_id = postback.sender["id"]
-      current_user = User.where(messenger_id: messenger_id).first
-      consultation_id = Consultation.where(user_id: current_user.id).first
-      skip_to_section(postback, consultation_id, 3)
+      current_user = User.find_by(messenger_id: messenger_id)
+      consultation_id = Consultation.find_by(user_id: current_user.id)
+      skip_to_section(postback, consultation_id: consultation_id, section_id: 3)
   end
 end
 
@@ -121,7 +121,7 @@ end
 
 def greet_current_user(postback)
   messenger_id = postback.sender["id"]
-  current_user = User.where(messenger_id: messenger_id).first
+  current_user = get_user(messenger_id)
   postback.reply(
     text: "Welcome #{current_user.first_name} to the consultation for the National ICT Innovation and Entrepreneurship Policy Vision."
   )
@@ -245,7 +245,7 @@ def next_section(message, consultation_id:, section_id:)
   )
 end
 
-def skip_to_section(postback, consultation_id:, section_id:)
+def skip_to_section(message, consultation_id:, section_id:)
   section = Section.find(section_id)
   clause = section.clauses.first
   ids = [consultation_id, section_id, clause.id, 1]
@@ -300,7 +300,6 @@ end
 # User methods
 def get_user(messenger_id)
   user = User.find_by(messenger_id: messenger_id)
-
   # If user does not exist, create new
   user = create_new_user(messenger_id) unless user
 
