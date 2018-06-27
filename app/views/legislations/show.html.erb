@@ -27,7 +27,7 @@
     </div>
 
     <div class="consultation-box col-9">
-     <div id="document" class="scrollable" data-controller="legislation">
+     <div id="document" class="scrollable"">
       <div id="active_section">
         <% @legislation.sections.each do |section| %>
         <div id="<%= section.title %>" style="display: none;">
@@ -49,8 +49,6 @@
 
             <div id="collapse_<%= clause.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
               <div class="card-body" data-controller="slideshow">
-
-                <%# clause.questions.each do |question| %>
 
                 <div data-target="slideshow.slide" class="slide">
                   <%= clause.questions[0].content %>
@@ -87,7 +85,7 @@
                   <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
                   <%= f.hidden_field :user_id, :value => current_user.id  %>
                   <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
-                  <%= f.text_area :content %>
+                  <%= f.text_area :content, placeholder: clause.content %>
                   <button data-action="slideshow#next"><%= f.submit %></button>
                   <% end %>
                 </div>
@@ -103,6 +101,7 @@
     </div>
   </div>
 </div>
+
 </div>
 </div>
 
