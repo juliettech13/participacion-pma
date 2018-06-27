@@ -30,6 +30,11 @@ User.destroy_all
 
 puts "creating user"
 User.create!(email: "bobstevens@charitize.com", password: 123456)
+User.create!(email: "user2@charitize.com", password: 123456)
+User.create!(email: "user3@charitize.com", password: 123456)
+User.create!(email: "user4@charitize.com", password: 123456)
+User.create!(email: "user5@charitize.com", password: 123456)
+User.create!(email: "user6@charitize.com", password: 123456)
 
 puts "creating admin user"
 AdminUser.create!(email:"admin@charitize.com", password: 123456)
@@ -37,9 +42,19 @@ AdminUser.create!(email: 'admin@example.com', password: 'password', password_con
 
 puts "creating legislation"
 Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Policy Vision', user_id: 1)
+Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Policy Vision', user_id: 2)
+Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Policy Vision', user_id: 3)
+Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Policy Vision', user_id: 4)
+Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Policy Vision', user_id: 5)
+Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Policy Vision', user_id: 6)
 
 puts "creating consultation"
 Consultation.create!(legislation_id: 1, user_id: 1)
+Consultation.create!(legislation_id: 2, user_id: 2)
+Consultation.create!(legislation_id: 3, user_id: 3)
+Consultation.create!(legislation_id: 4, user_id: 4)
+Consultation.create!(legislation_id: 5, user_id: 5)
+Consultation.create!(legislation_id: 6, user_id: 6)
 
 puts "creating sections"
 Section.create!(title: 'Digital Infrastructure', legislation_id: 1)
@@ -94,12 +109,12 @@ Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 
 Question.create!(content: 'Please suggest a revision', clause_id: 6)
 
 puts "creating dummy general feedback"
-GeneralFeedback.create!(content: 'My custom feedback 1', legislation_id: 1)
-GeneralFeedback.create!(content: 'I really like it because...', legislation_id: 1)
-GeneralFeedback.create!(content: 'I totally disagree becasue', legislation_id: 1)
-GeneralFeedback.create!(content: 'My custom feedback 4', legislation_id: 1)
-GeneralFeedback.create!(content: 'My custom feedback 5', legislation_id: 1)
-GeneralFeedback.create!(content: 'My custom feedback xyz 6', legislation_id: 1)
+GeneralFeedback.create!(content: 'My custom feedback - User 1', consultation_id: 1)
+GeneralFeedback.create!(content: 'I really like it because...', consultation_id: 2)
+GeneralFeedback.create!(content: 'I totally disagree becasue', consultation_id: 3)
+GeneralFeedback.create!(content: 'My custom feedback - User 4', consultation_id: 4)
+GeneralFeedback.create!(content: 'My custom feedback - User 5', consultation_id: 5)
+GeneralFeedback.create!(content: 'My custom feedback xyz - User 6', consultation_id: 6)
 
 puts "creating dummy answers"
 Answer.create!(content: 'yes', question_id: 1, user_id: 1)
