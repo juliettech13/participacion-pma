@@ -36,14 +36,7 @@
   justify-content: center;
 }
 
-@media only screen and (min-width: 600px) {
-  .card {
-    margin-top: 150px;
-  }
-  .login_form {
-    margin-top: 140px;
-  }
-}
+
 // =============================================
 // .home-content {
 //   display: block;
@@ -77,7 +70,8 @@
 }
 
 .get-started-button {
-  margin: 60px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .get-started-button:hover {
