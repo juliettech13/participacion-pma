@@ -7,20 +7,22 @@
             <h2>Welcome<small> to your policy consultation</small></h2>
           </div>
           <div class="instruction-slide-through">
-            <p id ="instructions">The vision intends to create a unifying policy vision for transforming [COUNTRY] economy and accelerating economic growth. The vision is composed of four chapters, and you are invited to comment on specific policy recommendations, on chapters, on the introduction and on the entire policy.</p>
+            <p id ="instructions">The vision intends to create a unifying policy vision for transforming Nigeria's economy and accelerating economic growth. The vision is composed of four chapters, and you are invited to comment on specific policy recommendations, on chapters, on the introduction and on the entire policy.</p>
+          </div>
+
+          <div id="start" style="display: none;">
+            <%= simple_form_for [@legislation, @consultation] do |f| %>
+              <%= f.input :user_id, as: :hidden %>
+              <%= f.submit "Start your consultation", class: "new-consultation btn-lg btn-primary" %>
+            <% end %>
           </div>
 
           <div class="navigation-btns">
-            <button id = "backbutton" data-action="click->instruction#toggleBack">Back</button>
+            <button id = "backbutton" style="display: none;" data-action="click->instruction#toggleBack">Back</button>
             <button id= "nextbutton" data-action="click->instruction#toggleForward">Next</button>
           </div>
 
 
-          <%= simple_form_for [@legislation, @consultation] do |f| %>
-          <%#= f.input :legislation_id, as: :hidden, input_html: { value: params[:legislation_id] } %>
-          <%= f.input :user_id, as: :hidden %>
-          <%= f.submit "Start your consultation", class: "new-consultation" %>
-          <% end %>
 
         </div>
       </div>
@@ -28,29 +30,3 @@
   </div>
 </div>
 
-<!-- <div class="container" >
-  <div class="row">
-    <div class="col-lg-8 col-xs-12 col-sm-8">
-      <div class="card" >
-        <div class="card-description" data-controller="instruction">
-            <div class="page-header">
-              <h1>Welcome<small> to your policy consultation</small></h1>
-            </div>
-            <div class="instruction-slide-through">
-              <p id ="instructions">
-                The vision intends to create a unifying policy vision for transforming [  COUNTRY] economy and accelerating economic growth. The vision is composed of four chapters, and you are invited to comment on specific policy recommendations, on chapters, on the introduction and on the entire policy.
-              </p>
-              <button id = "backbutton" data-action="click->instruction#toggleBack">Back</button>
-              <button id= "nextbutton" data-action="click->instruction#toggleForward">Next</button>
-              <%= simple_form_for [@legislation, @consultation] do |f| %>
-              <%#= f.input :legislation_id, as: :hidden, input_html: { value: params[:legislation_id] } %>
-              <%= f.input :user_id, as: :hidden %>
-              <%= f.submit "Start your consultation" %>
-              <% end %>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
- -->
