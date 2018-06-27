@@ -9,9 +9,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <%#= link_to 'How it Works', new_legislation_consultation_path(@legislation), :class => 'nav-item nav-link active' %>
-        <%= link_to 'Your Consultations', new_user_registration_path, :class => 'nav-item nav-link active' %>
-        <%= link_to 'Log Out', destroy_user_session_path, method: :delete, :class => 'nav-item nav-link active' %>
+        <%= link_to 'Instructions', new_user_registration_path, :class => 'nav-item nav-link active' %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => 'nav-item nav-link active' %>
       </div>
     </div>
   </nav>
@@ -28,10 +27,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <%= link_to 'How it Works', new_user_registration_path, :class => 'nav-item nav-link active' %>
-        <%= link_to 'Your Consultations', new_user_registration_path, :class => 'nav-item nav-link active' %>
-        <%= link_to 'Log In', new_user_session_path, :class => 'nav-item nav-link active'  %>
-        <%= link_to 'Sign Up', new_user_registration_path, :class => 'nav-item nav-link active' %>
+        <%= link_to 'Instructions', new_user_registration_path, :class => 'nav-item nav-link active' %>
+        <%= link_to 'Login', new_user_session_path, :class => 'nav-item nav-link active'  %>
+        <%= link_to 'Signup', new_user_registration_path, :class => 'nav-item nav-link active' %>
       </div>
     </div>
   </nav>
