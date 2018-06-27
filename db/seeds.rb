@@ -57,26 +57,26 @@ Clause.create!(content: '2. Mandate infrastructure sharing to achieve the econom
 
 puts "creating questions"
 Question.create!(content: 'Do you feel that this represents your views?', clause_id: 1)
-Question.create!(content: 'How well does this push your country in the direction?', clause_id: 1)
+Question.create!(content: 'How well does this push your country in the right direction?', clause_id: 1)
 Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 1)
 
 Question.create!(content: 'Do you feel that this represents your views?', clause_id: 2)
-Question.create!(content: 'How well does this push your country in the direction?', clause_id: 2)
+Question.create!(content: 'How well does this push your country in the right direction?', clause_id: 2)
 Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 2)
 
 Question.create!(content: 'Do you feel that this represents your views?', clause_id: 3)
-Question.create!(content: 'How well does this push your country in the direction?', clause_id: 3)
+Question.create!(content: 'How well does this push your country in the right direction?', clause_id: 3)
 Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 3)
 
 Question.create!(content: 'Do you feel that this represents your views?', clause_id: 4)
-Question.create!(content: 'How well does this push your country in the direction?', clause_id: 4)
+Question.create!(content: 'How well does this push your country in the right direction?', clause_id: 4)
 Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 4)
 
 Question.create!(content: 'Do you feel that this represents your views?', clause_id: 5)
-Question.create!(content: 'How well does this push your country in the direction?', clause_id: 5)
+Question.create!(content: 'How well does this push your country in the right direction?', clause_id: 5)
 Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 5)
 
 Question.create!(content: 'Do you feel that this represents your views?', clause_id: 6)
-Question.create!(content: 'How well does this push your country in the direction?', clause_id: 6)
+Question.create!(content: 'How well does this push your country in the right direction?', clause_id: 6)
 Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 6)
 
