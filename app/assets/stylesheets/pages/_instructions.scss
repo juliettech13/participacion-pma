@@ -22,3 +22,25 @@
   text-decoration: none;
   color: #999999;
 }
+
+#backbutton {
+  background: none;
+  border: none;
+  justify-content: space-between;
+}
+
+#nextbutton {
+  background: none;
+  border: none;
+  justify-content: space-between;
+}
+
+.new-consultation {
+  background: none;
+  border: none;
+}
+
+.navigation-btns {
+  display:flex;
+ justify-content: center;
+}
