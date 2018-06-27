@@ -12,7 +12,6 @@
 <div class="container" data-controller="legislation">
 
   <h1><%#= @legislation.title %></h1>
-  <!-- <div class="row"> -->
 
     <div id="toc" class="">
       <h3>table of contents</h3>
@@ -23,12 +22,19 @@
         </li>
         <% end %>
       </ul>
-      <%= link_to "I'm Finished", legislation_consultation_path(@legislation), :class => 'btn btn-primary btn-lg' %>
     </div>
 
     <div class="consultation-box">
      <div id="document" class="scrollable"">
-      <div id="active_section"></div>
+      <div id="active_section">
+          <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <a class="btn btn-link" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
+                  <%= @legislation.sections[0].clauses[0].content %>
+                </a>
+              </h5>
+            </div>
+      </div>
         <% @legislation.sections.each do |section| %>
 
         <div id="<%= section.title %>" style="display: none;">
@@ -56,8 +62,11 @@
                   <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
                   <%= f.hidden_field :user_id, :value => current_user.id  %>
                   <%= f.hidden_field :question_id, :value => clause.questions[0].id  %>
-                  <%= f.select(:content, [["Bum"],["Dum"]], {}, {:multiple => true}) %>
-                  <button data-action="slideshow#next"><%= f.submit %></button>
+                  <a data-action="slideshow#next"><%= f.submit '1', :class => 'btn-primary' %></a>
+                  <a data-action="slideshow#next"><%= f.submit '2', :class => 'btn-primary' %></a>
+                  <a data-action="slideshow#next"><%= f.submit '3', :class => 'btn-primary' %></a>
+                  <a data-action="slideshow#next"><%= f.submit '4', :class => 'btn-primary' %></a>
+                  <a data-action="slideshow#next"><%= f.submit '5', :class => 'btn-primary' %></a>
                   <% end %>
                 </div>
 
@@ -66,8 +75,12 @@
                   <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
                   <%= f.hidden_field :user_id, :value => current_user.id  %>
                   <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
-                  <%= f.select(:content, [["Yo"],["No"]], {}, {:multiple => true}) %>
-                  <button data-action="slideshow#next"><%= f.submit %></button>
+                  <a data-action="slideshow#next"><%= f.submit '1', :class => 'btn-primary' %></a>
+                  <a data-action="slideshow#next"><%= f.submit '2', :class => 'btn-primary' %></a>
+                  <a data-action="slideshow#next"><%= f.submit '3', :class => 'btn-primary' %></a>
+                  <a data-action="slideshow#next"><%= f.submit '4', :class => 'btn-primary' %></a>
+                  <a data-action="slideshow#next"><%= f.submit '5', :class => 'btn-primary' %></a>
+                  <%#= f.select(:content, [["1"],["2"], ["3"], ["4"], ["5"]], {}, {:multiple => true}) %>
                   <% end %>
                 </div>
 
@@ -76,19 +89,23 @@
                   <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
                   <%= f.hidden_field :user_id, :value => current_user.id  %>
                   <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
-                  <%= f.select(:content, [["Yo"],["No"]], {}, {:multiple => true}) %>
-                  <button data-action="slideshow#next"><%= f.submit %></button>
+                  <a data-action="slideshow#next"><%= f.submit 'Yes', :class => 'btn-primary' %></a>
+                  <a data-action="slideshow#next"><%= f.submit 'No', :class => 'btn-primary' %></a>
+                  <%#= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %>
                   <% end %>
                 </div>
 
                 <div data-target="slideshow.slide" class="slide">
                   <%= clause.questions[3].content %>
-                  <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
-                  <%= f.hidden_field :user_id, :value => current_user.id  %>
-                  <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
-                  <%= f.text_area :content, placeholder: clause.content %>
-                  <button data-action="slideshow#next"><%= f.submit %></button>
+                  <div class="form-group">
+                    <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
+                    <%= f.hidden_field :user_id, :value => current_user.id  %>
+                    <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
+                    <%= f.text_area :content, :class => 'form-control', placeholder: clause.content %>
+                    <%= f.submit 'suggest', :class => 'btn-primary' %>
                   <% end %>
+                  </div>
+
                 </div>
 
               </div>
@@ -103,6 +120,7 @@
   </div>
 </div>
 
-<!-- </div> -->
+<%= link_to "i'm finished", legislation_consultation_path(@legislation), :class => 'btn btn-primary btn-lg' %>
+
 </div>
 
