@@ -273,28 +273,50 @@ def show_question(message, options:)
   ids = options.split(',')
   consultation_id, section_id, clause_id, question_index = ids
   clause = Clause.find(clause_id)
-  message.typing_on
-  message.reply(
-    text: clause.questions[question_index.to_i - 1].content
-  )
 
-  if question_index == "1"
-    text = "Please answer using a scale of 1 to 5.
-    1 means that it is not at all representative, while 5 means it is completely representative."
+  if last_question?(clause_id, question_index)
+
+    # Skipping the last question for now, might need to accept a typed response
+    # message.reply(
+    #   text: "Please type your suggestion"
+    # )
+    if last_clause?(section_id, clause_id)
+      if last_section?(section_id)
+        outboard(message)
+      else
+        next_section(message, consultation_id: consultation_id, section_id: section_id.to_i + 1)
+      end
+    else
+      next_clause(message, consultation_id: consultation_id, clause_id: clause_id.to_i + 1, section_id: section_id)
+    end
+
   else
-    text = "Please answer the question using the same 1 to 5 scale."
+
+    message.typing_on
+    message.reply(
+      text: clause.questions[question_index.to_i - 1].content
+    )
+
+    if question_index == "1"
+      text = "Please answer using a scale of 1 to 5.
+      1 means that it is not at all representative, while 5 means it is completely representative."
+    else
+      text = "Please answer the question using the same 1 to 5 scale."
+    end
+
+    message.reply(
+      text: text,
+      quick_replies: ["1","2","3","4","5"].map do |number|
+        {
+          content_type: "text",
+          title: number,
+          payload: "ANSWER/#{options}"
+        }
+      end
+    )
+
   end
 
-  message.reply(
-    text: text,
-    quick_replies: ["1","2","3","4","5"].map do |number|
-      {
-        content_type: "text",
-        title: number,
-        payload: "ANSWER/#{options}"
-      }
-    end
-  )
 end
 
 # User methods
