@@ -80,9 +80,9 @@ Clause.create!(content: 'Mandate infrastructure sharing to achieve the economies
   Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 2)
   Question.create!(content: 'Please suggest your revision', clause_id: 2)
 
-  Metadata.create!(
+  Metadatum.create!(
     agency: 'Nigerian Communications Commission (NCC)',
-    rationale: 'This would bring down the cost and ensure affordable access.'
+    rationale: 'This would bring down the cost and ensure affordable access.',
     status: 'Status: NCC published guidelines on collocation and infrastructure sharing on Rights of Way, Masts, Poles, Antenna and tower-structures, Ducts, Trenches, Electric power. In the guidelines, each operator (licensee) is expected to publish standard price list, this is not regulated by NCC which could be exploited by the operators. NCC maintains a list of operators on its website, this includes the name of the company, address, start and expiry dates. This list may not be conclusive as there are operators that are not listed there but in previous published lists. The issue with the guidelines is that it is only for passive sharing, there is no guidelines on active sharing. However, NCC is working on a framework on active sharing but this is yet to be published. The Nigerian National Broadband Plan 2013 - 2018 is aimed at  “connecting communities with high speed internet and broadband access to facilitate faster socioeconomic advancement of the nation and its people”. To achieve this, the government, through NCC require Infrastructure Companies (Infracos) to bid for license to provide broadband infrastructure on an open access, non-discriminatory, price regulated basis to the six geopolitical zones and Lagos. Licenses have been awarded for Lagos, North Central, South East, North East. The license for North West, South South and South West have purportedly been awarded, The network and services infrastructure is divided into 3 layers; Passive Infrastructure Layer, Wholesale layer, Retail Service Providers (RSP). The main challenge telecommunication companies face is security, to this end, NCC and Nigerian Security and Civil Defence Corps (NSCDC) signed an MOU to protect the infrastructure. This would go along way in alleviating this challenge which would in turn increase access to affordable broadband. Furthermore, the government plans to lay 18,000KM of fibre in the country in its effort to achieve and surpass the 30% broadband penetration target of 2018.',
     clause_id: 2
     )
@@ -93,11 +93,10 @@ Clause.create!(content: 'Drop Right of Way charges for fiber distribution, dutie
   Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 3)
   Question.create!(content: 'Please suggest your revision', clause_id: 3)
 
-  Metadata.create!(
+  Metadatum.create!(
     agency: 'Federal Inland Revenue Services (FIRS), Federal Ministry of Power, Works and Housing, State Inland Revenue Board, Local Government Authority, Nigerian Communications Commission (NCC), Nigeria Customs Service (NCS), Federal Ministry of Finance (how about the respective state agencies)',
-    rationale: 'Lack of harmonised RoW across federal, state and LGA and multiple taxation increases the cost of service delivery which is passed on to the consumers. Elimination of such charges, duties and tax would encourage investments and reduce the cost of service delivery.'
-    status: "Currently, there is a guideline for the grant and access of right way to ICT services on federal roads by the Federal Ministry of Power, Works and Housing. The charges are N145 per linear meter for ducts and cables and N20 per linear metre annual maintenance fees subject to change every 5 years. States and Local Governments have different charges and this varies from state to state. The lack of uniform charges is one of the challenges telcos face which affects the supply of services. To address this challenge, NEC approved a policy on harmonization of right of way charges across LG, states and federal highways. The NEC RoW guideline still maintains the amount of N145 per meter for laying fibre for all parts of the country. Also, NCC made a case to the Governors Forum to ensure on the need to adhere to the NEC’s resolutions. Right of Way is included in the Nigerian Communications Commission’s Guidelines on Collocation and Infrastructure Sharing, this provides a means of bringing down the cost of broadband as shown in Vision 1.
-    The import duties on all telecommunications equipment is 10% with the exception of parts and accessories of instruments/apparatus, designed for telecommunications which is 5%. In the NITDA establishment Act, all telecommunications companies, GSM Service Providers, Cyber Companies and Internet Providers with annual turnover of 100M and above are liable to pay 1%  of the profit before tax.",
+    rationale: 'Lack of harmonised RoW across federal, state and LGA and multiple taxation increases the cost of service delivery which is passed on to the consumers. Elimination of such charges, duties and tax would encourage investments and reduce the cost of service delivery.',
+    status: "Currently, there is a guideline for the grant and access of right way to ICT services on federal roads by the Federal Ministry of Power, Works and Housing. The charges are N145 per linear meter for ducts and cables and N20 per linear metre annual maintenance fees subject to change every 5 years. States and Local Governments have different charges and this varies from state to state. The lack of uniform charges is one of the challenges telcos face which affects the supply of services. To address this challenge, NEC approved a policy on harmonization of right of way charges across LG, states and federal highways. The NEC RoW guideline still maintains the amount of N145 per meter for laying fibre for all parts of the country. Also, NCC made a case to the Governors Forum to ensure on the need to adhere to the NEC’s resolutions. Right of Way is included in the Nigerian Communications Commission’s Guidelines on Collocation and Infrastructure Sharing, this provides a means of bringing down the cost of broadband as shown in Vision 1. The import duties on all telecommunications equipment is 10% with the exception of parts and accessories of instruments/apparatus, designed for telecommunications which is 5%. In the NITDA establishment Act, all telecommunications companies, GSM Service Providers, Cyber Companies and Internet Providers with annual turnover of 100M and above are liable to pay 1%  of the profit before tax.",
     clause_id: 3
     )
 
@@ -107,7 +106,7 @@ Clause.create!(content: 'Provide telecommunications companies with prioritised a
   Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 4)
   Question.create!(content: 'Please suggest your revision', clause_id: 4)
 
-  Metadata.create!(
+  Metadatum.create!(
     agency: "Central Bank of Nigeria (CBN)",
     rationale: "Access to SMIS will boost the investment in the telecommunications sector and accelerate broadband penetration in Nigeria.",
     status: "All FX transactions are fall under the Investors’ and Exporters’ (I & E) FX Window which was established by the CBN, and another Window for Secondary Market Intervention Sales (SMIS), wholesale and retail. CBN at its discretion chooses the sub-sectors of the economy to access the SMIS. Access to subsidised foreign exchange will attract investment in the sector which in turn will accelerate broadband penetration.",
@@ -120,7 +119,7 @@ Clause.create!(content: 'Adopt a “dig once” policy, so that any traditional 
   Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 5)
   Question.create!(content: 'Please suggest your revision', clause_id: 5)
 
-   Metadata.create!(
+   Metadatum.create!(
     agency: "Ministry of Power, Works and Housing, Ministry of Environment",
     rationale: " Implementing “dig once” policy will ensure the protection of the environment, increase broadband penetration and affordable access.",
     status: "Anambra State included the implementation of Dig Once policy as part of its smart city initiative.",
@@ -133,7 +132,7 @@ Clause.create!(content: 'Launch a single e-Governance portal using a Whole of Go
   Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 6)
   Question.create!(content: 'Please suggest your revision', clause_id: 6)
 
- Metadata.create!(
+ Metadatum.create!(
     agency: "National Information Technology Development Agency (NITDA), National eGovernment Strategies (NeGSt), MDAs",
     rationale: "Simplified access to government services will improve transparency of common processes, data integrity and reduce the time and cost associated with accessing information.",
     status: "NeGSt was created to “facilitate, drive and implement” eGovernment programmes using a Public Private Partnership (PPP) model. They provide MDAs with support in terms of deployment of eGovernment services and solutions. NITDA recently published the Nigerian e-Government Interoperability Framework (Ne-GIF) which adopts a  Whole-of-Government approach which will lead to Government Digital Transformation. The purpose of this framework is to ease data collection and sharing among MDAs and promote interactions between government, businesses and citizens.",
@@ -152,7 +151,7 @@ e.  Launch a fund to procure API development from the indigenous technology comm
   Question.create!(content: 'Would you like to provide a suggestion?', clause_id: 7)
   Question.create!(content: 'Please suggest your revision', clause_id: 7)
 
-  Metadata.create!(
+  Metadatum.create!(
     agency: "National Information Technology Development Agency (NITDA), Federal Ministry of Justice, National Bureau of Statistics (NBS), and all MDAs",
     rationale: "Data is vital for any economy to progress, its availability to policy makers, businesses and citizens has direct impact on how government delivers services.",
     status: "The enactment of the FOI Act in 2011 has made public records and information more freely available and accessible to Nigerians. Several government agencies have set up compliance structures that now enable them to respond to requests for information within the ambit of the law. However, several issues such as:
@@ -320,19 +319,19 @@ puts "we done!"
 
 
 puts "creating dummy general feedback"
-GeneralFeedback.create!(content: 'My custom feedback 1', legislation_id: 1)
-GeneralFeedback.create!(content: 'I really like it because...', legislation_id: 1)
-GeneralFeedback.create!(content: 'I totally disagree becasue', legislation_id: 1)
-GeneralFeedback.create!(content: 'My custom feedback 4', legislation_id: 1)
-GeneralFeedback.create!(content: 'My custom feedback 5', legislation_id: 1)
-GeneralFeedback.create!(content: 'My custom feedback xyz 6', legislation_id: 1)
+# GeneralFeedback.create!(content: 'My custom feedback 1', legislation_id: 1)
+# GeneralFeedback.create!(content: 'I really like it because...', legislation_id: 1)
+# GeneralFeedback.create!(content: 'I totally disagree becasue', legislation_id: 1)
+# GeneralFeedback.create!(content: 'My custom feedback 4', legislation_id: 1)
+# GeneralFeedback.create!(content: 'My custom feedback 5', legislation_id: 1)
+# GeneralFeedback.create!(content: 'My custom feedback xyz 6', legislation_id: 1)
 
 puts "creating dummy answers"
-Answer.create!(content: 'yes', question_id: 1, user_id: 1)
-Answer.create!(content: 'My custom feedback', question_id: 2, user_id: 1)
-Answer.create!(content: 'My custom feedback', question_id: 3, user_id: 1)
+# Answer.create!(content: 'yes', question_id: 1, user_id: 1)
+# Answer.create!(content: 'My custom feedback', question_id: 2, user_id: 1)
+# Answer.create!(content: 'My custom feedback', question_id: 3, user_id: 1)
 
-Answer.create!(content: 'no', question_id: 4, user_id: 1)
-Answer.create!(content: 'My custom feedback', question_id: 5, user_id: 1)
-Answer.create!(content: 'My custom feedback', question_id: 6, user_id: 1)
+# Answer.create!(content: 'no', question_id: 4, user_id: 1)
+# Answer.create!(content: 'My custom feedback', question_id: 5, user_id: 1)
+# Answer.create!(content: 'My custom feedback', question_id: 6, user_id: 1)
 
