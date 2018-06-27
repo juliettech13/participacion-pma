@@ -101,19 +101,19 @@ Bot.on :postback do |postback|
       greet_current_user(postback)
     when "SECTION_1"
       messenger_id = postback.sender["id"]
-      current_user = User.where(messenger_id: messenger_id).first
-      consultation_id = Consultation.where(user_id: current_user.id).first
-      skip_to_section(postback, consultation_id, 1)
+      current_user = User.find_by(messenger_id: messenger_id)
+      consultation_id = Consultation.find_by(user_id: current_user.id)
+      skip_to_section(postback, consultation_id: consultation_id, section_id: 1)
     when "SECTION_2"
       messenger_id = postback.sender["id"]
-      current_user = User.where(messenger_id: messenger_id).first
-      consultation_id = Consultation.where(user_id: current_user.id).first
-      skip_to_section(postback, consultation_id, 2)
+      current_user = User.find_by(messenger_id: messenger_id)
+      consultation_id = Consultation.find_by(user_id: current_user.id)
+      skip_to_section(postback, consultation_id: consultation_id, section_id: 2)
     when "SECTION_3"
       messenger_id = postback.sender["id"]
-      current_user = User.where(messenger_id: messenger_id).first
-      consultation_id = Consultation.where(user_id: current_user.id).first
-      skip_to_section(postback, consultation_id, 3)
+      current_user = User.find_by(messenger_id: messenger_id)
+      consultation_id = Consultation.find_by(user_id: current_user.id)
+      skip_to_section(postback, consultation_id: consultation_id, section_id: 3)
   end
 end
 
@@ -121,7 +121,7 @@ end
 
 def greet_current_user(postback)
   messenger_id = postback.sender["id"]
-  current_user = User.where(messenger_id: messenger_id).first
+  current_user = get_user(messenger_id)
   postback.reply(
     text: "Welcome #{current_user.first_name} to the consultation for the National ICT Innovation and Entrepreneurship Policy Vision."
   )
@@ -161,6 +161,7 @@ def outboard(message)
   message.reply(
     text: "That's it ! Thanks for taking the time to answer all our questions. Your input has been super valuable to us and will serve to help shape Nigerian economic policy."
   )
+
   message.typing_on
   message.reply(
     attachment: {
@@ -175,6 +176,58 @@ def outboard(message)
             webview_height_ratio: "full"
           }
         ]
+      }
+    }
+  )
+
+  message.typing_on
+  message.reply(
+    {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: [
+            {
+              title: "Share Policy Pulse",
+              #subtitle: "<TEMPLATE_SUBTITLE>",
+              #image_url: "<IMAGE_URL_TO_DISPLAY>",
+              buttons: [
+                {
+                  type: "element_share",
+                  share_contents: {
+                    attachment: {
+                      type: "template",
+                      payload: {
+                        template_type: "generic",
+                        elements: [
+                          {
+                            title: "I just completed the policy consultation",
+                            subtitle: "I'm helping shape democracy, join me",
+                            #To Do: add image to share dialog and default action link to website
+                            #image_url: "https://bot.peters-hats.com/img/hats/fez.jpg",
+                            # default_action: {
+                            #   type: "web_url",
+                            #   url: "https://www.facebook.com"
+                            # },
+                            buttons: [
+                              {
+                                type: "web_url",
+                                #this url is the id of the consultation bot, it needs to be changed if we use a different FB bot
+                                url: "https://www.facebook.com/messages/t/635113713524558",
+                                title: "Start Consultation"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
       }
     }
   )
@@ -245,7 +298,7 @@ def next_section(message, consultation_id:, section_id:)
   )
 end
 
-def skip_to_section(postback, consultation_id:, section_id:)
+def skip_to_section(message, consultation_id:, section_id:)
   section = Section.find(section_id)
   clause = section.clauses.first
   ids = [consultation_id, section_id, clause.id, 1]
@@ -273,34 +326,55 @@ def show_question(message, options:)
   ids = options.split(',')
   consultation_id, section_id, clause_id, question_index = ids
   clause = Clause.find(clause_id)
-  message.typing_on
-  message.reply(
-    text: clause.questions[question_index.to_i - 1].content
-  )
 
-  if question_index == "1"
-    text = "Please answer using a scale of 1 to 5.
-    1 means that it is not at all representative, while 5 means it is completely representative."
+  if last_question?(clause_id, question_index)
+
+    # Skipping the last question for now, might need to accept a typed response
+    # message.reply(
+    #   text: "Please type your suggestion"
+    # )
+    if last_clause?(section_id, clause_id)
+      if last_section?(section_id)
+        outboard(message)
+      else
+        next_section(message, consultation_id: consultation_id, section_id: section_id.to_i + 1)
+      end
+    else
+      next_clause(message, consultation_id: consultation_id, clause_id: clause_id.to_i + 1, section_id: section_id)
+    end
+
   else
-    text = "Please answer the question using the same 1 to 5 scale."
+
+    message.typing_on
+    message.reply(
+      text: clause.questions[question_index.to_i - 1].content
+    )
+
+    if question_index == "1"
+      text = "Please answer using a scale of 1 to 5.
+      1 means that it is not at all representative, while 5 means it is completely representative."
+    else
+      text = "Please answer the question using the same 1 to 5 scale."
+    end
+
+    message.reply(
+      text: text,
+      quick_replies: ["1","2","3","4","5"].map do |number|
+        {
+          content_type: "text",
+          title: number,
+          payload: "ANSWER/#{options}"
+        }
+      end
+    )
+
   end
 
-  message.reply(
-    text: text,
-    quick_replies: ["1","2","3","4","5"].map do |number|
-      {
-        content_type: "text",
-        title: number,
-        payload: "ANSWER/#{options}"
-      }
-    end
-  )
 end
 
 # User methods
 def get_user(messenger_id)
   user = User.find_by(messenger_id: messenger_id)
-
   # If user does not exist, create new
   user = create_new_user(messenger_id) unless user
 
