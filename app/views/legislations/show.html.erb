@@ -34,12 +34,7 @@
         <%= link_to "I am done", new_consultation_general_feedback_path(@consultation), :class => 'btn btn-primary btn-lg' %>
       </div>
     </div>
-
-
-
   </div>
-
-
 
   <div class="consultation-box">
    <div id="document">
@@ -52,9 +47,7 @@
           </a>
         </h5>
       </div>
-
     </div>
-
 
     <div class="onesectionnav row">
       <div class="previous_section">
@@ -74,7 +67,6 @@
         <div id="accordion" class="">
           <% section.clauses.each do |clause| %>
           <div class="card">
-
            <div class="card-header" id="headingOne">
             <h5 class="mb-0">
               <a class="btn btn-link clause" data-toggle="collapse" data-target="#collapse_<%= clause.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
@@ -89,9 +81,6 @@
                 </div> -->
                 <%# end %>
               </div>
-
-
-
               <div id="collapse_<%= clause.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body" data-controller="slideshow">
                   <% unless clause.questions[0].answers.exists?(user_id: current_user.id) %>
@@ -112,16 +101,16 @@
                   <% end %>
 
 
-              <% unless clause.questions[1].answers.exists?(user_id: current_user.id) %>
-                <div data-target="slideshow.slide" class="slide">
-                  <%= clause.questions[1].content %>
-                  <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
-                  <%= f.hidden_field :user_id, :value => current_user.id  %>
-                  <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
-                  <div class="buttonspacing">
-                  <%= select_tag(:content, options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5']])) %>
-
-                     <a data-action="slideshow#next"><%= f.submit "submit", :class => 'btn-primary' %></a>
+                  <% unless clause.questions[1].answers.exists?(user_id: current_user.id) %>
+                  <div data-target="slideshow.slide" class="slide">
+                    <%= clause.questions[1].content %>
+                    <%= form_for @answer, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
+                    <%= f.hidden_field :user_id, :value => current_user.id  %>
+                    <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
+                    <div class="buttonspacing">
+                      <%= f.select(:content, options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5']])) %>
+                      <a data-action="slideshow#next"><%= f.submit "submit", :class => 'btn-primary' %></a>
+                      <%# raise if @answer.content == nil %>
                     <!-- <a data-action="slideshow#next"><%#= f.submit '2', :class => 'btn-primary' %></a>
                     <a data-action="slideshow#next"><%#= f.submit '3', :class => 'btn-primary' %></a>
                     <a data-action="slideshow#next"><%#= f.submit '4', :class => 'btn-primary' %></a>

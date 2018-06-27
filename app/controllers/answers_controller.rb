@@ -17,7 +17,7 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @answer = Answer.new
+    @answer = Answer.new(answer_params)
 
     if current_user == nil
       redirect_to new_user_registration_path
@@ -26,9 +26,8 @@ class AnswersController < ApplicationController
       @answer.user_id = current_user.id
       @answer.question = Question.find(params[:answer][:question_id])
     end
-      if @answer.save!
-        raise
-      end
+     @answer.save!
+     # redirect_to legislation(@legislation)
   end
 
   def update
