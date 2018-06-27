@@ -122,6 +122,13 @@
                   <% end %>
                 </div>
 
+    <div id="consultation_panel" class="col-lg-3">
+     <div class="container">
+      <%#= render 'consultation_panel' %>
+      <%= link_to "I'm Finished", pages_finished_path, :class => 'btn-treehouse im-finished' %>
+      </div>
+    </div>
+
                 <div data-target="slideshow.slide" class="slide">
                   <%= clause.questions[2].content %>
                   <div class="form-group">
