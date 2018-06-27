@@ -12,9 +12,9 @@
 <div class="container" data-controller="legislation">
 
   <h1><%#= @legislation.title %></h1>
-  <div class="row">
+  <!-- <div class="row"> -->
 
-    <div id="toc" class="col-3">
+    <div id="toc" class="">
       <h3>table of contents</h3>
       <ul>
         <% @legislation.sections.each do |section| %>
@@ -23,13 +23,14 @@
         </li>
         <% end %>
       </ul>
-      <%= link_to "I'm Finished", legislation_consultation_path(@legislation), :class => 'btn-treehouse' %>
+      <%= link_to "I'm Finished", legislation_consultation_path(@legislation), :class => 'btn btn-primary btn-lg' %>
     </div>
 
-    <div class="consultation-box col-9">
+    <div class="consultation-box">
      <div id="document" class="scrollable"">
-      <div id="active_section">
+      <div id="active_section"></div>
         <% @legislation.sections.each do |section| %>
+
         <div id="<%= section.title %>" style="display: none;">
           <h3><%= section.title %></h3>
 
@@ -94,14 +95,14 @@
             </div>
 
           </div>
+           <% end %>
         </div>
-        <% end %>
-        <% end %>
       </div>
-    </div>
+      <% end %>
+
   </div>
 </div>
 
-</div>
+<!-- </div> -->
 </div>
 

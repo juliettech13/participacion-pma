@@ -6,15 +6,13 @@ export default class extends Controller {
   }
 
   showSection(e) {
-    var consultationBox = document.getElementById('document');
-    var selectChoice = e.target.innerHTML;
-    var selectSection = document.getElementById(selectChoice);
-    var activeSection = document.getElementById('active_section')
-    // var section = document.getElementsByClassName()
-    activeSection.innerHTML = '';
-    activeSection.innerHTML = selectSection.innerHTML
-    selectSection.style.display = "block";
-    console.log("grab it", selectSection)
+    console.log("grab it", document.getElementById(e.target.innerHTML))
+    // var selectSection = document.getElementById(e.target.innerHTML);
+    // var consultationBox = ""
+    var consultationBox = document.getElementById('active_section');
+
+    consultationBox.innerHTML = document.getElementById(e.target.innerHTML).innerHTML;
+    console.log("grab it", consultationBox)
   };
 
   toggleQuestion() {

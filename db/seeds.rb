@@ -40,7 +40,7 @@ Consultation.create!(legislation_id: 1, user_id: 1)
 puts "creating sections"
 Section.create(title: 'Introduction', legislation_id: 1)
 Section.create!(title: 'Digital Infrastructure', legislation_id: 1)
-Section.create!(title: 'Education Reform, Skills Development and R&D', legislation_id: 1)
+Section.create!(title: 'Education Reform, Skills Development and RandD', legislation_id: 1)
 Section.create!(title: 'Supporting the Ecosystem for Innovative Entrepreneurship', legislation_id: 1)
 Section.create!(title: 'Direct Support for Startups and Innovative Entrepreneurs', legislation_id: 1)
 
