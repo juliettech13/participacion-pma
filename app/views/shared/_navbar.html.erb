@@ -9,6 +9,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
+        <%= link_to 'Consultation', legislation_path(1), :class => 'nav-item nav-link active' %>
         <%= link_to 'Instructions', new_user_registration_path, :class => 'nav-item nav-link active' %>
         <%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => 'nav-item nav-link active' %>
       </div>
