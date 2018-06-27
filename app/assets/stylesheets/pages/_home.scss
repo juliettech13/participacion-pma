@@ -1,25 +1,68 @@
 // Specific CSS for your home-page
-.container {
-  width: 70%;
-}
-.home-content {
-  display: block;
-  // justify-content: space-around;
-  // text-align: center;
-  // margin: auto;
-  width: 60%;
-}
+
+
 
 .card {
-  border: none !important;
+  // height: 175px;
+  // text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  // background-size: cover !important;
+  // background-position: center;
+  width: 100%;
+  border: none;
+  color: black;
+  position: relative;
+  text-align:center;
 }
+
+.card-category {
+  // position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+.card-description {
+  font-weight: lighter;
+}
+
+.card-description p {
+  font-size: 23px;
+  font-weight: lighter;
+  letter-spacing: 0.2px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 600px) {
+  .card {
+    margin-top: 150px;
+  }
+}
+// =============================================
+// .home-content {
+//   display: block;
+//   // justify-content: space-around;
+//   // text-align: center;
+//   // margin: auto;
+//   width: 60%;
+// }
+
+// .card {
+//   border: none !important;
+//   margin: 0 auto !important;
+//   float: none;
+//   margin-bottom: 10px;
+// }
 
 .get-started-button {
     color: white;
     // padding: 20px 200px;
     max-height: 50px;
     border-radius: 10px;
-    width: 200px;
+    width: 300px;
     background: #037200;
     transition: background 0.3s ease;
 }
@@ -34,16 +77,17 @@
   margin: 60px;
 }
 
-.banner {
-  color: white;
-  text-align: center;
-  height: 100vh;
-  /* if you have a 70px navbar => height: calc(100vh - 70px); */
-  background-size: cover !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+// .banner {
+//   color: white;
+//   text-align: center;
+//   height: 100vh;
+//   /* if you have a 70px navbar => height: calc(100vh - 70px); */
+//   background-size: cover !important;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
 .banner h1 {
   font-size: 50px;
   font-weight: bold;
