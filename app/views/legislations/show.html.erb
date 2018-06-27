@@ -62,11 +62,13 @@
                   <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
                   <%= f.hidden_field :user_id, :value => current_user.id  %>
                   <%= f.hidden_field :question_id, :value => clause.questions[0].id  %>
-                  <a data-action="slideshow#next"><%= f.submit '1', :class => 'btn-primary' %></a>
-                  <a data-action="slideshow#next"><%= f.submit '2', :class => 'btn-primary' %></a>
-                  <a data-action="slideshow#next"><%= f.submit '3', :class => 'btn-primary' %></a>
-                  <a data-action="slideshow#next"><%= f.submit '4', :class => 'btn-primary' %></a>
-                  <a data-action="slideshow#next"><%= f.submit '5', :class => 'btn-primary' %></a>
+                  <div class="buttonspacing">
+                    <a data-action="slideshow#next"><%= f.submit '1', :class => 'btn-primary' %></a>
+                    <a data-action="slideshow#next"><%= f.submit '2', :class => 'btn-primary' %></a>
+                    <a data-action="slideshow#next"><%= f.submit '3', :class => 'btn-primary' %></a>
+                    <a data-action="slideshow#next"><%= f.submit '4', :class => 'btn-primary' %></a>
+                    <a data-action="slideshow#next"><%= f.submit '5', :class => 'btn-primary' %></a>
+                  </div>
                   <% end %>
                 </div>
 
@@ -75,24 +77,29 @@
                   <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
                   <%= f.hidden_field :user_id, :value => current_user.id  %>
                   <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
-                  <a data-action="slideshow#next"><%= f.submit '1', :class => 'btn-primary' %></a>
-                  <a data-action="slideshow#next"><%= f.submit '2', :class => 'btn-primary' %></a>
-                  <a data-action="slideshow#next"><%= f.submit '3', :class => 'btn-primary' %></a>
-                  <a data-action="slideshow#next"><%= f.submit '4', :class => 'btn-primary' %></a>
-                  <a data-action="slideshow#next"><%= f.submit '5', :class => 'btn-primary' %></a>
-                  <%#= f.select(:content, [["1"],["2"], ["3"], ["4"], ["5"]], {}, {:multiple => true}) %>
+                  <div class="buttonspacing">
+                    <a data-action="slideshow#next"><%= f.submit '1', :class => 'btn-primary' %></a>
+                    <a data-action="slideshow#next"><%= f.submit '2', :class => 'btn-primary' %></a>
+                    <a data-action="slideshow#next"><%= f.submit '3', :class => 'btn-primary' %></a>
+                    <a data-action="slideshow#next"><%= f.submit '4', :class => 'btn-primary' %></a>
+                    <a data-action="slideshow#next"><%= f.submit '5', :class => 'btn-primary' %></a>
+                  </div>
                   <% end %>
                 </div>
 
                 <div data-target="slideshow.slide" class="slide">
                   <%= clause.questions[2].content %>
-                  <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
+                  <div class="form-group">
+                    <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
                   <%= f.hidden_field :user_id, :value => current_user.id  %>
                   <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
-                  <a data-action="slideshow#next"><%= f.submit 'Yes', :class => 'btn-primary' %></a>
-                  <a data-action="slideshow#next"><%= f.submit 'No', :class => 'btn-primary' %></a>
+                  <div class="buttonspacing">
+                    <a data-action="slideshow#next"><%= f.submit 'Yes', :class => 'btn-primary' %></a>
+                    <a data-action="slideshow#next"><%= f.submit 'No', :class => 'btn-primary' %></a>
+                  </div>
                   <%#= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %>
                   <% end %>
+                  </div>
                 </div>
 
                 <div data-target="slideshow.slide" class="slide">
