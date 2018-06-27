@@ -81,14 +81,21 @@
                   <strong><%= clause.id - 1 %></strong> <%= clause.content %>
                 </a>
               </h5>
+              <%# if Metadatum.exists?(clause_id: clause.id) %>
+               <!--  <div class="metadata">
+                  <div class="row">
+                    <p>hover-over for metadata</p>
+                  </div>
+                </div> -->
+              <%# end %>
             </div>
 
 
 
             <div id="collapse_<%= clause.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
               <div class="card-body" data-controller="slideshow">
-
-                <div data-target="slideshow.slide" class="slide">
+                <% unless clause.questions[0].answers.exists?(user_id: current_user.id) %>
+                  <div data-target="slideshow.slide" class="slide">
                   <%= clause.questions[0].content %>
                   <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
                   <%= f.hidden_field :user_id, :value => current_user.id  %>
@@ -102,7 +109,9 @@
                   </div>
                   <% end %>
                 </div>
+                <% end %>
 
+              <% unless clause.questions[1].answers.exists?(user_id: current_user.id) %>
                 <div data-target="slideshow.slide" class="slide">
                   <%= clause.questions[1].content %>
                   <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
@@ -117,7 +126,9 @@
                   </div>
                   <% end %>
                 </div>
+                <% end %>
 
+            <% unless clause.questions[2].answers.exists?(user_id: current_user.id) %>
                 <div data-target="slideshow.slide" class="slide">
                   <%= clause.questions[2].content %>
                   <div class="form-group">
@@ -132,7 +143,9 @@
                   <% end %>
                   </div>
                 </div>
+              <% end %>
 
+              <% unless clause.questions[3].answers.exists?(user_id: current_user.id) %>
                 <div data-target="slideshow.slide" class="slide">
                   <%= clause.questions[3].content %>
                   <div class="form-group">
@@ -140,9 +153,12 @@
                     <%= f.hidden_field :user_id, :value => current_user.id  %>
                     <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
                     <%= f.text_area :content, :class => 'form-control', placeholder: clause.content %>
-                    <%= f.submit 'suggest', :class => 'btn-primary' %>
+                    <a data-action="slideshow#next">
+                      <%= f.submit 'suggest', :class => 'btn-primary' %>
+                    </a>
                   <% end %>
                   </div>
+                <% end %>
 
                 </div>
 
