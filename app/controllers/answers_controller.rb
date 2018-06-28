@@ -18,14 +18,11 @@ class AnswersController < ApplicationController
 
   def create
     @answer = Answer.new(answer_params)
-
-    if current_user == nil
-      redirect_to new_user_registration_path
-    else
-      @answer.content = params[:answer][:content]
-      @answer.user_id = current_user.id
-      @answer.question = Question.find(params[:answer][:question_id])
-    end
+    @answer.user_id = current_user.id
+    @answer.question = Question.find(params[:answer][:question_id])
+    @answer.content = params[:content]
+      # @answer.user_id = current_user.id
+      # @answer.question = Question.find(params[:answer][:question_id])
     respond_to do |format|
       format.js
     end
