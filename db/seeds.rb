@@ -30,16 +30,31 @@ User.destroy_all
 
 puts "creating user"
 User.create!(email: "bobstevens@charitize.com", password: 123456)
+User.create!(email: "user2@charitize.com", password: 123456)
+User.create!(email: "user3@charitize.com", password: 123456)
+User.create!(email: "user4@charitize.com", password: 123456)
+User.create!(email: "user5@charitize.com", password: 123456)
+User.create!(email: "user6@charitize.com", password: 123456)
 
 puts "creating admin user"
 AdminUser.create!(email:"admin@charitize.com", password: 123456)
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
 puts "creating legislation"
-Legislation.create!(title: 'Nigeria ICT Innovation and Entrepreneurship Vision', user_id: 1)
+Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Vision', user_id: 1)
+Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Vision', user_id: 2)
+Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Vision', user_id: 3)
+Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Vision', user_id: 4)
+Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Vision', user_id: 5)
+Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Vision', user_id: 6)
 
 puts "creating consultation"
 Consultation.create!(legislation_id: 1, user_id: 1)
+Consultation.create!(legislation_id: 2, user_id: 2)
+Consultation.create!(legislation_id: 3, user_id: 3)
+Consultation.create!(legislation_id: 4, user_id: 4)
+Consultation.create!(legislation_id: 5, user_id: 5)
+Consultation.create!(legislation_id: 6, user_id: 6)
 
 puts "creating sections"
 Section.create(title: 'Introduction', legislation_id: 1)
@@ -334,4 +349,3 @@ puts "creating dummy answers"
 # Answer.create!(content: 'no', question_id: 4, user_id: 1)
 # Answer.create!(content: 'My custom feedback', question_id: 5, user_id: 1)
 # Answer.create!(content: 'My custom feedback', question_id: 6, user_id: 1)
-
