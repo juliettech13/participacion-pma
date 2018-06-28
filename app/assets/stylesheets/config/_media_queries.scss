@@ -25,7 +25,26 @@
 
 @media only screen and (max-width: 450px) {
   .btn-dashboard {
-      margin-left: 20px;
+      margin-left: 15px;
+  }
+  .statistics-card {
+    flex-direction: column !important;
+  }
+  .policy-dropdown {
+    margin-left: 50px;
+  }
+}
+
+
+@media only screen and (max-width: 320px) {
+  .dashboard-cards {
+    margin-left: 10px;
+    text-align: left !important;
+    .card {
+    width: 100vw !important;
+      text-align: left !important;
+
+    }
   }
 }
 
