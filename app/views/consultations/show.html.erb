@@ -1,28 +1,16 @@
 <div class="container">
-<!--   <div class="icon">
-    <i class="fas fa-clipboard-check"></i>
-  </div> -->
-  <div class="page-header">
-    <h1>thank you<small>for your participation</small></h1>
-    <p>Your consultation on <strong><%= @consultation.legislation.title %></strong>, you have just helped contribute to the future of the nation by providing your input on this amazing proposed poilicy.</p>
-    <p>Share your pariticpation on social media.</p>
-    <%= social_share_button_tag(@consultation.user) %>
+  <div class="row">
+    <div class="col-lg-8 col-xs-12 col-sm-8">
+      <div class="card">
+        <div class="card-description">
+          <div class="page-header">
+            <h1>Thank you<small> for your participation</small></h1>
+              <p>Your consultation on <strong><%= @consultation.legislation.title %></strong>, you have just helped contribute to the future of the nation by providing your input on this amazing proposed poilicy.</p>
+              <p>Please share your pariticpation on social media.</p>
+              <%= social_share_button_tag(@consultation.user) %>
+            </div>
+          </div>
+      </div>
+    </div>
   </div>
-
-
-  <!-- <div class="thank-you-content"> -->
-   <!-- <p id="thank-you">thank you,</p> -->
-   <!-- <p>Your consultation on <strong><%= @consultation.legislation.title %></strong>, you have just helped contribute to the future of the nation by providing your input on this amazing proposed poilicy.</p> -->
-
-   <!-- <div class="share-network"> -->
-      <!-- <p>Share to your networks:</p> -->
-    <%#= social_share_button_tag(@consultation.user) %>
-   <!-- </div> -->
-
-  <!-- </div> -->
 </div>
-
-    <!--   <a href=""><i class="fab fa-twitter-square"></i></a>
-      <a href=""><i class="fab fa-facebook-square"></i></a>
-      <a href=""><i class="fab fa-linkedin"></i></a> -->
-            <%#= social_share_button_tag('Share to Facebook', :url => legislation_consultation_path(@consultation), desc: @consultation.user) %>
