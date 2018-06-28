@@ -56,6 +56,7 @@ Facebook::Messenger::Profile.set({
 last_message = "NO GOOD"
 feedback_ids = []
 
+
 Bot.on :message do |message|
   messenger_id = message.sender["id"]
   current_user = get_user(messenger_id)
@@ -77,6 +78,7 @@ Bot.on :message do |message|
     if last_message == "Please suggest your revision"
       consultation_id, section_id, clause_id, question_index = feedback_ids
       set_answer(message, user_id: current_user.id, clause_id: clause_id, question_index: question_index)
+      last_message = ""
       if last_clause?(section_id, clause_id)
         if last_section?(section_id)
           outboard(message)
@@ -86,11 +88,29 @@ Bot.on :message do |message|
       else
         next_clause(message, consultation_id: consultation_id, clause_id: clause_id.to_i + 1, section_id: section_id)
       end
+    elsif last_message == "Please enter your e-mail address."
+      VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+      if message.text.match(VALID_EMAIL_REGEX)
+        messenger_id = message.sender["id"]
+        current_user = get_user(messenger_id)
+        current_user.email = message.text
+        current_user.save
+        last_message = ""
+        usage_explanation(message)
+      else
+        message.reply(
+          text: "Oops, it looks like you didn't enter a valid e-mail address. Please enter it again.")
+      # else say "Oops it looks like it isn't a valid email adress and try again."
+      end
     end
   end
 
 
   case commands.first
+
+    when "ASK_FOR_EMAIL"
+      last_message = "Please enter your e-mail address."
+      ask_for_user_email(message)
 
     when "USAGE_EXPLANATION"
       usage_explanation(message)
@@ -203,10 +223,17 @@ def greet_current_user(postback)
     quick_replies:[
       {
         content_type: 'text',
-        title: "I want to help",
-        payload: 'USAGE_EXPLANATION'
+        title: "I want to help!",
+        payload: 'ASK_FOR_EMAIL'
       }
     ]
+  )
+end
+
+def ask_for_user_email(message)
+  message.typing_on
+  message.reply(
+    text: "Before we begin, please enter your e-mail. We will send you the results of the nationwide consultation once it is over, as well as any new policy updates so that you can participate in future consultations."
   )
 end
 
@@ -227,7 +254,7 @@ def usage_explanation(message)
     quick_replies:[
       {
         content_type: "text",
-        title: "I'm ready",
+        title: "I'm ready!",
         payload: 'START_CONSULTATION'
       }
     ]
