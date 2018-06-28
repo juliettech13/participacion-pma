@@ -56,7 +56,7 @@
       </div>
 
 
-      <div class="onesectionnav row">
+ <!--      <div class="onesectionnav row">
         <div class="previous_section">
           <a data-action="click->legislation#previous">previous</a>
         </div>
@@ -64,7 +64,7 @@
           <a data-action="click->legislation#next">next</a>
         </div>
       </div>
-
+ -->
         <% @legislation.sections.each do |section| %>
         <div data-target="legislation.slide" class="slide">
 
@@ -101,11 +101,21 @@
                   <%= f.hidden_field :user_id, :value => current_user.id  %>
                   <%= f.hidden_field :question_id, :value => clause.questions[0].id  %>
                   <div class="buttonspacing">
-                    <a data-action="slideshow#next"><%= f.submit '1', :class => 'btn-primary' %></a>
-                    <a data-action="slideshow#next"><%= f.submit '2', :class => 'btn-primary' %></a>
-                    <a data-action="slideshow#next"><%= f.submit '3', :class => 'btn-primary' %></a>
-                    <a data-action="slideshow#next"><%= f.submit '4', :class => 'btn-primary' %></a>
-                    <a data-action="slideshow#next"><%= f.submit '5', :class => 'btn-primary' %></a>
+                    <a data-action="slideshow#next">
+                      <%= f.submit '1', :name => "content", :class => 'btn-primary' %>
+                    </a>
+                    <a data-action="slideshow#next">
+                      <%= f.submit '2', :name => "content", :class => 'btn-primary' %>
+                    </a>
+                    <a data-action="slideshow#next">
+                      <%= f.submit '3', :name => "content", :class => 'btn-primary' %>
+                    </a>
+                    <a data-action="slideshow#next">
+                      <%= f.submit '4', :name => "content", :class => 'btn-primary' %>
+                    </a>
+                    <a data-action="slideshow#next">
+                      <%= f.submit '5', :name => "content", :class => 'btn-primary' %>
+                    </a>
                   </div>
                   <% end %>
                 </div>
@@ -118,11 +128,21 @@
                   <%= f.hidden_field :user_id, :value => current_user.id  %>
                   <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
                   <div class="buttonspacing">
-                    <a data-action="slideshow#next"><%= f.submit '1', :class => 'btn-primary' %></a>
-                    <a data-action="slideshow#next"><%= f.submit '2', :class => 'btn-primary' %></a>
-                    <a data-action="slideshow#next"><%= f.submit '3', :class => 'btn-primary' %></a>
-                    <a data-action="slideshow#next"><%= f.submit '4', :class => 'btn-primary' %></a>
-                    <a data-action="slideshow#next"><%= f.submit '5', :class => 'btn-primary' %></a>
+                    <a data-action="slideshow#next">
+                      <%= f.submit '1', :name => "content", :class => 'btn-primary' %>
+                    </a>
+                    <a data-action="slideshow#next">
+                      <%= f.submit '2', :name => "content", :class => 'btn-primary' %>
+                    </a>
+                    <a data-action="slideshow#next">
+                      <%= f.submit '3', :name => "content", :class => 'btn-primary' %>
+                    </a>
+                    <a data-action="slideshow#next">
+                      <%= f.submit '4', :name => "content", :class => 'btn-primary' %>
+                    </a>
+                    <a data-action="slideshow#next">
+                      <%= f.submit '5', :name => "content", :class => 'btn-primary' %>
+                    </a>
                   </div>
                   <% end %>
                 </div>
@@ -136,10 +156,13 @@
                   <%= f.hidden_field :user_id, :value => current_user.id  %>
                   <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
                   <div class="buttonspacing">
-                    <a data-action="slideshow#next"><%= f.submit 'Yes', :class => 'btn-primary' %></a>
-                    <a data-action="slideshow#next"><%= f.submit 'No', :class => 'btn-primary' %></a>
+                    <a data-action="slideshow#next">
+                      <%= f.submit 'Yes', :name => "content", :class => 'btn-primary' %>
+                    </a>
+                    <a data-action="slideshow#next">
+                      <%= f.submit 'No', :name => "content", :class => 'btn-primary' %>
+                    </a>
                   </div>
-                  <%#= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %>
                   <% end %>
                   </div>
                 </div>
@@ -152,9 +175,9 @@
                     <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
                     <%= f.hidden_field :user_id, :value => current_user.id  %>
                     <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
-                    <%= f.text_area :content, :class => 'form-control', placeholder: clause.content %>
+                    <%= f.text_area :content, :name => "content", :class => 'form-control', placeholder: clause.content %>
                     <a data-action="slideshow#next">
-                      <%= f.submit 'suggest', :class => 'btn-primary' %>
+                      <%= f.submit 'suggest revision', :class => 'btn-primary' %>
                     </a>
                   <% end %>
                   </div>
