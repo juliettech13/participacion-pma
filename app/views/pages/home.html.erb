@@ -1,16 +1,43 @@
+<!--
 <div class="container">
+  <div class="row">
+        <div class="card mx-auto text-center">
+          <div class="card-body homepage-card">
+            <h2 class="card-title">
+              Welcome to the  consultation for the
+            </h2>
+            <h1 class="card-title">
+              National ICT  Innovation and Entrepreneurship Policy Vision
+            </h1>
 
-<div class="jumbotron">
-  <h1>Welcome,</h1>
-  <p>to the consultation for the National ICT Innovation and Entrepreneurship Policy Vision by the Office for ICT Innovation and Entrepreneurship (OIIE) established under NITDA</p>
-  <p><%= link_to 'get started', new_legislation_consultation_path(@legislation), :class => 'btn btn-primary btn-lg', :role => 'button' %></p>
-</div>
-<!--   <div class="home-content">
-    <h4>Welcome to the consultation for the</h4>
-    <h1>National ICT Innovation and Entrepreneurship Policy Vision</h1>
-      <div class="get-started-button">
-        <%= link_to 'get started', new_legislation_consultation_path(@legislation), :class => 'btn-treehouse' %>
+              <%= link_to  new_legislation_consultation_path(@legislation), :class => 'btn btn-treehouse get-started-button', :role => 'button' do %>
+                <p class="btn-content">get started</p>
+              <% end %>
+
+            <p class="card-text">
+              <div class="start-page-text">
+                Policies should govern based on people, your feedback is going to have a direct impact on the nation’s national strategy for innovation and entrepreneurship to shape Nigeria’s   future.
+              </div>
+            </p>
+          </div>
+        </div>
       </div>
-    <p>Office for ICT Innovation and Entrepreneurship (OIIE) is established under NITDA with the responsibilities of continuing to nurture, cultivate and expand the ICT innovation and entrepreneurship within Nigeria in line with National ICT Policy and NITDA Act 2007. We want your participation in co-creating this national Policy Vision.</p>
-  </div> -->
+  </div>
+</div> -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-xs-12 col-sm-8">
+      <div class="card">
+          <div class="card-description">
+            <h3>Welcome to the  consultation for the</h3>
+            <h1>National ICT  Innovation and Entrepreneurship Policy Vision</h1>
+            <%= link_to "get started",  new_legislation_consultation_path(@legislation), :class => 'btn btn-treehouse get-started-button', :role => 'button' %>
+            <p>
+              Policies should govern based on people, your feedback is going to have a direct impact on the nation’s national strategy for innovation and entrepreneurship to shape Nigeria’s   future.
+            </p>
+          </div>
+
+      </div>
+    </div>
+  </div>
 </div>

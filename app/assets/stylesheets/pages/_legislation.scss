@@ -1,15 +1,56 @@
 #consultation_panel {
   background: white;
-  height: 100vh;
+  // height: 100vh;
 }
 
 #toc {
   background: white;
-  height: 100vh;
+  // height: 100vh;
 }
 
 .im-finished {
   display: inline-block;
+}
+
+.jumbotron {
+    margin-bottom: 0rem;
+}
+
+.title {
+  .display-4 {
+    font-size: 3rem;
+  }
+}
+
+#accordion .card {
+  border-radius: 0rem;
+  text-align: left;
+  margin-top: 0rem;
+  font-weight: lighter;
+}
+
+.legislationshow {
+  margin-top: 100px;
+  .display-4 {
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+}
+
+
+#accordion .form-control {
+  border: 1px solid #ced4da;
+}
+
+
+.card-header {
+  padding: 1rem .5rem;
+  border-bottom:.5px solid rgba(0, 0, 0, 0.125);
+  a {
+    font-weight: lighter;
+  }
 }
 
 .scrollable {
@@ -25,4 +66,53 @@
   display: block;
 }
 
+.form-control {
+  margin: 14px 0px;
+}
 
+
+.buttonspacing {
+  margin: 14px 0px;
+}
+
+.clause {
+  text-align: left;
+}
+
+.card-header {
+  background-color: white;
+}
+
+.finished {
+  margin: 20px 0px;
+  text-align: right;
+  .btn-lg {
+    padding: 0.5rem 8rem;
+  }
+}
+
+.onesectionnav {
+  justify-content: space-evenly;
+  margin: 20px 0px;
+  font-weight: 800;
+}
+
+.panel{
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sectionnav {
+  align-items: center;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+  .title .jumbotron {
+    padding: 0;
+}
+    .clause {
+        font-size: 1rem;
+    }
+}

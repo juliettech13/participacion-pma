@@ -6,7 +6,7 @@
 
 .instruction-slide-through {
   font-size: 24px;
-  margin: 45px 0px;
+  margin: 35px 0px;
 }
 
 .btn-medium {
@@ -21,4 +21,25 @@
   opacity: 1;
   text-decoration: none;
   color: #999999;
+}
+
+#backbutton {
+  background: none;
+  border: none;
+  justify-content: space-between;
+}
+
+#nextbutton {
+  background: none;
+  border: none;
+  justify-content: space-between;
+}
+
+.new-consultation {
+  margin-bottom: 35px;
+}
+
+.navigation-btns {
+  display:flex;
+ justify-content: center;
 }
