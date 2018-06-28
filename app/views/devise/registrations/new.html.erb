@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-lg-4 col-sm-6 col-sm-offset-4">
+    <div class="col-12 col-lg-4 col-sm-6 col-sm-offset-4">
       <div class="login_form">
         <div class="login-form-header col-md-1">
           <h2>SignUp</h2>
@@ -15,7 +15,7 @@
             </div>
             <div class="form-group ">
             Password
-               <%= f.input :password, label: false, required: true, placeholder: "•••••• (6 characters minimum)", hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+               <%= f.input :password, label: false, required: true, placeholder: "••••••(6 characters min.)" %>
             </div>
             <div class="form-group">
               Password Confirmation

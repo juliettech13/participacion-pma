@@ -10,6 +10,22 @@
       margin-top: 50px !important;
      }
   }
+
+  .login_form input {
+    width: 100%;
+  }
+
+  .login_form {
+    .btn {
+      width:100%;
+    }
+   }
+  .login_form {
+    .form-control {
+      width: 100%;
+    }
+  }
+
 }
 
 @media only screen and (width: 1024px) {
