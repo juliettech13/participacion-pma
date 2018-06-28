@@ -17,3 +17,9 @@
     margin-left: 700px;
   }
 }
+
+@media only screen and (max-width: 450px) {
+  .btn-dashboard {
+      margin-left: 20px;
+  }
+}
