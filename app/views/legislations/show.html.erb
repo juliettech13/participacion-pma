@@ -90,16 +90,11 @@
               <%# end %>
             </div>
 
-
-
             <div id="collapse_<%= clause.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
               <div class="card-body" data-controller="slideshow">
-
                 <% unless clause.questions[0].answers.exists?(user_id: current_user.id) %>
                 <div data-target="slideshow.slide" class="slide">
-
                   <%= clause.questions[0].content %>
-
                   <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
                   <%= f.hidden_field :user_id, :value => current_user.id  %>
                   <%= f.hidden_field :question_id, :value => clause.questions[0].id  %>
@@ -121,15 +116,12 @@
                     </a>
                   </div>
                   <% end %>
-
                 </div>
                 <% end %>
 
                 <% unless clause.questions[1].answers.exists?(user_id: current_user.id) %>
                 <div data-target="slideshow.slide" class="slide">
-
                   <%= clause.questions[1].content %>
-
                   <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
                   <%= f.hidden_field :user_id, :value => current_user.id  %>
                   <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
@@ -151,20 +143,15 @@
                     </a>
                   </div>
                   <% end %>
-
                 </div>
                 <% end %>
 
                 <% unless Answer.exists?(:question_id => clause.questions[2].id, user_id: current_user.id) %>
-                <%# unless clause.questions[2].answers.exists?(user_id: current_user.id) %>
                 <div data-target="slideshow.slide" class="slide">
-
                   <%= clause.questions[2].content %>
-
                   <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
                   <%= f.hidden_field :user_id, :value => current_user.id  %>
                   <%= f.hidden_field :question_id, :value => clause.questions[2].id  %>
-
                   <div class="buttonspacing">
                     <a data-action="slideshow#next">
                       <%= f.submit 'Yes', :name => "content", :class => 'btn-primary' %>
@@ -174,15 +161,13 @@
                     </a>
                   </div>
                   <% end %>
-
                 </div>
                 <% end %>
 
+
                 <% unless clause.questions[3].answers.exists? %>
                 <div data-target="slideshow.slide" class="slide">
-
                   <%= clause.questions[3].content %>
-
                   <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
                   <div class="form-group">
                     <%= f.hidden_field :user_id, :value => current_user.id  %>
@@ -193,8 +178,6 @@
                     </a>
                   </div>
                   <% end %>
-
-
                 </div>
                 <% end %>
 

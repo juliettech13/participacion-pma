@@ -28,7 +28,8 @@ class AnswersController < ApplicationController
       # @answer.user_id = current_user.id
       # @answer.question_id = @question.id
     end
-    @answer.save!
+
+   @answer.save!
     # @answer.question = @question
 
     # respond_to do |format|
