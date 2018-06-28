@@ -1,0 +1,13 @@
+
+<div class="container legislationshow">
+  <h1 class="display-4"><%= @consultation.legislation.title %></h1>
+  <p class="lead">Please provide your feedback based on what you've read</p>
+
+<div class="form-group feedback">
+  <%= simple_form_for [@consultation, @general_feedback] do |f| %>
+  <%= f.text_area :content, :rows => 5, :class => 'form-control' %>
+  <%= f.submit "finish consultation", :class => 'btn-primary btn-lg' %>
+  <% end %>
+</div>
+
+</div>

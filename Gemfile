@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 ruby '2.3.4'
 
 gem 'bootsnap', require: false
+gem 'bootstrap', '~> 4.1.1'
+gem 'jquery-rails'
+
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
@@ -14,9 +17,6 @@ gem 'omniauth-facebook'
 gem 'turbolinks', '~> 5.0.0'
 gem 'social-share-button'
 
-
-
-
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'font-awesome-sass', '~> 5.0.9'
@@ -24,6 +24,8 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+
+gem 'activeadmin'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -36,3 +38,4 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+

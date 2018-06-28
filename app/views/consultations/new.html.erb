@@ -1,24 +1,32 @@
 <div class="container" data-controller="instruction">
-  <h1>New Consultation</h1>
+  <div class="row">
+    <div class="col-lg-8 col-xs-12 col-sm-12">
+      <div class="card" >
+        <div class="card-description">
+          <div class="page-header">
+            <h2>Welcome<small> to your policy consultation</small></h2>
+          </div>
+          <div class="instruction-slide-through">
+            <p id ="instructions">The vision intends to create a unifying policy vision for transforming Nigeria's economy and accelerating economic growth. The vision is composed of four chapters, and you are invited to comment on specific policy recommendations, on chapters, on the introduction and on the entire policy.</p>
+          </div>
 
-  <div class="instruction-slide-through">
-    <p>Here is how it works</p>
+          <div id="start" style="display: none;">
+            <%= simple_form_for [@legislation, @consultation] do |f| %>
+              <%= f.input :user_id, as: :hidden %>
+              <%= f.submit "Start your consultation", class: "new-consultation btn-lg btn-primary" %>
+            <% end %>
+          </div>
 
-    <!-- <p>If you would like to be reminded to complete this at a better time, please provide when you would like receive a reminder.</p> -->
+          <div class="navigation-btns">
+            <button id ="backbutton" style="display: none;" data-action="click->instruction#toggleBack">Back</button>
+            <button id= "nextbutton" data-action="click->instruction#toggleForward">Next</button>
+          </div>
 
-    <p id ="instructions">The vision intends to create a unifying policy vision for transforming [COUNTRY] economy and accelerating economic growth. The vision is composed of four chapters, and you are invited to comment on specific policy recommendations, on chapters, on the introduction and on the entire policy.</p>
 
-    <!-- <p>Leave and come back anytime, your progress is saved.</p>
 
-    <p>Click on any of the sections or clauses. If you like something, please let us know. If you think we can improve anything to support innovation, entrepreneurship or ICT developmemt, please let us know how. Thanks for your participation!</p> -->
+        </div>
+      </div>
+    </div>
   </div>
-  <%#= render 'form', consultation: @consultation %>
-
-  <button id = "backbutton" data-action="click->instruction#toggleBack">Back</button>
-  <button id= "nextbutton" data-action="click->instruction#toggleForward">Next</button>
-
-  <button id="start" style="display: none;"><%= link_to 'Start Your Consultation', legislation_path(@legislation), :controller => 'consultations', :action => 'create' %></button>
-
 </div>
 
-<!-- , consultation: { user_id: current_user.id, legislation_id: 1 } -->

@@ -1,10 +1,43 @@
+<!--
 <div class="container">
+  <div class="row">
+        <div class="card mx-auto text-center">
+          <div class="card-body homepage-card">
+            <h2 class="card-title">
+              Welcome to the  consultation for the
+            </h2>
+            <h1 class="card-title">
+              National ICT  Innovation and Entrepreneurship Policy Vision
+            </h1>
 
-  <div class="home-content">
-    <h3>Welcome to the Policy Consultation for the</h3>
-    <h1>National ICT Innovation and Entrepreneurship Policy Vision</h1>
-    <%= link_to 'Get Started', new_legislation_consultation_path(@legislation), :class => 'btn-treehouse' %>
-    <h3>powered by NIDTA and i4Policy</h3>
+              <%= link_to  new_legislation_consultation_path(@legislation), :class => 'btn btn-treehouse get-started-button', :role => 'button' do %>
+                <p class="btn-content">get started</p>
+              <% end %>
+
+            <p class="card-text">
+              <div class="start-page-text">
+                Policies should govern based on people, your feedback is going to have a direct impact on the nation’s national strategy for innovation and entrepreneurship to shape Nigeria’s   future.
+              </div>
+            </p>
+          </div>
+        </div>
+      </div>
   </div>
+</div> -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-xs-12 col-sm-8">
+      <div class="card">
+          <div class="card-description">
+            <h3>Welcome to the  consultation for the</h3>
+            <h1>National ICT  Innovation and Entrepreneurship Policy Vision</h1>
+            <%= link_to "get started",  new_legislation_consultation_path(@legislation), :class => 'btn btn-treehouse get-started-button', :role => 'button' %>
+            <p>
+              Policies should govern based on people, your feedback is going to have a direct impact on the nation’s national strategy for innovation and entrepreneurship to shape Nigeria’s   future.
+            </p>
+          </div>
 
+      </div>
+    </div>
+  </div>
 </div>

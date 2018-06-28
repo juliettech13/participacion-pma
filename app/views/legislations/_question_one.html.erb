@@ -1,0 +1,27 @@
+
+<%= form_for :answer, html: { id: "reportform answer1" }, remote: true, update:
+          { success: "response", failure: "error"} do |f| %>
+  <button data-action="slideshow#next"><%= f.submit '1' %></button>
+  <button data-action="slideshow#next"><%= f.submit '2' %></button>
+  <button data-action="slideshow#next"><%= f.submit '3' %></button>
+<% end %>
+
+
+<!-- <div data-target="slideshow.slide" class="slide">
+<%= form_for :answer, html: { id: "reportform answer2" }, remote: true, update:
+          { success: "response", failure: "error"} do |f| %>
+  <button data-action="slideshow#next"><%= f.submit 'Yes' %></button>
+  <button data-action="slideshow#next"><%= f.submit 'No' %></button>
+  <button data-action="slideshow#next"><%= f.submit 'C' %></button>
+  <% end %>
+</div>
+
+<div data-target="slideshow.slide" class="slide">
+<%= form_for :answer, html: { id: "reportform answer4" }, remote: true, update:
+          { success: "response", failure: "error"} do |f| %>
+  <%= f.text_area :content %>
+  <button data-action="slideshow#next">
+    <%= f.submit 'Suggest' %>
+  </button>
+  <% end %>
+</div> -->

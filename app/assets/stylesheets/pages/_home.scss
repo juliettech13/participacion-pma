@@ -1,8 +1,100 @@
 // Specific CSS for your home-page
 
-.home-content {
-  justify-content: space-around;
-  text-align: center;
-  margin: auto;
-  width: 50%;
+
+
+.card {
+  width: 100%;
+  border: none;
+  color: black;
+  position: relative;
+  text-align:center;
+}
+
+.card-category {
+  top: 10px;
+  left: 10px;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+.card-description {
+  font-weight: lighter;
+}
+
+.card-description p {
+  font-size: 23px;
+  font-weight: lighter;
+  letter-spacing: 0.2px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+
+// =============================================
+// .home-content {
+//   display: block;
+//   // justify-content: space-around;
+//   // text-align: center;
+//   // margin: auto;
+//   width: 60%;
+// }
+
+// .card {
+//   border: none !important;
+//   margin: 0 auto !important;
+//   float: none;
+//   margin-bottom: 10px;
+// }
+
+.get-started-button {
+    color: white;
+    // padding: 20px 200px;
+    max-height: 50px;
+    border-radius: 10px;
+    width: 300px;
+    background: #037200;
+    transition: background 0.3s ease;
+}
+
+.btn-content {
+  display:flex;
+  justify-content: center;
+  // align-items: center;
+}
+
+.get-started-button {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.get-started-button:hover {
+  text-decoration: none !important;
+  color: white;
+  background-color: #3ac162 ;
+}
+
+// .banner {
+//   color: white;
+//   text-align: center;
+//   height: 100vh;
+//   /* if you have a 70px navbar => height: calc(100vh - 70px); */
+//   background-size: cover !important;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+.banner h1 {
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+}
+.banner p {
+  font-size: 25px;
+  font-weight: lighter;
+  color: rgb(255, 255, 255);
+  opacity: 0.6;
+  margin-bottom: 30px;
 }
