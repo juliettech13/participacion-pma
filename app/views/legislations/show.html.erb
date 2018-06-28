@@ -141,7 +141,7 @@
                    </div>
                  <% end %>
 
-                 <% if @answer.content == 'Yes' %>
+                 <% if @positive %>
                    <% unless clause.questions[3].answers.exists?(user_id: current_user.id) %>
                      <div data-target="slideshow.slide" class="slide">
                       <%= clause.questions[3].content %>

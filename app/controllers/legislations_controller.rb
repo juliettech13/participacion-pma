@@ -13,6 +13,8 @@ class LegislationsController < ApplicationController
     @consultation = Consultation.find(1)
     @answer = Answer.new
     @questions = Question.where(:clause_id => @legislation.sections.each(&:clauses)).all
+    @positive = Answer.all.where(user_id: current_user.id, question_id: Question.all.where(content: 'Would you like to provide a suggestion?'), content: 'Yes').last
+
   end
 
   # GET /legislations/new
