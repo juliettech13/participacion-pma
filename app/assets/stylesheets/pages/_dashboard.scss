@@ -16,16 +16,21 @@
     border-radius: 5px;
     margin:3px;
     margin-bottom:17px;
-    width: 100%;
+    // width: 100vw;
     // align-items: center;
     background-color:#383E45;
     color: white;
     display: block;
+
+    p {
+      font-weight: lighter;
+      font-size: 15px;
+    }
   }
 
     .policy-card {
       .policy-dropdown {
-        margin-top: 10px;
+        padding-top:10px;
         max-width: 60%;
         display: flex;
         justify-content: space-around;
