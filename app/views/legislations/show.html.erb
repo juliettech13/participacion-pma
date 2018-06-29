@@ -79,6 +79,12 @@
               <h5 class="mb-0">
                 <a class="btn btn-link clause" data-toggle="collapse" data-target="#collapse_<%= clause.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
                   <strong><%= clause.id - 1 %></strong> <%= clause.content %>
+                  <% if clause.questions[2].answers.exists?(user_id: current_user.id) %>
+                   <h6 style="color: orange;">questions answered</h6>
+                  <% end %>
+                  <% if clause.questions[3].answers.exists?(user_id: current_user.id) %>
+                   <h6 style="color: green;">suggestion given</h6>
+                  <% end %>
                 </a>
               </h5>
               <%# if Metadatum.exists?(clause_id: clause.id) %>
@@ -165,7 +171,7 @@
                 <% end %>
 
 
-                <% unless clause.questions[3].answers.exists? %>
+                <% unless clause.questions[3].answers.exists?(user_id: current_user.id) %>
                 <div data-target="slideshow.slide" class="slide">
                   <%= clause.questions[3].content %>
                   <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>

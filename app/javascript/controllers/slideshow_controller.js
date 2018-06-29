@@ -7,6 +7,11 @@ export default class extends Controller {
     this.showSlide(0)
   }
 
+  // inject(){
+  //   var injection = document.getElementById('injection_suggestion')
+  //   var card = document.getElementById('')
+  // }
+
   next() {
     this.showSlide(this.index + 1)
   }
