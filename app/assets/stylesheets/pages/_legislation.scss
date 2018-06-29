@@ -66,8 +66,14 @@
   display: block;
 }
 
-.form-control {
+.collapse .form-control {
   margin: 14px 0px;
+  width: 100%;
+}
+
+.feedback .form-control {
+  margin: 14px 0px;
+  width: 100%;
 }
 
 .sectionnav .dropdown {
