@@ -32,5 +32,6 @@ Rails.application.routes.draw do
   # mount Facebook::Messenger::Server, at: 'bot'
 
   get 'dashboard', to: 'pages#dashboard'
+  get 'dashboard_2', to: 'pages#dashboard_2'
 
 end

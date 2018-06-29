@@ -7,8 +7,16 @@ class PagesController < ApplicationController
   def finished
     @consultation = Consultation.find_by(user_id: current_user.id)
   end
-  
+
   def dashboard
-    #@sections = Sections.all
+    @sections = Section.all
+    #@clause = Clause.where(params[section_id:])
+    @clauses = Clause.all
+  end
+
+   def dashboard_2
+    @sections = Section.all
+    #@clause = Clause.where(params[section_id:])
+    @clauses = Clause.all
   end
 end

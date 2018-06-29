@@ -8,6 +8,13 @@
     display:flex;
     justify-content: space-around;
     border: none;
+    text-align: left;
+    .btn-dashboard {
+      display: inline-block;
+      //justify-content: space-around;
+      //text-align: right;
+      float: right;
+    }
   }
 }
 
