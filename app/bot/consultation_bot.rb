@@ -210,7 +210,7 @@ def greet_current_user(postback)
   )
   sleep(1)
   postback.reply(
-    text: "I'm the official chatbot of the consultation for the National ICT Innovation and Entrepreneurship Policy Vision."
+    text: "I'm the official consultation chatbot for the National ICT Innovation and Entrepreneurship Policy Vision."
   )
   sleep(2)
   postback.reply(
@@ -547,10 +547,17 @@ end
 
 def set_answer(message, user_id:, clause_id:, question_index:)
   clause = Clause.find(clause_id)
-  question = clause.questions[question_index.to_i - 1]
-
-  answer = Answer.new(question: question, user_id: user_id, content: message.text)
-  answer.save
+  p question = clause.questions[question_index.to_i - 1]
+  # if the user has never answered the question
+  if Question.find(question.id).answers.where(user_id: user_id).length == 0
+    answer = Answer.new(question: question, user_id: user_id, content: message.text)
+    answer.save
+  # else update his already existing answer
+  else
+    answer = Answer.find_by(question_id: question)
+    answer.content = message.text
+    answer.save
+  end
 end
 
 def last_question?(clause_id, question_index)
