@@ -94,8 +94,8 @@ Bot.on :message do |message|
       else
         message.typing_on
         message.reply(
-          text: "Oops, it looks like you didn't enter a valid e-mail address. Please enter it again.")
-      # else say "Oops it looks like it isn't a valid email adress and try again."
+          text: "Oops, it looks like you didn't enter a valid e-mail address. Please enter it again."
+        )
       end
     end
   end
@@ -214,7 +214,7 @@ def greet_current_user(postback)
   )
   sleep(2)
   postback.reply(
-    text: "We need your help to create and shape a unifying policy vision for transforming Nigeria's economy and accelerating economic growth. Your input matters!",
+    text: "We need your help to create and shape a unifying policy vision for transforming Nigeria's economy and accelerating economic growth. And to do so, we need your input.",
     quick_replies:[
       {
         content_type: 'text',
@@ -235,17 +235,17 @@ end
 def usage_explanation(message)
   message.typing_on
   message.reply(
-  text: "The proposed policy vision is composed of an introduction and 4 sections. Each section has several clauses and you are invited to feedback on each one."
+  text: "The proposed policy vision is composed of an introduction and 4 sections. Each section has several clauses and you are invited to give your feedback on each one. If you want to get an overview of the policy at any time, or skip to a specific section, use the menu below."
   )
-  sleep(2)
+  sleep(1)
   message.typing_on
   message.reply(
-    text: "If you want to get an overview of the policy at any time, or skip to a specific section, use the menu below."
-  )
-  sleep(2)
+    text: "Your input on each section is saved as you go. You will be asked 2 standard questions for each clause, and then be given the opportunity to provide more open feedback should you wish to."
+    )
+  sleep(1)
   message.typing_on
   message.reply(
-    text: "Your input on each section is saved as you go. You will be asked 3 questions to get a general sense of your thoughts on each clause.",
+    text: "The standard questions can be answered with a 1 to 5 scale. 1 means you do not agree at all, while 5 means you completely agree.",
     quick_replies:[
       {
         content_type: "text",
@@ -346,20 +346,20 @@ def start_consultation(message, user, legislation)
   consultation = Consultation.find_or_create_by(user: user, legislation: legislation)
   ids = [consultation.id, 1, 1, 1]
   section = Section.find(1)
-  clause = Clause.find(1)
+  clause = Clause.find(1).content.split(".")
   message.typing_on
   message.reply(
-    text: "Awesome ! Let's dive into the introduction of the policy. It gives the general aim of the and vision of the policy."
-  )
-  sleep(1)
-  message.typing_on
-  message.reply(
-    text: "Here it is:"
+    text: "#{clause[0..1].join('.')}"
   )
   sleep(2)
   message.typing_on
   message.reply(
-    text: "#{clause.content}",
+    text: "#{clause[2].gsub("\n",' ')}."
+  )
+  sleep(2)
+  message.typing_on
+  message.reply(
+    text: "#{clause[3].gsub("\n",' ')}.",
     quick_replies:[
       {
         content_type: "text",
@@ -373,7 +373,7 @@ end
 def next_clause(message, consultation_id:, section_id:, clause_id:)
   ids = [consultation_id, section_id, clause_id, 1]
   clause = Clause.find(clause_id)
-  text = ["Moving on to the next clause of this section...", "OK, let's go to next clause of this section...", "Next clause! Are you ready ?", "On to the next clause..."]
+  text = ["Moving on to the next clause of this section...", "OK, let's go to the next clause of this section...", "Next clause! Are you ready ?", "On to the next clause..."]
   message.typing_on
   message.reply(
     text: text.sample
@@ -436,15 +436,17 @@ def skip_to_section(message, consultation_id:, section_id:)
   ids = [consultation_id, section_id, clause.id, 1]
   message.typing_on
   message.reply(
-    text: "Skipping to the #{section.title} Section..."
+    text: "Skipping to #{section.title}..."
   )
   sleep(1)
-  text = ["Let's start with the first clause of the section:", "Here's the first clause of the section:"]
-  message.typing_on
-  message.reply(
-    text: text.sample
-  )
-  sleep(2)
+  unless section.id == 1
+    text = ["Let's start with the first clause of the section:", "Here's the first clause of the section:"]
+    message.typing_on
+    message.reply(
+      text: text.sample
+    )
+    sleep(2)
+  end
   message.typing_on
   message.reply(
     text: "#{clause.content}",
@@ -481,17 +483,7 @@ def show_question(message, options:)
   else
     message.typing_on
     message.reply(
-      text: clause.questions[question_index.to_i - 1].content
-    )
-    if question_index == "1"
-      text = "Please answer using a scale of 1 to 5. Answering with 1 means that it is not at all representative, while 5 means it is completely representative."
-    else
-      text = "Please answer the question using the same 1 to 5 scale."
-    end
-    sleep(1)
-    message.typing_on
-    message.reply(
-      text: text,
+      text: clause.questions[question_index.to_i - 1].content,
       quick_replies: ["1","2","3","4","5"].map do |number|
         {
           content_type: "text",
@@ -500,6 +492,23 @@ def show_question(message, options:)
         }
       end
     )
+    # if question_index == "1"
+    #   text = "Please answer using a scale of 1 to 5. Answering with 1 means that it is not at all representative, while 5 means it is completely representative."
+    # else
+    #   text = "Please answer the question using the same 1 to 5 scale."
+    # end
+    # sleep(1)
+    # message.typing_on
+    # message.reply(
+    #   text: text,
+    #   quick_replies: ["1","2","3","4","5"].map do |number|
+    #     {
+    #       content_type: "text",
+    #       title: number,
+    #       payload: "ANSWER/#{options}"
+    #     }
+    #   end
+    # )
   end
 end
 
