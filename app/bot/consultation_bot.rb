@@ -65,12 +65,6 @@ Bot.on :message do |message|
   p message
   sleep(1.5)
 
-  #if previous delivery content was please provide a revision then set answer
-
-  # if previous delivery content was type your email then regex email if not I didn't understand your reponse
-
-  #else repeat last question
-
   if message.quick_reply
     commands = message.quick_reply.split('/')
   else
@@ -98,6 +92,7 @@ Bot.on :message do |message|
         last_message = ""
         usage_explanation(message)
       else
+        message.typing_on
         message.reply(
           text: "Oops, it looks like you didn't enter a valid e-mail address. Please enter it again.")
       # else say "Oops it looks like it isn't a valid email adress and try again."
@@ -160,7 +155,7 @@ Bot.on :message do |message|
           next_clause(message, consultation_id: consultation_id, clause_id: clause_id.to_i + 1, section_id: section_id)
         end
       else
-        p question_index = question_index.to_i
+        question_index = question_index.to_i
         ids = [consultation_id, section_id, clause_id, question_index]
         last_message = "Please suggest your revision"
         feedback_ids = ids
@@ -378,14 +373,16 @@ end
 def next_clause(message, consultation_id:, section_id:, clause_id:)
   ids = [consultation_id, section_id, clause_id, 1]
   clause = Clause.find(clause_id)
+  text = ["Moving on to the next clause of this section...", "OK, let's go to next clause of this section...", "Next clause! Are you ready ?", "On to the next clause..."]
   message.typing_on
   message.reply(
-    text: "Moving on to the next clause of this section..."
+    text: text.sample
   )
   sleep(1)
+  text = ["Here it is:", "This is it:", "Here's what it says:", "And this is what it contains:"]
   message.typing_on
   message.reply(
-    text: "Here it is:"
+    text: text.sample
   )
   sleep(2)
   message.typing_on
@@ -406,14 +403,16 @@ def next_section(message, consultation_id:, section_id:)
   section = Section.find(section_id)
   clause = section.clauses.first
   ids = [consultation_id, section_id, clause.id, 1]
+  text = ["Next section ! Here we're going to talk about #{section.title}.", "Moving on to the next section...the subject is #{section.title}."]
   message.typing_on
   message.reply(
-    text: "Next section ! Here we're going to talk about #{section.title}."
+    text: text.sample
   )
   sleep(1)
+  text = ["Let's start with the first clause of the section:", "Here's the first clause of the section:"]
   message.typing_on
   message.reply(
-    text: "Let's start with the first clause of the section:"
+    text: text.sample
   )
   sleep(2)
   message.typing_on
@@ -438,9 +437,10 @@ def skip_to_section(message, consultation_id:, section_id:)
     text: "Skipping to the #{section.title} Section..."
   )
   sleep(1)
+  text = ["Let's start with the first clause of the section:", "Here's the first clause of the section:"]
   message.typing_on
   message.reply(
-    text: "Let's begin with the first clause of the section:"
+    text: text.sample
   )
   sleep(2)
   message.typing_on
@@ -465,9 +465,10 @@ def show_question(message, options:)
 
   if last_question?(clause_id, question_index)
     # Skipping the last question for now, might need to accept a typed response
+    message.typing_on
     message.reply(
       text: "Would you like to provide a suggestion or a revision to this clause ?",
-      quick_replies: ["Yes", "No"]. map do |answer|
+      quick_replies: ["Yes", "No"].map do |answer|
         {
           content_type:"text",
           title: answer,
@@ -486,6 +487,7 @@ def show_question(message, options:)
       text = "Please answer the question using the same 1 to 5 scale."
     end
     sleep(1)
+    message.typing_on
     message.reply(
       text: text,
       quick_replies: ["1","2","3","4","5"].map do |number|
