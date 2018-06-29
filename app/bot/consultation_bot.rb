@@ -53,7 +53,6 @@ Facebook::Messenger::Profile.set({
   ]
 }, access_token: ENV['ACCESS_TOKEN'])
 
-last_message = "NO GOOD"
 feedback_ids = []
 
 
@@ -69,10 +68,12 @@ Bot.on :message do |message|
     commands = message.quick_reply.split('/')
   else
     commands = []
-    if last_message == "Please suggest your revision"
+    if current_user.checkpoint == "Please suggest your revision"
       consultation_id, section_id, clause_id, question_index = feedback_ids
       set_answer(message, user_id: current_user.id, clause_id: clause_id, question_index: question_index)
-      last_message = ""
+      current_user.checkpoint = ""
+      current_user.save
+
       if last_clause?(section_id, clause_id)
         if last_section?(section_id)
           outboard(message)
@@ -82,14 +83,14 @@ Bot.on :message do |message|
       else
         next_clause(message, consultation_id: consultation_id, clause_id: clause_id.to_i + 1, section_id: section_id)
       end
-    elsif last_message == "Please enter your e-mail address."
+    elsif current_user.checkpoint == "Please enter your e-mail address."
       VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
       if message.text.match(VALID_EMAIL_REGEX)
         messenger_id = message.sender["id"]
-        current_user = get_user(messenger_id)
         current_user.email = message.text
+        current_user.checkpoint = ""
         current_user.save
-        last_message = ""
+
         usage_explanation(message)
       else
         message.typing_on
@@ -104,7 +105,8 @@ Bot.on :message do |message|
   case commands.first
 
     when "ASK_FOR_EMAIL"
-      last_message = "Please enter your e-mail address."
+      current_user.checkpoint = "Please enter your e-mail address."
+      current_user.save
       ask_for_user_email(message)
 
     when "USAGE_EXPLANATION"
@@ -157,7 +159,8 @@ Bot.on :message do |message|
       else
         question_index = question_index.to_i
         ids = [consultation_id, section_id, clause_id, question_index]
-        last_message = "Please suggest your revision"
+        current_user.checkpoint = "Please suggest your revision"
+        current_user.save
         feedback_ids = ids
         show_feedback_question(message, options: ids.join(','))
       end
@@ -565,7 +568,7 @@ def set_answer(message, user_id:, clause_id:, question_index:)
     answer.save
   # else update his already existing answer
   else
-    answer = Answer.find_by(question_id: question)
+    answer = Answer.find_by(question_id: question, user_id: user_id)
     answer.content = message.text
     answer.save
   end
