@@ -379,19 +379,20 @@ def next_clause(message, consultation_id:, section_id:, clause_id:)
     text: text.sample
   )
   sleep(1)
-  text = ["Here it is:", "This is it:", "Here's what it says:", "And this is what it contains:"]
+  text = ["Here it is:", "This is it:", "Here's what it says:", "This is what it contains:"]
   message.typing_on
   message.reply(
     text: text.sample
   )
   sleep(2)
+  button_titles = ["Got it !", "Understood !", "OK !"]
   message.typing_on
   message.reply(
     text: "#{clause.content}",
     quick_replies:[
       {
         content_type: "text",
-        title: "Got it!",
+        title: button_titles.sample,
         payload: "SHOW_QUESTION/#{ids.join(',')}"
       }
     ]
@@ -415,13 +416,14 @@ def next_section(message, consultation_id:, section_id:)
     text: text.sample
   )
   sleep(2)
+  button_titles = ["Got it !", "Understood !", "OK !"]
   message.typing_on
   message.reply(
     text: "#{clause.content}",
     quick_replies:[
       {
         content_type: "text",
-        title: "Got it!",
+        title: button_titles.sample,
         payload: "SHOW_QUESTION/#{ids.join(',')}"
       }
     ]
@@ -547,7 +549,7 @@ end
 
 def set_answer(message, user_id:, clause_id:, question_index:)
   clause = Clause.find(clause_id)
-  p question = clause.questions[question_index.to_i - 1]
+  question = clause.questions[question_index.to_i - 1]
   # if the user has never answered the question
   if Question.find(question.id).answers.where(user_id: user_id).length == 0
     answer = Answer.new(question: question, user_id: user_id, content: message.text)
