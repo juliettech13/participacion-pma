@@ -7,10 +7,21 @@ export default class extends Controller {
     this.showSlide(0)
   }
 
-  // inject(){
-  //   var injection = document.getElementById('injection_suggestion')
-  //   var card = document.getElementById('')
-  // }
+  answered(){
+    var injection = document.getElementById('revised_badge')
+    var alertSpot = document.getElementById('success-badges')
+    var answeredSection = this.element.parentNode.parentNode
+  }
+
+  revised(){
+    var injection = document.getElementById('revised_badge')
+    var injection = document.getElementById('answered_badge')
+    var alertSpot = document.getElementsByClassName('success-badges')
+
+    console.log(this.element.parentNode.parentNode)
+
+    // alertSpot.innerHTML = injection
+  }
 
   next() {
     this.showSlide(this.index + 1)
