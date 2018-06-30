@@ -53,10 +53,13 @@ Facebook::Messenger::Profile.set({
   ]
 }, access_token: ENV['ACCESS_TOKEN'])
 
-feedback_ids = []
-
+VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
 Bot.on :message do |message|
+  handle_message(message, message.quick_reply)
+end
+
+def handle_message(message, quick_reply)
   messenger_id = message.sender["id"]
   current_user = get_user(messenger_id)
   legislation = Legislation.last
@@ -64,11 +67,15 @@ Bot.on :message do |message|
   p message
   sleep(1.5)
 
-  if message.quick_reply
-    commands = message.quick_reply.split('/')
+  if quick_reply && !quick_reply.blank?
+    current_user.checkpoint = quick_reply
+    current_user.save
+    commands = quick_reply.split('/')
   else
     commands = []
-    if current_user.checkpoint == "Please suggest your revision"
+    feedback_ids = (current_user.checkpoint.split('/').second || "").split(',')
+
+    if current_user.checkpoint.start_with?("FEEDBACK")
       consultation_id, section_id, clause_id, question_index = feedback_ids
       set_answer(message, user_id: current_user.id, clause_id: clause_id, question_index: question_index)
       current_user.checkpoint = ""
@@ -83,12 +90,12 @@ Bot.on :message do |message|
       else
         next_clause(message, consultation_id: consultation_id, clause_id: clause_id.to_i + 1, section_id: section_id)
       end
-    elsif current_user.checkpoint == "Please enter your e-mail address."
-      VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+    elsif current_user.checkpoint.start_with?("ASK_FOR_EMAIL")
+
       if message.text.match(VALID_EMAIL_REGEX)
         messenger_id = message.sender["id"]
         current_user.email = message.text
-        current_user.checkpoint = ""
+        current_user.checkpoint = "USAGE_EXPLANATION"
         current_user.save
 
         usage_explanation(message)
@@ -98,6 +105,12 @@ Bot.on :message do |message|
           text: "Oops, it looks like you didn't enter a valid e-mail address. Please enter it again."
         )
       end
+    else
+      message.typing_on
+      message.reply(
+        text: "Oops! I didn't understand your message, please answer the question with one of the options below:"
+      )
+      return handle_message(message, current_user.checkpoint)
     end
   end
 
@@ -105,8 +118,8 @@ Bot.on :message do |message|
   case commands.first
 
     when "ASK_FOR_EMAIL"
-      current_user.checkpoint = "Please enter your e-mail address."
-      current_user.save
+      # current_user.checkpoint = "Please enter your e-mail address."
+      # current_user.save
       ask_for_user_email(message)
 
     when "USAGE_EXPLANATION"
@@ -159,9 +172,9 @@ Bot.on :message do |message|
       else
         question_index = question_index.to_i
         ids = [consultation_id, section_id, clause_id, question_index]
-        current_user.checkpoint = "Please suggest your revision"
-        current_user.save
-        feedback_ids = ids
+        # current_user.checkpoint = "Please suggest your revision"
+        # current_user.save
+        # feedback_ids = ids
         show_feedback_question(message, options: ids.join(','))
       end
 
