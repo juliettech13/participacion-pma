@@ -79,7 +79,7 @@
               <h5 class="mb-0">
                 <a class="btn btn-link clause" data-toggle="collapse" data-target="#collapse_<%= clause.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
                   <strong><%= clause.id - 1 %></strong> <%= clause.content %>
-                  <div class="success-badges">
+                  <div id="success-badges">
                   <% if clause.questions[2].answers.exists?(user_id: current_user.id) %>
                     <span class="badge badge-success" id="answered_badge">answered</span>
                   <% end %>
@@ -119,7 +119,7 @@
                     <a data-action="slideshow#next">
                       <%= f.submit '4', :name => "content", :class => 'btn-primary' %>
                     </a>
-                    <a data-action="slideshow#next slideshow#revised">
+                    <a data-action="slideshow#next">
                       <%= f.submit '5', :name => "content", :class => 'btn-primary' %>
                     </a>
                   </div>
@@ -134,19 +134,19 @@
                   <%= f.hidden_field :user_id, :value => current_user.id  %>
                   <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
                   <div class="buttonspacing">
-                    <a data-action="slideshow#next">
+                    <a data-action="slideshow#next slideshow#answered">
                       <%= f.submit '1', :name => "content", :class => 'btn-primary' %>
                     </a>
-                    <a data-action="slideshow#next">
+                    <a data-action="slideshow#next slideshow#answered">
                       <%= f.submit '2', :name => "content", :class => 'btn-primary' %>
                     </a>
-                    <a data-action="slideshow#next">
+                    <a data-action="slideshow#next slideshow#answered">
                       <%= f.submit '3', :name => "content", :class => 'btn-primary' %>
                     </a>
-                    <a data-action="slideshow#next">
+                    <a data-action="slideshow#next slideshow#answered">
                       <%= f.submit '4', :name => "content", :class => 'btn-primary' %>
                     </a>
-                    <a data-action="slideshow#next">
+                    <a data-action="slideshow#next slideshow#answered">
                       <%= f.submit '5', :name => "content", :class => 'btn-primary' %>
                     </a>
                   </div>
@@ -181,7 +181,7 @@
                     <%= f.hidden_field :user_id, :value => current_user.id  %>
                     <%= f.hidden_field :question_id, :value => clause.questions[3].id  %>
                     <%= f.text_area :content, :name => "content", required: true, :class => 'form-control', placeholder: clause.content %>
-                    <a data-action="slideshow#next">
+                    <a data-action="slideshow#next slideshow#revised">
                       <%= f.submit 'suggest revision', :class => 'btn-primary' %>
                     </a>
                   </div>

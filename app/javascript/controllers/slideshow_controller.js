@@ -8,19 +8,17 @@ export default class extends Controller {
   }
 
   answered(){
-    var injection = document.getElementById('revised_badge')
-    var alertSpot = document.getElementById('success-badges')
-    var answeredSection = this.element.parentNode.parentNode
+    var injection = document.getElementById('answered_badge');
+    var alertSpot = document.getElementById('success-badges');
+    var answerSection = this.element.parentNode.parentNode.querySelector("#success-badges");
+    answerSection.insertAdjacentHTML('afterbegin', '<span class="badge badge-success" id="answered_badge">answered</span>');
   }
 
   revised(){
-    var injection = document.getElementById('revised_badge')
-    var injection = document.getElementById('answered_badge')
-    var alertSpot = document.getElementsByClassName('success-badges')
-
-    console.log(this.element.parentNode.parentNode)
-
-    // alertSpot.innerHTML = injection
+    var injection = document.getElementById('revised_badge');
+    var alertSpot = document.getElementById('success-badges');
+    var answerSection = this.element.parentNode.parentNode.querySelector("#success-badges");
+    answerSection.insertAdjacentHTML('beforeend', '<span class="badge badge-danger" id="revised_badge">revised</span>');
   }
 
   next() {
