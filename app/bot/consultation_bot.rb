@@ -63,7 +63,7 @@ def handle_message(message, quick_reply)
   messenger_id = message.sender["id"]
   current_user = get_user(messenger_id)
   legislation = Legislation.last
-  consultation_id = Consultation.find_by(user_id: current_user.id)
+  consultation_id = Consultation.find_by(user_id: current_user.id).id
   message.mark_seen
   p message
   sleep(1.5)
