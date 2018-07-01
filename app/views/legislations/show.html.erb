@@ -8,7 +8,6 @@
   });
 </script>
 
-<p id="notice"><%= notice %></p>
 <div class="container legislationshow" data-controller="legislation">
 
     <h1 class="display-4"><%= @legislation.title %></h1>
@@ -47,7 +46,7 @@
         <h3><%= @legislation.sections[0].title %></h3>
           <div class="card-header" id="headingOne">
               <h5 class="mb-0">
-                <a class="btn btn-link" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal; text-align: left;">
+                <a class="btn btn-link clauses_design" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal; text-align: left;">
                   <%= @legislation.sections[0].clauses[0].content %>
                 </a>
               </h5>
