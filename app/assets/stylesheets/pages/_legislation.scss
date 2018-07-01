@@ -3,11 +3,6 @@
   // height: 100vh;
 }
 
-#toc {
-  background: white;
-  // height: 100vh;
-}
-
 .im-finished {
   display: inline-block;
 }
@@ -46,11 +41,16 @@
 
 
 .card-header {
+  background-color: #f8f9fa;
   padding: 1rem .5rem;
   border-bottom:.5px solid rgba(0, 0, 0, 0.125);
   a {
     font-weight: lighter;
   }
+}
+
+.card-header:hover {
+  background-color: #8bc34a;
 }
 
 .scrollable {
@@ -86,10 +86,6 @@
 
 .clause {
   text-align: left;
-}
-
-.card-header {
-  background-color: white;
 }
 
 .finished {

@@ -55,16 +55,6 @@
 
       </div>
 
-
- <!--      <div class="onesectionnav row">
-        <div class="previous_section">
-          <a data-action="click->legislation#previous">previous</a>
-        </div>
-        <div class="next_section">
-          <a data-action="click->legislation#next">next</a>
-        </div>
-      </div>
- -->
         <% @legislation.sections.each do |section| %>
         <div data-target="legislation.slide" class="slide">
 
@@ -162,10 +152,10 @@
                   <%= f.hidden_field :question_id, :value => clause.questions[2].id  %>
                   <div class="buttonspacing">
                     <a data-action="slideshow#next">
-                      <%= f.submit 'Yes', :name => "content", :class => 'btn-primary' %>
+                      <%= f.button 'Yes', :name => "content", :class => 'btn-primary' %>
                     </a>
-                    <a data-action="slideshow#next">
-                      <%= f.submit 'No', :name => "content", :class => 'btn-primary' %>
+                    <a data-action="slideshow#close">
+                      <%= f.button 'No', :name => "content", :class => 'btn-primary' %>
                     </a>
                   </div>
                   <% end %>

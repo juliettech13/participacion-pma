@@ -21,6 +21,10 @@ export default class extends Controller {
     answerSection.insertAdjacentHTML('beforeend', '<span class="badge badge-danger" id="revised_badge">revised</span>');
   }
 
+  close() {
+   this.element.parentNode.classList.remove("show")
+  }
+
   next() {
     this.showSlide(this.index + 1)
   }
