@@ -18,7 +18,7 @@ export default class extends Controller {
     var injection = document.getElementById('revised_badge');
     var alertSpot = document.getElementById('success-badges');
     var answerSection = this.element.parentNode.parentNode.querySelector("#success-badges");
-    answerSection.insertAdjacentHTML('beforeend', '<span class="badge badge-danger" id="revised_badge">revised</span>');
+    answerSection.insertAdjacentHTML('beforeend', '<span class="badge badge-success" id="revised_badge">revised</span>');
   }
 
   close() {
