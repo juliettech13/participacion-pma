@@ -18,5 +18,6 @@ class PagesController < ApplicationController
     @sections = Section.all
     #@clause = Clause.where(params[section_id:])
     @clauses = Clause.all
+    @questions = Question.all
   end
 end
