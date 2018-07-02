@@ -41,34 +41,9 @@ AdminUser.create!(email:"admin@charitize.com", password: 123456)
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
 puts "creating legislation"
-Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Vision', user_id: 1)
-Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Vision', user_id: 2)
-Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Vision', user_id: 3)
-Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Vision', user_id: 4)
-Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Vision', user_id: 5)
-Legislation.create!(title: 'National ICT Innovation and Entrepreneurship Vision', user_id: 6)
-
-puts "creating consultation"
-Consultation.create!(legislation_id: 1, user_id: 1)
-Consultation.create!(legislation_id: 2, user_id: 2)
-Consultation.create!(legislation_id: 3, user_id: 3)
-Consultation.create!(legislation_id: 4, user_id: 4)
-Consultation.create!(legislation_id: 5, user_id: 5)
-Consultation.create!(legislation_id: 6, user_id: 6)
-
-puts "creating sections"
-Section.create(title: 'Introduction', legislation_id: 1)
-Section.create!(title: 'Digital Infrastructure', legislation_id: 1)
-Section.create!(title: 'Education Reform, Skills Development and RandD', legislation_id: 1)
-Section.create!(title: 'Supporting the Ecosystem for Innovative Entrepreneurship', legislation_id: 1)
-Section.create!(title: 'Direct Support for Startups and Innovative Entrepreneurs', legislation_id: 1)
-
-
-puts "creating clauses"
-
-puts "creating introduction"
-
-Clause.create!(content: "The National Information Technology Development Agency (NITDA) was established in 2001 to
+Legislation.create!(
+title: 'Nigeria ICT Innovation and Entrepreneurship Vision',
+introduction: "The National Information Technology Development Agency (NITDA) was established in 2001 to
 regulate the IT sector in general. Section 6 of the NITDA act empowers it to develop and regulate
 technology application and innovation in Nigeria. Thus, NITDA created its subsidiary Office for ICT
 Innovation and Entrepreneurship (OIIE) to drive the innovation and entrepreneurship mandate of the
@@ -88,77 +63,125 @@ This document, the Nigeria ICT Innovation and Entrepreneurship Vision (NIIEV), c
 recommendations and incentives designed to strengthen the Nigerian technology entrepreneurship
 ecosystem. It consists of the following themes; Digital Infrastructure, Education Reform, Skills
 Development and R&D and Supporting the Ecosystem for Innovative Entrepreneurship. The document
-is also accompanied with a metadata that elaborates each vision.", section_id: 1)
+is also accompanied with a metadata that elaborates each vision.",
+user_id: 1)
 
-  Question.create!(content: 'Is this exciting for your country?', clause_id: 1)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 1)
-  Question.create!(content: 'Please suggest your revision', clause_id: 1)
+puts "creating consultation"
+Consultation.create!(legislation_id: 1, user_id: 1)
 
+
+puts "creating sections"
+
+Section.create(title: 'Digital Infrastructure',
+description: "Nigeria will significantly increase access to ICT and provide universal and affordable access to
+the Internet. By 2025, 95% of the population will have access to broadband internet.",
+legislation_id: 1)
+
+Section.create!(title: 'Education Reform, Skills Development and R+D',
+description: "Nigeria will have a globally competitive workforce. By 2025, achieve digital literacy rates of 75%
+of the total population. Public and privately funded R&D will surpass 1% of GDP.",
+legislation_id: 1)
+
+Section.create!(title: 'Supporting the Ecosystem for Innovative Entrepreneurship',
+description: "Nigeria’s economy will be fully enabled by ICT. By 2025, ICT will contribute 25% to the national
+GDP.",
+legislation_id: 1)
+# Section.create!(title: 'Supporting the Ecosystem for Innovative Entrepreneurship', legislation_id: 1)
+# Section.create!(title: 'Direct Support for Startups and Innovative Entrepreneurs', legislation_id: 1)
+
+
+puts "creating introduction"
+
+# Clause.create!(content: "The National Information Technology Development Agency (NITDA) was established in 2001 to
+# regulate the IT sector in general. Section 6 of the NITDA act empowers it to develop and regulate
+# technology application and innovation in Nigeria. Thus, NITDA created its subsidiary Office for ICT
+# Innovation and Entrepreneurship (OIIE) to drive the innovation and entrepreneurship mandate of the
+# agency.
+
+# The mandates for the establishment of OIIE include; Develop, establish, support and incentivise ICT
+# innovation hubs, information technology parks and community enterprise hubs across Nigeria and;
+# Collaborate with private sector, development partners and MDAs at both federal and state levels on
+# policies and programs that support ICT entrepreneurship and commercialisation.
+
+# NITDA through OIIE has been listening to stakeholders and as a result, there is a need to reposition as
+# agile facilitators to create an enabling environment for technology entrepreneurship to thrive. In this
+# regard, NITDA plans to influence government policies by sharing findings from stakeholder
+# engagements and research findings from similar markets to Nigeria.
+
+# This document, the Nigeria ICT Innovation and Entrepreneurship Vision (NIIEV), comprise of policy
+# recommendations and incentives designed to strengthen the Nigerian technology entrepreneurship
+# ecosystem. It consists of the following themes; Digital Infrastructure, Education Reform, Skills
+# Development and R&D and Supporting the Ecosystem for Innovative Entrepreneurship. The document
+# is also accompanied with a metadata that elaborates each vision.", section_id: 1)
+
+#   Question.create!(content: 'Is this exciting for your country?', clause_id: 1)
+#   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 1)
+#   Question.create!(content: 'Please provide your suggested revision', clause_id: 1)
 
 
 puts "creating section 1"
 
 Clause.create!(content: 'Mandate infrastructure sharing to achieve the economies of scale necessary for universal
 affordable access. No longer an optional recommendation, Government will support private
-sector providers to merge their infrastructure.', section_id: 2)
+sector providers to merge their infrastructure.', section_id: 1)
 
-  Question.create!(content: 'How well does this represents your views?', clause_id: 2)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 2)
-  Question.create!(content: 'Please suggest your revision', clause_id: 2)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 1)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 1)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 1)
 
   Metadatum.create!(
     agency: 'Nigerian Communications Commission (NCC)',
     rationale: 'This would bring down the cost and ensure affordable access.',
     status: 'NCC published guidelines on collocation and infrastructure sharing on Rights of Way, Masts, Poles, Antenna and tower-structures, Ducts, Trenches, Electric power. In the guidelines, each operator (licensee) is expected to publish standard price list, this is not regulated by NCC which could be exploited by the operators. NCC maintains a list of operators on its website, this includes the name of the company, address, start and expiry dates. This list may not be conclusive as there are operators that are not listed there but in previous published lists. The issue with the guidelines is that it is only for passive sharing, there is no guidelines on active sharing. However, NCC is working on a framework on active sharing but this is yet to be published. The Nigerian National Broadband Plan 2013 - 2018 is aimed at  “connecting communities with high speed internet and broadband access to facilitate faster socioeconomic advancement of the nation and its people”. To achieve this, the government, through NCC require Infrastructure Companies (Infracos) to bid for license to provide broadband infrastructure on an open access, non-discriminatory, price regulated basis to the six geopolitical zones and Lagos. Licenses have been awarded for Lagos, North Central, South East, North East. The license for North West, South South and South West have purportedly been awarded, The network and services infrastructure is divided into 3 layers; Passive Infrastructure Layer, Wholesale layer, Retail Service Providers (RSP). The main challenge telecommunication companies face is security, to this end, NCC and Nigerian Security and Civil Defence Corps (NSCDC) signed an MOU to protect the infrastructure. This would go along way in alleviating this challenge which would in turn increase access to affordable broadband. Furthermore, the government plans to lay 18,000KM of fibre in the country in its effort to achieve and surpass the 30% broadband penetration target of 2018.',
-    clause_id: 2
+    clause_id: 1
     )
 
-Clause.create!(content: 'Drop Right of Way charges for fiber distribution, duties on telecommunication imports and the Information Technology tax to reduce capital requirements for expanding digital infrastructure, thereby reducing the costs passed on to consumers.', section_id: 2)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 3)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 3)
-  Question.create!(content: 'Please suggest your revision', clause_id: 3)
+Clause.create!(content: 'Drop Right of Way charges for fiber distribution, duties on telecommunication imports and the Information Technology tax to reduce capital requirements for expanding digital infrastructure, thereby reducing the costs passed on to consumers.', section_id: 1)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 2)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 2)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 2)
 
   Metadatum.create!(
     agency: 'Federal Inland Revenue Services (FIRS), Federal Ministry of Power, Works and Housing, State Inland Revenue Board, Local Government Authority, Nigerian Communications Commission (NCC), Nigeria Customs Service (NCS), Federal Ministry of Finance (how about the respective state agencies)',
     rationale: 'Lack of harmonised RoW across federal, state and LGA and multiple taxation increases the cost of service delivery which is passed on to the consumers. Elimination of such charges, duties and tax would encourage investments and reduce the cost of service delivery.',
     status: "Currently, there is a guideline for the grant and access of right way to ICT services on federal roads by the Federal Ministry of Power, Works and Housing. The charges are N145 per linear meter for ducts and cables and N20 per linear metre annual maintenance fees subject to change every 5 years. States and Local Governments have different charges and this varies from state to state. The lack of uniform charges is one of the challenges telcos face which affects the supply of services. To address this challenge, NEC approved a policy on harmonization of right of way charges across LG, states and federal highways. The NEC RoW guideline still maintains the amount of N145 per meter for laying fibre for all parts of the country. Also, NCC made a case to the Governors Forum to ensure on the need to adhere to the NEC’s resolutions. Right of Way is included in the Nigerian Communications Commission’s Guidelines on Collocation and Infrastructure Sharing, this provides a means of bringing down the cost of broadband as shown in Vision 1. The import duties on all telecommunications equipment is 10% with the exception of parts and accessories of instruments/apparatus, designed for telecommunications which is 5%. In the NITDA establishment Act, all telecommunications companies, GSM Service Providers, Cyber Companies and Internet Providers with annual turnover of 100M and above are liable to pay 1%  of the profit before tax.",
-    clause_id: 3
+    clause_id: 2
     )
 
-Clause.create!(content: 'Provide telecommunications companies with prioritised access to foreign exchange windows, such as the  Secondary Market Intervention Scheme (SMIS).', section_id: 2)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 4)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 4)
-  Question.create!(content: 'Please suggest your revision', clause_id: 4)
+Clause.create!(content: 'Provide telecommunications companies with prioritised access to foreign exchange windows, such as the  Secondary Market Intervention Scheme (SMIS).', section_id: 1)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 3)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 3)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 3)
 
   Metadatum.create!(
     agency: "Central Bank of Nigeria (CBN)",
     rationale: "Access to SMIS will boost the investment in the telecommunications sector and accelerate broadband penetration in Nigeria.",
     status: "All FX transactions are fall under the Investors’ and Exporters’ (I & E) FX Window which was established by the CBN, and another Window for Secondary Market Intervention Sales (SMIS), wholesale and retail. CBN at its discretion chooses the sub-sectors of the economy to access the SMIS. Access to subsidised foreign exchange will attract investment in the sector which in turn will accelerate broadband penetration.",
-    clause_id: 4
+    clause_id: 3
   )
 
-Clause.create!(content: 'Adopt a “dig once” policy, so that any traditional infrastructure investment--roads, electricity, water, etc--must be accompanied by fibre optic cables, where none already exist.', section_id: 2)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 5)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 5)
-  Question.create!(content: 'Please suggest your revision', clause_id: 5)
+Clause.create!(content: 'Adopt a “dig once” policy, so that any traditional infrastructure investment--roads, electricity, water, etc--must be accompanied by fibre optic cables, where none already exist.', section_id: 1)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 4)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 4)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 4)
 
    Metadatum.create!(
     agency: "Ministry of Power, Works and Housing, Ministry of Environment",
     rationale: " Implementing “dig once” policy will ensure the protection of the environment, increase broadband penetration and affordable access.",
     status: "Anambra State included the implementation of Dig Once policy as part of its smart city initiative.",
-    clause_id: 5
+    clause_id: 4
   )
 
-Clause.create!(content: 'Launch a single e-Governance portal using a Whole of Government approach to rationalize and simplify access to government services.', section_id: 2)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 6)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 6)
-  Question.create!(content: 'Please suggest your revision', clause_id: 6)
+Clause.create!(content: 'Launch a single e-Governance portal using a Whole of Government approach to rationalize and simplify access to government services.', section_id: 1)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 5)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 5)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 5)
 
  Metadatum.create!(
     agency: "National Information Technology Development Agency (NITDA), National eGovernment Strategies (NeGSt), MDAs",
     rationale: "Simplified access to government services will improve transparency of common processes, data integrity and reduce the time and cost associated with accessing information.",
     status: "NeGSt was created to “facilitate, drive and implement” eGovernment programmes using a Public Private Partnership (PPP) model. They provide MDAs with support in terms of deployment of eGovernment services and solutions. NITDA recently published the Nigerian e-Government Interoperability Framework (Ne-GIF) which adopts a  Whole-of-Government approach which will lead to Government Digital Transformation. The purpose of this framework is to ease data collection and sharing among MDAs and promote interactions between government, businesses and citizens.",
-    clause_id: 6
+    clause_id: 5
   )
 
 puts "vision 6"
@@ -167,11 +190,11 @@ a.  Ensure that an Open Data staff/unit responsible for opening up agency data a
 b.  Amend the Freedom of Information Act to strengthen enforcement and compliance,
 c.  Build a single digital platform to electronically process FOI requests for every MDA,
 d.  Build a single national data platform that aligns access to government datasets
-e.  Launch a fund to procure API development from the indigenous technology community.', section_id: 2)
+e.  Launch a fund to procure API development from the indigenous technology community.', section_id: 1)
 
-  Question.create!(content: 'How well does this represents your views?', clause_id: 7)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 7)
-  Question.create!(content: 'Please suggest your revision', clause_id: 7)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 6)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 6)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 6)
 
   Metadatum.create!(
     agency: "National Information Technology Development Agency (NITDA), Federal Ministry of Justice, National Bureau of Statistics (NBS), and all MDAs",
@@ -195,15 +218,15 @@ policy seeks to expand this best-practice and provide a single electronic portal
 can be forwarded to each MDA and tracked. This will not only increase awareness
 d. Build a single national data platform that aligns access to government datasets
 e. Launch a fund to procure API development from the indigenous technology community.",
-    clause_id: 7
+    clause_id: 6
     )
 
 puts "vision 7"
 
-Clause.create!(content: 'Support renewable energy through expanded subsidies and tax exemptions for importation of renewable energy technology.', section_id: 2)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 8)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 8)
-  Question.create!(content: 'Please suggest your revision', clause_id: 8)
+Clause.create!(content: 'Support renewable energy through expanded subsidies and tax exemptions for importation of renewable energy technology.', section_id: 1)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 7)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 7)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 7)
 
 Metadatum.create!(
   agency: "Federal Ministry of Environment (Renewable Energy Programme), Federal Ministry of
@@ -233,7 +256,7 @@ iii. Soft loans and special low interest loans from power sector development fun
 renewable energy supply and energy efficiency projects
 e. Tax credits for homeowners who install energy efficient appliances and lighting
 f. Tax credits to companies who produce energy efficient appliances and fixtures",
-clause_id: 8
+clause_id: 7
   )
 
 puts "creating section 2"
@@ -244,11 +267,11 @@ b.  Equip every corps member with a tablet,
 c.  Deploy all corps members in primary schools to support digital literacy education,
 d.  Emphasize entrepreneurial values, such as critical thinking, experimentation, collaboration, accepting failure, and leadership skills, and
 e.  Discourage redeployment of corp members, to ensure cultural exchange during camp, fostering trust and empathy across ethnic, linguistic, religious and gender divides to build a cohesive and proud national identity.',
-section_id: 3)
+section_id: 2)
 
-  Question.create!(content: 'How well does this represents your views?', clause_id: 9)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 9)
-  Question.create!(content: 'Please suggest your revision', clause_id: 9)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 8)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 8)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 8)
 
   Metadatum.create!(
   agency: "Federal Ministry of Youths, Sports and Development, National Youth Service Corp (NYSC).",
@@ -262,7 +285,7 @@ duration of 11 months. NYSC places special emphasis on rural postings in Agricul
 Education and Infrastructure24. NYSC, via its Skill Acquisition and Entrepreneurship Development
 (SAED) program provides skills acquisition and entrepreneurship training to corps members at
 orientation camps",
-  clause_id: 9
+  clause_id: 8
     )
 
 
@@ -272,11 +295,11 @@ b.  Provide training, funding and a market for innovative, indigenous e-learning
 c.  Transform all libraries from information repositories into information hubs with free internet access, e-learning tools, massive online open courses (MOOCs), and space for student groups to meet,
 d.  Provide continuing education trainings for teachers that emphasize technological change and new e-learning tools, and
 e.  Create a single portal to access all government scholarships and loans for national and international education.',
-section_id: 3)
+section_id: 2)
 
-  Question.create!(content: 'How well does this represents your views?', clause_id: 10)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 10)
-  Question.create!(content: 'Please suggest your revision', clause_id: 10)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 9)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 9)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 9)
 
  Metadatum.create!(
   agency: "Federal Ministry of Education, Universal Basic Education Commission (UBEC), National
@@ -293,17 +316,17 @@ truncated over the years as a result of the following reasons; lack of required 
 infrastructure capable of transporting multimedia messaging and absence of electric power grids in
 most parts of the country even in cases where there is adequate telecommunications coverage amongst others. Nigerian government is considering a new policy of graduates studying extra one year
 before NYSC to make them fit for employment",
-  clause_id: 10
+  clause_id: 9
     )
 
 
 
 Clause.create!(content: 'Upgrade Technical and Vocational Education and Training programs to include software and hardware development and maintenance. Furthermore, all TVET programs should be digitally enabled.',
-section_id: 3)
+section_id: 2)
 
-  Question.create!(content: 'How well does this represents your views?', clause_id: 11)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 11)
-  Question.create!(content: 'Please suggest your revision', clause_id: 11)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 10)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 10)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 10)
 
   Metadatum.create!(
     agency: "Ministry of Education (FME), National Board for Technical Education (NBTE), National
@@ -313,7 +336,7 @@ has been increasing for years. Policies and practices implemented by the Federal
 Nigeria could be very influencing factors to the issues. The curricula of TVET are adjudged to be too
 academic and overloaded with intellectual content in pure science and mathematics at the expense of
 basic engineering and technology.",
-    clause_id: 11,
+    clause_id: 10,
     rationale: " Four key uses of ICT in TVET include; flexible and blended learning, curriculum integration,
 assessment, meeting special learning needs. This is a major priority for Europe, UK, Austria, Sweden
 and Finland."
@@ -321,11 +344,11 @@ and Finland."
     )
 
 Clause.create!(content: 'Support youth employment through tax incentives that will lower the gross cost to employ youth. Nigerian citizens under 26 years pay zero personal income tax up to N200,000/year, above this rate they pay the normal amount.',
-section_id: 3)
+section_id: 2)
 
-  Question.create!(content: 'How well does this represents your views?', clause_id: 12)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 12)
-  Question.create!(content: 'Please suggest your revision', clause_id: 12)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 11)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 11)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 11)
 
 
 Metadatum.create!(
@@ -341,15 +364,15 @@ years of graduation are exempted from income tax on 5% of their assessable profi
 on gross salaries of the employees who must be Nigerians in first time employment of the companies.
 For the WEARP, the same is applicable but the minimum net employment is 5 new employees and
 they must be retained for a minimum of 2 years.",
-clause_id: 12
+clause_id: 11
 
     )
 
 Clause.create!(content: 'Simplify immigration requirements for skilled professionals to start businesses in Nigeria and remove expatriate quotes to facilitate knowledge transfer.',
-section_id: 3)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 13)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 13)
-  Question.create!(content: 'Please suggest your revision', clause_id: 13)
+section_id: 2)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 12)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 12)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 12)
 
 
   Metadatum.create!(
@@ -370,15 +393,15 @@ a. The permanent until reviewed (PUR) only for chairman or Managing director of 
 and;
 b. Temporary which is only issued to a Director or special expert with a designated job
 description.",
-clause_id: 13
+clause_id: 12
 )
 
 
 Clause.create!(content: 'Launch a Public Procurement for Innovation tendering mechanism, using hackathons and innovation challenge methodologies to provide larger government services. In this way the Government can directly seed fund pre-commercial private sector R&D.',
-section_id: 3)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 14)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 14)
-  Question.create!(content: 'Please suggest your revision', clause_id: 14)
+section_id: 2)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 13)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 13)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 13)
 
   Metadatum.create!(
     agency: "Bureau for Public Procurement (BPP), Office of the Head of Civil Service)",
@@ -392,15 +415,15 @@ Manual for public procurement describing how public procurement should be planne
 implemented, the policies on public procurement are defined in the relevant laws and regulations
 governing procurement in Nigeria. Executive Order 003 mandated MDAs to give preference to local content in procurement, which includes ICT, while Executive Order 005 promotes support for SMEs in
 procurement.",
-clause_id: 14
+clause_id: 13
 )
 
 Clause.create!(content: 'Expand funding for Research and Development.',
-section_id: 3)
+section_id: 2)
 
-  Question.create!(content: 'How well does this represents your views?', clause_id: 15)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 15)
-  Question.create!(content: 'Please suggest your revision', clause_id: 15)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 14)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 14)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 14)
 
    Metadatum.create!(
     agency: "Tertiary Education Trust Fund (TETfund), National Information Technology Development
@@ -419,17 +442,17 @@ Innovation Council. Part of the governing board’s responsibilities is the esta
 Research and Innovation Fund. The fund is to support national research, innovation and development
 bodies and other functions of the council.
 ",
-clause_id: 15
+clause_id: 14
 )
 
 puts "creating section 3"
 
 Clause.create!(content: 'Build innovation hubs in major population centers where none exist. It is important to avoid duplication, competition and also fragmentation of innovation communities as an innovation community’s strength lies in the dynamism and diversity of its members and its sharing culture.',
-section_id: 4)
+section_id: 3)
 
-  Question.create!(content: 'How well does this represents your views?', clause_id: 16)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 16)
-  Question.create!(content: 'Please suggest your revision', clause_id: 16)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 15)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 15)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 15)
 
 Metadatum.create!(agency: "National Information Technology Development Agency (NITDA), Federal Ministry of Science and Technology (FMST), Federal Ministry of Education (FME), State and local government.",
   rationale: "Innovation hubs are the engines of innovation and entrepreneurship through skills development, ideation and experimentation, technology transfer, and investor matchmaking. While Nigeria has over 50 hubs, it does not match the population and it is not geographically well spread.",
@@ -443,13 +466,13 @@ due to the existing technology cluster in Lagos and potential for governance rel
 Abuja. The proposed states are; Anambra (SE), Cross River (SS), Benue (NC), Kaduna (NW), Osun
 (SW), Adamawa (NE), Abuja, Lagos. The project is a PPP with existing hubs and first launch is the
 regional innovation hub in Yola, Adamawa state.",
-clause_id: 16 )
+clause_id: 15 )
 
 Clause.create!(content: 'Provide direct training support for hubs and linkages for nationwide collaborations. The Government will develop a certification scheme for hubs and provide Training of Trainers to build the capabilities of hubs to support entrepreneurs.',
-section_id: 4)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 17)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 17)
-  Question.create!(content: 'Please suggest your revision', clause_id: 17)
+section_id: 3)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 16)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 16)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 16)
 
 Metadatum.create!(
 agency: "National Information Technology Development Agency (NITDA)" ,
@@ -457,14 +480,14 @@ rationale: "Bridge the skills gap for incubation in Nigeria. Most hubs do not ha
 adequately incubate technology ideas. The train the trainer approach will enable a multiplier approach." ,
 status: "This is a NITDA proposed incentive to support innovation hub and encourage collaboration
 within the ecosystem." ,
-clause_id: 17
+clause_id: 16
   )
 
 Clause.create!(content: 'Provide tax relief for innovation hubs, as they are providing valuable public services. Innovation hubs are the engines of innovation and entrepreneurship through skills development, ideation and experimentation, technology transfer, and investor matchmaking. Certified innovation hubs will pay zero income tax on revenue up to N10m/year and their employees will pay zero payroll tax on salaries up to N1m/year.  Innovation hubs will also receive tax rebates for any payments for internet and telephone.',
-section_id: 4)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 18)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 18)
-  Question.create!(content: 'Please suggest your revision', clause_id: 18)
+section_id: 3)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 17)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 17)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 17)
 
 
   Metadatum.create!(
@@ -480,14 +503,14 @@ where the turnover is less than ₦1 million) and Tax exemption on proceeds rein
 accruing to unit holders in a trust in respect of disposal of securities, shall not be chargeable on tax
 provided the proceeds are reinvested). Recently, the government made a declaration to include
 technology startups and businesses in the pioneer list",
-    clause_id: 18
+    clause_id: 17
     )
 
 Clause.create!(content: 'Simplify procedures for closing a business. Lowering the cost of business failure, encourages more enterprise and entrepreneurship.',
-section_id: 4)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 19)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 19)
-  Question.create!(content: 'Please suggest your revision', clause_id: 19)
+section_id: 3)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 18)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 18)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 18)
 
   Metadatum.create!(
     agency: "Federal Inland Revenue Services (FIRS), National Insurance Commission (NIC), Corporate
@@ -505,14 +528,14 @@ appointed, and by all or any of the parties, together or separately. A company c
 Federal High Court within the area of jurisdiction where the registered office of the company is situated.
 For example, if a company was registered with Abuja address, the company cannot be closed in a
 Lagos court it must be a court in Abuja. Therefore, the Lagos court has no power to hear the petition.",
-clause_id: 19
+clause_id: 18
     )
 
 Clause.create!(content: 'Ease cross-border trade by minimizing the procedures and restrictions on both imports and exports.',
-section_id: 4)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 20)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 20)
-  Question.create!(content: 'Please suggest your revision', clause_id: 20)
+section_id: 3)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 19)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 19)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 19)
 
    Metadatum.create!(
     agency: "Federal Inland Revenue Services (FIRS), Nigerian Port Authority (NPA), Nigeria Export
@@ -535,16 +558,16 @@ Nigeria has a Single Window Portal to facilitate trade project of 12 Nigerian Go
 involved in the customs clearance process. This portal allows traders to access customs regulations
 online, submit customs documents electronically, track transaction status online, and submit electronic
 payments.",
-clause_id: 20
+clause_id: 19
     )
 
 puts "creating section 4"
 
 Clause.create!(content: 'Support Startups development directly through tax breaks. Certified Startups will pay zero corporate tax for up to eight years under N10m/year. And, up to twenty employees will pay zero personal income tax up to N1m.',
-section_id: 5)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 21)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 21)
-  Question.create!(content: 'Please suggest your revision', clause_id: 21)
+section_id: 3)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 20)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 20)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 20)
 
   Metadatum.create!(
 agency: "Federal Inland Revenue Services (FIRS), Nigerian Investment Promotion Commission
@@ -554,15 +577,15 @@ status: "The Pioneer Status Incentives (PSI) allows companies to benefit from ta
 years renewable for additional two years, tax free dividends during the tax holiday, capital allowances
 and tax losses41. Recently, the Federal Government made a declaration to include technology startups
 and businesses in the pioneer list, to grant them tax holiday" ,
-clause_id: 21
+clause_id: 20
 
     )
 
 Clause.create!(content: 'Establish subsidized credit facilities for Startups.',
-section_id: 5)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 22)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 22)
-  Question.create!(content: 'Please suggest your revision', clause_id: 22)
+section_id: 3)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 21)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 21)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 21)
 
   Metadatum.create!(
 agency: "Bank of Industry (BOI), Central Bank of Nigeria (CBN), Development Bank of Nigeria
@@ -575,14 +598,14 @@ status: " BOI is the largest government body that provides business facilities. 
 given high priority for accessing BOI loan 43. Other SME and startup related loans include SME Credit Guarantee Scheme (SMECGS)44, Agricultural/Small and Medium Enterprises Investment
 Scheme (AGSMEIS) and loan facilities from Development Bank of Nigeria (DBN). Most of the funds
 are complicated to access.",
-clause_id: 22
+clause_id: 21
     )
 
 Clause.create!(content: 'Incentivize Venture Capital and Angel Investment funds to fund innovative entrepreneurship through tax reductions. Investments in certified Startups will receive full exemptions on capital gains tax.',
-section_id: 5)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 23)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 23)
-  Question.create!(content: 'Please suggest your revision', clause_id: 23)
+section_id: 3)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 22)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 22)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 22)
 
     Metadatum.create!(
 agency: "Federal Inland Revenue Services (FIRS)",
@@ -607,14 +630,14 @@ c. Withholding tax payable reduced by 50%
 d. Pioneer Status Incentives
 e. Export incentives
 All accreditation is done by FIRS.",
-clause_id: 23
+clause_id: 22
     )
 
 Clause.create!(content: 'Subsidize the acquisition of intellectual property protection for certified Startups. The Government will cover the legal and procedural costs for Startups to obtain intellectual property protection for their innovations.',
-section_id: 5)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 24)
-  Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 24)
-  Question.create!(content: 'Please suggest your revision', clause_id: 24)
+section_id: 3)
+  Question.create!(content: 'How well does this represents your views?', clause_id: 23)
+  Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 23)
+  Question.create!(content: 'Please provide your suggested revision', clause_id: 23)
 
     Metadatum.create!(
 agency: "Federal Ministry of Industry, Trade and Investment (FMITI), National Office for Technology
@@ -626,7 +649,7 @@ directly by going to the e-registration portal of the Nigerian Copyrights Commis
 requires a startup to conduct a search first to make sure the invention/idea has not already been
 patented yet or the trademark symbol has not been used. Applications are processed within 10 working
 days and the fees are published on the commissions website",
-clause_id: 24
+clause_id: 23
     )
 
 puts "we done!"

@@ -22,6 +22,7 @@
             sections
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" data-action="click->legislation#showSection">Introduction</a>
             <% @legislation.sections.each do |section| %>
             <a class="dropdown-item" data-action="click->legislation#showSection"><%= section.title %></a>
             <% end %>
@@ -34,11 +35,13 @@
   <div class="consultation-box">
    <div id="document">
     <div id="active_section">
-      <h3><%= @legislation.sections[0].title %></h3>
+      <h3>Introduction</h3>
       <div class="card-header" id="headingOne">
         <h5 class="mb-0">
           <a class="btn btn-link" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal; text-align: left;">
-            <%= @legislation.sections[0].clauses[0].content %>
+            <div id="Introduction">
+              <%= render 'introduction' %>
+            </div>
           </a>
         </h5>
       </div>
@@ -48,6 +51,7 @@
       <% @legislation.sections.each do |section| %>
       <div id="<%= section.title %>" style="display: none;">
         <h3><%= section.title %></h3>
+        <p><%= section.description %></p>
 
         <div id="accordion" class="">
           <% section.clauses.each do |clause| %>
@@ -56,7 +60,7 @@
            <div class="card-header" id="headingOne">
             <h5 class="mb-0">
               <a class="btn btn-link clause" data-toggle="collapse" data-target="#collapse_<%= clause.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
-                <h6>Vision <%= clause.id - 1 %></h6>
+                <h6>Vision <%= clause.id %></h6>
                 <%= clause.content %>
                 <div id="supporting-content" class="row">
                   <% if Metadatum.exists?(clause_id: clause.id) %>
@@ -147,7 +151,7 @@
                 <%= f.hidden_field :user_id, :value => current_user.id  %>
                 <%= f.hidden_field :question_id, :value => clause.questions[2].id  %>
                 <%= f.text_area :content, :name => "content", required: true, :class => 'form-control', placeholder: clause.content %>
-                <a data-action="slideshow#next slideshow#revised">
+                <a data-action="slideshow#close slideshow#revised">
                   <%= f.submit 'suggest revision', :class => 'btn-primary' %>
                 </a>
               </div>
@@ -165,12 +169,24 @@
   </div>
   <% end %>
 </div>
+
+<div id="Introduction" style="display: none;">
+  <h3>Introduction</h3>
+  <div class="card-header" id="headingOne">
+    <h5 class="mb-0">
+      <a class="btn btn-link" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal; text-align: left;">
+        <%= render 'introduction' %>
+      </a>
+    </h5>
+  </div>
+</div>
+
 </div>
 </div>
 
 <div class="consultation-panel">
   <div class="finished">
-    <%= link_to "done", new_consultation_general_feedback_path(@consultation), :class => 'btn btn-secondary btn-lg' %>
+    <%= link_to "finish my consultation", new_consultation_general_feedback_path(@consultation), :class => 'btn btn-secondary btn-lg' %>
   </div>
 </div>
 </div>
