@@ -53,49 +53,67 @@ Facebook::Messenger::Profile.set({
   ]
 }, access_token: ENV['ACCESS_TOKEN'])
 
-last_message = "NO GOOD"
-feedback_ids = []
-
+VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
 Bot.on :message do |message|
+  handle_message(message, message.quick_reply)
+end
+
+def handle_message(message, quick_reply)
   messenger_id = message.sender["id"]
   current_user = get_user(messenger_id)
   legislation = Legislation.last
+  consultation_id = Consultation.find_by(user_id: current_user.id).id
   message.mark_seen
   p message
   sleep(1.5)
 
-  if message.quick_reply
-    commands = message.quick_reply.split('/')
+  if quick_reply && !quick_reply.blank?
+    current_user.checkpoint = quick_reply
+    current_user.save
+    commands = quick_reply.split('/')
   else
     commands = []
-    if last_message == "Please suggest your revision"
+    feedback_ids = (current_user.checkpoint.split('/').second || "").split(',')
+
+    if current_user.checkpoint.start_with?("FEEDBACK")
       consultation_id, section_id, clause_id, question_index = feedback_ids
       set_answer(message, user_id: current_user.id, clause_id: clause_id, question_index: question_index)
-      last_message = ""
+      current_user.checkpoint = ""
+      current_user.save
+
       if last_clause?(section_id, clause_id)
         if last_section?(section_id)
           outboard(message)
         else
-          next_section(message, consultation_id: consultation_id, section_id: section_id.to_i + 1)
+          next_section(message, consultation_id: consultation_id, section_id: section_id.to_i + 1, user: current_user)
         end
       else
-        next_clause(message, consultation_id: consultation_id, clause_id: clause_id.to_i + 1, section_id: section_id)
+        next_clause(message, consultation_id: consultation_id, clause_id: clause_id.to_i + 1, section_id: section_id, user: current_user)
       end
-    elsif last_message == "Please enter your e-mail address."
-      VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+    elsif current_user.checkpoint.start_with?("ASK_FOR_EMAIL")
+
       if message.text.match(VALID_EMAIL_REGEX)
         messenger_id = message.sender["id"]
-        current_user = get_user(messenger_id)
         current_user.email = message.text
+        current_user.checkpoint = "USAGE_EXPLANATION"
         current_user.save
-        last_message = ""
+
         usage_explanation(message)
       else
         message.typing_on
         message.reply(
           text: "Oops, it looks like you didn't enter a valid e-mail address. Please enter it again."
         )
+      end
+    else
+      message.typing_on
+      message.reply(
+        text: "Oops! I didn't understand your message, please answer the question with one of the options below:"
+      )
+
+      unless current_user.checkpoint.blank?
+        handle_message(message, current_user.checkpoint)
       end
     end
   end
@@ -104,7 +122,8 @@ Bot.on :message do |message|
   case commands.first
 
     when "ASK_FOR_EMAIL"
-      last_message = "Please enter your e-mail address."
+      # current_user.checkpoint = "Please enter your e-mail address."
+      # current_user.save
       ask_for_user_email(message)
 
     when "USAGE_EXPLANATION"
@@ -115,6 +134,16 @@ Bot.on :message do |message|
 
     when "SHOW_QUESTION"
       show_question(message, options: commands.last)
+
+    when "SHOW_SECTION"
+      ids = commands.last.split(',')
+      consultation_id, section_id, clause_id, question_index = ids
+      show_section(message, consultation_id: consultation_id, section_id: section_id.to_i, user: current_user)
+
+    when "SHOW_CLAUSE"
+      ids = commands.last.split(',')
+      consultation_id, section_id, clause_id, question_index = ids
+      show_clause(message, consultation_id: consultation_id, clause_id: clause_id.to_i, section_id: section_id, user: current_user)
 
     when "ANSWER"
       options = commands.last
@@ -128,10 +157,10 @@ Bot.on :message do |message|
           if last_section?(section_id)
             outboard(message)
           else
-            next_section(message, consultation_id: consultation_id, section_id: section_id.to_i + 1)
+            next_section(message, consultation_id: consultation_id, section_id: section_id.to_i + 1, user: current_user)
           end
         else
-          next_clause(message, consultation_id: consultation_id, clause_id: clause_id.to_i + 1, section_id: section_id)
+          next_clause(message, consultation_id: consultation_id, clause_id: clause_id.to_i + 1, section_id: section_id, user: current_user)
         end
       else
         question_index = question_index.to_i + 1
@@ -149,55 +178,40 @@ Bot.on :message do |message|
           if last_section?(section_id)
             outboard(message)
           else
-            next_section(message, consultation_id: consultation_id, section_id: section_id.to_i + 1)
+            next_section(message, consultation_id: consultation_id, section_id: section_id.to_i + 1, user: current_user)
           end
         else
-          next_clause(message, consultation_id: consultation_id, clause_id: clause_id.to_i + 1, section_id: section_id)
+          next_clause(message, consultation_id: consultation_id, clause_id: clause_id.to_i + 1, section_id: section_id, user: current_user)
         end
       else
         question_index = question_index.to_i
         ids = [consultation_id, section_id, clause_id, question_index]
-        last_message = "Please suggest your revision"
-        feedback_ids = ids
+        # current_user.checkpoint = "Please suggest your revision"
+        # current_user.save
+        # feedback_ids = ids
         show_feedback_question(message, options: ids.join(','))
       end
 
+    when "GET_STARTED"
+      greet_current_user(message)
+    when "INTRO"
+      skip_to_section(message, consultation_id: consultation_id, section_id: 1)
+    when "SECTION_1"
+      skip_to_section(message, consultation_id: consultation_id, section_id: 2)
+    when "SECTION_2"
+      skip_to_section(message, consultation_id: consultation_id, section_id: 3)
+    when "SECTION_3"
+      skip_to_section(message, consultation_id: consultation_id, section_id: 4)
+    when "SECTION_4"
+      skip_to_section(message, consultation_id: consultation_id, section_id: 5)
   end
 
 end
 
 Bot.on :postback do |postback|
 
-  case postback.payload
+  handle_message(postback, postback.payload)
 
-    when "GET_STARTED"
-      greet_current_user(postback)
-    when "INTRO"
-      messenger_id = postback.sender["id"]
-      current_user = User.find_by(messenger_id: messenger_id)
-      consultation_id = Consultation.find_by(user_id: current_user.id)
-      skip_to_section(postback, consultation_id: consultation_id, section_id: 1)
-    when "SECTION_1"
-      messenger_id = postback.sender["id"]
-      current_user = User.find_by(messenger_id: messenger_id)
-      consultation_id = Consultation.find_by(user_id: current_user.id)
-      skip_to_section(postback, consultation_id: consultation_id, section_id: 2)
-    when "SECTION_2"
-      messenger_id = postback.sender["id"]
-      current_user = User.find_by(messenger_id: messenger_id)
-      consultation_id = Consultation.find_by(user_id: current_user.id)
-      skip_to_section(postback, consultation_id: consultation_id, section_id: 3)
-    when "SECTION_3"
-      messenger_id = postback.sender["id"]
-      current_user = User.find_by(messenger_id: messenger_id)
-      consultation_id = Consultation.find_by(user_id: current_user.id)
-      skip_to_section(postback, consultation_id: consultation_id, section_id: 4)
-    when "SECTION_4"
-      messenger_id = postback.sender["id"]
-      current_user = User.find_by(messenger_id: messenger_id)
-      consultation_id = Consultation.find_by(user_id: current_user.id)
-      skip_to_section(postback, consultation_id: consultation_id, section_id: 5)
-  end
 end
 
 # INTRO AND GOODBYE MESSAGES
@@ -370,15 +384,24 @@ def start_consultation(message, user, legislation)
   )
 end
 
-def next_clause(message, consultation_id:, section_id:, clause_id:)
-  ids = [consultation_id, section_id, clause_id, 1]
-  clause = Clause.find(clause_id)
+def next_clause(message, consultation_id:, section_id:, clause_id:, user:)
   text = ["Moving on to the next clause of this section...", "OK, let's go to the next clause of this section...", "Next clause! Are you ready ?", "On to the next clause..."]
+
   message.typing_on
   message.reply(
     text: text.sample
   )
   sleep(1)
+
+  show_clause(message, consultation_id: consultation_id, section_id: section_id, clause_id: clause_id, user: user)
+end
+
+def show_clause(message, consultation_id:, section_id:, clause_id:, user:)
+  ids = [consultation_id, section_id, clause_id, 1]
+  clause = Clause.find(clause_id)
+  user.checkpoint = "SHOW_CLAUSE/#{ids.join(',')}"
+  user.save
+
   text = ["Here it is:", "This is it:", "Here's what it says:", "This is what it contains:"]
   message.typing_on
   message.reply(
@@ -400,16 +423,28 @@ def next_clause(message, consultation_id:, section_id:, clause_id:)
 
 end
 
-def next_section(message, consultation_id:, section_id:)
+def next_section(message, consultation_id:, section_id:, user:)
   section = Section.find(section_id)
   clause = section.clauses.first
   ids = [consultation_id, section_id, clause.id, 1]
+
   text = ["Next section ! Here we're going to talk about #{section.title}.", "Moving on to the next section...the subject is #{section.title}."]
   message.typing_on
   message.reply(
     text: text.sample
   )
   sleep(1)
+  show_section(message, consultation_id: consultation_id, section_id: section_id, user: user)
+end
+
+def show_section(message, consultation_id:, section_id:, user:)
+  section = Section.find(section_id)
+  clause = section.clauses.first
+  ids = [consultation_id, section_id, clause.id, 1]
+
+  user.checkpoint = "SHOW_SECTION/#{ids.join(',')}"
+  user.save
+
   text = ["Let's start with the first clause of the section:", "Here's the first clause of the section:"]
   message.typing_on
   message.reply(
@@ -565,7 +600,7 @@ def set_answer(message, user_id:, clause_id:, question_index:)
     answer.save
   # else update his already existing answer
   else
-    answer = Answer.find_by(question_id: question)
+    answer = Answer.find_by(question_id: question, user_id: user_id)
     answer.content = message.text
     answer.save
   end
