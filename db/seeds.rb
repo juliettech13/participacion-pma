@@ -342,10 +342,26 @@ puts "creating dummy general feedback"
 # GeneralFeedback.create!(content: 'My custom feedback xyz 6', legislation_id: 1)
 
 puts "creating dummy answers"
-# Answer.create!(content: 'yes', question_id: 1, user_id: 1)
-# Answer.create!(content: 'My custom feedback', question_id: 2, user_id: 1)
-# Answer.create!(content: 'My custom feedback', question_id: 3, user_id: 1)
+Answer.create!(content: 'yes', question_id: 1, user_id: 1)
+Answer.create!(content: '1', question_id: 2, user_id: 1)
+Answer.create!(content: 'yes', question_id: 3, user_id: 1)
+Answer.create!(content: 'My custom revision content - clause 1 - User 1', question_id: 4, user_id: 1)
 
-# Answer.create!(content: 'no', question_id: 4, user_id: 1)
-# Answer.create!(content: 'My custom feedback', question_id: 5, user_id: 1)
-# Answer.create!(content: 'My custom feedback', question_id: 6, user_id: 1)
+Answer.create!(content: '1', question_id: 5, user_id: 1)
+Answer.create!(content: '1', question_id: 6, user_id: 1)
+Answer.create!(content: 'yes', question_id: 7, user_id: 1)
+Answer.create!(content: 'My custom feedback clause 2 - User 1', question_id: 8, user_id: 1)
+
+#feedback from another user
+
+Answer.create!(content: 'yes', question_id: 1, user_id: 2)
+Answer.create!(content: '2', question_id: 2, user_id: 2)
+Answer.create!(content: 'yes', question_id: 3, user_id: 2)
+Answer.create!(content: 'My custom revision content - clause 1 - User 2', question_id: 4, user_id: 2)
+
+Answer.create!(content: '1', question_id: 5, user_id: 2)
+Answer.create!(content: '1', question_id: 6, user_id: 2)
+Answer.create!(content: 'yes', question_id: 7, user_id: 2)
+Answer.create!(content: 'My custom feedback clause 2- User 2', question_id: 8, user_id: 2)
+
+
