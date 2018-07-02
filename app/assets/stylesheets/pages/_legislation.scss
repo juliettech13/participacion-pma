@@ -40,18 +40,24 @@
 }
 
 #supporting-content {
-  justify-content: space-between;
+  justify-content: flex-start;
+  margin-left: -15px;
   margin-top: 10px;
   margin-right: 0px;
-  margin-left: 0px;
 }
 
-.metadata .row {
-  justify-content: flex-end;
+
+#supporting-content .col-6 {
+    padding-right: 15px;
+    padding-left: 0px;
 }
 
 #supporting-content a {
   font-weight: 700;
+}
+
+.success-badges {
+  margin-left: 15px;
 }
 
 .card-header {
