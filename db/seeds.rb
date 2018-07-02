@@ -327,11 +327,51 @@ section_id: 3)
   Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 12)
   Question.create!(content: 'Please suggest your revision', clause_id: 12)
 
+
+Metadatum.create!(
+agency: "Federal Inland Revenue Services (FIRS), Federal Ministry of Youth, Sports and
+Development, Federal Ministry of Labour and Employment, National Directorate of Employment.",
+rationale: "This will encourage employment which in turn will reduce the unemployment rate of the
+country.",
+status: "Currently, the tax incentives for employment of youth are Employment Tax Relief (ETR) and
+Work Experience Acquisition Programme Relief (WEARP), these are under the Companies Income
+Tax (Exemption of Profits) Order 201229. For the ETR, companies with minimum net employment of 10
+employees whose workforce consists of 60% of graduates without prior work experience and within 3
+years of graduation are exempted from income tax on 5% of their assessable profit. This exemption is
+on gross salaries of the employees who must be Nigerians in first time employment of the companies.
+For the WEARP, the same is applicable but the minimum net employment is 5 new employees and
+they must be retained for a minimum of 2 years.",
+clause_id: 12
+
+    )
+
 Clause.create!(content: 'Simplify immigration requirements for skilled professionals to start businesses in Nigeria and remove expatriate quotes to facilitate knowledge transfer.',
 section_id: 3)
   Question.create!(content: 'How well does this represents your views?', clause_id: 13)
   Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 13)
   Question.create!(content: 'Please suggest your revision', clause_id: 13)
+
+
+  Metadatum.create!(
+    agency: "Nigerian Immigration Service (NIS), Federal Ministry of Interior (FMI), Ministry of Foreign
+Affairs (MoFA)",
+rationale: "There is considerable merit in reducing the current visa system in Nigeria as such, the
+targeted investors/ tourist will be interested in coming down to the country which will have great impact
+in our GDP and facilitate knowledge transfer.",
+status: "Executive Order 001 mandates the processing of tourist and business visas within 48 hours
+and the publishing of requirements for visa on arrival on websites of Nigerian embassies, high
+commissions and other immigration related agencies30. In the same Executive Order, MDAs are
+mandated to publish the list and requirements with timeline, fees and mode of communication for
+obtaining their products and services.
+The expatriate quota / Business permit to either a joint venture between a Nigerian company or fully
+owned requires the approval of interior minister and it is only issued to company registered with
+Corporate Affairs Commission (CAC). They are in two categories:
+a. The permanent until reviewed (PUR) only for chairman or Managing director of the company
+and;
+b. Temporary which is only issued to a Director or special expert with a designated job
+description.",
+clause_id: 13
+)
 
 
 Clause.create!(content: 'Launch a Public Procurement for Innovation tendering mechanism, using hackathons and innovation challenge methodologies to provide larger government services. In this way the Government can directly seed fund pre-commercial private sector R&D.',
@@ -340,6 +380,20 @@ section_id: 3)
   Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 14)
   Question.create!(content: 'Please suggest your revision', clause_id: 14)
 
+  Metadatum.create!(
+    agency: "Bureau for Public Procurement (BPP), Office of the Head of Civil Service)",
+rationale: "This not only benefits citizens, but also enhances the overall functioning of government, by
+creating new opportunities to partner with other agencies, non-profit organisations and businesses.
+Government can directly seed fund pre-commercial private sector R&D which will incentivise local
+talent and be a strategy for implement Executive Order 003 and 005",
+status: "The Bureau of Public Procurement is set to introduce electronic Public Procurement, e-PP, into
+Nigeria’s public procurement system. The Bureau Public of Procurement has made available on its website the Procurement Procedures
+Manual for public procurement describing how public procurement should be planned and
+implemented, the policies on public procurement are defined in the relevant laws and regulations
+governing procurement in Nigeria. Executive Order 003 mandated MDAs to give preference to local content in procurement, which includes ICT, while Executive Order 005 promotes support for SMEs in
+procurement.",
+clause_id: 14
+)
 
 Clause.create!(content: 'Expand funding for Research and Development.',
 section_id: 3)
@@ -347,6 +401,26 @@ section_id: 3)
   Question.create!(content: 'How well does this represents your views?', clause_id: 15)
   Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 15)
   Question.create!(content: 'Please suggest your revision', clause_id: 15)
+
+   Metadatum.create!(
+    agency: "Tertiary Education Trust Fund (TETfund), National Information Technology Development
+Agency (NITDA), Federal Institute of Industrial Research Oshodi (FIIRO), Petroleum Technology
+Development Fund (PTDF), Raw Materials Research and Development Council (RMRDC), National
+Automotive Design and Development Council (NADDC) Fund, Universal Service Provision Fund
+(USPF), Ecological Fund.",
+rationale: "R&D is essentially the first step in developing a country’s local content product or service,
+as such, it is the R&D function that provides a platform for creativity and innovation to flourish.",
+status: "On 20th March 2018, Minister of Science & Technology commissioned Technology Orientation
+Center (TOC) at Idu Abuja built by the National Agency for Science and Engineering Infrastructure,
+(NASENI). The centre is a strategy to drive the new National Science, Technology and Innovation
+Roadmap (2017-2030) vital to the diversification of the Nigerian economy for sustainable growth.
+In 2017, a bill was passed by National Assembly on establishment of National Research and
+Innovation Council. Part of the governing board’s responsibilities is the establishment of the National
+Research and Innovation Fund. The fund is to support national research, innovation and development
+bodies and other functions of the council.
+",
+clause_id: 15
+)
 
 puts "creating section 3"
 
@@ -357,11 +431,34 @@ section_id: 4)
   Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 16)
   Question.create!(content: 'Please suggest your revision', clause_id: 16)
 
+Metadatum.create!(agency: "National Information Technology Development Agency (NITDA), Federal Ministry of Science and Technology (FMST), Federal Ministry of Education (FME), State and local government.",
+  rationale: "Innovation hubs are the engines of innovation and entrepreneurship through skills development, ideation and experimentation, technology transfer, and investor matchmaking. While Nigeria has over 50 hubs, it does not match the population and it is not geographically well spread.",
+  status: "NITDA has 2 hubs, one in Oyo and the other in Katsina but the Katsina hub is to be launched.
+In March 2017 the Nigeria government through the office of the vice president designed a framework
+for implementation and establishment of regional innovation hubs in Nigeria in partnership with the
+Growth and Employment (GEM) Project, a World Bank Group funded project implemented by the
+Nigerian Federal Ministry of Industry, Trade and Investment (FMITI). The government proposed one
+state in each geo-political zone, besides Lagos and Abuja which are considered automatic candidates
+due to the existing technology cluster in Lagos and potential for governance related innovation in
+Abuja. The proposed states are; Anambra (SE), Cross River (SS), Benue (NC), Kaduna (NW), Osun
+(SW), Adamawa (NE), Abuja, Lagos. The project is a PPP with existing hubs and first launch is the
+regional innovation hub in Yola, Adamawa state.",
+clause_id: 16 )
+
 Clause.create!(content: 'Provide direct training support for hubs and linkages for nationwide collaborations. The Government will develop a certification scheme for hubs and provide Training of Trainers to build the capabilities of hubs to support entrepreneurs.',
 section_id: 4)
   Question.create!(content: 'How well does this represents your views?', clause_id: 17)
   Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 17)
   Question.create!(content: 'Please suggest your revision', clause_id: 17)
+
+Metadatum.create!(
+agency: "National Information Technology Development Agency (NITDA)" ,
+rationale: "Bridge the skills gap for incubation in Nigeria. Most hubs do not have the human capacity to
+adequately incubate technology ideas. The train the trainer approach will enable a multiplier approach." ,
+status: "This is a NITDA proposed incentive to support innovation hub and encourage collaboration
+within the ecosystem." ,
+clause_id: 17
+  )
 
 Clause.create!(content: 'Provide tax relief for innovation hubs, as they are providing valuable public services. Innovation hubs are the engines of innovation and entrepreneurship through skills development, ideation and experimentation, technology transfer, and investor matchmaking. Certified innovation hubs will pay zero income tax on revenue up to N10m/year and their employees will pay zero payroll tax on salaries up to N1m/year.  Innovation hubs will also receive tax rebates for any payments for internet and telephone.',
 section_id: 4)
@@ -369,17 +466,77 @@ section_id: 4)
   Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 18)
   Question.create!(content: 'Please suggest your revision', clause_id: 18)
 
+
+  Metadatum.create!(
+    agency: "Federal Inland Revenue Services (FIRS), State Inland Revenue Boards.",
+    rationale: "This will encourage more private sector participation to invest in building hubs.",
+    status: "On FIRS website you can apply for your company stamp duty, TIN number, file for tax
+refund. The current tax incentives are; Pioneer status incentive, exemption of interest on loan,
+exemption tax free interest loan granted by a bank to a company, exemption on profits, 20% Income
+tax rate for companies with turnover less than ₦1 million (The incentives provide for a lower rate of tax
+of 20% payable by companies in the preferred sector of the economy such as agriculture,
+manufacturing, solid minerals or wholly export trade for the first 5 years of commencement of business,
+where the turnover is less than ₦1 million) and Tax exemption on proceeds reinvested. (Gains
+accruing to unit holders in a trust in respect of disposal of securities, shall not be chargeable on tax
+provided the proceeds are reinvested). Recently, the government made a declaration to include
+technology startups and businesses in the pioneer list",
+    clause_id: 18
+    )
+
 Clause.create!(content: 'Simplify procedures for closing a business. Lowering the cost of business failure, encourages more enterprise and entrepreneurship.',
 section_id: 4)
   Question.create!(content: 'How well does this represents your views?', clause_id: 19)
   Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 19)
   Question.create!(content: 'Please suggest your revision', clause_id: 19)
 
+  Metadatum.create!(
+    agency: "Federal Inland Revenue Services (FIRS), National Insurance Commission (NIC), Corporate
+Affairs Commission (CAC) and Nigerian Investment Promotion Commission (NIPC).",
+    rationale: " Encourage Techpreneurs to create more enterprises which will create more jobs for Nigeria
+youth and to attract both local and international investors.",
+    status: "Presently only the federal high court has the power to close a company in Nigeria because
+companies and allied matters form part of the items under section 25(1), of 1999 constitution (as
+amended), which is exclusive of the court. Who wind-up depend on the mode of petition, any of the
+following persons may present or file a petition for closing up a business, that is, the company, a
+creditor, including a contingent or prospective creditor, the official receiver, contributory, trustee in
+bankruptcy to, personal representative of a creditor or contributory, Corporate Affairs Commission
+under sections 323,410(2)(d) of CAMA, receiver if authorized by the instrument under which he was
+appointed, and by all or any of the parties, together or separately. A company can only be dissolved in
+Federal High Court within the area of jurisdiction where the registered office of the company is situated.
+For example, if a company was registered with Abuja address, the company cannot be closed in a
+Lagos court it must be a court in Abuja. Therefore, the Lagos court has no power to hear the petition.",
+clause_id: 19
+    )
+
 Clause.create!(content: 'Ease cross-border trade by minimizing the procedures and restrictions on both imports and exports.',
 section_id: 4)
   Question.create!(content: 'How well does this represents your views?', clause_id: 20)
   Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 20)
   Question.create!(content: 'Please suggest your revision', clause_id: 20)
+
+   Metadatum.create!(
+    agency: "Federal Inland Revenue Services (FIRS), Nigerian Port Authority (NPA), Nigeria Export
+Promotion Council (NEPC), Standard Organisation of Nigeria (SON) and Nigeria Custom Service
+(NCS), Central Bank of Nigeria (CBN), National Environmental Standards and Regulations
+Enforcement Agency (NESERA), Federal Ministry of Finance, Nigerian Financial Intelligence Unit
+(NFIU), National Bureau of Statistics (NBS), Nigeria Agricultural Quarantine Services (NAQS), National
+Agency for Food and Drug Administration and Control (NAFDAC), Raw Materials Research and
+Development Council (RMRDC), Nigerian Import Export Promotion Council (NEPC).",
+    rationale: "Enhancing government procedure, restriction and excess charges on importation and
+exportation that affect ease of doing business and distance frontiers in Nigeria; this will help in easy of
+cross border trade between Nigeria and other countries in the world.",
+    status: "According to World Bank rating report (2018)40, Nigeria is one of the economies that showed
+significant improvement in doing business. NCS, through Nigeria Trade Hub provides a portal for
+accessing accurate information on imports and exports aimed at helping investors make informed
+decisions about doing business in Nigeria. NCS has also introduced the Authorised Economic Operator
+(AEO) scheme to fast track cargo clearance for trusted traders and give incentives for traders to
+increase compliance with clearance procedures.
+Nigeria has a Single Window Portal to facilitate trade project of 12 Nigerian Government agencies
+involved in the customs clearance process. This portal allows traders to access customs regulations
+online, submit customs documents electronically, track transaction status online, and submit electronic
+payments.",
+clause_id: 20
+    )
 
 puts "creating section 4"
 
@@ -389,11 +546,37 @@ section_id: 5)
   Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 21)
   Question.create!(content: 'Please suggest your revision', clause_id: 21)
 
+  Metadatum.create!(
+agency: "Federal Inland Revenue Services (FIRS), Nigerian Investment Promotion Commission
+(NIPC)",
+rationale: "To encourage and attract investments into the ICT sector of the economy." ,
+status: "The Pioneer Status Incentives (PSI) allows companies to benefit from tax holiday for three
+years renewable for additional two years, tax free dividends during the tax holiday, capital allowances
+and tax losses41. Recently, the Federal Government made a declaration to include technology startups
+and businesses in the pioneer list, to grant them tax holiday" ,
+clause_id: 21
+
+    )
+
 Clause.create!(content: 'Establish subsidized credit facilities for Startups.',
 section_id: 5)
   Question.create!(content: 'How well does this represents your views?', clause_id: 22)
   Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 22)
   Question.create!(content: 'Please suggest your revision', clause_id: 22)
+
+  Metadatum.create!(
+agency: "Bank of Industry (BOI), Central Bank of Nigeria (CBN), Development Bank of Nigeria
+(DBN), National Information Technology Development Agency (NITDA)",
+rationale: "The goal is to provide subsidised funding for technology startup companies to grow. There
+is a need for NITDA to set aside a dedicated fund for ICT innovation from the NITDEF fund. This
+should be implemented in a PPP with an investment company that will be charged with getting
+matching funds and managing the fund.",
+status: " BOI is the largest government body that provides business facilities. ICT is one of the subsectors
+given high priority for accessing BOI loan 43. Other SME and startup related loans include SME Credit Guarantee Scheme (SMECGS)44, Agricultural/Small and Medium Enterprises Investment
+Scheme (AGSMEIS) and loan facilities from Development Bank of Nigeria (DBN). Most of the funds
+are complicated to access.",
+clause_id: 22
+    )
 
 Clause.create!(content: 'Incentivize Venture Capital and Angel Investment funds to fund innovative entrepreneurship through tax reductions. Investments in certified Startups will receive full exemptions on capital gains tax.',
 section_id: 5)
@@ -401,12 +584,50 @@ section_id: 5)
   Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 23)
   Question.create!(content: 'Please suggest your revision', clause_id: 23)
 
+    Metadatum.create!(
+agency: "Federal Inland Revenue Services (FIRS)",
+rationale: "Angel investors are not supported by incentives like those in other markets. This will
+encourage venture capitalist and Angel investors to invest more in startups.",
+status: "The Venture Capital Incentives Act is to provide for the grant of tax relief and other incentives
+on personal investments in the National Risk Fund, venture capital companies and venture capital
+projects and other matters related thereto. A venture capital company shall qualify as an investor under the National Risk Fund. FIRS shall certify
+that a venture capital project fulfils or is capable of fulfilling one or more of the objectives. Investment in
+the venture project shall not be less than 25% of the total capital required for the venture project some
+of the incentives are:-
+a. Capital Allowances Incentives
+i. 1st and 2nd year deduct 30%
+ii. 3rd year, 20%
+iii. 4th and 5th year, 10%
+b. Capital Gain Incentives
+i. for the disposal of capital within five years of investment, 100%
+ii. for the disposal of capital between six and ten years or investment, 75%
+iii. for the disposal of capital between eleven and fifteen years of investment, 25%
+iv. for the disposal of capital after fifteen years of investment, 0%
+c. Withholding tax payable reduced by 50%
+d. Pioneer Status Incentives
+e. Export incentives
+All accreditation is done by FIRS.",
+clause_id: 23
+    )
+
 Clause.create!(content: 'Subsidize the acquisition of intellectual property protection for certified Startups. The Government will cover the legal and procedural costs for Startups to obtain intellectual property protection for their innovations.',
 section_id: 5)
   Question.create!(content: 'How well does this represents your views?', clause_id: 24)
   Question.create!(content: 'How well would this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 24)
   Question.create!(content: 'Please suggest your revision', clause_id: 24)
 
+    Metadatum.create!(
+agency: "Federal Ministry of Industry, Trade and Investment (FMITI), National Office for Technology
+Acquisition and Promotion (NOTAP)",
+rationale: " Intellectual property can support funding and investment opportunity for startups because it
+offers security to potential investors",
+status: "Intellectual Property can be filed in Nigeria electronically. Startups can file for copyrights
+directly by going to the e-registration portal of the Nigerian Copyrights Commission. The process
+requires a startup to conduct a search first to make sure the invention/idea has not already been
+patented yet or the trademark symbol has not been used. Applications are processed within 10 working
+days and the fees are published on the commissions website",
+clause_id: 24
+    )
 
 puts "we done!"
 
