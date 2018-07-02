@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 2018_06_26_102553) do
 
   create_table "sections", force: :cascade do |t|
     t.string "title"
+    t.text "description"
     t.bigint "legislation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
