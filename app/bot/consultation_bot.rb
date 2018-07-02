@@ -65,7 +65,6 @@ def handle_message(message, quick_reply)
   legislation = Legislation.last
   consultation_id = Consultation.find_by(user_id: current_user.id).id
   message.mark_seen
-  p message
   sleep(1.5)
 
   if quick_reply && !quick_reply.blank?
@@ -122,8 +121,6 @@ def handle_message(message, quick_reply)
   case commands.first
 
     when "ASK_FOR_EMAIL"
-      # current_user.checkpoint = "Please enter your e-mail address."
-      # current_user.save
       ask_for_user_email(message)
 
     when "USAGE_EXPLANATION"
@@ -186,9 +183,6 @@ def handle_message(message, quick_reply)
       else
         question_index = question_index.to_i
         ids = [consultation_id, section_id, clause_id, question_index]
-        # current_user.checkpoint = "Please suggest your revision"
-        # current_user.save
-        # feedback_ids = ids
         show_feedback_question(message, options: ids.join(','))
       end
 
@@ -527,23 +521,6 @@ def show_question(message, options:)
         }
       end
     )
-    # if question_index == "1"
-    #   text = "Please answer using a scale of 1 to 5. Answering with 1 means that it is not at all representative, while 5 means it is completely representative."
-    # else
-    #   text = "Please answer the question using the same 1 to 5 scale."
-    # end
-    # sleep(1)
-    # message.typing_on
-    # message.reply(
-    #   text: text,
-    #   quick_replies: ["1","2","3","4","5"].map do |number|
-    #     {
-    #       content_type: "text",
-    #       title: number,
-    #       payload: "ANSWER/#{options}"
-    #     }
-    #   end
-    # )
   end
 end
 
@@ -566,10 +543,6 @@ def get_user(messenger_id)
 
   user
 end
-
-# TO DO: how do we set valid e-mail and password through Messenger (as these are
-# required fields to create a new user b/c of Devise). Method below sets a dummy
-# e-mail and password based on the user's unique Messenger ID.
 
 def create_new_user(messenger_id)
   user = User.new(messenger_id: messenger_id)
