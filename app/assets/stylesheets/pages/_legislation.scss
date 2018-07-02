@@ -39,6 +39,20 @@
   border: 1px solid #ced4da;
 }
 
+#supporting-content {
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.metadata .row {
+  justify-content: flex-end;
+}
+
+#supporting-content a {
+  font-weight: 700;
+}
 
 .card-header {
   background-color: #f8f9fa;
@@ -90,7 +104,7 @@
 
 .finished {
   margin: 20px 0px;
-  text-align: right;
+  text-align: center;
   .btn-lg {
     padding: 0.5rem 8rem;
   }

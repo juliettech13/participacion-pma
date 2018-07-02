@@ -11,199 +11,181 @@
 <p id="notice"><%= notice %></p>
 <div class="container legislationshow" data-controller="legislation">
 
-    <h1 class="display-4"><%= @legislation.title %></h1>
-    <p class="lead">Welcome to your personal consultation, we appreciate your input!</p>
+  <h1 class="display-4"><%= @legislation.title %></h1>
+  <p class="lead">Welcome to your personal consultation, we appreciate your input!</p>
 
-<div class="consultation-panel">
-<div class="row panel">
-  <div class="sectionnav col-6">
-    <div class="dropdown">
-    <button class="btn btn-lg btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      sections
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <% @legislation.sections.each do |section| %>
-        <a class="dropdown-item" data-action="click->legislation#showSection"><%= section.title %></a>
-      <% end %>
-    </div>
-  </div>
-
-  </div>
-
-     <div class="finished col-6">
-      <%#= link_to "I am done", new_consultation_general_feedback_path(@consultation), :class => 'btn btn-primary btn-lg' %>
-    </div>
-</div>
-
-
-
-  </div>
-
-
-
-    <div class="consultation-box">
-     <div id="document">
-      <div id="active_section">
-        <h3><%= @legislation.sections[0].title %></h3>
-          <div class="card-header" id="headingOne">
-              <h5 class="mb-0">
-                <a class="btn btn-link" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal; text-align: left;">
-                  <%= @legislation.sections[0].clauses[0].content %>
-                </a>
-              </h5>
-            </div>
-
-      </div>
-
-        <% @legislation.sections.each do |section| %>
-        <div data-target="legislation.slide" class="slide">
-
-        <div id="<%= section.title %>" style="display: none;">
-          <h3><%= section.title %></h3>
-
-          <div id="accordion" class="">
-            <% section.clauses.each do |clause| %>
-            <div class="card">
-
-             <div class="card-header" id="headingOne">
-              <h5 class="mb-0">
-                <a class="btn btn-link clause" data-toggle="collapse" data-target="#collapse_<%= clause.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
-                  <strong><%= clause.id - 1 %></strong> <%= clause.content %>
-                  <div id="success-badges">
-                  <% if clause.questions[2].answers.exists?(user_id: current_user.id) %>
-                    <span class="badge badge-success" id="answered_badge">answered</span>
-                  <% end %>
-                  <% if clause.questions[3].answers.exists?(user_id: current_user.id) %>
-                    <span class="badge badge-success" id="revised_badge">revised</span>
-                  <% end %>
-                  </div>
-                </a>
-              </h5>
-              <%# if Metadatum.exists?(clause_id: clause.id) %>
-               <!--  <div class="metadata">
-                  <div class="row">
-                    <p>hover-over for metadata</p>
-                  </div>
-                </div> -->
-              <%# end %>
-            </div>
-
-            <div id="collapse_<%= clause.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
-              <div class="card-body" data-controller="slideshow">
-                <% unless clause.questions[0].answers.exists?(user_id: current_user.id) %>
-                <div data-target="slideshow.slide" class="slide">
-                  <%= clause.questions[0].content %>
-                  <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
-                  <%= f.hidden_field :user_id, :value => current_user.id  %>
-                  <%= f.hidden_field :question_id, :value => clause.questions[0].id  %>
-                  <div class="buttonspacing">
-                    <a data-action="slideshow#next">
-                      <%= f.submit '1', :name => "content", :class => 'btn-primary' %>
-                    </a>
-                    <a data-action="slideshow#next">
-                      <%= f.submit '2', :name => "content", :class => 'btn-primary' %>
-                    </a>
-                    <a data-action="slideshow#next">
-                      <%= f.submit '3', :name => "content", :class => 'btn-primary' %>
-                    </a>
-                    <a data-action="slideshow#next">
-                      <%= f.submit '4', :name => "content", :class => 'btn-primary' %>
-                    </a>
-                    <a data-action="slideshow#next">
-                      <%= f.submit '5', :name => "content", :class => 'btn-primary' %>
-                    </a>
-                  </div>
-                  <% end %>
-                </div>
-                <% end %>
-
-                <% unless clause.questions[1].answers.exists?(user_id: current_user.id) %>
-                <div data-target="slideshow.slide" class="slide">
-                  <%= clause.questions[1].content %>
-                  <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
-                  <%= f.hidden_field :user_id, :value => current_user.id  %>
-                  <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
-                  <div class="buttonspacing">
-                    <a data-action="slideshow#next slideshow#answered">
-                      <%= f.submit '1', :name => "content", :class => 'btn-primary' %>
-                    </a>
-                    <a data-action="slideshow#next slideshow#answered">
-                      <%= f.submit '2', :name => "content", :class => 'btn-primary' %>
-                    </a>
-                    <a data-action="slideshow#next slideshow#answered">
-                      <%= f.submit '3', :name => "content", :class => 'btn-primary' %>
-                    </a>
-                    <a data-action="slideshow#next slideshow#answered">
-                      <%= f.submit '4', :name => "content", :class => 'btn-primary' %>
-                    </a>
-                    <a data-action="slideshow#next slideshow#answered">
-                      <%= f.submit '5', :name => "content", :class => 'btn-primary' %>
-                    </a>
-                  </div>
-                  <% end %>
-                </div>
-                <% end %>
-
-                <% unless clause.questions[3].answers.exists?(user_id: current_user.id) %>
-                <div data-target="slideshow.slide" class="slide">
-                  <p>Would you like to provide a suggestion?</p>
-                  <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
-                  <div class=" form-group buttonspacing">
-                    <a data-action="slideshow#next">
-                      <%= f.button 'Yes', :name => "content", :class => 'btn-primary' %>
-                    </a>
-                    <a data-action="slideshow#close">
-                      <%= f.button 'No', :name => "content", :class => 'btn-primary' %>
-                    </a>
-                  </div>
-                  </div>
-
-                  <div data-target="slideshow.slide" class="slide">
-                  <%= clause.questions[3].content %>
-                  <div class="form-group">
-                    <%= f.hidden_field :user_id, :value => current_user.id  %>
-                    <%= f.hidden_field :question_id, :value => clause.questions[3].id  %>
-                    <%= f.text_area :content, :name => "content", required: true, :class => 'form-control', placeholder: clause.content %>
-                    <a data-action="slideshow#next slideshow#revised">
-                      <%= f.submit 'suggest revision', :class => 'btn-primary' %>
-                    </a>
-                  </div>
-
-                  <% end %>
-                </div>
-                <% end %>
-
-
-              </div>
-            </div>
-
+  <div class="consultation-panel">
+    <div class="row panel">
+      <div class="sectionnav col-6">
+        <div class="dropdown">
+          <button class="btn btn-lg btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            sections
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <% @legislation.sections.each do |section| %>
+              <a class="dropdown-item" data-action="click->legislation#showSection"><%= section.title %></a>
+            <% end %>
           </div>
-           <% end %>
         </div>
       </div>
     </div>
-      <% end %>
   </div>
+
+  <div class="consultation-box">
+   <div id="document">
+    <div id="active_section">
+      <h3><%= @legislation.sections[0].title %></h3>
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <a class="btn btn-link" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal; text-align: left;">
+            <%= @legislation.sections[0].clauses[0].content %>
+          </a>
+        </h5>
+      </div>
+    </div>
+
+    <div class="slidesections" data-controller="slideshowtwo">
+      <% @legislation.sections.each do |section| %>
+      <div id="<%= section.title %>" style="display: none;" class="slide" data-target="slideshowtwo.slide">
+        <h3><%= section.title %></h3>
+
+        <div id="accordion" class="">
+          <% section.clauses.each do |clause| %>
+          <div class="card">
+
+           <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <a class="btn btn-link clause" data-toggle="collapse" data-target="#collapse_<%= clause.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
+                <h6>Vision <%= clause.id - 1 %></h6>
+                <%= clause.content %>
+                <div id="supporting-content" class="row">
+                  <% if Metadatum.exists?(clause_id: clause.id) %>
+                    <%= button_to 'more info', clause_metadatum_path(clause), :class => "btn btn-outline-info", target: :_blank %>
+                  <% end %>
+                  <div id="success-badges" class="">
+                    <% if clause.questions[2].answers.exists?(user_id: current_user.id) %>
+                    <span class="badge badge-success" id="answered_badge">answered</span>
+                    <% end %>
+                    <% if clause.questions[3].answers.exists?(user_id: current_user.id) %>
+                    <span class="badge badge-success" id="revised_badge">revised</span>
+                    <% end %>
+                  </div>
+                </div>
+              </a>
+            </h5>
+          </div>
+
+          <div id="collapse_<%= clause.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body" data-controller="slideshow">
+              <% unless clause.questions[0].answers.exists?(user_id: current_user.id) %>
+              <div data-target="slideshow.slide" class="slide">
+                <%= clause.questions[0].content %>
+                <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
+                <%= f.hidden_field :user_id, :value => current_user.id  %>
+                <%= f.hidden_field :question_id, :value => clause.questions[0].id  %>
+                <div class="buttonspacing">
+                  <a data-action="slideshow#next">
+                    <%= f.submit '1', :name => "content", :class => 'btn-primary' %>
+                  </a>
+                  <a data-action="slideshow#next">
+                    <%= f.submit '2', :name => "content", :class => 'btn-primary' %>
+                  </a>
+                  <a data-action="slideshow#next">
+                    <%= f.submit '3', :name => "content", :class => 'btn-primary' %>
+                  </a>
+                  <a data-action="slideshow#next">
+                    <%= f.submit '4', :name => "content", :class => 'btn-primary' %>
+                  </a>
+                  <a data-action="slideshow#next">
+                    <%= f.submit '5', :name => "content", :class => 'btn-primary' %>
+                  </a>
+                </div>
+                <% end %>
+              </div>
+              <% end %>
+
+              <% unless clause.questions[1].answers.exists?(user_id: current_user.id) %>
+              <div data-target="slideshow.slide" class="slide">
+                <%= clause.questions[1].content %>
+                <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
+                <%= f.hidden_field :user_id, :value => current_user.id  %>
+                <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
+                <div class="buttonspacing">
+                  <a data-action="slideshow#next slideshow#answered">
+                    <%= f.submit '1', :name => "content", :class => 'btn-primary' %>
+                  </a>
+                  <a data-action="slideshow#next slideshow#answered">
+                    <%= f.submit '2', :name => "content", :class => 'btn-primary' %>
+                  </a>
+                  <a data-action="slideshow#next slideshow#answered">
+                    <%= f.submit '3', :name => "content", :class => 'btn-primary' %>
+                  </a>
+                  <a data-action="slideshow#next slideshow#answered">
+                    <%= f.submit '4', :name => "content", :class => 'btn-primary' %>
+                  </a>
+                  <a data-action="slideshow#next slideshow#answered">
+                    <%= f.submit '5', :name => "content", :class => 'btn-primary' %>
+                  </a>
+                </div>
+                <% end %>
+              </div>
+              <% end %>
+
+              <% unless clause.questions[3].answers.exists?(user_id: current_user.id) %>
+              <div data-target="slideshow.slide" class="slide">
+                <p>Would you like to provide a suggestion?</p>
+                <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
+                <div class=" form-group buttonspacing">
+                  <a data-action="slideshow#next">
+                    <%= f.button 'Yes', :name => "content", :class => 'btn-primary' %>
+                  </a>
+                  <a data-action="slideshow#close">
+                    <%= f.button 'No', :name => "content", :class => 'btn-primary' %>
+                  </a>
+                </div>
+              </div>
+
+              <div data-target="slideshow.slide" class="slide">
+                <%= clause.questions[3].content %>
+                <div class="form-group">
+                  <%= f.hidden_field :user_id, :value => current_user.id  %>
+                  <%= f.hidden_field :question_id, :value => clause.questions[3].id  %>
+                  <%= f.text_area :content, :name => "content", required: true, :class => 'form-control', placeholder: clause.content %>
+                  <a data-action="slideshow#next slideshow#revised">
+                    <%= f.submit 'suggest revision', :class => 'btn-primary' %>
+                  </a>
+                </div>
+
+                <% end %>
+              </div>
+              <% end %>
+
+
+            </div>
+          </div>
+
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
 </div>
 
 <div class="consultation-panel">
-<div class="row panel">
-    <div class="finished col-4">
+  <div class="finished">
+    <%= link_to "done", new_consultation_general_feedback_path(@consultation), :class => 'btn btn-secondary btn-lg' %>
+  </div>
+</div>
+
+
+</div>
+
+
+<!--     <div class="finished col-4">
       <%= link_to "previous", new_consultation_general_feedback_path(@consultation), :class => 'btn btn-primary btn-lg' %>
     </div>
     <div class="finished col-4">
       <%= link_to "next", new_consultation_general_feedback_path(@consultation), :class => 'btn btn-primary btn-lg' %>
-    </div>
-     <div class="finished col-4">
-      <%= link_to "done", new_consultation_general_feedback_path(@consultation), :class => 'btn btn-secondary btn-lg' %>
-    </div>
-</div>
-
-
-
-  </div>
-
-
-</div>
-
-
+    </div> -->
