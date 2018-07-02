@@ -363,7 +363,7 @@ def start_consultation(message, user, legislation)
   clause = Clause.find(1).content.split(".")
   message.typing_on
   message.reply(
-    text: "#{clause[0..1].join('.')}"
+    text: "#{clause[0..1].join('.').gsub("\n",' ')}."
   )
   sleep(2)
   message.typing_on
