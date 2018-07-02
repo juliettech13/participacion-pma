@@ -18,9 +18,9 @@ Rails.application.routes.draw do
 
   resources :clauses, only: [:show] do
     resources :questions, only: [:show]
-    resources :metadatum, only: [:show]
   end
 
+  resources :metadatum, only: [:show]
 
 
 

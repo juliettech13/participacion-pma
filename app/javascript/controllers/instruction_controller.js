@@ -16,10 +16,10 @@ export default class extends Controller {
   toggleForward(){
     console.log('little engine')
     var activeInstruction = document.getElementById('instructions');
-    var firstInstruction = "The vision intends to create a unifying policy vision for transforming Nigeria's economy and accelerating economic growth. The vision is composed of four chapters, and you are invited to comment on specific policy recommendations, on chapters, on the introduction and on the entire policy.";
-    var secondInstruction = "Navigate through the policy and <strong>click on clauses</strong> to interact with them. You will be presented with questions using a 1 through 5 scale, 1 means <strong>you strongly oppose</strong> and 5 means <strong>you are strongly in favor</strong>.";
-    var thirdInstruction = "After answering the first two questions, you will have the opportunity to <strong>suggest a revision</strong> should you feel compelled. There is no maximum or minimum participation, go at your own pace.";
-    var fourthInstruction = "If you like something, please let us know. If you think we can improve anything to support innovation, entrepreneurship or ICT developmemt, please let us know how. Thanks for your participation!";
+    var firstInstruction = "The vision intends to create a unifying policy vision for transforming Nigeria's economy and accelerating economic growth. The vision is composed of four sections, and you are invited to feedback on specific policy recommendations and on the entire policy.";
+    var secondInstruction = document.getElementById('how-it-works').innerHTML;
+    var thirdInstruction = document.getElementById('scale').innerHTML;
+    var fourthInstruction = document.getElementById('abstract').innerHTML;
     var next = document.getElementById("nextbutton");
     var back = document.getElementById("backbutton");
 
@@ -46,10 +46,10 @@ export default class extends Controller {
   toggleBack(){
     console.log('little engine')
     var activeInstruction = document.getElementById('instructions');
-    var firstInstruction = "The vision intends to create a unifying policy vision for transforming Nigeria's economy and accelerating economic growth. The vision is composed of four chapters, and you are invited to comment on specific policy recommendations, on chapters, on the introduction and on the entire policy.";
-    var secondInstruction = "Navigate through the policy and <strong>click on clauses</strong> to interact with them. You will be presented with questions using a 1 through 5 scale, 1 means <strong>you strongly oppose</strong> and 5 means <strong>you are strongly in favor</strong>.";
-    var thirdInstruction = "After answering the first two questions, you will have the opportunity to <strong>suggest a revision</strong> should you feel compelled. There is no maximum or minimum participation, go at your own pace.";
-    var fourthInstruction = "If you like something, please let us know. If you think we can improve anything to support innovation, entrepreneurship or ICT developmemt, please let us know how. Thanks for your participation!";
+    var firstInstruction = "The vision intends to create a unifying policy vision for transforming Nigeria's economy and accelerating economic growth. The vision is composed of four sections, and you are invited to feedback on specific policy recommendations and on the entire policy.";
+    var secondInstruction = document.getElementById('how-it-works').innerHTML;
+    var thirdInstruction = document.getElementById('scale').innerHTML;
+    var fourthInstruction = document.getElementById('abstract').innerHTML;
     var back = document.getElementById("backbutton");
     var next = document.getElementById("nextbutton");
 

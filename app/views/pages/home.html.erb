@@ -1,39 +1,13 @@
-<!--
-<div class="container">
-  <div class="row">
-        <div class="card mx-auto text-center">
-          <div class="card-body homepage-card">
-            <h2 class="card-title">
-              Welcome to the  consultation for the
-            </h2>
-            <h1 class="card-title">
-              National ICT  Innovation and Entrepreneurship Policy Vision
-            </h1>
-
-              <%= link_to  new_legislation_consultation_path(@legislation), :class => 'btn btn-treehouse get-started-button', :role => 'button' do %>
-                <p class="btn-content">get started</p>
-              <% end %>
-
-            <p class="card-text">
-              <div class="start-page-text">
-                Policies should govern based on people, your feedback is going to have a direct impact on the nation’s national strategy for innovation and entrepreneurship to shape Nigeria’s   future.
-              </div>
-            </p>
-          </div>
-        </div>
-      </div>
-  </div>
-</div> -->
-<div class="container">
+<div class="container home">
   <div class="row">
     <div class="col-lg-8 col-xs-12 col-sm-8">
       <div class="card">
           <div class="card-description">
-            <h3>Welcome to the  consultation for the</h3>
+            <p>Welcome to the  consultation for the</p>
             <h1>National ICT  Innovation and Entrepreneurship Policy Vision</h1>
-            <%= link_to "get started",  new_legislation_consultation_path(@legislation), :class => 'btn btn-treehouse get-started-button', :role => 'button' %>
+            <%= link_to "get started",  new_legislation_consultation_path(@legislation), :class => 'btn btn-lg btn-primary get-started-button', :role => 'button' %>
             <p>
-              Policies should govern based on people, your feedback is going to have a direct impact on the nation’s national strategy for innovation and entrepreneurship to shape Nigeria’s   future.
+              Nigeria ICT Innovation and Entrepreneurship Vision (NIIEV) is designed to strengthen the Nigerian technology entrepreneurship ecosystem, and we want your input to help co-create this national vision.
             </p>
           </div>
 

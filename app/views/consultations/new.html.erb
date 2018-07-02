@@ -1,29 +1,77 @@
 <div class="container" data-controller="instruction">
   <div class="row">
-    <div class="col-lg-8 col-xs-12 col-sm-12">
+    <div class="col-lg-10 col-xs-12 col-sm-12">
       <div class="card" >
         <div class="card-description">
           <div class="page-header">
             <h2>Welcome<small> to your policy consultation</small></h2>
           </div>
           <div class="instruction-slide-through">
-            <p id ="instructions">The vision intends to create a unifying policy vision for transforming Nigeria's economy and accelerating economic growth. The vision is composed of four chapters, and you are invited to comment on specific policy recommendations, on chapters, on the introduction and on the entire policy.</p>
+            <p id ="instructions">The vision intends to create a unifying policy vision for transforming Nigeria's economy and accelerating economic growth. The vision is composed of four sections, and you are invited to feedback on specific policy recommendations and on the entire policy.</p>
+          </div>
+
+          <div id="how-it-works" style="display: none;">
+            <h5>Here is how it works</h5>
+            <ul style="list-style-type: none; font-size: 24px;">
+              <li>
+                <strong>Navigate</strong> through sections using the dropdown menu
+              </li>
+              <li>
+                <strong>Click</strong> on a vision to interact with it
+              </li>
+              <li>
+                <strong>Answer</strong> a series of two questions
+              </li>
+              <li>
+                <strong>Revise</strong> the vision if you feel compelled to you
+              </li>
+            </ul>
+          </div>
+
+          <div id="scale" style="display: none;">
+            <p>Questions will be answered using a scale of 1 to 5. <strong>1 means that it is not at all representative</strong>, while <strong>5 means it is completely representative</strong>.</p>
+            <p>There is no required participation, so go at your own pace. If you think we can improve anything to support innovation, entrepreneurship or ICT developmemt, please let us know how.</p>
+            <h6>Click the 'done' button when you have finished your entire consultation. Your participation matters.</h6>
+          </div>
+
+          <div id="abstract" style="display: none;">
+            <div class="abstract-text">
+              <h6>Abstract</h6>
+              <p>
+                Technological change is accelerating and the global economy is transforming in response. Automation
+                and artificial intelligence are in the process of making redundant the low-skilled jobs that many
+                Nigerians have yet to take. Thus, the majority of Nigerians are at serious risk of being left behind
+                unless there is an urgent technological revolution that can transform agriculture, education, and all
+                other spheres of public life.
+                Technology has the ability to unite all and remove barriers to economic transformation. To
+                unlock our national potential, National Information Technology Development Agency (NITDA)
+                proposes a number of urgent measures to connect, educate and enable digital innovation.
+                This document provides the unifying policy vision for ICT Innovation and Entrepreneurship.
+              </p>
+              <p><strong>
+                Technology has the ability to unite all and remove barriers to economic transformation. To
+                unlock our national potential, National Information Technology Development Agency (NITDA)
+                proposes a number of urgent measures to connect, educate and enable digital innovation.
+              </strong></p>
+              <p>
+                The following provides the unifying policy vision for ICT Innovation and Entrepreneurship.
+              </p>
+            </div>
           </div>
 
           <div id="start" style="display: none;">
             <%= simple_form_for [@legislation, @consultation] do |f| %>
-              <%= f.input :user_id, as: :hidden %>
-              <%= f.submit "Start your consultation", class: "new-consultation btn-lg btn-primary" %>
+            <%= f.input :user_id, as: :hidden %>
+            <%= f.submit "start my consultation", class: "new-consultation btn-lg btn-primary" %>
             <% end %>
           </div>
+
+
 
           <div class="navigation-btns">
             <button id ="backbutton" style="display: none;" data-action="click->instruction#toggleBack">Back</button>
             <button id= "nextbutton" data-action="click->instruction#toggleForward">Next</button>
           </div>
-
-
-
         </div>
       </div>
     </div>

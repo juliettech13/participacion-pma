@@ -46,7 +46,7 @@
 
     <div class="slidesections" data-controller="slideshowtwo">
       <% @legislation.sections.each do |section| %>
-      <div id="<%= section.title %>" style="display: none;" class="slide" data-target="slideshowtwo.slide">
+      <div id="<%= section.title %>" style="display: none;">
         <h3><%= section.title %></h3>
 
         <div id="accordion" class="">
@@ -60,13 +60,13 @@
                 <%= clause.content %>
                 <div id="supporting-content" class="row">
                   <% if Metadatum.exists?(clause_id: clause.id) %>
-                  <%= link_to 'more info', clause_metadatum_path(clause), :class => "btn btn-outline-info", target: :_blank %>
+                  <%= link_to 'more info', metadatum_path(clause), :class => "btn btn-outline-secondary", target: :_blank %>
                   <% end %>
                   <div class="success-badges">
-                   <% if clause.questions[2].answers.exists?(user_id: current_user.id) %>
+                   <% if clause.questions[1].answers.exists?(user_id: current_user.id) %>
                    <span class="badge badge-success" id="answered_badge">answered</span>
                    <% end %>
-                   <% if clause.questions[3].answers.exists?(user_id: current_user.id) %>
+                   <% if clause.questions[2].answers.exists?(user_id: current_user.id) %>
                    <span class="badge badge-success" id="revised_badge">revised</span>
                    <% end %>
                  </div>
@@ -131,31 +131,26 @@
             </div>
             <% end %>
 
-            <% unless clause.questions[3].answers.exists?(user_id: current_user.id) %>
+            <% unless clause.questions[2].answers.exists?(user_id: current_user.id) %>
             <div data-target="slideshow.slide" class="slide">
               <p>Would you like to provide a suggestion?</p>
-              <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
               <div class=" form-group buttonspacing">
-                <a data-action="slideshow#next">
-                  <%= f.button 'Yes', :name => "content", :class => 'btn-primary' %>
-                </a>
-                <a data-action="slideshow#close">
-                  <%= f.button 'No', :name => "content", :class => 'btn-primary' %>
-                </a>
+                <button data-action="slideshow#next" class="btn-primary">Yes</button>
+                <button data-action="slideshow#close" class="btn-primary">No</button>
               </div>
             </div>
 
             <div data-target="slideshow.slide" class="slide">
-              <%= clause.questions[3].content %>
+              <%= clause.questions[2].content %>
+              <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
               <div class="form-group">
                 <%= f.hidden_field :user_id, :value => current_user.id  %>
-                <%= f.hidden_field :question_id, :value => clause.questions[3].id  %>
+                <%= f.hidden_field :question_id, :value => clause.questions[2].id  %>
                 <%= f.text_area :content, :name => "content", required: true, :class => 'form-control', placeholder: clause.content %>
                 <a data-action="slideshow#next slideshow#revised">
                   <%= f.submit 'suggest revision', :class => 'btn-primary' %>
                 </a>
               </div>
-
               <% end %>
             </div>
             <% end %>
