@@ -172,7 +172,7 @@
                   <div class="form-group">
                     <%= f.hidden_field :user_id, :value => current_user.id  %>
                     <%= f.hidden_field :question_id, :value => clause.questions[3].id  %>
-                    <%= f.text_area :content, :name => "content", :class => 'form-control', placeholder: clause.content %>
+                    <%= f.text_area :content, :name => "content", :class => 'form-control', placeholder: "Please write your suggestion here." %>
                     <a data-action="slideshow#next">
                       <%= f.submit 'suggest revision', :class => 'btn-primary' %>
                     </a>
