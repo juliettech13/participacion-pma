@@ -20,7 +20,7 @@
   font-weight: lighter;
 }
 
-.card-description p {
+.home .card-description p {
   font-size: 23px;
   font-weight: lighter;
   letter-spacing: 0.2px;
@@ -31,40 +31,14 @@
   justify-content: center;
 }
 
-
-// =============================================
-// .home-content {
-//   display: block;
-//   // justify-content: space-around;
-//   // text-align: center;
-//   // margin: auto;
-//   width: 60%;
-// }
-
-// .card {
-//   border: none !important;
-//   margin: 0 auto !important;
-//   float: none;
-//   margin-bottom: 10px;
-// }
-
-.get-started-button {
-    color: white;
-    // padding: 20px 200px;
-    max-height: 50px;
-    border-radius: 10px;
-    width: 300px;
-    background: #037200;
-    transition: background 0.3s ease;
-}
-
 .btn-content {
   display:flex;
   justify-content: center;
-  // align-items: center;
 }
 
 .get-started-button {
+  max-height: 50px;
+  width: 400px;
   margin-top: 40px;
   margin-bottom: 40px;
 }
@@ -72,19 +46,8 @@
 .get-started-button:hover {
   text-decoration: none !important;
   color: white;
-  background-color: #3ac162 ;
 }
 
-// .banner {
-//   color: white;
-//   text-align: center;
-//   height: 100vh;
-//   /* if you have a 70px navbar => height: calc(100vh - 70px); */
-//   background-size: cover !important;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
 
 .banner h1 {
   font-size: 50px;

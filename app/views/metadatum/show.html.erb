@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="metasection">
+    <h1 class="display-4">Vision <%= @metadatum.clause.id - 1 %></h1>
+    <p class="lead"><%= @metadatum.clause.content %></p>
+  </div>
+  <div class="metasection">
+    <h6>Agencies</h6>
+    <p><%= @metadatum.agency %></p>
+  </div>
+  <div class="metasection">
+    <h6>Rationale</h6>
+    <%= @metadatum.rationale %>
+  </div>
+  <div class="metasection">
+    <h6>Status</h6>
+    <%= @metadatum.status %>
+  </div>
+</div>

@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     resources :questions, only: [:show]
   end
 
+  resources :metadatum, only: [:show]
+
+
 
   get "/pages/finished", to: 'pages#finished'
 
