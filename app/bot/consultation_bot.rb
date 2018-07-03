@@ -75,7 +75,7 @@ def handle_message(message, quick_reply)
     commands = []
     feedback_ids = (current_user.checkpoint.split('/').second || "").split(',')
 
-    if current_user.checkpoint.start_with?("FEEDBACK")
+    if current_user.checkpoint.start_with?("REVISION")
       consultation_id, section_id, clause_id, question_index = feedback_ids
       set_answer(message, user_id: current_user.id, clause_id: clause_id, question_index: question_index)
       current_user.checkpoint = ""
@@ -83,7 +83,7 @@ def handle_message(message, quick_reply)
 
       if last_clause?(section_id, clause_id)
         if last_section?(section_id)
-          outboard(message)
+          show_general_feedback(message, options: feedback_ids)
         else
           next_section(message, consultation_id: consultation_id, section_id: section_id.to_i + 1, user: current_user)
         end
@@ -105,6 +105,15 @@ def handle_message(message, quick_reply)
           text: "Oops, it looks like you didn't enter a valid e-mail address. Please enter it again."
         )
       end
+    elsif current_user.checkpoint.start_with?("FEEDBACK")
+      consultation_id, section_id, clause_id, question_index = feedback_ids
+
+      general_feedback = GeneralFeedback.new(consultation_id: consultation_id, content: message.text)
+      general_feedback.save
+
+      current_user.checkpoint = ""
+      current_user.save
+      outboard(message)
     else
       message.typing_on
       message.reply(
@@ -152,7 +161,7 @@ def handle_message(message, quick_reply)
       if last_question?(clause_id, question_index)
         if last_clause?(section_id, clause_id)
           if last_section?(section_id)
-            outboard(message)
+            show_general_feedback(message, options: options)
           else
             next_section(message, consultation_id: consultation_id, section_id: section_id.to_i + 1, user: current_user)
           end
@@ -165,7 +174,7 @@ def handle_message(message, quick_reply)
         show_question(message, options: ids.join(','))
       end
 
-    when "FEEDBACK"
+    when "REVISION"
       options = commands.last
       ids = options.split(',')
       consultation_id, section_id, clause_id, question_index = ids
@@ -173,7 +182,7 @@ def handle_message(message, quick_reply)
       if message.text =="No"
         if last_clause?(section_id, clause_id)
           if last_section?(section_id)
-            outboard(message)
+            show_general_feedback(message, options: options)
           else
             next_section(message, consultation_id: consultation_id, section_id: section_id.to_i + 1, user: current_user)
           end
@@ -183,8 +192,20 @@ def handle_message(message, quick_reply)
       else
         question_index = question_index.to_i
         ids = [consultation_id, section_id, clause_id, question_index]
-        show_feedback_question(message, options: ids.join(','))
+        show_revision_question(message, options: ids.join(','))
       end
+
+    when "FEEDBACK"
+        options = commands.last
+        ids = options.split(',')
+        consultation_id, section_id, clause_id, question_index = ids
+
+        if message.text =="No"
+          outboard(message)
+        else
+          feedback_prompt(message, consultation_id: consultation_id)
+        end
+
 
     when "GET_STARTED"
       greet_current_user(message)
@@ -261,6 +282,28 @@ def usage_explanation(message)
         payload: 'START_CONSULTATION'
       }
     ]
+  )
+end
+
+def show_general_feedback(message, options:)
+  message.typing_on
+  message.reply(
+    text: "WOW! That's all the sections, would you like to leave general feedback for the overall policy that we went over?",
+    quick_replies: ["Yes", "No"].map do |answer|
+      {
+        content_type: "text",
+        title: answer,
+        payload: "FEEDBACK/#{options}"
+      }
+    end
+  )
+end
+
+def feedback_prompt(message, consultation_id:)
+  text = "Great! Enter your feedback below:"
+  message.typing_on
+  message.reply(
+    text: text
   )
 end
 
@@ -505,7 +548,7 @@ def show_question(message, options:)
         {
           content_type:"text",
           title: answer,
-          payload: "FEEDBACK/#{options}"
+          payload: "REVISION/#{options}"
         }
       end
     )
@@ -524,14 +567,14 @@ def show_question(message, options:)
   end
 end
 
-def show_feedback_question(message, options:)
+def show_revision_question(message, options:)
   ids = options.split(',')
   consultation_id, section_id, clause_id, question_index = ids
   clause = Clause.find(clause_id)
-  feedback_text = clause.questions[question_index.to_i - 1].content
+  revision_text = clause.questions[question_index.to_i - 1].content
   message.typing_on
   message.reply(
-    text: feedback_text
+    text: revision_text
   )
 end
 
