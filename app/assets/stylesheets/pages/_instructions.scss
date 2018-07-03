@@ -4,30 +4,30 @@
   color: green;
 }
 
-.instruction-slide-through {
+#instructions {
   font-size: 24px;
   margin: 35px 0px;
-}
-
-#backbutton {
-  background: none;
-  border: none;
-  justify-content: space-between;
-}
-
-#nextbutton {
-  background: none;
-  border: none;
-  justify-content: space-between;
 }
 
 .new-consultation {
   margin-bottom: 35px;
 }
 
+.abstract-text {
+  padding: 15px;
+  text-align: left;
+  background-color: #f8f9fa;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
 .navigation-btns {
   display:flex;
  justify-content: center;
+
+ button {
+  margin: 10px;
+ }
 }
 
 #how-it-works ul {
@@ -35,13 +35,13 @@
   font-size: 24px;
 }
 
-#instructions .abstract-text {
-  font-size: 18px;
-  text-align: left;
-  font-weight: lighter;
-  letter-spacing: 0.2px;
-  background-color: #f8f9fa;
-  padding: 30px;
-}
+// #instructions .abstract-text {
+//   font-size: 18px;
+//   text-align: left;
+//   font-weight: lighter;
+//   letter-spacing: 0.2px;
+//   background-color: #f8f9fa;
+//   padding: 30px;
+// }
 
 

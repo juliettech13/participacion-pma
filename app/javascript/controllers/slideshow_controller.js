@@ -21,6 +21,10 @@ export default class extends Controller {
     answerSection.insertAdjacentHTML('beforeend', '<span class="badge badge-success" id="revised_badge">revised</span>');
   }
 
+  // properButton(){
+
+  // }
+
   close() {
    this.element.parentNode.classList.remove("show")
   }
