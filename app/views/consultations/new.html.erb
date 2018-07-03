@@ -1,3 +1,5 @@
+
+
 <div class="container new-consultation" data-controller="instruction">
   <div class="row">
     <div class="col-lg-10 col-xs-12 col-sm-12">
@@ -6,7 +8,7 @@
 
 <!-- instruciton 1 -->
 
-          <div data-controller="slideshow" id="instructions">
+          <div data-controller="slideshow" id="instructions first">
 
             <div data-target="slideshow.slide" class="slide">
               <div id="welcome">
@@ -18,7 +20,7 @@
             </div>
 
 <!-- instruciton 2 -->
-            <div data-target="slideshow.slide" class="slide">
+            <div data-target="slideshow.slide" class="slide" id="second">
                <div id="how-it-works" style="">
                 <h2>Here's how it works</h2>
 
@@ -49,7 +51,7 @@
                 </div>
               </div>
 
-              <div data-target="slideshow.slide" class="slide">
+              <div data-target="slideshow.slide" class="slide" id="third">
                 <div id="own-pace" style="">
                   <h2>Go at your own pace</h2>
                   <p>There is no required or minimum participation, you can come back and login anytime. If you think we can improve anything to support innovation, entrepreneurship or ICT developmemt, please let us know how.</p>
@@ -58,7 +60,7 @@
               </div>
 
 <!-- instruciton 4 -->
-              <div data-target="slideshow.slide" class="slide">
+              <div data-target="slideshow.slide" class="slide" id="last">
                 <div id="abstract" style="">
                   <h2>Abstract</h2>
                   <div class="abstract-text">
@@ -93,8 +95,8 @@
               </div>
 
               <div class="navigation-btns">
-                <button id ="backbutton" class="btn btn-outline-primary" data-action="slideshow#previous click->instruction#toggleBack">Back</button>
-                <button id= "nextbutton" class="btn btn-outline-primary" data-action="slideshow#next click->instruction#toggleForward">Next</button>
+                <button id ="backbutton" class="btn btn-outline-primary" style="display: none;" data-action="slideshow#previous slideshow#showButton">Back</button>
+                <button id= "nextbutton" class="btn btn-outline-primary" data-action="slideshow#next slideshow#showButton">Next</button>
               </div>
             </div>
           </div>

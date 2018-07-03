@@ -22,8 +22,30 @@ export default class extends Controller {
   }
 
   // properButton(){
-
+  //   if slide--current
   // }
+
+  showButton(){
+    var lastSection = document.getElementById("last");
+    var secondSection = document.getElementById("second");
+    var firstSection = document.getElementById("first");
+    var thirdSection = document.getElementById("third");
+    var next = document.getElementById("nextbutton");
+    var back = document.getElementById("backbutton");
+
+    if (lastSection.classList.contains("slide--current")) {
+      next.style.display = 'none';
+    }
+    else if (thirdSection.classList.contains("slide--current")) {
+      next.style.display = 'none' ? '' : 'none';
+    }
+    else if (secondSection.classList.contains("slide--current")) {
+      back.style.display = 'none' ? '' : 'none';
+    }
+    else if (firstSection.classList.contains("slide--current")) {
+      back.style.display = 'none';
+    }
+  }
 
   close() {
    this.element.parentNode.classList.remove("show")
