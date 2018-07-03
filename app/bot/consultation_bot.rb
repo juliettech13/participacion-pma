@@ -63,7 +63,7 @@ def handle_message(message, quick_reply)
   messenger_id = message.sender["id"]
   current_user = get_user(messenger_id)
   legislation = Legislation.last
-  consultation_id = Consultation.find_by(user_id: current_user.id).id
+  consultation_id = Consultation.find_or_create_by(user: current_user, legislation: legislation).id
   message.mark_seen
   sleep(1.5)
 
@@ -91,7 +91,6 @@ def handle_message(message, quick_reply)
         next_clause(message, consultation_id: consultation_id, clause_id: clause_id.to_i + 1, section_id: section_id, user: current_user)
       end
     elsif current_user.checkpoint.start_with?("ASK_FOR_EMAIL")
-
       if message.text.match(VALID_EMAIL_REGEX)
         messenger_id = message.sender["id"]
         current_user.email = message.text
@@ -207,8 +206,6 @@ def handle_message(message, quick_reply)
         end
 
 
-    when "GET_STARTED"
-      greet_current_user(message)
     when "INTRO"
       skip_to_section(message, consultation_id: consultation_id, section_id: 1)
     when "SECTION_1"
@@ -225,8 +222,11 @@ end
 
 Bot.on :postback do |postback|
 
-  handle_message(postback, postback.payload)
-
+  if postback.payload == "GET_STARTED"
+    greet_current_user(postback)
+  else
+    handle_message(postback, postback.payload)
+  end
 end
 
 # INTRO AND GOODBYE MESSAGES
@@ -583,7 +583,6 @@ def get_user(messenger_id)
   user = User.find_by(messenger_id: messenger_id)
   # If user does not exist, create new
   user = create_new_user(messenger_id) unless user
-
   user
 end
 
@@ -597,7 +596,6 @@ def create_new_user(messenger_id)
   user.last_name = user_data["last_name"]
   user.email = "#{messenger_id}@mail.com"
   user.password = "#{messenger_id}"
-
   user.save!
 end
 
