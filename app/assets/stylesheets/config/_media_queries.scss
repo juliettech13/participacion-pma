@@ -55,6 +55,12 @@
     .card-description p {
     font-size: 20px;
   }
+  #how-it-works ul {
+  list-style-type: none;
+  li {
+      font-size: 20px;
+  }
+}
   .card-description ul {
     font-size: 20px;
     text-align: left;
@@ -77,6 +83,9 @@
   #document h3 {
     font-size: 1.85rem;
   }
+  .abstract-text p {
+  font-size: 18px;
+}
 }
 
 

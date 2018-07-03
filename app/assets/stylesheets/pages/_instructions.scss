@@ -33,15 +33,11 @@
 #how-it-works ul {
   list-style-type: none;
   font-size: 24px;
+  li {
+    margin: 10px 0px;
+  }
 }
 
-// #instructions .abstract-text {
-//   font-size: 18px;
-//   text-align: left;
-//   font-weight: lighter;
-//   letter-spacing: 0.2px;
-//   background-color: #f8f9fa;
-//   padding: 30px;
-// }
-
-
+#thank-you p {
+  font-size: 24px;
+}
