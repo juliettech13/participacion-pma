@@ -17,6 +17,10 @@ $brand-info:      $yellow;
 $brand-danger:    $red;
 $brand-warning:   $orange;
 
+$theme-colors: (
+  primary: $green,
+) !default;
+
 // Buttons & inputs' radius
 $border-radius-base: 2rem;
 $border-radius-large: 2rem;

@@ -1,62 +1,127 @@
-<div class="container">
-  <h3><strong>Welcome</strong></h3>
-  <p>to your Policy Consultation Dashboard</p>
+<div class="container dashboard-container">
+  <div class="row">
+    <div class="dashboard-cards">
 
-  <%= link_to "See Database", admin_root_path, class:"h3" %>
 
-  <div class="container">
-    <h3><strong>Policy</strong></h3>
-    <!-- Dropdown Section -->
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Pick a Section
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        <button class="dropdown-item" type="button">Section 1</button>
-        <button class="dropdown-item" type="button">Section 2</button>
-        <button class="dropdown-item" type="button">Section 3</button>
-        <%# @sections.each do |section| %>
-        <%#= section.title %>
-        <%# end %>
+      <div class="col-xs-12 col-lg-12 col-sm-12">
+        <div class="card welcome-card">
+          <div>
+            <h3><strong>Welcome,</strong></h3>
+            <p>to your Policy Consultation Dashboard</p>
+          </div>
+          <div>
+            <%= link_to "See Database", admin_root_path, class:"h3" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-lg-12 col-sm-12">
+        <div class="card policy-card">
+
+          <div class="policy-dropdown">
+            <h3><strong>Policy:</strong></h3>
+            <!-- Dropdown Section -->
+            <div class="dropdown">
+              <button class="btn-dashboard btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Pick a Section
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Section 1</button>
+                <button class="dropdown-item" type="button">Section 2</button>
+                <button class="dropdown-item" type="button">Section 3</button>
+                <%# @sections.each do |section| %>
+                <%#= section.title %>
+                <%# end %>
+              </div>
+            </div>
+            <div class="dropdown">
+                <button class=" btn-dashboard btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Pick a Clause
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                  <button class="dropdown-item" type="button">Section 1</button>
+                  <button class="dropdown-item" type="button">Section 2</button>
+                  <button class="dropdown-item" type="button">Section 3</button>
+                  <button class="dropdown-item" type="button">Section 4</button>
+                  <button class="dropdown-item" type="button">Section 5</button>
+                  <button class="dropdown-item" type="button">Section 6</button>
+                  <%# @sections.each do |section| %>
+                  <%#= section.title %>
+                  <%# end %>
+                </div>
+              </div>
+            </div>
+          <p>Mandate infrastructure sharing to achieve the economies of scale necessary for universal affordable access. No longer an optional recommendation, Government will support private sector providers to merge their infrastructure.</p>
+        </div>
+      </div>
+
+        <div class="col-xs-12 col-lg-12 col-sm-12">
+          <div class="card statistics-card">
+            <div class="statistics-card-left">
+              <div class="statistics-card-content-deliberated">
+
+                <h3><strong>Deliberated</strong></h3>
+                  <!-- Dynamic # of interactions -->
+                <p> x interactions</p>
+              </div>
+
+              <div class="statistics-card-content">
+                <div>
+                  <div class="statistics-card-content-representaion">
+                    <h3><strong>Representation</strong></h3>
+                      <!-- Dynamic # of answers -->
+                    <p> x answers</p>
+                  </div>
+                  <p>Do you feel like this represents your views?</p>
+                  <p> x %</p>
+                </div>
+
+                  <!-- Dynamicly display # of 'Yes' Ansers in % - based on total amount of answers -->
+              </div>
+
+              <div class="statistics-card-content">
+                <div>
+                  <div class="statistics-card-content-goal">
+                    <h3><strong>Goal Driven</strong></h3>
+                      <!-- Dynamic # of answers -->
+                    <p> x answers</p>
+                  </div>
+                  <p>Does this move toward the goal of ICT innovation? </p>
+                    <!-- Dynamicly display # of 'Yes' Ansers in % - based on total amount of answers -->
+                  <p> x %</p>
+                </div>
+              </div>
+
+          </div>
+            <div class="statistics-card-right">
+              <div class="statistics-card-right-revision">
+                <h3><strong>Revision</strong></h3>
+                  <!-- Dynamic # of revisions -->
+                <p> x revisions</p>
+              </div>
+              <div class="revisons-box">
+                <p>
+                   this is my revisionlorum ipsum solar energy taxation budgets are all wild, we need to change the average age of the tax pariticipants
+                </p>
+                <p>
+                   this is my revisionlorum ipsum solar energy taxation budgets are all wild, we need to change the average age of the tax pariticipants
+                </p>
+                <p>
+                   this is my revisionlorum ipsum solar energy taxation budgets are all wild, we need to change the average age of the tax pariticipants
+                </p>
+                <p>
+                   this is my revisionlorum ipsum solar energy taxation budgets are all wild, we need to change the average age of the tax pariticipants
+                </p>
+              </div>
+                <!-- Display a scrollable box with revisons for this paricular clause -->
+                <%# @answers.each do |answer| %>
+                  <!--content(where question_id) -->
+                <%# end  %>
+              <p>most frequent words:</p>
+                <!-- dynamically scan most words used in provided revisions per clause -->
+            </div>
+        </div>
       </div>
     </div>
-
-    <!-- Dropdown Clause -->
-
-    <!-- Display choosem Clause -->
-
   </div>
-
-
-  <div class="container">
-    <h3><strong>Deliberated</strong></h3>
-    <!-- Dynamic # of interactions -->
-    <p> x interactions</p>
-
-    <h3><strong>Representation</strong></h3>
-    <!-- Dynamic # of answers -->
-    <p> x answers</p>
-    <p>Do you feel like this represents your views?</p>
-    <!-- Dynamicly display # of 'Yes' Ansers in % - based on total amount of answers -->
-    <p> x %</p>
-
-    <h3><strong>Goal Driven</strong></h3>
-    <!-- Dynamic # of answers -->
-    <p> x answers</p>
-    <p>Does this move toward the goal of ICT innovation? </p>
-    <!-- Dynamicly display # of 'Yes' Ansers in % - based on total amount of answers -->
-    <p> x %</p>
-
-    <h3><strong>Revision</strong></h3>
-    <!-- Dynamic # of revisions -->
-    <p> x revisions</p>
-    <p>Does this move toward the goal of ICT innovation? </p>
-    <!-- Display a scrollable box with revisons for this paricular clause -->
-    <%# @answers.each do |answer| %>
-      <!--content(where question_id) -->
-    <%# end  %>
-    <p>most frequent words:</p>
-    <!-- dynamically scan most words used in provided revisions per clause -->
-  </div>
-
 </div>

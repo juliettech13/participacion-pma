@@ -9,20 +9,6 @@
   margin: 35px 0px;
 }
 
-.btn-medium {
-  color: #999999;
-  border: 1px solid #999999;
-  padding: 10px 15px;
-  border-radius: 50px;
-  font-weight: lighter;
-  opacity: 0.6;
-}
-.btn-medium:hover {
-  opacity: 1;
-  text-decoration: none;
-  color: #999999;
-}
-
 #backbutton {
   background: none;
   border: none;
@@ -43,3 +29,19 @@
   display:flex;
  justify-content: center;
 }
+
+#how-it-works ul {
+  list-style-type: none;
+  font-size: 24px;
+}
+
+#instructions .abstract-text {
+  font-size: 18px;
+  text-align: left;
+  font-weight: lighter;
+  letter-spacing: 0.2px;
+  background-color: #f8f9fa;
+  padding: 30px;
+}
+
+

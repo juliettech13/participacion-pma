@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+
+
   root to: 'pages#home'
+
 
   resources :legislations, only: [:show] do
     resources :sections, only: [:show]
@@ -16,6 +19,9 @@ Rails.application.routes.draw do
   resources :clauses, only: [:show] do
     resources :questions, only: [:show]
   end
+
+  resources :metadatum, only: [:show]
+
 
 
   get "/pages/finished", to: 'pages#finished'
@@ -32,5 +38,6 @@ Rails.application.routes.draw do
   mount Facebook::Messenger::Server, at: 'bot'
 
   get 'dashboard', to: 'pages#dashboard'
+  get 'dashboard_2', to: 'pages#dashboard_2'
 
 end
