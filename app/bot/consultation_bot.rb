@@ -534,7 +534,7 @@ def show_question(message, options:)
     message.typing_on
     message.reply(
       text: clause.questions[question_index.to_i - 1].content,
-      quick_replies: ["1","2","3","4","5"].map do |number|
+      quick_replies: ["1","2","3","4","5","No Opinion"].map do |number|
         {
           content_type: "text",
           title: number,
