@@ -1,6 +1,9 @@
 include Facebook::Messenger
 Facebook::Messenger::Subscriptions.subscribe(access_token: ENV["ACCESS_TOKEN"])
 
+legislation = Legislation.last
+p legislation
+p legislation.sections.count
 
 # Settings for chatbot presentation page - adds a description and a Get Started button
 Facebook::Messenger::Profile.set({
@@ -19,28 +22,13 @@ Facebook::Messenger::Profile.set({
       call_to_actions: [
         { title:"Policy Table of Contents",
           type:"nested",
-          call_to_actions:[
-            { title: 'Introduction',
+          call_to_actions: legislation.sections.map { |section|
+            {
+              title: section.title.truncate(30),
               type: 'postback',
-              payload: 'INTRO'
-            },
-            { title: 'Digital Infrastructure',
-              type: 'postback',
-              payload: 'SECTION_1'
-            },
-            { title: 'Education Reform',
-              type: 'postback',
-              payload: 'SECTION_2'
-            },
-            { title: 'Supporting the Ecosystem',
-              type: 'postback',
-              payload: 'SECTION_3'
-            },
-            { title: 'Direct Support for Startups',
-              type: 'postback',
-              payload: 'SECTION_4'
+              payload: "SECTION/#{section.id}"
             }
-          ]
+          }
         },
         {
           type:"web_url",
@@ -97,7 +85,7 @@ def handle_message(message, quick_reply)
         current_user.checkpoint = "USAGE_EXPLANATION"
         current_user.save
 
-        usage_explanation(message)
+        usage_explanation(message, legislation)
       else
         message.typing_on
         message.reply(
@@ -132,7 +120,7 @@ def handle_message(message, quick_reply)
       ask_for_user_email(message)
 
     when "USAGE_EXPLANATION"
-      usage_explanation(message)
+      usage_explanation(message, legislation)
 
     when "START_CONSULTATION"
       start_consultation(message, current_user, legislation)
@@ -205,17 +193,8 @@ def handle_message(message, quick_reply)
           feedback_prompt(message, consultation_id: consultation_id)
         end
 
-
-    when "INTRO"
-      skip_to_section(message, consultation_id: consultation_id, section_id: 1)
-    when "SECTION_1"
-      skip_to_section(message, consultation_id: consultation_id, section_id: 2)
-    when "SECTION_2"
-      skip_to_section(message, consultation_id: consultation_id, section_id: 3)
-    when "SECTION_3"
-      skip_to_section(message, consultation_id: consultation_id, section_id: 4)
-    when "SECTION_4"
-      skip_to_section(message, consultation_id: consultation_id, section_id: 5)
+    when "SECTION"
+      skip_to_section(message, consultation_id: consultation_id, section_id: commands.last.to_i)
   end
 
 end
@@ -261,10 +240,10 @@ def ask_for_user_email(message)
   )
 end
 
-def usage_explanation(message)
+def usage_explanation(message, legislation)
   message.typing_on
   message.reply(
-  text: "The proposed policy vision is composed of an introduction and 4 sections. Each section has several clauses and you are invited to give your feedback on each one. If you want to get an overview of the policy at any time, or skip to a specific section, use the menu below."
+  text: "The proposed policy vision is composed of #{legislation.sections.count} sections. Each section has several clauses and you are invited to give your feedback on each one. If you want to get an overview of the policy at any time, or skip to a specific section, use the menu below."
   )
   sleep(1)
   message.typing_on
@@ -398,19 +377,18 @@ def start_consultation(message, user, legislation)
   ids = [consultation.id, 1, 1, 1]
   section = Section.find(1)
   clause = Clause.find(1).content.split(".")
+
+  clause[0...-1].each do |sentence|
+    message.typing_on
+    message.reply(
+      text: "#{sentence.gsub("\n",' ')}."
+    )
+    sleep(2)
+  end
+
   message.typing_on
   message.reply(
-    text: "#{clause[0..1].join('.').gsub("\n",' ')}."
-  )
-  sleep(2)
-  message.typing_on
-  message.reply(
-    text: "#{clause[2].gsub("\n",' ')}."
-  )
-  sleep(2)
-  message.typing_on
-  message.reply(
-    text: "#{clause[3].gsub("\n",' ')}.",
+    text: "#{clause[-1].gsub("\n",' ')}.",
     quick_replies:[
       {
         content_type: "text",
