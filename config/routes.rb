@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
+  # root to: 'devise/sessions#new'
+
 
   resources :legislations, only: [:show] do
     resources :sections, only: [:show]
