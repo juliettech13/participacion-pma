@@ -32,6 +32,10 @@
 //   font-weight: lighter;
 // }
 
+.badge li {
+  font-size: 12px;
+}
+
 #accordion .card {
     text-align: left;
     margin-top: 0rem;
@@ -40,7 +44,7 @@
     color: black;
     position: relative;
     border-style: solid;
-    border-width: 1px;
+    border-width: .5px;
     padding: 15px;
     border-radius: 10px;
     position: relative;
@@ -50,6 +54,11 @@
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
+}
+
+#accordion .card:hover {
+  border-color: green;
+border-width: 2.5px;
 }
 
 
