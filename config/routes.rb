@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  # root to: 'devise/sessions#new'
+  # root to: 'devise/registrations#new'
 
 
   resources :legislations, only: [:show] do
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   resources :answers
 
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
     # controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
 
