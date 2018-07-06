@@ -12,31 +12,15 @@
 <p id="notice"><%= notice %></p>
 <div class="container legislationshow" data-controller="legislation">
 
+<h1 class="display-4"><%= @legislation.title %></h1>
   <div class="doc-header">
-    <h1 class="display-4"><%= @legislation.title %></h1>
     <p class="lead">Welcome to your personal consultation, we appreciate your input!</p>
+    <div class="help">
+      <a data-html="true" data-toggle="popover" data-trigger="hover" title="How It Works" data-content="<%= render 'howitworks' %>" class="badge badge-warning">Help</a>
+      <a href="#" class="badge badge-primary">Download Full PDF</a>
+    </div>
   </div>
 
-  <!-- <span class="badge badge-secondary" data-html="true" data-toggle="popover" data-trigger="hover" title="How It Works" data-content="<%#= render 'howitworks' %>">how it works</span> -->
-  <!-- sectionnavigation tests -->
-<!--   <div class="consultation-menu button-nav">
-    <div class="row">
-      <div class="options">
-      <button class="btn btn-primary">How it Works</button>
-      <button class="btn btn-primary">Full Document</button>
-    </div>
-    <div class="sections">
-      <button class="btn btn-primary" data-action="click->legislation#showSection">Intro</button>
-      <% @legislation.sections.each do |section| %>
-      <button class="btn btn-primary" data-action="click->legislation#showSection" class="<%= section.title %>">
-        Section <%= section.id %>
-      </button>
-      <% end %>
-      <%= link_to "Done", new_consultation_general_feedback_path(@consultation), :class => 'btn btn-primary' %>
-    </div>
-    </div>
-  </div>
--->
 <div data-controller="slideshow">
 
   <div id="Introduction" data-target="slideshow.slide" class="slide">
@@ -186,3 +170,24 @@
 </div>
 
 </div>
+
+
+  <!-- sectionnavigation tests -->
+<!--   <div class="consultation-menu button-nav">
+    <div class="row">
+      <div class="options">
+      <button class="btn btn-primary">How it Works</button>
+      <button class="btn btn-primary">Full Document</button>
+    </div>
+    <div class="sections">
+      <button class="btn btn-primary" data-action="click->legislation#showSection">Intro</button>
+      <% @legislation.sections.each do |section| %>
+      <button class="btn btn-primary" data-action="click->legislation#showSection" class="<%= section.title %>">
+        Section <%= section.id %>
+      </button>
+      <% end %>
+      <%= link_to "Done", new_consultation_general_feedback_path(@consultation), :class => 'btn btn-primary' %>
+    </div>
+    </div>
+  </div>
+-->
