@@ -27,15 +27,32 @@ export default class extends Controller {
 
 showFinished(){
   var lastSection = document.getElementById("Supporting the Ecosystem for Innovative Entrepreneurship")
+  var firstSection = document.getElementById("Digital Infrastructure")
+  var secondSection = document.getElementById("Education Reform, Skills Development and R+D")
+  var intro = document.getElementById("Introduction")
   var finished = document.getElementById("finished");
+  var next = document.getElementById("nextbutton");
+  var previous = document.getElementById("prevbutton");
+
+
+  if (firstSection.classList.contains("slide--current")) {
+      previous.style.display = 'none' ? '' : 'none';
+  }
+
+  if (intro.classList.contains("slide--current")) {
+      previous.style.display = 'none';
+  }
+
+  if (secondSection.classList.contains("slide--current")) {
+      finished.style.display = 'none';
+      next.style.display = 'none' ? '' : 'none';
+  }
 
   if (lastSection.classList.contains("slide--current")) {
+      next.style.display = 'none';
       finished.style.display = 'none' ? '' : 'none';
   }
 }
-  // properButton(){
-  //   if slide--current
-  // }
 
   showButton(){
     var lastSection = document.getElementById("last");

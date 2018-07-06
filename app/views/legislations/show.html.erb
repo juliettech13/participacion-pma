@@ -39,15 +39,13 @@
 -->
 <div data-controller="slideshow">
 
-  <div data-target="slideshow.slide" class="slide">
+  <div id="Introduction" data-target="slideshow.slide" class="slide">
    <h3>Introduction</h3>
    <div class="card-header" id="headingOne">
     <h5 class="mb-0">
       <a class="btn btn-link" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal; text-align: left;">
-        <div id="Introduction">
-          <%= render 'introduction' %>
-        </div>
-      </a>
+        <%= render 'introduction' %>
+       </a>
     </h5>
   </div>
 </div>
@@ -181,10 +179,10 @@
 </div>
 <% end %>
 
-<div class="finished">
-  <button class="btn-lg btn-primary" data-action="slideshow#previous slideshow#scrolltop">Previous</button>
-  <button class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Next</button>
-  <%= link_to "Finish Consultation", new_consultation_general_feedback_path(@consultation), :id => 'finished', :class => 'btn-lg btn-primary', :style => 'display: none' %>
+<div class="finished row">
+  <button id="prevbutton" style="display: none;" class="btn-lg btn-primary" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">Previous Section</button>
+  <button id="nextbutton" class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Next Section</button>
+  <%= button_to "Finish Consultation", new_consultation_general_feedback_path(@consultation), :id => 'finished', :class => 'btn-lg btn-primary', :style => 'display: none' %>
 </div>
 
 </div>
