@@ -58,7 +58,7 @@
 
 #accordion .card:hover {
   border-color: green;
-border-width: 2.5px;
+  border-width: 3px;
 }
 
 
@@ -118,9 +118,9 @@ border-width: 2.5px;
   }
 }
 
-.card-header:hover {
-  color: green;
-}
+// .card-header:hover {
+//   color: green;
+// }
 
 .scrollable {
     height: 100vh; /* or any value */

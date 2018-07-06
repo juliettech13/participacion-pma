@@ -2,20 +2,25 @@
   <div class="row">
     <div class="col-lg-8 col-xs-12 col-sm-10">
       <div class="card">
-          <div class="card-description">
-            <p>Welcome to the  consultation for the</p>
-            <h1>Nigeria ICT Innovation and Entrepreneurship Vision</h1>
-            <% if current_user.nil? %>
-              <%= link_to "Get Started", new_user_registration_path, :class => 'btn btn-lg btn-primary get-started-button', :role => 'button' %>
-            <% else %>
-              <%= link_to "Get Started", new_legislation_consultation_path(@legislation), :class => 'btn btn-lg btn-primary get-started-button', :role => 'button' %>
-            <% end %>
-            <p>
-              Nigeria ICT Innovation and Entrepreneurship Vision (NIIEV) is designed to strengthen the Nigerian technology entrepreneurship ecosystem, and we want your input to help co-create this national vision.
-            </p>
-          </div>
+        <div class="card-description">
+          <p>Welcome to the  consultation for the</p>
+          <h1>Nigeria ICT Innovation and Entrepreneurship Vision</h1>
+                <% if current_user.nil? %>
+                  <%= render 'signuphomepage' %>
+                <% else %>
+                  <%= link_to "Get Started", new_legislation_consultation_path(@legislation), :class => 'btn btn-lg btn-primary get-started-button', :role => 'button' %>
+                <% end %>
+<!--                 <p>
+                  Nigeria ICT Innovation and Entrepreneurship Vision (NIIEV) is designed to strengthen the Nigerian technology entrepreneurship ecosystem, and we want your input to help co-create this national vision.
+                </p> -->
+              </div>
 
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
+                <%# if current_user.nil? %>
+                <%#= link_to "Get Started", new_user_registration_path, :class => 'btn btn-lg btn-primary get-started-button', :role => 'button' %>
+                <%# else %>
+                <%#= link_to "Get Started", new_legislation_consultation_path(@legislation), :class => 'btn btn-lg btn-primary get-started-button', :role => 'button' %>
+                <%# end %>

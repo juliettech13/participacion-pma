@@ -56,7 +56,8 @@
           <div id="supporting-content" class="row">
             <% if Metadatum.exists?(clause_id: clause.id) %>
             <%= link_to 'more info', metadatum_path(clause), :class => "btn btn-outline-secondary", target: :_blank %>
-            <button class="btn btn-outline-secondary" data-html="true" data-toggle="popover" data-trigger="hover" data-content="<%= clause.id %>">more info</button>
+            <!-- <button class="btn btn-outline-secondary" data-html="true" data-toggle="popover" data-trigger="hover"
+            data-content="<%#= Metadatum.where(clause_id == clause.id).rationale %>">more info</button> -->
             <% end %>
             <div class="success-badges">
              <% if clause.questions[1].answers.exists?(user_id: current_user.id) %>

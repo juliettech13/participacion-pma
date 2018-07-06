@@ -1,6 +1,22 @@
 // Specific CSS for your home-page
 
 
+.login_form {
+    background: white;
+    padding: 10px 20px;
+    border-radius: 3px;
+    width: 70%;
+    display: inline-block;
+    margin-top: 0px;
+}
+
+.form-group {
+  display: block;
+}
+
+.login-form-header h2{
+  text-align: center;
+}
 
 .card {
   width: 100%;
