@@ -21,6 +21,10 @@ export default class extends Controller {
     answerSection.insertAdjacentHTML('beforeend', '<span class="badge badge-success" id="revised_badge">revised</span>');
   }
 
+  scrolltop(){
+    document.body.scrollTop = document.documentElement.scrollTop = 150;
+  }
+
   // properButton(){
   //   if slide--current
   // }
