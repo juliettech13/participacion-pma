@@ -25,6 +25,14 @@ export default class extends Controller {
     document.body.scrollTop = document.documentElement.scrollTop = 150;
   }
 
+showFinished(){
+  var lastSection = document.getElementById("Supporting the Ecosystem for Innovative Entrepreneurship")
+  var finished = document.getElementById("finished");
+
+  if (lastSection.classList.contains("slide--current")) {
+      finished.style.display = 'none' ? '' : 'none';
+  }
+}
   // properButton(){
   //   if slide--current
   // }

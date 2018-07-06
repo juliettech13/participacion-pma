@@ -12,8 +12,10 @@
 <p id="notice"><%= notice %></p>
 <div class="container legislationshow" data-controller="legislation">
 
+<div class="doc-header">
   <h1 class="display-4"><%= @legislation.title %></h1>
   <p class="lead">Welcome to your personal consultation, we appreciate your input!</p>
+</div>
 
 <!-- <span class="badge badge-secondary" data-html="true" data-toggle="popover" data-trigger="hover" title="How It Works" data-content="<%#= render 'howitworks' %>">how it works</span> -->
   <!-- sectionnavigation tests -->
@@ -52,9 +54,12 @@
 
         <% @legislation.sections.each do |section| %>
         <div id="<%= section.title %>" data-target="slideshow.slide" class="slide">
-          <h3><%= section.title %></h3>
-          <p>Section <%= section.id %>: Visions <%= section.clauses.first.id %> through <%= section.clauses.last.id %> out of 23</p>
-          <p><%= section.description %></p>
+
+          <div class="section-info">
+            <h3>Section <%= section.id %>: <%= section.title %></h3>
+            <p>Visions <%= section.clauses.first.id %> through <%= section.clauses.last.id %> out of 23</p>
+            <p><%= section.description %></p>
+          </div>
 
           <div id="accordion">
             <% section.clauses.each do |clause| %>
@@ -178,7 +183,8 @@
 
     <div class="finished">
       <button class="btn-lg btn-primary" data-action="slideshow#previous slideshow#scrolltop">Previous</button>
-      <button class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop">Next</button>
+      <button class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Next</button>
+      <%= link_to "Finish Consultation", new_consultation_general_feedback_path(@consultation), :id => 'finished', :class => 'btn-lg btn-primary', :style => 'display: none' %>
     </div>
 
   </div>
