@@ -1,15 +1,4 @@
 
-Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :twitter, "TW_ID", "TW_SECRET",
-   {
-      :secure_image_url => 'true',
-      :image_size => 'original',
-      :authorize_params => {
-        :force_login => 'true',
-        :lang => 'pt'
-      }
-    }
-end
 
 # frozen_string_literal: true
 
@@ -28,6 +17,8 @@ Devise.setup do |config|
     token_params: {
       parse: :json
     }
+
+
 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
