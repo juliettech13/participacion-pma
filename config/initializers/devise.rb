@@ -1,3 +1,16 @@
+
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :twitter, "TW_ID", "TW_SECRET",
+   {
+      :secure_image_url => 'true',
+      :image_size => 'original',
+      :authorize_params => {
+        :force_login => 'true',
+        :lang => 'pt'
+      }
+    }
+end
+
 # frozen_string_literal: true
 
 # Use this hook to configure devise mailer, warden hooks and so forth.
@@ -7,7 +20,15 @@ Devise.setup do |config|
     scope: 'email',
     info_fields: 'email, first_name, last_name',
     image_size: 'square',  # 50x50, guaranteed ratio
-    secure_image_url: true
+    secure_image_url: true,
+    client_options: {
+      site: "https://graph.facebook.com/v2.3",
+      authorize_url: "https://www.facebook.com/v2.3/dialog/oauth"
+    },
+    token_params: {
+      parse: :json
+    }
+
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
