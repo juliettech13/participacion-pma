@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
+  # root to: 'devise/registrations#new'
+
+  get 'download_pdf', to: "legislations#download_pdf"
 
   resources :legislations, only: [:show] do
     resources :sections, only: [:show]
@@ -29,7 +32,7 @@ Rails.application.routes.draw do
   resources :answers
 
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
     # controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
 

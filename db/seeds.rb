@@ -125,7 +125,7 @@ Clause.create!(content: 'Mandate infrastructure sharing to achieve the economies
 affordable access. No longer an optional recommendation, Government will support private
 sector providers to merge their infrastructure.', section_id: 1)
 
-  Question.create!(content: 'How well does this represents your views?', clause_id: 1)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 1)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 1)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 1)
 
@@ -137,7 +137,7 @@ sector providers to merge their infrastructure.', section_id: 1)
     )
 
 Clause.create!(content: 'Drop Right of Way charges for fiber distribution, duties on telecommunication imports and the Information Technology tax to reduce capital requirements for expanding digital infrastructure, thereby reducing the costs passed on to consumers.', section_id: 1)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 2)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 2)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 2)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 2)
 
@@ -149,7 +149,7 @@ Clause.create!(content: 'Drop Right of Way charges for fiber distribution, dutie
     )
 
 Clause.create!(content: 'Provide telecommunications companies with prioritised access to foreign exchange windows, such as the  Secondary Market Intervention Scheme (SMIS).', section_id: 1)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 3)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 3)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 3)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 3)
 
@@ -161,7 +161,7 @@ Clause.create!(content: 'Provide telecommunications companies with prioritised a
   )
 
 Clause.create!(content: 'Adopt a “dig once” policy, so that any traditional infrastructure investment--roads, electricity, water, etc--must be accompanied by fibre optic cables, where none already exist.', section_id: 1)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 4)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 4)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 4)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 4)
 
@@ -173,7 +173,7 @@ Clause.create!(content: 'Adopt a “dig once” policy, so that any traditional 
   )
 
 Clause.create!(content: 'Launch a single e-Governance portal using a Whole of Government approach to rationalize and simplify access to government services.', section_id: 1)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 5)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 5)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 5)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 5)
 
@@ -192,7 +192,7 @@ c.  Build a single digital platform to electronically process FOI requests for e
 d.  Build a single national data platform that aligns access to government datasets
 e.  Launch a fund to procure API development from the indigenous technology community.', section_id: 1)
 
-  Question.create!(content: 'How well does this represents your views?', clause_id: 6)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 6)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 6)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 6)
 
@@ -224,7 +224,7 @@ e. Launch a fund to procure API development from the indigenous technology commu
 puts "vision 7"
 
 Clause.create!(content: 'Support renewable energy through expanded subsidies and tax exemptions for importation of renewable energy technology.', section_id: 1)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 7)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 7)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 7)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 7)
 
@@ -269,7 +269,7 @@ d.  Emphasize entrepreneurial values, such as critical thinking, experimentation
 e.  Discourage redeployment of corp members, to ensure cultural exchange during camp, fostering trust and empathy across ethnic, linguistic, religious and gender divides to build a cohesive and proud national identity.',
 section_id: 2)
 
-  Question.create!(content: 'How well does this represents your views?', clause_id: 8)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 8)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 8)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 8)
 
@@ -297,7 +297,7 @@ d.  Provide continuing education trainings for teachers that emphasize technolog
 e.  Create a single portal to access all government scholarships and loans for national and international education.',
 section_id: 2)
 
-  Question.create!(content: 'How well does this represents your views?', clause_id: 9)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 9)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 9)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 9)
 
@@ -324,7 +324,7 @@ before NYSC to make them fit for employment",
 Clause.create!(content: 'Upgrade Technical and Vocational Education and Training programs to include software and hardware development and maintenance. Furthermore, all TVET programs should be digitally enabled.',
 section_id: 2)
 
-  Question.create!(content: 'How well does this represents your views?', clause_id: 10)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 10)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 10)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 10)
 
@@ -346,7 +346,7 @@ and Finland."
 Clause.create!(content: 'Support youth employment through tax incentives that will lower the gross cost to employ youth. Nigerian citizens under 26 years pay zero personal income tax up to N200,000/year, above this rate they pay the normal amount.',
 section_id: 2)
 
-  Question.create!(content: 'How well does this represents your views?', clause_id: 11)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 11)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 11)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 11)
 
@@ -370,7 +370,7 @@ clause_id: 11
 
 Clause.create!(content: 'Simplify immigration requirements for skilled professionals to start businesses in Nigeria and remove expatriate quotes to facilitate knowledge transfer.',
 section_id: 2)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 12)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 12)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 12)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 12)
 
@@ -399,7 +399,7 @@ clause_id: 12
 
 Clause.create!(content: 'Launch a Public Procurement for Innovation tendering mechanism, using hackathons and innovation challenge methodologies to provide larger government services. In this way the Government can directly seed fund pre-commercial private sector R&D.',
 section_id: 2)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 13)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 13)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 13)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 13)
 
@@ -421,7 +421,7 @@ clause_id: 13
 Clause.create!(content: 'Expand funding for Research and Development.',
 section_id: 2)
 
-  Question.create!(content: 'How well does this represents your views?', clause_id: 14)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 14)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 14)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 14)
 
@@ -450,7 +450,7 @@ puts "creating section 3"
 Clause.create!(content: 'Build innovation hubs in major population centers where none exist. It is important to avoid duplication, competition and also fragmentation of innovation communities as an innovation community’s strength lies in the dynamism and diversity of its members and its sharing culture.',
 section_id: 3)
 
-  Question.create!(content: 'How well does this represents your views?', clause_id: 15)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 15)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 15)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 15)
 
@@ -470,7 +470,7 @@ clause_id: 15 )
 
 Clause.create!(content: 'Provide direct training support for hubs and linkages for nationwide collaborations. The Government will develop a certification scheme for hubs and provide Training of Trainers to build the capabilities of hubs to support entrepreneurs.',
 section_id: 3)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 16)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 16)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 16)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 16)
 
@@ -485,7 +485,7 @@ clause_id: 16
 
 Clause.create!(content: 'Provide tax relief for innovation hubs, as they are providing valuable public services. Innovation hubs are the engines of innovation and entrepreneurship through skills development, ideation and experimentation, technology transfer, and investor matchmaking. Certified innovation hubs will pay zero income tax on revenue up to N10m/year and their employees will pay zero payroll tax on salaries up to N1m/year.  Innovation hubs will also receive tax rebates for any payments for internet and telephone.',
 section_id: 3)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 17)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 17)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 17)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 17)
 
@@ -508,7 +508,7 @@ technology startups and businesses in the pioneer list",
 
 Clause.create!(content: 'Simplify procedures for closing a business. Lowering the cost of business failure, encourages more enterprise and entrepreneurship.',
 section_id: 3)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 18)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 18)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 18)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 18)
 
@@ -533,7 +533,7 @@ clause_id: 18
 
 Clause.create!(content: 'Ease cross-border trade by minimizing the procedures and restrictions on both imports and exports.',
 section_id: 3)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 19)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 19)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 19)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 19)
 
@@ -565,7 +565,7 @@ puts "creating section 4"
 
 Clause.create!(content: 'Support Startups development directly through tax breaks. Certified Startups will pay zero corporate tax for up to eight years under N10m/year. And, up to twenty employees will pay zero personal income tax up to N1m.',
 section_id: 3)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 20)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 20)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 20)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 20)
 
@@ -583,7 +583,7 @@ clause_id: 20
 
 Clause.create!(content: 'Establish subsidized credit facilities for Startups.',
 section_id: 3)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 21)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 21)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 21)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 21)
 
@@ -603,7 +603,7 @@ clause_id: 21
 
 Clause.create!(content: 'Incentivize Venture Capital and Angel Investment funds to fund innovative entrepreneurship through tax reductions. Investments in certified Startups will receive full exemptions on capital gains tax.',
 section_id: 3)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 22)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 22)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 22)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 22)
 
@@ -635,7 +635,7 @@ clause_id: 22
 
 Clause.create!(content: 'Subsidize the acquisition of intellectual property protection for certified Startups. The Government will cover the legal and procedural costs for Startups to obtain intellectual property protection for their innovations.',
 section_id: 3)
-  Question.create!(content: 'How well does this represents your views?', clause_id: 23)
+  Question.create!(content: 'How well does this represent your views?', clause_id: 23)
   Question.create!(content: 'Does this strengthen the Nigerian technology entrepreneurship ecosystem?', clause_id: 23)
   Question.create!(content: 'Please provide your suggested revision', clause_id: 23)
 
@@ -663,26 +663,26 @@ puts "creating dummy general feedback"
 # GeneralFeedback.create!(content: 'My custom feedback 5', legislation_id: 1)
 # GeneralFeedback.create!(content: 'My custom feedback xyz 6', legislation_id: 1)
 
-puts "creating dummy answers"
-Answer.create!(content: 'yes', question_id: 1, user_id: 1)
-Answer.create!(content: '1', question_id: 2, user_id: 1)
-Answer.create!(content: 'yes', question_id: 3, user_id: 1)
-Answer.create!(content: 'My custom revision content - clause 1 - User 1', question_id: 4, user_id: 1)
+# puts "creating dummy answers"
+# Answer.create!(content: 'yes', question_id: 1, user_id: 1)
+# Answer.create!(content: '1', question_id: 2, user_id: 1)
+# Answer.create!(content: 'yes', question_id: 3, user_id: 1)
+# Answer.create!(content: 'My custom revision content - clause 1 - User 1', question_id: 4, user_id: 1)
 
-Answer.create!(content: '1', question_id: 5, user_id: 1)
-Answer.create!(content: '1', question_id: 6, user_id: 1)
-Answer.create!(content: 'yes', question_id: 7, user_id: 1)
-Answer.create!(content: 'My custom feedback clause 2 - User 1', question_id: 8, user_id: 1)
+# Answer.create!(content: '1', question_id: 5, user_id: 1)
+# Answer.create!(content: '1', question_id: 6, user_id: 1)
+# Answer.create!(content: 'yes', question_id: 7, user_id: 1)
+# Answer.create!(content: 'My custom feedback clause 2 - User 1', question_id: 8, user_id: 1)
 
-#feedback from another user
+# #feedback from another user
 
-Answer.create!(content: 'yes', question_id: 1, user_id: 2)
-Answer.create!(content: '2', question_id: 2, user_id: 2)
-Answer.create!(content: 'yes', question_id: 3, user_id: 2)
-Answer.create!(content: 'My custom revision content - clause 1 - User 2', question_id: 4, user_id: 2)
+# Answer.create!(content: 'yes', question_id: 1, user_id: 2)
+# Answer.create!(content: '2', question_id: 2, user_id: 2)
+# Answer.create!(content: 'yes', question_id: 3, user_id: 2)
+# Answer.create!(content: 'My custom revision content - clause 1 - User 2', question_id: 4, user_id: 2)
 
-Answer.create!(content: '1', question_id: 5, user_id: 2)
-Answer.create!(content: '1', question_id: 6, user_id: 2)
-Answer.create!(content: 'yes', question_id: 7, user_id: 2)
-Answer.create!(content: 'My custom feedback clause 2- User 2', question_id: 8, user_id: 2)
+# Answer.create!(content: '1', question_id: 5, user_id: 2)
+# Answer.create!(content: '1', question_id: 6, user_id: 2)
+# Answer.create!(content: 'yes', question_id: 7, user_id: 2)
+# Answer.create!(content: 'My custom feedback clause 2- User 2', question_id: 8, user_id: 2)
 

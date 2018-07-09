@@ -16,7 +16,7 @@ export default class extends Controller {
   toggleForward(){
     console.log('little engine')
     var activeInstruction = document.getElementById('instructions');
-    var firstInstruction = "The vision intends to create a unifying policy vision for transforming Nigeria's economy and accelerating economic growth. The vision is composed of three sections, and you are invited to feedback on specific policy recommendations and on the entire policy.";
+    var firstInstruction = document.getElementById('welcome').innerHTML;
     var secondInstruction = document.getElementById('how-it-works').innerHTML;
     var thirdInstruction = document.getElementById('scale').innerHTML;
     var fourthInstruction = document.getElementById('abstract').innerHTML;

@@ -3,6 +3,14 @@
   // height: 100vh;
 }
 
+.doc-header {
+  margin-bottom: 35px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 15px;
+  border-radius: 10px;
+}
+
 .im-finished {
   display: inline-block;
 }
@@ -17,12 +25,53 @@
   }
 }
 
-#accordion .card {
-  border-radius: 0rem;
-  text-align: left;
-  margin-top: 0rem;
-  font-weight: lighter;
+.popover {
+  max-width: 300px;
 }
+
+.popover-body {
+  font-size: 14px;
+  ol {
+    padding-left: 18px;
+  }
+}
+
+// #accordion .card {
+//   border-radius: 0rem;
+//   text-align: left;
+//   margin-top: 0rem;
+//   font-weight: lighter;
+// }
+
+.badge li {
+  font-size: 12px;
+}
+
+#accordion .card {
+    text-align: left;
+    margin-top: 0rem;
+    font-weight: lighter;
+    width: 100%;
+    color: black;
+    position: relative;
+    border-style: solid;
+    border-width: .5px;
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+}
+
+#accordion .card:hover {
+  border-color: green;
+  border-width: 3px;
+}
+
 
 .legislationshow {
   margin-top: 100px;
@@ -32,6 +81,17 @@
     line-height: 1.2;
     margin-bottom: 10px;
   }
+}
+
+.finished .btn-lg {
+  margin: 15px;
+}
+
+.button-nav .btn-lg {
+  width: 15%;
+  margin: 0px 10px;
+  justify-content: flex-start;
+  text-align: center;
 }
 
 
@@ -61,7 +121,7 @@
 }
 
 .card-header {
-  background-color: #f8f9fa;
+  background-color: #ffffff;
   padding: 1rem .5rem;
   border-bottom:.5px solid rgba(0, 0, 0, 0.125);
   a {
@@ -69,9 +129,9 @@
   }
 }
 
-.card-header:hover {
-  background-color: white;
-}
+// .card-header:hover {
+//   color: green;
+// }
 
 .scrollable {
     height: 100vh; /* or any value */
