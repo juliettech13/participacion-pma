@@ -29,6 +29,7 @@ gem 'uglifier'
 gem 'webpacker'
 
 gem 'activeadmin'
+gem 'thin'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
