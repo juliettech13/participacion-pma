@@ -9,17 +9,22 @@
   });
 </script>
 
+<%#= render 'oldlegislationflow' %>
+
+
 <p id="notice"><%= notice %></p>
 <div class="container legislationshow" data-controller="legislation">
 
 <h1 class="display-4"><%= @legislation.title %></h1>
   <div class="doc-header">
-    <p class="lead">Welcome to your personal consultation, we appreciate your input!</p>
     <div class="help">
       <a data-html="true" data-toggle="popover" data-trigger="hover" title="How It Works" data-content="<%= render 'howitworks' %>" class="badge badge-warning">Help</a>
       <a href="#" class="badge badge-primary">Download Full PDF</a>
+      <%#= link_to "download", download_pdf_path %>
+      <%#= link_to "My PDF", asset_path("#{Rails.root}/public/docs/full_vision.pdf") %>
     </div>
   </div>
+
 
 <div data-controller="slideshow">
 
@@ -55,7 +60,7 @@
           <%= clause.content %>
           <div id="supporting-content" class="row">
             <% if Metadatum.exists?(clause_id: clause.id) %>
-            <%= link_to 'more info', metadatum_path(clause), :class => "btn btn-outline-secondary", target: :_blank %>
+            <%#= link_to 'more info', metadatum_path(clause), :class => "btn btn-outline-secondary", target: :_blank %>
             <!-- <button class="btn btn-outline-secondary" data-html="true" data-toggle="popover" data-trigger="hover"
             data-content="<%#= Metadatum.where(clause_id == clause.id).rationale %>">more info</button> -->
             <% end %>
@@ -144,7 +149,7 @@
           <%= f.hidden_field :user_id, :value => current_user.id  %>
           <%= f.hidden_field :question_id, :value => clause.questions[2].id  %>
           <%= f.text_area :content, :name => "content", required: true, :class => 'form-control', placeholder: clause.content %>
-          <a data-action="slideshow#close slideshow#revised">
+          <a data-action="slideshow#close slideshow#revised slideshow#next">
             <%= f.submit 'suggest revision', :class => 'btn-primary' %>
           </a>
         </div>
@@ -168,28 +173,9 @@
 <div class="finished row">
   <button id="prevbutton" style="display: none;" class="btn-lg btn-primary" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">Previous Section</button>
   <button id="nextbutton" class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Next Section</button>
-  <%= button_to "Finish Consultation", new_consultation_general_feedback_path(@consultation), :id => 'finished', :class => 'btn-lg btn-primary', :style => 'display: none' %>
-</div>
-
-</div>
-
-
-  <!-- sectionnavigation tests -->
-<!--   <div class="consultation-menu button-nav">
-    <div class="row">
-      <div class="options">
-      <button class="btn btn-primary">How it Works</button>
-      <button class="btn btn-primary">Full Document</button>
-    </div>
-    <div class="sections">
-      <button class="btn btn-primary" data-action="click->legislation#showSection">Intro</button>
-      <% @legislation.sections.each do |section| %>
-      <button class="btn btn-primary" data-action="click->legislation#showSection" class="<%= section.title %>">
-        Section <%= section.id %>
-      </button>
-      <% end %>
-      <%= link_to "Done", new_consultation_general_feedback_path(@consultation), :class => 'btn btn-primary' %>
-    </div>
-    </div>
+  <%= link_to "Finish Consultation", new_consultation_general_feedback_path(@consultation), :id => 'finished', :class => 'btn-lg btn-primary', :style => 'display: none; text-decoration: none;' %>
+   <div class="finished">
   </div>
--->
+</div>
+
+</div>

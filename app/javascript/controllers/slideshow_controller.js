@@ -37,10 +37,12 @@ showFinished(){
 
   if (firstSection.classList.contains("slide--current")) {
       previous.style.display = 'none' ? '' : 'none';
+      finished.style.display = 'none';
   }
 
   if (intro.classList.contains("slide--current")) {
       previous.style.display = 'none';
+      finished.style.display = 'none';
   }
 
   if (secondSection.classList.contains("slide--current")) {

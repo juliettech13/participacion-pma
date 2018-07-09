@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 
 
-.login_form {
+.home .login_form {
     background: white;
     padding: 10px 20px;
     border-radius: 3px;
@@ -10,11 +10,11 @@
     margin-top: 0px;
 }
 
-.form-group {
+.home .form-group {
   display: block;
 }
 
-.login-form-header h2{
+.home .login-form-header h2{
   text-align: center;
 }
 

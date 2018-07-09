@@ -14,6 +14,10 @@ class LegislationsController < ApplicationController
     @questions = Question.where(:clause_id => @legislation.sections.each(&:clauses)).all
   end
 
+  def download_pdf
+    send_file "#{Rails.root}/public/docs/full_vision.pdf", type: "application/pdf", x_sendfile: true
+  end
+
   # GET /legislations/new
   def new
     @legislation = Legislation.new

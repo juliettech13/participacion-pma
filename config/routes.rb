@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   # root to: 'devise/registrations#new'
 
+  get 'download_pdf', to: "legislations#download_pdf"
 
   resources :legislations, only: [:show] do
     resources :sections, only: [:show]
