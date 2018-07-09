@@ -1,0 +1,136 @@
+
+.dashboard-cards {
+  // max-width: 100%;
+}
+
+.dashboard-cards {
+  .welcome-card {
+    display:flex;
+    justify-content: space-around;
+    border: none;
+    text-align: left;
+    .btn-dashboard {
+      display: inline-block;
+      //justify-content: space-around;
+      //text-align: right;
+      float: right;
+    }
+  }
+}
+
+.dashboard-cards {
+  .policy-card {
+    border-radius: 5px;
+    margin:3px;
+    margin-bottom:17px;
+    // width: 100vw;
+    // align-items: center;
+    background-color:#383E45;
+    color: white;
+    display: block;
+
+    p {
+      font-weight: lighter;
+      font-size: 15px;
+    }
+  }
+
+    .policy-card {
+      .policy-dropdown {
+        padding-top:10px;
+        max-width: 60%;
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+
+
+}
+.dashboard-cards{
+  .statistics-card {
+    border-radius: 5px;
+    margin: 3px;
+    padding-left: 40px;
+    width: 100%;
+    background-color: #383E45;
+    color: white ;
+    display:flex;
+    flex-direction: row;
+  }
+}
+
+.btn-sm {
+  max-width: 200px;
+}
+
+.policy-card p {
+  margin-left: 45px;
+}
+
+
+
+.statistics-card-content{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.statistics-card-content-representaion{
+  display: flex;
+  align-items: center;
+  p {
+    margin-left:10px;
+    margin-top:12px;
+  }
+}
+.statistics-card-content-goal{
+   display: flex;
+  align-items: center;
+  p {
+    margin-left:10px;
+    margin-top:12px;
+  }
+}
+
+.statistics-card-content-deliberated {
+    display: flex;
+  align-items: center;
+  p {
+    margin-left:10px;
+    margin-top:12px;
+  }
+}
+
+.statistics-card-right {
+  margin-left: 40px;
+  margin-top: 20px;
+}
+.statistics-card-left {
+  margin-top: 20px;
+}
+
+.statistics-card-right-revision {
+  display: flex;
+  align-items: center;
+  p {
+    margin-left:10px;
+    margin-top:12px;
+  }
+}
+
+.revisons-box p {
+  background-color:lightgrey;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 5px;
+  color: black;
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+.revisons-box {
+  border-radius: 5px;
+  background-color: white;
+  max-width: 400px;
+}
+

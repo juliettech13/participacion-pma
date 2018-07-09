@@ -5,6 +5,27 @@
   .login_form {
     margin-top: 140px;
   }
+  .dashboard-cards {
+     .card {
+      margin-top: 50px !important;
+     }
+  }
+
+  .login_form input {
+    width: 100%;
+  }
+
+  .login_form {
+    .btn {
+      width:100%;
+    }
+   }
+  .login_form {
+    .form-control {
+      width: 100%;
+    }
+  }
+
 }
 
 @media only screen and (width: 1024px) {
@@ -17,3 +38,58 @@
     margin-left: 700px;
   }
 }
+
+@media only screen and (max-width: 450px) {
+  .btn-dashboard {
+      margin-left: 15px;
+  }
+  .statistics-card {
+    flex-direction: column !important;
+  }
+  .policy-dropdown {
+    margin-left: 50px;
+  }
+  .card-description h1 {
+    font-size: 2.125rem
+  }
+    .card-description p {
+    font-size: 20px;
+  }
+  .card-description ul {
+    font-size: 20px;
+    text-align: left;
+  }
+  .container {
+    margin-top: 20px;
+  }
+  .dropdown-item {
+    font-size: 12px;
+  }
+  .display-4 {
+    font-size: 2rem !important;
+  }
+  .lead {
+    font-size: 1.25rem !important;
+  }
+  #document p {
+    font-size: 1rem;
+  }
+  #document h3 {
+    font-size: 1.85rem;
+  }
+}
+
+
+@media only screen and (max-width: 320px) {
+  .dashboard-cards {
+    margin-left: 10px;
+    text-align: left !important;
+    .card {
+    width: 100vw !important;
+      text-align: left !important;
+
+    }
+  }
+}
+
+

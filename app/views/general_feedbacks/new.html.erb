@@ -1,7 +1,7 @@
 
 <div class="container legislationshow">
   <h1 class="display-4"><%= @consultation.legislation.title %></h1>
-  <p class="lead">Please provide your feedback based on what you've read</p>
+  <p class="lead">Please provide your feedback based on what you've read, take into account all three sections and the overall objective of the vision</p>
 
 <div class="form-group feedback">
   <%= simple_form_for [@consultation, @general_feedback] do |f| %>

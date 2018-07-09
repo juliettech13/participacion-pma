@@ -18,7 +18,7 @@ class AnswersController < ApplicationController
 
   def create
     @answer = Answer.new
-    @answer.content = params[:answer][:content]
+    @answer.content = params[:content]
     @answer.user_id = current_user.id
     @answer.question = Question.find(params[:answer][:question_id])
 
@@ -28,7 +28,8 @@ class AnswersController < ApplicationController
       # @answer.user_id = current_user.id
       # @answer.question_id = @question.id
     end
-    @answer.save!
+
+   @answer.save!
     # @answer.question = @question
 
     # respond_to do |format|
