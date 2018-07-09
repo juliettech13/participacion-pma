@@ -11,6 +11,7 @@ ActiveAdmin.register GeneralFeedback do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+  config.clear_action_items!
   actions :all, except: [:edit, :update, :destroy]
   menu priority: 2
 end
