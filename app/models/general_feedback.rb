@@ -3,4 +3,5 @@ class GeneralFeedback < ApplicationRecord
   # has_one :user, through: :consultation
   belongs_to :consultation
   validates :consultation, presence: true
+  # validates :content, presence: true
 end

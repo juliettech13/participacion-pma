@@ -23,21 +23,18 @@
             <div data-target="slideshow.slide" class="slide" id="second">
                <div id="how-it-works" style="">
                 <h2>Here's how it works</h2>
-
                 <ul style="list-style-type: none;">
                   <li>
-                    <strong>Navigate</strong> through sections using the dropdown menu
+                    <strong>Click</strong> on any vision statement
                   </li>
                   <li>
-                    <strong>Click</strong> on a vision to interact with it
+                    <strong>Answer</strong> questions using 1 to 5 scale
                   </li>
                   <li>
-                    <strong>Answer</strong> a series of two questions
-                  </li>
-                  <li>
-                    <strong>Revise</strong> the vision if you feel compelled to you
+                    <strong>Suggest</strong> a revision if you want to
                   </li>
                 </ul>
+                <p style="font-size: 14px;"><strong>Note:</strong> You can reference PDF for more information on each vision statement</p>
               </div>
             </div>
 
@@ -55,7 +52,7 @@
                 <div id="own-pace" style="">
                   <h2>Go at your own pace</h2>
                   <p>There is no required or minimum participation, you can come back and login anytime. If you think we can improve anything to support innovation, entrepreneurship or ICT developmemt, please let us know how.</p>
-                  <p>Click the <button class="btn-secondary">finish my consultation</button> button when you have finished your entire consultation.</p>
+                  <p>Click the <button class="btn btn-primary">Finish Consultation</button> button when you have finished your entire consultation.</p>
                 </div>
               </div>
 
@@ -82,7 +79,7 @@
                 <div id="start" style="">
                   <%= simple_form_for [@legislation, @consultation] do |f| %>
                   <%= f.input :user_id, as: :hidden %>
-                  <%= f.submit "start my consultation", class: "new-consultation btn-lg btn-primary" %>
+                  <%= f.submit "Start My Consultation", class: "new-consultation btn-lg btn-primary" %>
                   <% end %>
                 </div>
               </div>

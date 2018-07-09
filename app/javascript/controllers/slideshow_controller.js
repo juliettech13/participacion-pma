@@ -11,14 +11,14 @@ export default class extends Controller {
     var injection = document.getElementById('answered_badge');
     var alertSpot = document.getElementById('success-badges');
     var answerSection = this.element.parentNode.parentNode.querySelector(".success-badges");
-    answerSection.insertAdjacentHTML('afterbegin', '<span class="badge badge-success" id="answered_badge">answered</span>');
+    answerSection.insertAdjacentHTML('afterbegin', '<span class="badge badge-success" id="answered_badge">Answered</span>');
   }
 
   revised(){
     var injection = document.getElementById('revised_badge');
     var alertSpot = document.getElementById('success-badges');
     var answerSection = this.element.parentNode.parentNode.querySelector(".success-badges");
-    answerSection.insertAdjacentHTML('beforeend', '<span class="badge badge-success" id="revised_badge">revised</span>');
+    answerSection.insertAdjacentHTML('beforeend', '<span class="badge badge-success" id="revised_badge">Revised</span>');
   }
 
   scrolltop(){
@@ -29,6 +29,7 @@ showFinished(){
   var lastSection = document.getElementById("Supporting the Ecosystem for Innovative Entrepreneurship")
   var firstSection = document.getElementById("Digital Infrastructure")
   var secondSection = document.getElementById("Education Reform, Skills Development and R+D")
+  var continueTo = document.getElementById("continueto")
   var intro = document.getElementById("Introduction")
   var finished = document.getElementById("finished");
   var next = document.getElementById("nextbutton");
@@ -37,11 +38,15 @@ showFinished(){
 
   if (firstSection.classList.contains("slide--current")) {
       previous.style.display = 'none' ? '' : 'none';
+      next.style.display = 'none' ? '' : 'none';
+      continueto.style.display = 'none';
       finished.style.display = 'none';
   }
 
   if (intro.classList.contains("slide--current")) {
       previous.style.display = 'none';
+      next.style.display = 'none';
+      continueto.style.display = 'none' ? '' : 'none';
       finished.style.display = 'none';
   }
 

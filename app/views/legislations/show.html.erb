@@ -9,8 +9,6 @@
   });
 </script>
 
-<%#= render 'oldlegislationflow' %>
-
 
 <p id="notice"><%= notice %></p>
 <div class="container legislationshow" data-controller="legislation">
@@ -19,9 +17,7 @@
   <div class="doc-header">
     <div class="help">
       <a data-html="true" data-toggle="popover" data-trigger="hover" title="How It Works" data-content="<%= render 'howitworks' %>" class="badge badge-warning">Help</a>
-      <a href="#" class="badge badge-primary">Download Full PDF</a>
-      <%#= link_to "download", download_pdf_path %>
-      <%#= link_to "My PDF", asset_path("#{Rails.root}/public/docs/full_vision.pdf") %>
+      <a href="../download_pdf" class="badge badge-primary" target="_blank">Reference Full PDF</a>
     </div>
   </div>
 
@@ -66,10 +62,10 @@
             <% end %>
             <div class="success-badges">
              <% if clause.questions[1].answers.exists?(user_id: current_user.id) %>
-             <span class="badge badge-success" id="answered_badge">answered</span>
+             <span class="badge badge-success" id="answered_badge">Answered</span>
              <% end %>
              <% if clause.questions[2].answers.exists?(user_id: current_user.id) %>
-             <span class="badge badge-success" id="revised_badge">revised</span>
+             <span class="badge badge-success" id="revised_badge">Revised</span>
              <% end %>
            </div>
          </div>
@@ -171,8 +167,9 @@
 <% end %>
 
 <div class="finished row">
+  <button id="continueto" class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Continue to Sections</button>
   <button id="prevbutton" style="display: none;" class="btn-lg btn-primary" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">Previous Section</button>
-  <button id="nextbutton" class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Next Section</button>
+  <button id="nextbutton" style="display: none;" class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Next Section</button>
   <%= link_to "Finish Consultation", new_consultation_general_feedback_path(@consultation), :id => 'finished', :class => 'btn-lg btn-primary', :style => 'display: none; text-decoration: none;' %>
    <div class="finished">
   </div>

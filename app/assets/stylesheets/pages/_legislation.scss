@@ -25,6 +25,17 @@
   }
 }
 
+.popover {
+  max-width: 300px;
+}
+
+.popover-body {
+  font-size: 14px;
+  ol {
+    padding-left: 18px;
+  }
+}
+
 // #accordion .card {
 //   border-radius: 0rem;
 //   text-align: left;

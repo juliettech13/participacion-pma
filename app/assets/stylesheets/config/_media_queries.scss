@@ -29,6 +29,10 @@
     }
   }
 
+  .popover {
+  max-width: 400px;
+}
+
 }
 
 @media only screen and (width: 1024px) {
@@ -89,6 +93,11 @@
   .abstract-text p {
   font-size: 18px;
 }
+
+.popover {
+  max-width: 200px;
+}
+
 }
 
 
