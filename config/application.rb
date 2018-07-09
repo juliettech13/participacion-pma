@@ -15,6 +15,7 @@ module PolicyConsultationTest
         end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.force_ssl = true
 
 
     config.paths.add File.join('app', 'bot'), glob: File.join('**', '*.rb')
