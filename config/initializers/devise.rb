@@ -7,7 +7,8 @@
     scope: 'email',
     info_fields: 'email, first_name, last_name',
     image_size: 'square',  # 50x50, guaranteed ratio
-    secure_image_url: true
+    secure_image_url: true,
+    callback_url: "https://consultation-chatbot.herokuapp.com/users/auth/facebook/callback"
 
   # config.omniauth :facebook, ENV["APP_ID"], ENV["APP_SECRET"],
   #    scope: 'email',
