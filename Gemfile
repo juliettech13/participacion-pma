@@ -13,6 +13,8 @@ gem 'rails', '5.2.0'
 gem 'devise'
 
 gem 'facebook-messenger'
+gem 'omniauth'
+gem 'oauth2'
 gem 'omniauth-facebook'
 gem 'turbolinks', '~> 5.0.0'
 gem 'social-share-button'
