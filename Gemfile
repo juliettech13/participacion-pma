@@ -11,6 +11,9 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.0'
 gem 'devise'
+gem 'jquery-validation-rails'
+gem 'client_side_validations'
+
 
 gem 'facebook-messenger'
 gem 'omniauth'

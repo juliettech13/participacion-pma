@@ -5,7 +5,7 @@
 
 <div class="form-group feedback">
   <%= simple_form_for [@consultation, @general_feedback] do |f| %>
-  <%= f.text_area :content, :rows => 5, :class => 'form-control' %>
+  <%= f.text_area :content, :rows => 5, :class => 'form-control', :required => true %>
   <%= f.submit "Submit & Finish", :class => 'btn-primary btn-lg' %>
   <% end %>
 </div>

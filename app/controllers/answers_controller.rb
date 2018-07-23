@@ -24,23 +24,20 @@ class AnswersController < ApplicationController
 
     if current_user == nil
       redirect_to new_user_registration_path
-    else
-      # @answer.user_id = current_user.id
-      # @answer.question_id = @question.id
     end
 
-   @answer.save!
-    # @answer.question = @question
+    # @answer.save!
 
-    # respond_to do |format|
-    #   if @answer.save
-    #     format.html { redirect_to questions_path }
-    #     format.json { render :show, status: :created, location: @question }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @answer.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @answer.save
+        format.html { redirect_to questions_path }
+        format.json { render :show, status: :created, location: @question }
+      else
+        render 'errors'
+        # format.html { render :new }
+        # format.json { render json: @answer.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update

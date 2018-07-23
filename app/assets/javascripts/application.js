@@ -1,6 +1,9 @@
 //= require rails-ujs
 //= require turbolinks
 //= require social-share-button
+//= require jquery.validate.additional-methods
+//= require jquery.validate
+//= require rails.validations
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets

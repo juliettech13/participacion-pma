@@ -9,6 +9,25 @@
   });
 </script>
 
+<!-- <script src="jquery.js"></script>
+<script src="jquery.validate.js"></script>
+<script>
+    $("reportform").validate();
+</script>
+ -->
+
+<script>
+function validateofficeFuction() {
+    $("#reportform").validate({
+      errorClass: "authError"
+    })
+  }
+
+$(document).ready(validateofficeFuction);
+$(document).on("click", "#reportform", fuction() {
+    $("#reportform").validate();
+});
+</script>
 
 <p id="notice"><%= notice %></p>
 <div class="container legislationshow" data-controller="legislation">
@@ -140,11 +159,11 @@
 
       <div data-target="slideshow.slide" class="slide">
         <%= clause.questions[2].content %>
-        <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
+        <%= form_for Answer.new, html: { id: "reportform" }, remote: true, validate: true, update: { success: "response", failure: "error"} do |f| %>
         <div class="form-group">
           <%= f.hidden_field :user_id, :value => current_user.id  %>
           <%= f.hidden_field :question_id, :value => clause.questions[2].id  %>
-          <%= f.text_area :content, :name => "content", required: true, :class => 'form-control', placeholder: clause.content %>
+          <%= f.text_area :content, :name => "content", required: true, :class => 'form-control required', placeholder: clause.content %>
           <a data-action="slideshow#close slideshow#revised slideshow#next">
             <%= f.submit 'suggest revision', :class => 'btn-primary' %>
           </a>
@@ -152,7 +171,6 @@
         <% end %>
       </div>
       <% end %>
-
 
     </div>
   </div>
