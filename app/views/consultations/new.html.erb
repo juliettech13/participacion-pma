@@ -4,7 +4,7 @@
       <div class="card" >
         <div class="card-description">
           <div class="page-header">
-            <h2>Welcome<small> to your policy consultation</small></h2>
+            <h2>Welcome to your policy consultation</h2>
           </div>
           <div class="instruction-slide-through">
             <p id ="instructions">The vision intends to create a unifying policy vision for transforming Nigeria's economy and accelerating economic growth. The vision is composed of three sections, and you are invited to feedback on specific policy recommendations and on the entire policy.</p>
@@ -62,7 +62,7 @@
           <div id="start" style="display: none;">
             <%= simple_form_for [@legislation, @consultation] do |f| %>
             <%= f.input :user_id, as: :hidden %>
-            <%= f.submit "start my consultation", class: "new-consultation btn-lg btn-primary" %>
+            <%= f.submit "Start my consultation", class: "new-consultation btn-lg btn-primary" %>
             <% end %>
           </div>
 
