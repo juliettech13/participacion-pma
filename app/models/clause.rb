@@ -1,6 +1,8 @@
 class Clause < ApplicationRecord
   belongs_to :section
   has_many :questions
+  has_many :subclauses
+
   def number_of_answers_introduction
     question_array = []
     self.questions.each do |question|

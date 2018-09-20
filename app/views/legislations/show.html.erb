@@ -40,7 +40,7 @@
 
   <div class="section-info">
     <h3>Section <%= section.id %>: <%= section.title %></h3>
-    <p>Visions <%= section.clauses.first.id %> through <%= section.clauses.last.id %> out of 23</p>
+    <p>Visions <%= section.clauses.first.id %> through <%= section.clauses.last.id %> out of <%= Clause.all.count %></p>
     <p><%= section.description %></p>
   </div>
 
@@ -54,6 +54,13 @@
         <a class="btn btn-link clause" data-toggle="collapse" data-target="#collapse_<%= clause.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
           <h6>Vision <%= clause.id %></h6>
           <%= clause.content %>
+          <% if clause.subclauses.exists? %>
+          <ul>
+            <% clause.subclauses.each do |subclause| %>
+               <li><%= subclause.content %></li>
+            <% end %>
+            </ul>
+          <% end %>
           <div id="supporting-content" class="row">
             <% if Metadatum.exists?(clause_id: clause.id) %>
             <%#= link_to 'more info', metadatum_path(clause), :class => "btn btn-outline-secondary", target: :_blank %>
