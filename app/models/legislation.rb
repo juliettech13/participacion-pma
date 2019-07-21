@@ -1,3 +1,4 @@
 class Legislation < ApplicationRecord
-  has_many :sections
+  has_many :titles
+  belongs_to :user
 end

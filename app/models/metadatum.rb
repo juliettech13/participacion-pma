@@ -1,3 +1,3 @@
 class Metadatum < ApplicationRecord
-  belongs_to :clause
+  belongs_to :article
 end
