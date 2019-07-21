@@ -11,7 +11,7 @@ class LegislationsController < ApplicationController
   # GET /legislations/1.json
   def show
     @consultation = Consultation.find_by(user_id: current_user.id)
-    @questions = Question.where(:clause_id => @legislation.sections.each(&:clauses)).all
+    # @questions = Question.where(:clause_id => @legislation.sections.each(&:clauses)).all
   end
 
   def download_pdf

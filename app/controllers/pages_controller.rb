@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @legislation = Legislation.find(2)
+    @legislation = Legislation.last
   end
 
 

@@ -35,43 +35,43 @@
   </div>
 </div>
 
-<% @legislation.sections.each do |section| %>
-<div id="<%= section.title %>" data-target="slideshow.slide" class="slide">
+<% @legislation.titles.each do |title| %>
+<div id="<%= title.description %>" data-target="slideshow.slide" class="slide">
 
-  <div class="section-info">
-    <h3>Section <%= section.id %>: <%= section.title %></h3>
-    <p>Visions <%= section.clauses.first.id %> through <%= section.clauses.last.id %> out of <%= Clause.all.count %></p>
-    <p><%= section.description %></p>
+  <div class="title-info">
+    <h3>title <%= title.id %>: <%= title.description %></h3>
+    <p>Visions <%= title.articles.first.id %> through <%= title.articles.last.id %> out of <%= Article.all.count %></p>
+    <p><%= title.description %></p>
   </div>
 
   <div id="accordion">
-    <% section.clauses.each do |clause| %>
+    <% title.articles.each do |article| %>
 
     <div class="card">
 
      <div class="card-header" id="headingOne">
       <h5 class="mb-0">
-        <a class="btn btn-link clause" data-toggle="collapse" data-target="#collapse_<%= clause.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
-          <h6>Vision <%= clause.id %></h6>
-          <%= clause.content %>
-          <% if clause.subclauses.exists? %>
-          <ul>
-            <% clause.subclauses.each do |subclause| %>
-               <li><%= subclause.content %></li>
-            <% end %>
-            </ul>
-          <% end %>
+        <a class="btn btn-link article" data-toggle="collapse" data-target="#collapse_<%= article.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
+          <h6>Vision <%= article.id %></h6>
+          <%= article.content %>
+          <%# if article.subarticles.exists? %>
+          <!-- <ul>
+            <%# article.subarticles.each do |subarticle| %>
+               <li><%#= subarticle.content %></li>
+            <%# end %>
+            </ul> -->
+          <%# end %>
           <div id="supporting-content" class="row">
-            <% if Metadatum.exists?(clause_id: clause.id) %>
-            <%#= link_to 'more info', metadatum_path(clause), :class => "btn btn-outline-secondary", target: :_blank %>
+            <% if Metadatum.exists?(article_id: article.id) %>
+            <%#= link_to 'more info', metadatum_path(article), :class => "btn btn-outline-secondary", target: :_blank %>
             <!-- <button class="btn btn-outline-secondary" data-html="true" data-toggle="popover" data-trigger="hover"
-            data-content="<%#= Metadatum.where(clause_id == clause.id).rationale %>">more info</button> -->
+            data-content="<%#= Metadatum.where(article_id == article.id).rationale %>">more info</button> -->
             <% end %>
             <div class="success-badges">
-             <% if clause.questions[1].answers.exists?(user_id: current_user.id) %>
+             <% if article.questions[1].answers.exists?(consultation: current_user.consultations.last) %>
              <span class="badge badge-success" id="answered_badge">Answered</span>
              <% end %>
-             <% if clause.questions[2].answers.exists?(user_id: current_user.id) %>
+             <% if article.questions[2].answers.exists?(consultation: current_user.consultations.last) %>
              <span class="badge badge-success" id="revised_badge">Revised</span>
              <% end %>
            </div>
@@ -80,14 +80,14 @@
      </h5>
    </div>
 
-   <div id="collapse_<%= clause.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+   <div id="collapse_<%= article.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
     <div class="card-body" data-controller="slideshow">
-      <% unless clause.questions[0].answers.exists?(user_id: current_user.id) %>
+      <% unless article.questions[0].answers.exists?(consultation: current_user.consultations.last) %>
       <div data-target="slideshow.slide" class="slide">
-        <%= clause.questions[0].content %><p>(1 = not at all, 5 = very much)</p>
+        <%= article.questions[0].content %><p>(1 = not at all, 5 = very much)</p>
         <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
         <%= f.hidden_field :user_id, :value => current_user.id  %>
-        <%= f.hidden_field :question_id, :value => clause.questions[0].id  %>
+        <%= f.hidden_field :question_id, :value => article.questions[0].id  %>
         <div class="buttonspacing">
           <a data-action="slideshow#next">
             <%= f.submit '1', :name => "content", :class => 'btn-primary' %>
@@ -109,12 +109,12 @@
       </div>
       <% end %>
 
-      <% unless clause.questions[1].answers.exists?(user_id: current_user.id) %>
+      <% unless article.questions[1].answers.exists?(consultation: current_user.consultations.last) %>
       <div data-target="slideshow.slide" class="slide">
-        <%= clause.questions[1].content %><p>(1 = not at all, 5 = very much)</p>
+        <%= article.questions[1].content %><p>(1 = not at all, 5 = very much)</p>
         <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
         <%= f.hidden_field :user_id, :value => current_user.id  %>
-        <%= f.hidden_field :question_id, :value => clause.questions[1].id  %>
+        <%= f.hidden_field :question_id, :value => article.questions[1].id  %>
         <div class="buttonspacing">
           <a data-action="slideshow#next slideshow#answered">
             <%= f.submit '1', :name => "content", :class => 'btn-primary' %>
@@ -136,7 +136,7 @@
       </div>
       <% end %>
 
-      <% unless clause.questions[2].answers.exists?(user_id: current_user.id) %>
+      <% unless article.questions[2].answers.exists?(consultation: current_user.consultations.last) %>
       <div data-target="slideshow.slide" class="slide">
         <p>Would you like to provide a suggestion?</p>
         <div class=" form-group buttonspacing">
@@ -146,12 +146,12 @@
       </div>
 
       <div data-target="slideshow.slide" class="slide">
-        <%= clause.questions[2].content %>
+        <%= article.questions[2].content %>
         <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
         <div class="form-group">
           <%= f.hidden_field :user_id, :value => current_user.id  %>
-          <%= f.hidden_field :question_id, :value => clause.questions[2].id  %>
-          <%= f.text_area :content, :name => "content", required: true, :class => 'form-control', placeholder: clause.content %>
+          <%= f.hidden_field :question_id, :value => article.questions[2].id  %>
+          <%= f.text_area :content, :name => "content", required: true, :class => 'form-control', placeholder: article.content %>
           <a data-action="slideshow#close slideshow#revised slideshow#next">
             <%= f.submit 'suggest revision', :class => 'btn-primary' %>
           </a>
@@ -174,9 +174,9 @@
 <% end %>
 
 <div class="finished row">
-  <button id="continueto" class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Continue to Sections</button>
-  <button id="prevbutton" style="display: none;" class="btn-lg btn-primary" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">Previous Section</button>
-  <button id="nextbutton" style="display: none;" class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Next Section</button>
+  <button id="continueto" class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Continue to titles</button>
+  <button id="prevbutton" style="display: none;" class="btn-lg btn-primary" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">Previous title</button>
+  <button id="nextbutton" style="display: none;" class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Next title</button>
   <%= link_to "Finish Consultation", new_consultation_general_feedback_path(@consultation), :id => 'finished', :class => 'btn-lg btn-primary', :style => 'display: none; text-decoration: none;' %>
    <div class="finished">
   </div>
