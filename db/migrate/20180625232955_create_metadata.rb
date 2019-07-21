@@ -5,7 +5,7 @@ class CreateMetadata < ActiveRecord::Migration[5.2]
       t.string :agency
       t.string :rationale
       t.text :status
-      t.references :clause, foreign_key: true
+      t.references :article, foreign_key: true
 
       t.timestamps
     end

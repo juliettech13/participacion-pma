@@ -1,4 +1,4 @@
-class ClausesController < ApplicationController
+class ChaptersController < ApplicationController
   def new
   end
 

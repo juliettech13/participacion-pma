@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_19_214313) do
+ActiveRecord::Schema.define(version: 2018_06_26_102553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,19 +49,29 @@ ActiveRecord::Schema.define(version: 2018_09_19_214313) do
   create_table "answers", force: :cascade do |t|
     t.string "content"
     t.bigint "question_id"
-    t.bigint "user_id"
+    t.bigint "consultation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["consultation_id"], name: "index_answers_on_consultation_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
-    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
-  create_table "clauses", force: :cascade do |t|
-    t.string "content"
-    t.bigint "section_id"
+  create_table "articles", force: :cascade do |t|
+    t.text "content"
+    t.integer "number"
+    t.bigint "chapter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["section_id"], name: "index_clauses_on_section_id"
+    t.index ["chapter_id"], name: "index_articles_on_chapter_id"
+  end
+
+  create_table "chapters", force: :cascade do |t|
+    t.string "description"
+    t.integer "number"
+    t.bigint "title_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title_id"], name: "index_chapters_on_title_id"
   end
 
   create_table "consultations", force: :cascade do |t|
@@ -95,35 +105,27 @@ ActiveRecord::Schema.define(version: 2018_09_19_214313) do
     t.string "agency"
     t.string "rationale"
     t.text "status"
-    t.bigint "clause_id"
+    t.bigint "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["clause_id"], name: "index_metadata_on_clause_id"
+    t.index ["article_id"], name: "index_metadata_on_article_id"
   end
 
   create_table "questions", force: :cascade do |t|
     t.string "content"
-    t.bigint "clause_id"
+    t.bigint "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["clause_id"], name: "index_questions_on_clause_id"
+    t.index ["article_id"], name: "index_questions_on_article_id"
   end
 
-  create_table "sections", force: :cascade do |t|
-    t.string "title"
+  create_table "titles", force: :cascade do |t|
+    t.integer "number"
     t.text "description"
     t.bigint "legislation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["legislation_id"], name: "index_sections_on_legislation_id"
-  end
-
-  create_table "subclauses", force: :cascade do |t|
-    t.text "content"
-    t.bigint "clause_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["clause_id"], name: "index_subclauses_on_clause_id"
+    t.index ["legislation_id"], name: "index_titles_on_legislation_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -150,15 +152,15 @@ ActiveRecord::Schema.define(version: 2018_09_19_214313) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "consultations"
   add_foreign_key "answers", "questions"
-  add_foreign_key "answers", "users"
-  add_foreign_key "clauses", "sections"
+  add_foreign_key "articles", "chapters"
+  add_foreign_key "chapters", "titles"
   add_foreign_key "consultations", "legislations"
   add_foreign_key "consultations", "users"
   add_foreign_key "general_feedbacks", "consultations"
   add_foreign_key "legislations", "users"
-  add_foreign_key "metadata", "clauses"
-  add_foreign_key "questions", "clauses"
-  add_foreign_key "sections", "legislations"
-  add_foreign_key "subclauses", "clauses"
+  add_foreign_key "metadata", "articles"
+  add_foreign_key "questions", "articles"
+  add_foreign_key "titles", "legislations"
 end

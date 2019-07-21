@@ -1,7 +1,7 @@
-class CreateSections < ActiveRecord::Migration[5.2]
+class CreateTitles < ActiveRecord::Migration[5.2]
   def change
-    create_table :sections do |t|
-      t.string :title
+    create_table :titles do |t|
+      t.integer :number
       t.text :description
       t.references :legislation, foreign_key: true
 
