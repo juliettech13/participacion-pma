@@ -1,4 +1,4 @@
-# Policy Consultation 
+# Policy Consultation Tool
 
 This is the opensource code repository of the digital policy consultation tool. It is a digital policy consultation across a nation as a Rails App, a ‘collaborative policy-writing’ tool. The consultation will be live for a specified perod, after which the insight, feedback, and deliberation will be consolidated, integrated.
 
