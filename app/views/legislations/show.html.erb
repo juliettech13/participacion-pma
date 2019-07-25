@@ -16,7 +16,7 @@
 <h1 class="display-4"><%= @legislation.title %></h1>
   <div class="doc-header">
     <div class="help">
-      <a data-html="true" data-toggle="popover" data-trigger="hover" title="How It Works" data-content="<%= render 'howitworks' %>" class="badge badge-warning">Help</a>
+      <a data-html="true" data-toggle="popover" data-trigger="hover" title="How It Works" data-content="<%= render 'howitworks' %>" class="badge badge-warning">Ayuda</a>
       <a href="../download_pdf" class="badge badge-primary" target="_blank">Reference Full PDF</a>
     </div>
   </div>
@@ -25,7 +25,7 @@
 <div data-controller="slideshow">
 
   <div id="Introduction" data-target="slideshow.slide" class="slide">
-   <h3>Introduction</h3>
+   <h3>Introducción</h3>
    <div class="card-header" id="headingOne">
     <h5 class="mb-0">
       <a class="btn btn-link" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal; text-align: left;">
@@ -39,9 +39,9 @@
 <div id="<%= title.description %>" data-target="slideshow.slide" class="slide">
 
   <div class="title-info">
-    <h3>title <%= title.id %>: <%= title.description %></h3>
-    <p>Visions <%= title.articles.first.id %> through <%= title.articles.last.id %> out of <%= Article.all.count %></p>
-    <p><%= title.description %></p>
+    <h3>Titulo <%= title.id %>: <%= title.description %></h3>
+    <p>Artículos <%= title.articles.first.id %> a <%= title.articles.last.id %> de 328</p>
+    <!-- <p><%#= title.description %></p> -->
   </div>
 
   <div id="accordion">
@@ -50,10 +50,10 @@
     <div class="card">
 
      <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
+      <!-- <h5 class="mb-0"> -->
         <a class="btn btn-link article" data-toggle="collapse" data-target="#collapse_<%= article.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
-          <h6>Vision <%= article.id %></h6>
-          <%= article.content %>
+          <h6 class=align-left>Artículo <%= article.id %></h6>
+          <p class="align-left"><%= article.content %></p>
           <%# if article.subarticles.exists? %>
           <!-- <ul>
             <%# article.subarticles.each do |subarticle| %>
@@ -77,7 +77,7 @@
            </div>
          </div>
        </a>
-     </h5>
+     <!-- </h5> -->
    </div>
 
    <div id="collapse_<%= article.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
@@ -177,7 +177,7 @@
   <button id="continueto" class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Continue to titles</button>
   <button id="prevbutton" style="display: none;" class="btn-lg btn-primary" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">Previous title</button>
   <button id="nextbutton" style="display: none;" class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Next title</button>
-  <%= link_to "Finish Consultation", new_consultation_general_feedback_path(@consultation), :id => 'finished', :class => 'btn-lg btn-primary', :style => 'display: none; text-decoration: none;' %>
+  <%= link_to "Finish Consultation", new_consultation_general_feedback_path(@consultation), :id => 'finished', :class => 'btn-lg btn-primary', :style => ' text-decoration: none;' %>
    <div class="finished">
   </div>
 </div>

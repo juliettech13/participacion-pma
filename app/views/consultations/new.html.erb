@@ -13,58 +13,58 @@
             <div data-target="slideshow.slide" class="slide" id="first">
               <div id="welcome">
                 <div class="page-header">
-                  <h2>Welcome to your policy consultation</h2>
+                  <h2>Bienvenido a tu plataforma de consulta ciudadana</h2>
                 </div>
-                <p>The vision intends to create a unifying policy vision for transforming Nigeria's economy and accelerating economic growth. The vision is composed of three sections, and you are invited to feedback on specific policy recommendations and on the entire policy.</p>
+                <p>La idea es que todos podamos contribuir nuestras opiniones e ideas sobre como debe lucir el documento mas importante de la república: la Constitución.</p>
               </div>
             </div>
 
 <!-- instruciton 2 -->
             <div data-target="slideshow.slide" class="slide" id="second">
                <div id="how-it-works" style="">
-                <h2>Here's how it works</h2>
+                <h2>Cómo funciona?</h2>
                 <ul style="list-style-type: none;">
                   <li>
-                    <strong>Click</strong> on any vision statement
+                    <strong>Click</strong> en el artículo que te interesa
                   </li>
                   <li>
-                    <strong>Answer</strong> questions using 1 to 5 scale
+                    <strong>Responde</strong> las preguntas utilizando la escala del 1 al 5
                   </li>
                   <li>
-                    <strong>Suggest</strong> a revision if you want to
+                    <strong>Sugiere</strong> revisiones
                   </li>
                 </ul>
-                <p style="font-size: 14px;"><strong>Note:</strong> You can reference PDF for more information on each vision statement</p>
+                <p style="font-size: 14px;"><strong>Nota:</strong> Puedes bajar el PDF del texto aquí si así lo deseas</p>
               </div>
             </div>
 
 <!-- instruciton 3 -->
             <div data-target="slideshow.slide" class="slide">
               <div id="scale" style="">
-                <h2>Questions use 1 to 5 scale</h2>
-                <p>The series of questions asked will use a scale in which</p>
-                  <p>1 = <strong>not at all</strong></p>
-                  <p>5 = <strong>very much</strong></p>
+                <h2>Escala del 1 al 5</h2>
+                <p>Cuando veas esta escala, toma en cuenta que </p>
+                  <p>1 = <strong>para nada</strong></p>
+                  <p>5 = <strong>mucho</strong></p>
                 </div>
               </div>
 
               <div data-target="slideshow.slide" class="slide" id="third">
                 <div id="own-pace" style="">
-                  <h2>Go at your own pace</h2>
-                  <p>There is no required or minimum participation, you can come back and login anytime. If you think we can improve anything to support innovation, entrepreneurship or ICT developmemt, please let us know how.</p>
-                  <p>Click the <button class="btn btn-primary">Finish Consultation</button> button when you have finished your entire consultation.</p>
+                  <h2>Ve a tu propio paso</h2>
+                  <p>No hay ningun requerimiento de participacion, puedes volver cuantas veces quieras. Cualquier idea es aceptada para mejorar al pais.</p>
+                  <p>Click en <button class="btn btn-primary">Terminar la Consulta</button> cuando termines de leer el texto.</p>
                 </div>
               </div>
 
 <!-- instruciton 4 -->
               <div data-target="slideshow.slide" class="slide" id="last">
                 <div id="abstract" style="">
-                  <h2>Abstract</h2>
+                  <h2>Abstracto</h2>
                   <div class="abstract-text">
                     <p>
-                      Technological advancement is accelerating and the global economy is transforming in response. The majority of Nigerians are at serious risk of being left behind unless there is an urgent technological revolution that can transform agriculture, education, and all other spheres of public life. <br>
-                      Technology has the ability to unite all and remove barriers to economic transformation. To unlock our national potential, National Information Technology Development Agency (NITDA) proposes a number of urgent measures to connect, educate and enable digital innovation. <br>
-                      This document provides the unifying policy vision for ICT Innovation and Entrepreneurship.
+                      Por muchos anos hemos tenido una Constitucion que data a cuando el General Omar Torrijos estaba en poder. <br>
+                      Hoy en dia esa Constitucion ya no nos sirve para el mundo en el que estamos. Es por eso que tantos actores de la sociedad civil han demostrado querer cambiarla. <br>
+                      Este docuemnto que veran a continuacion es parte del esfuerzo creado por la Concertacion Nacional creada el año pasado por actores de toda la sociedad civil, gobierno, y organizaciones pertinentes.
                     </p>
                   </div>
                 </div>
@@ -72,14 +72,14 @@
                 <div id="start" style="">
                   <%= simple_form_for [@legislation, @consultation] do |f| %>
                   <%= f.input :user_id, as: :hidden %>
-                  <%= f.submit "Start My Consultation", class: "new-consultation btn-lg btn-primary" %>
+                  <%= f.submit "Empieza mi Consulta", class: "new-consultation btn-lg btn-primary" %>
                   <% end %>
                 </div>
               </div>
 
               <div class="navigation-btns">
-                <button id ="backbutton" class="btn btn-outline-primary" style="display: none;" data-action="slideshow#previous slideshow#showButton">Back</button>
-                <button id= "nextbutton" class="btn btn-outline-primary" data-action="slideshow#next slideshow#showButton">Next</button>
+                <button id ="backbutton" class="btn btn-outline-primary" style="display: none;" data-action="slideshow#previous slideshow#showButton">Atrás</button>
+                <button id= "nextbutton" class="btn btn-outline-primary" data-action="slideshow#next slideshow#showButton">Adelante</button>
               </div>
             </div>
           </div>

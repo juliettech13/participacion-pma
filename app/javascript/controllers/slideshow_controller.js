@@ -27,7 +27,9 @@ export default class extends Controller {
 
 showFinished(){
   var lastSection = document.getElementById("Supporting the Ecosystem for Innovative Entrepreneurship")
+  // var lastSection = document.getElementById("Supporting the Ecosystem for Innovative Entrepreneurship")
   var firstSection = document.getElementById("Digital Infrastructure")
+  // var firstSection = document.getElementById("Digital Infrastructure")
   var secondSection = document.getElementById("Education Reform, Skills Development and R+D")
   var continueTo = document.getElementById("continueto")
   var intro = document.getElementById("Introduction")

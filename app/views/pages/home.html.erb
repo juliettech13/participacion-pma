@@ -3,14 +3,14 @@
     <div class="col-lg-8 col-xs-12 col-sm-10">
       <div class="card">
         <div class="card-description">
-          <p>Welcome to the  consultation for the</p>
-          <h1>Nigeria ICT Innovation and Entrepreneurship Vision</h1>
+          <p>Bienvenido a la plataforma de consulta ciudadana para la</p>
+          <h1>Constitución de la República de Panamá</h1>
                 <% if current_user.nil? %>
                   <%= render 'signuphomepage' %>
                 <% else %>
-                  <%= link_to "Get Started", new_legislation_consultation_path(@legislation), :class => 'btn btn-lg btn-primary get-started-button', :role => 'button' %>
+                  <%= link_to "Empecemos", new_legislation_consultation_path(@legislation), :class => 'btn btn-lg btn-primary get-started-button', :role => 'button' %>
                 <p>
-                  Nigeria ICT Innovation and Entrepreneurship Vision (NIIEV) is designed to strengthen the Nigerian technology entrepreneurship ecosystem, and we want your input to help co-create this national vision.
+                  Gracias al interés de la ciudadanía de querer actualizar nuestra Constitución, los diputados de la bancada independiente queriamos crear un espacio para preguntarle a las personas que opinan de este documento tan importante.
                 </p>
                 <% end %>
               </div>
