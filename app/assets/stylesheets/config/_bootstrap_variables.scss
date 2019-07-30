@@ -11,14 +11,14 @@ $font-size-base: 1.25rem;
 
 // Colors
 $gray-base:       $gray;
-$brand-primary:   $green;
-$brand-success:   $green;
+$brand-primary:   #005293;
+$brand-success:   #005293;
 $brand-info:      $yellow;
 $brand-danger:    $red;
 $brand-warning:   $orange;
 
 $theme-colors: (
-  primary: $green,
+  primary: #005293,
 ) !default;
 
 // Buttons & inputs' radius
