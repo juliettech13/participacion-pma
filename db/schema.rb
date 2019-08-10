@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_26_102553) do
+ActiveRecord::Schema.define(version: 2019_08_10_163849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,10 +101,7 @@ ActiveRecord::Schema.define(version: 2018_06_26_102553) do
   end
 
   create_table "metadata", force: :cascade do |t|
-    t.text "vision"
-    t.string "agency"
-    t.string "rationale"
-    t.text "status"
+    t.string "content"
     t.bigint "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
