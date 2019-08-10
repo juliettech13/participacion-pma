@@ -1,6 +1,7 @@
 class Article < ApplicationRecord
   belongs_to :chapter
   has_many :questions
+  has_many :metadata
 
     def number_of_answers_introduction
       question_array = []
