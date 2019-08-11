@@ -52,7 +52,7 @@
      <div class="card-header" id="headingOne">
       <!-- <h5 class="mb-0"> -->
         <a class="btn btn-link article" data-toggle="collapse" data-target="#collapse_<%= article.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
-          <h6 class=align-left>Artículo <%= article.id %></h6>
+          <h6 class=align-left>Artículo <%= article.number %></h6>
           <p class="align-left"><%= article.content %></p>
           <%# if article.subarticles.exists? %>
           <!-- <ul>
@@ -63,9 +63,8 @@
           <%# end %>
           <div id="supporting-content" class="row">
             <% if Metadatum.exists?(article_id: article.id) %>
-            <%#= link_to 'more info', metadatum_path(article), :class => "btn btn-outline-secondary", target: :_blank %>
-            <!-- <button class="btn btn-outline-secondary" data-html="true" data-toggle="popover" data-trigger="hover"
-            data-content="<%#= Metadatum.where(article_id == article.id).rationale %>">more info</button> -->
+            <% @metadata = Metadatum.find_by(article: article) %>
+            <a data-html="true" data-toggle="popover" data-trigger="hover" title="Versión antigua" data-content="<%= render 'metadata_show', metadata: @metadata %>" class="badge badge-warning">Antes</a>
             <% end %>
             <div class="success-badges">
              <% if article.questions[1].answers.exists?(consultation: current_user.consultations.last) %>
