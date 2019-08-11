@@ -50,11 +50,7 @@
     <div class="card">
      <div class="card-header" id="headingOne">
         <a class="btn btn-link article" data-toggle="collapse" data-target="#collapse_<%= article.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
-         <!--  <ul class="list-inline"> -->
-          <!-- <li class="list-inline-item"> -->
             <h6 class="align-left list-inline-item">Artículo <%= article.number %></h6>
-          <!-- </li> -->
-          <!-- <li class="list-inline-item"> -->
             <div id="supporting-content" class='list-inline-item'>
               <% if Metadatum.exists?(article: article) %>
               <% @metadata = Metadatum.find_by(article: article) %>
@@ -69,8 +65,6 @@
                <% end %>
              </div>
             </div>
-          <!-- </li> -->
-         <!-- </ul> -->
           <p class="align-left"><%= article.content %></p>
        </a>
    </div>
