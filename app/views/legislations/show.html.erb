@@ -48,35 +48,25 @@
     <% title.articles.each do |article| %>
 
     <div class="card">
-
      <div class="card-header" id="headingOne">
-      <!-- <h5 class="mb-0"> -->
         <a class="btn btn-link article" data-toggle="collapse" data-target="#collapse_<%= article.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
-          <h6 class=align-left>Artículo <%= article.number %></h6>
+            <h6 class="align-left list-inline-item">Artículo <%= article.number %></h6>
+            <div id="supporting-content" class='list-inline-item'>
+              <% if Metadatum.exists?(article: article) %>
+              <% @metadata = Metadatum.find_by(article: article) %>
+              <a data-html="true" data-toggle="popover" data-trigger="hover" title="Versión antigua" data-content="<%= render 'metadata_show', metadata: @metadata %>" class="badge badge-warning">Antes</a>
+              <% end %>
+              <div class="success-badges">
+               <% if article.questions[1].answers.exists?(consultation: current_user.consultations.last) %>
+               <span class="badge badge-success" id="answered_badge">Answered</span>
+               <% end %>
+               <% if article.questions[2].answers.exists?(consultation: current_user.consultations.last) %>
+               <span class="badge badge-success" id="revised_badge">Revised</span>
+               <% end %>
+             </div>
+            </div>
           <p class="align-left"><%= article.content %></p>
-          <%# if article.subarticles.exists? %>
-          <!-- <ul>
-            <%# article.subarticles.each do |subarticle| %>
-               <li><%#= subarticle.content %></li>
-            <%# end %>
-            </ul> -->
-          <%# end %>
-          <div id="supporting-content" class="row">
-            <% if Metadatum.exists?(article_id: article.id) %>
-            <% @metadata = Metadatum.find_by(article: article) %>
-            <a data-html="true" data-toggle="popover" data-trigger="hover" title="Versión antigua" data-content="<%= render 'metadata_show', metadata: @metadata %>" class="badge badge-warning">Antes</a>
-            <% end %>
-            <div class="success-badges">
-             <% if article.questions[1].answers.exists?(consultation: current_user.consultations.last) %>
-             <span class="badge badge-success" id="answered_badge">Answered</span>
-             <% end %>
-             <% if article.questions[2].answers.exists?(consultation: current_user.consultations.last) %>
-             <span class="badge badge-success" id="revised_badge">Revised</span>
-             <% end %>
-           </div>
-         </div>
        </a>
-     <!-- </h5> -->
    </div>
 
    <div id="collapse_<%= article.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
