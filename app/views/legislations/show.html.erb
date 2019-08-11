@@ -48,19 +48,10 @@
     <% title.articles.each do |article| %>
 
     <div class="card">
-
      <div class="card-header" id="headingOne">
-      <!-- <h5 class="mb-0"> -->
         <a class="btn btn-link article" data-toggle="collapse" data-target="#collapse_<%= article.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
           <h6 class=align-left>Artículo <%= article.number %></h6>
           <p class="align-left"><%= article.content %></p>
-          <%# if article.subarticles.exists? %>
-          <!-- <ul>
-            <%# article.subarticles.each do |subarticle| %>
-               <li><%#= subarticle.content %></li>
-            <%# end %>
-            </ul> -->
-          <%# end %>
           <div id="supporting-content" class="row">
             <% if Metadatum.exists?(article_id: article.id) %>
             <% @metadata = Metadatum.find_by(article: article) %>
@@ -76,7 +67,6 @@
            </div>
          </div>
        </a>
-     <!-- </h5> -->
    </div>
 
    <div id="collapse_<%= article.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
