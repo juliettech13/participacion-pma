@@ -192,6 +192,18 @@
   align-items: center;
 }
 
+.flex{
+  display: flex
+}
+
+.flex-child{
+  justify-content: space-between
+}
+
+ul{
+  margin-bottom: 0
+}
+
 
 @media only screen and (max-width: 600px) {
 
