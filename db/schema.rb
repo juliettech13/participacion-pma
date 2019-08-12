@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_10_163849) do
+ActiveRecord::Schema.define(version: 2019_08_12_161725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2019_08_10_163849) do
     t.bigint "chapter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "new"
     t.index ["chapter_id"], name: "index_articles_on_chapter_id"
   end
 
@@ -108,12 +109,30 @@ ActiveRecord::Schema.define(version: 2019_08_10_163849) do
     t.index ["article_id"], name: "index_metadata_on_article_id"
   end
 
+  create_table "metadatum_subarticles", force: :cascade do |t|
+    t.string "content"
+    t.integer "number"
+    t.bigint "metadatum_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["metadatum_id"], name: "index_metadatum_subarticles_on_metadatum_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string "content"
     t.bigint "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_questions_on_article_id"
+  end
+
+  create_table "subarticles", force: :cascade do |t|
+    t.text "content"
+    t.integer "number"
+    t.bigint "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_subarticles_on_article_id"
   end
 
   create_table "titles", force: :cascade do |t|
@@ -158,6 +177,8 @@ ActiveRecord::Schema.define(version: 2019_08_10_163849) do
   add_foreign_key "general_feedbacks", "consultations"
   add_foreign_key "legislations", "users"
   add_foreign_key "metadata", "articles"
+  add_foreign_key "metadatum_subarticles", "metadata"
   add_foreign_key "questions", "articles"
+  add_foreign_key "subarticles", "articles"
   add_foreign_key "titles", "legislations"
 end
