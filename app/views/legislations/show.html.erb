@@ -55,7 +55,7 @@
               <% if Metadatum.exists?(article: article) %>
                 <% @metadata = Metadatum.find_by(article: article) %>
                 <h6 class="align-left list-inline-item">Artículo <%= article.number %></h6>
-                <a  data-toggle="popover" data-trigger="hover" title="Versión antigua" data-content="<%= render 'metadata_show', metadata: @metadata %>" class="badge badge-warning">Antes</a>
+                <a  data-html="true" data-toggle="popover" data-trigger="hover" title="Artículo Modificado" data-content="<%= render 'metadata_show', metadata: @metadata %>" class="badge badge-warning">Modificación</a>
               <% else %>
                 <h6 class="align-left">Artículo <%= article.number %></h6>
               <% end %>

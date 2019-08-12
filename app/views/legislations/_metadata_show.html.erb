@@ -1,2 +1,9 @@
-<%= metadata.content %>
+<p><%= metadata.content %></p>
+<ol>
+  <% metadata.metadatum_subarticles.order(number: :asc).each do |subarticle| %>
+    <li>
+      <p><%= subarticle.content %></p>
+    </li>
+  <% end %>
+</ol>
 
