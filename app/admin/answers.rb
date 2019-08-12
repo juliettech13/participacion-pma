@@ -23,6 +23,22 @@ ActiveAdmin.register Answer do
   #   actions
   # end
 
+  show do
+    attributes_table do
+      row :content
+      row :question_id
+      row :user_id
+    end
+    h3 "Question: #{answer.question.content}"
+    h3 "User Full Name: #{answer.consultation.user.full_name}"
+    active_admin_comments
+  end
+
+  # show do
+  #   # h3 answer.content
+  #   # h6 answer.question.content
+  # end
+
  # index do
  #   id_column
  #   column :image_title

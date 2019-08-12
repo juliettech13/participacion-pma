@@ -282,7 +282,7 @@ ActiveAdmin.setup do |config|
   # By default, the footer shows the current Active Admin version. You can
   # override the content of the footer here.
   #
-  config.footer = "Policy Consultation App 1.0"
+  config.footer = "Consulta Ciudadana App 1.0"
 
   # == Sorting
   #
