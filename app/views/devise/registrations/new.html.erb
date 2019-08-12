@@ -3,7 +3,7 @@
     <div class="col-12 col-lg-4 col-sm-6 col-sm-offset-4">
       <div class="login_form">
         <div class="login-form-header col-md-12">
-          <h2>Let's Get Started</h2>
+          <h2>Empecemos</h2>
         </div>
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
@@ -14,16 +14,16 @@
               <%= f.input :email, label: false, required: false, autofocus: true, placeholder: "bob@gmail.com", class: "form-control" %>
             </div>
             <div class="form-group ">
-            Password
+            Contaseña
                <%= f.input :password, label: false, required: true, placeholder: "••••••(6 characters min.)" %>
             </div>
             <div class="form-group">
-              Password Confirmation
+              Confirma la contraseña
                <%= f.input :password_confirmation, label: false, required: true %>
             </div>
 
             <div class="form-actions ">
-              <%= f.button :submit, "Sign Up & Continue", class: "btn-login-custom form-control"  %>
+              <%= f.button :submit, "Registrate y continua", class: "btn-login-custom form-control"  %>
 
             </div>
              <% end %>

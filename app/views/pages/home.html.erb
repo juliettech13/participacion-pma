@@ -5,22 +5,22 @@
         <div class="card-description">
           <p>Bienvenido a tu plataforma de consulta ciudadana para la</p>
           <h1>Constitución de la República de Panamá</h1>
-                <% if current_user.nil? %>
-                  <%= render 'signuphomepage' %>
-                <% else %>
-                  <%= link_to "Empecemos", new_legislation_consultation_path(@legislation), :class => 'btn btn-lg btn-primary get-started-button', :role => 'button' %>
-                <p>
-                  Gracias al interés de la ciudadanía de querer actualizar nuestra Constitución, los diputados de la bancada independiente queriamos crear un espacio para preguntarle a las personas que opinan de este documento tan importante.
-                </p>
-                <% end %>
-              </div>
-
-            </div>
-          </div>
+          <% if current_user.nil? %>
+          <%= render 'signuphomepage' %>
+          <% else %>
+          <%= link_to "Empecemos", new_legislation_consultation_path(@legislation), :class => 'btn btn-lg btn-primary get-started-button', :role => 'button' %>
+          <p>
+            Gracias al interés de la ciudadanía de querer actualizar nuestra Constitución, los diputados de la bancada independiente queriamos crear un espacio para preguntarle a las personas qué opinan de este documento tan importante.
+          </p>
+          <% end %>
         </div>
+
       </div>
-                <%# if current_user.nil? %>
-                <%#= link_to "Get Started", new_user_registration_path, :class => 'btn btn-lg btn-primary get-started-button', :role => 'button' %>
-                <%# else %>
-                <%#= link_to "Get Started", new_legislation_consultation_path(@legislation), :class => 'btn btn-lg btn-primary get-started-button', :role => 'button' %>
-                <%# end %>
+    </div>
+  </div>
+</div>
+<%# if current_user.nil? %>
+<%#= link_to "Get Started", new_user_registration_path, :class => 'btn btn-lg btn-primary get-started-button', :role => 'button' %>
+<%# else %>
+<%#= link_to "Get Started", new_legislation_consultation_path(@legislation), :class => 'btn btn-lg btn-primary get-started-button', :role => 'button' %>
+<%# end %>
