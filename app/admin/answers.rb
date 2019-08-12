@@ -15,12 +15,21 @@ ActiveAdmin.register Answer do
   actions :all, except: [:edit, :update, :destroy]
   menu priority: 3
 
-  index do
-  column :user_id
-  column :question_id
-  column :content
-  column :created_at
- end
+  # index do
+  #   column :user_id
+  #   column :question_id
+  #   column :content
+  #   column :created_at
+  #   actions
+  # end
+
+ # index do
+ #   id_column
+ #   column :image_title
+ # end
+ # config.clear_action_items!
+ # actions :all, except: [:edit, :update, :destroy]
+ # menu priority: 2
 
   filter :user_id
   filter :question_id
