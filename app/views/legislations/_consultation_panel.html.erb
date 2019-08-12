@@ -4,7 +4,7 @@
         <li><%= question.id %> - <%= question.content %></li>
           <div>
             <%= form_for Answer.new do |f| %>
-              <p><%= f.select(:content, [["Yes"],["No"]], {}, {:multiple => true}) %></p>
+              <p><%= f.select(:content, [["Si"],["No"]], {}, {:multiple => true}) %></p>
               <%= f.submit %>
             <% end %>
           </div>
