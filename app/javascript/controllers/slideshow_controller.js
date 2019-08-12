@@ -11,14 +11,14 @@ export default class extends Controller {
     var injection = document.getElementById('answered_badge');
     var alertSpot = document.getElementById('success-badges');
     var answerSection = this.element.parentNode.parentNode.querySelector(".success-badges");
-    answerSection.insertAdjacentHTML('afterbegin', '<span class="badge badge-success" id="answered_badge">Answered</span>');
+    answerSection.insertAdjacentHTML('afterbegin', '<span class="badge badge-success" id="answered_badge">Respondido</span>');
   }
 
   revised(){
     var injection = document.getElementById('revised_badge');
     var alertSpot = document.getElementById('success-badges');
     var answerSection = this.element.parentNode.parentNode.querySelector(".success-badges");
-    answerSection.insertAdjacentHTML('beforeend', '<span class="badge badge-success" id="revised_badge">Revised</span>');
+    alertSpot.insertAdjacentHTML('beforeend', '<span class="badge badge-success" id="revised_badge">Revisado</span>');
   }
 
   scrolltop(){
