@@ -46,11 +46,11 @@ User.destroy_all
 
 puts "creating users"
 user = User.create!(email: "bobstevens@charitize.com", password: 123456)
-User.create!(email: "user2@charitize.com", password: 123456)
-User.create!(email: "user3@charitize.com", password: 123456)
-User.create!(email: "user4@charitize.com", password: 123456)
-User.create!(email: "user5@charitize.com", password: 123456)
-User.create!(email: "user6@charitize.com", password: 123456)
+User.create!(email: "user2@charitize.com", password: 123456, first_name: "Bob", last_name: "Stevens")
+User.create!(email: "user3@charitize.com", password: 123456, first_name: "Juan", last_name: "Ruiz")
+User.create!(email: "user4@charitize.com", password: 123456, first_name: "Marc", last_name: "Saiz")
+User.create!(email: "user5@charitize.com", password: 123456, first_name: "Luis", last_name: "Paco")
+User.create!(email: "user6@charitize.com", password: 123456, first_name: "Fer", last_name: "Richards")
 
 puts "creating admin users"
 AdminUser.create!(email:"admin@charitize.com", password: 123456)
