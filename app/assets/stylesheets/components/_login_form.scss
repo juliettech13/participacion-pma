@@ -19,17 +19,21 @@
 
 .btn-login-custom {
   color: white;
+  background-color: $blue !important;
   border-radius: 5px;
   font-size: 20px;
   font-weight: bold;
-  background: #037200;
   transition: background 0.3s ease;
 }
 .btn-login-custom:hover {
   opacity: 1;
-  background: #3ac162;
+  // background: #3ac162;
   text-decoration: none;
   color: white;
+}
+
+.blue-background {
+  background-color: $blue
 }
 
 .form-group {
