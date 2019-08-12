@@ -62,10 +62,10 @@
             <!-- </div> -->
               <div class="success-badges">
                <% if article.questions[1].answers.exists?(consultation: current_user.consultations.last) %>
-                <span class="badge badge-success" id="answered_badge">Answered</span>
+                <span class="badge badge-success" id="answered_badge">Respondido</span>
                <% end %>
                <% if article.questions[2].answers.exists?(consultation: current_user.consultations.last) %>
-                <span class="badge badge-success" id="revised_badge">Revised</span>
+                <span class="badge badge-success" id="revised_badge">Sugerencia registrada</span>
                <% end %>
              </div>
             </div>
@@ -132,9 +132,9 @@
 
       <% unless article.questions[2].answers.exists?(consultation: current_user.consultations.last) %>
       <div data-target="slideshow.slide" class="slide">
-        <p>Would you like to provide a suggestion?</p>
+        <p>¿Quisieras sugerir algún comentario sobre el artículo?</p>
         <div class=" form-group buttonspacing">
-          <button data-action="slideshow#next" class="btn-primary">Yes</button>
+          <button data-action="slideshow#next" class="btn-primary">Sí</button>
           <button data-action="slideshow#close" class="btn-primary">No</button>
         </div>
       </div>
