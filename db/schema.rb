@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_12_161725) do
+ActiveRecord::Schema.define(version: 2019_08_14_194333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2019_08_12_161725) do
     t.bigint "title_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "new", default: false
     t.index ["title_id"], name: "index_chapters_on_title_id"
   end
 
@@ -135,12 +136,22 @@ ActiveRecord::Schema.define(version: 2019_08_12_161725) do
     t.index ["article_id"], name: "index_subarticles_on_article_id"
   end
 
+  create_table "subsubarticles", force: :cascade do |t|
+    t.text "content"
+    t.integer "number"
+    t.bigint "subarticle_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subarticle_id"], name: "index_subsubarticles_on_subarticle_id"
+  end
+
   create_table "titles", force: :cascade do |t|
     t.integer "number"
     t.text "description"
     t.bigint "legislation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "new", default: false
     t.index ["legislation_id"], name: "index_titles_on_legislation_id"
   end
 
@@ -180,5 +191,6 @@ ActiveRecord::Schema.define(version: 2019_08_12_161725) do
   add_foreign_key "metadatum_subarticles", "metadata"
   add_foreign_key "questions", "articles"
   add_foreign_key "subarticles", "articles"
+  add_foreign_key "subsubarticles", "subarticles"
   add_foreign_key "titles", "legislations"
 end
