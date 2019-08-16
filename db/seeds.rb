@@ -21,6 +21,9 @@ Subarticle.destroy_all
 puts 'deleting articles'
 Article.destroy_all
 
+puts 'destroying chapter_metadata'
+ChapterMetadatum.destroy_all
+
 puts 'deleting all chapters'
 Chapter.destroy_all
 
@@ -65,9 +68,6 @@ Consultation.create!(legislation: l, user: user)
 # Aquí es donde empezamos a crear cada sección....
 # t -> titles, c -> chapters, a -> articles, m -> metadata, sa -> subarticle, msa -> metadatum_subarticle
 
-# Utilizar el primer
-
-
 
 puts "creating title 1"
 t1 = Title.create!(number: 1,
@@ -92,7 +92,7 @@ representativo.',
 
     # articulo nuevo 1. debe venir despues del 1 con ese titulo
     puts 'creating article 1'
-    a1 = Article.create!(content: "Son fines esenciales del Estado promover la vigencia, aplicación y respeto de los Derechos Humanos de todos los ciudadanos y la comunidad, promover la prosperidad general y garantizar la efectividad de los principios, derechos, garantías y deberes consagrados en la Constitución, Tratados y Convenios Internacionales; garantizar el ejercicio de la consulta libre previa informada; facilitar la participación en paridad de todas las personas en las decisiones que las afectan y en la vida económica, política, administrativa, ambiental y cultural de la nación; defender la independencia nacional, mantener la integrriidad tertorial y asegurar la convivencia pacífica y la vigencia de un orden justo.",
+    na1 = Article.create!(content: "Son fines esenciales del Estado promover la vigencia, aplicación y respeto de los Derechos Humanos de todos los ciudadanos y la comunidad, promover la prosperidad general y garantizar la efectividad de los principios, derechos, garantías y deberes consagrados en la Constitución, Tratados y Convenios Internacionales; garantizar el ejercicio de la consulta libre previa informada; facilitar la participación en paridad de todas las personas en las decisiones que las afectan y en la vida económica, política, administrativa, ambiental y cultural de la nación; defender la independencia nacional, mantener la integrriidad tertorial y asegurar la convivencia pacífica y la vigencia de un orden justo.",
       chapter: c11,
       number: 1,
       new: true)
@@ -150,7 +150,7 @@ t2 = Title.create!(number: 2,
 
 
   puts 'creating chapter 1'
-  c21 = Chapter.create!(number: 1,
+  c21 = Chapter.create!(number: 0,
     description: "xxx",
     title: t2,
     new: false)
@@ -169,17 +169,17 @@ t2 = Title.create!(number: 2,
       new: false)
 
       puts 'creating subarticles for article 9'
-      sa9001 = Subarticle.create!(content: "1. Los nacidos en el territorio nacional.",
+      sa9001 = Subarticle.create!(content: "Los nacidos en el territorio nacional.",
         article: a9,
         number: 1)
 
       puts 'creating subarticles for article 9'
-      sa9002 = Subarticle.create!(content: "2. Los hijos de padre o madre panameños por nacimiento nacidos fuera del territorio de la República, si aquellos establecen su domicilio en el territorio nacional.",
+      sa9002 = Subarticle.create!(content: "Los hijos de padre o madre panameños por nacimiento nacidos fuera del territorio de la República, si aquellos establecen su domicilio en el territorio nacional.",
         article: a9,
         number: 2)
 
       puts 'creating subarticles for article 9'
-      sa9003 = Subarticle.create!(content: "3. Los hijos de padre o madre panameños por naturalización nacidos fuera del territorio nacional, si aquellos establecen su domicilio en la República de Panamá y manifiestan su voluntad de acogerse a la nacionalidad panameña a más tardar un año después de su mayoría de edad.",
+      sa9003 = Subarticle.create!(content: "Los hijos de padre o madre panameños por naturalización nacidos fuera del territorio nacional, si aquellos establecen su domicilio en la República de Panamá y manifiestan su voluntad de acogerse a la nacionalidad panameña a más tardar un año después de su mayoría de edad.",
         article: a9,
         number: 3)
 
@@ -190,17 +190,17 @@ t2 = Title.create!(number: 2,
       new: false)
 
       puts 'creating subarticles for article 10'
-      sa10001 = Subarticle.create!(content: "1. Los extranjeros con cinco años consecutivos de residencia en el territorio de la República si, después de haber alcanzado su mayoría de edad, declaran su voluntad de naturalizarse, renuncian expresamente a su nacionalidad de origen o a la que tengan y comprueban que poseen el idioma español y conocimientos básicos de geografía, historia y organización política panameñas.",
+      sa10001 = Subarticle.create!(content: "Los extranjeros con cinco años consecutivos de residencia en el territorio de la República si, después de haber alcanzado su mayoría de edad, declaran su voluntad de naturalizarse, renuncian expresamente a su nacionalidad de origen o a la que tengan y comprueban que poseen el idioma español y conocimientos básicos de geografía, historia y organización política panameñas.",
         article: a10,
         number: 1)
 
       puts 'creating subarticles for article 10'
-      sa10002 = Subarticle.create!(content: "2. Los extranjeros con tres años consecutivos de residencia en el territorio de la República que tengan hijos nacidos en ésta, de padre o madre panameños o cónyuge de nacionalidad panameña, si hacen la declaración y presentan la comprobación de que trata el aparte anterior.",
+      sa10002 = Subarticle.create!(content: "Los extranjeros con tres años consecutivos de residencia en el territorio de la República que tengan hijos nacidos en ésta, de padre o madre panameños o cónyuge de nacionalidad panameña, si hacen la declaración y presentan la comprobación de que trata el aparte anterior.",
         article: a10,
         number: 2)
 
       puts 'creating subarticles for article 10'
-      sa10003 = Subarticle.create!(content: "3. Los nacionales por nacimiento, de España o de un Estado latinoamericano, si llenan los mismos requisitos que en su país de origen se exigen a los panameños para naturalizarse.",
+      sa10003 = Subarticle.create!(content: "Los nacionales por nacimiento, de España o de un Estado latinoamericano, si llenan los mismos requisitos que en su país de origen se exigen a los panameños para naturalizarse.",
         article: a10,
         number: 3)
 
@@ -374,12 +374,12 @@ t3 = Title.create!(number: 3,
       new: false)
 
       puts 'creating subarticles for article 33'
-      sa33001 = Subarticle.create!(content: "1. Los jefes de la Fuerza Pública, quienes pueden imponer sanciones a sus subalternos para contener una insubordinación o un motín, o por falta disciplinaria.",
+      sa33001 = Subarticle.create!(content: "Los jefes de la Fuerza Pública, quienes pueden imponer sanciones a sus subalternos para contener una insubordinación o un motín, o por falta disciplinaria.",
         article: a33,
         number: 1)
 
       puts 'creating subarticles for article 33'
-      sa33002 = Subarticle.create!(content: "2. Los capitanes de buques o aeronaves, quienes estando fuera de puerto tienen facultad para contener una insubordinación o un motín, o mantener el orden a bordo, y para detener provisionalmente a cualquier delincuente real o presunto.",
+      sa33002 = Subarticle.create!(content: "Los capitanes de buques o aeronaves, quienes estando fuera de puerto tienen facultad para contener una insubordinación o un motín, o mantener el orden a bordo, y para detener provisionalmente a cualquier delincuente real o presunto.",
         article: a33,
         number: 2)
 
@@ -596,17 +596,17 @@ t3 = Title.create!(number: 3,
       new: false)
 
       puts 'creating subarticles for article 63'
-      sa63001 = Subarticle.create!(content: "1. Promover la paternidad y la maternidad responsables mediante la educación familiar.",
+      sa63001 = Subarticle.create!(content: "Promover la paternidad y la maternidad responsables mediante la educación familiar.",
         article: a63,
         number: 1)
 
       puts 'creating subarticles for article 63'
-      sa63002 = Subarticle.create!(content: "2. Institucionalizar la educación de los párvulos en centros especializados para atender aquellos cuyos padres o tutores así lo soliciten.",
+      sa63002 = Subarticle.create!(content: "Institucionalizar la educación de los párvulos en centros especializados para atender aquellos cuyos padres o tutores así lo soliciten.",
         article: a63,
         number: 2)
 
       puts 'creating subarticles for article 63'
-      sa63003 = Subarticle.create!(content: "3. Proteger a los menores y ancianos, y custodiar y readaptar socialmente a los abandonados, desamparados, en peligro moral o con desajustes de conducta.",
+      sa63003 = Subarticle.create!(content: "Proteger a los menores y ancianos, y custodiar y readaptar socialmente a los abandonados, desamparados, en peligro moral o con desajustes de conducta.",
         article: a63,
         number: 3)
 
@@ -614,7 +614,7 @@ t3 = Title.create!(number: 3,
       puts 'creating subarticles for article 63'
       sa0063 = Subarticle.create!(content: "La Ley organizará y determinará el funcionamiento de la jurisdicción especial de menores la cual, entre otras funciones, conocerá sobre la investigación de la paternidad, el abandono de familia y los problemas de conducta juvenil.",
         article: a63,
-        number: 0063)
+        number: 63)
 
 
   puts 'creating chapter 3'
@@ -957,32 +957,32 @@ t3 = Title.create!(number: 3,
       new: false)
 
       puts 'creating subarticles for article 110'
-      sa110001 = Subarticle.create!(content: "1. Desarrollar una política nacional de alimentación y nutrición que asegure un óptimo estado nutricional para toda la población, al promover la disponibilidad, el consumo y el aprovechamiento biológico de los alimentos adecuados.",
+      sa110001 = Subarticle.create!(content: "Desarrollar una política nacional de alimentación y nutrición que asegure un óptimo estado nutricional para toda la población, al promover la disponibilidad, el consumo y el aprovechamiento biológico de los alimentos adecuados.",
         article: a110,
         number: 1)
 
       puts 'creating subarticles for article 110'
-      sa110002 = Subarticle.create!(content: "2. Capacitar al individuo y a los grupos sociales, mediante acciones educativas, que difundan el conocimiento de los deberes y derechos individuales y colectivos en materia de salud personal y ambiental.",
+      sa110002 = Subarticle.create!(content: "Capacitar al individuo y a los grupos sociales, mediante acciones educativas, que difundan el conocimiento de los deberes y derechos individuales y colectivos en materia de salud personal y ambiental.",
         article: a110,
         number: 2)
 
       puts 'creating subarticles for article 110'
-      sa110003 = Subarticle.create!(content: "3. Proteger la salud de la madre, del niño y del adolescente, garantizando una atención integral durante el proceso de gestación, lactancia, crecimiento y desarrollo en la niñez y adolescencia.",
+      sa110003 = Subarticle.create!(content: "Proteger la salud de la madre, del niño y del adolescente, garantizando una atención integral durante el proceso de gestación, lactancia, crecimiento y desarrollo en la niñez y adolescencia.",
         article: a110,
         number: 3)
 
       puts 'creating subarticles for article 110'
-      sa110004 = Subarticle.create!(content: "4. Combatir las enfermedades transmisibles mediante el saneamiento ambiental, el desarrollo de la disponibilidad de agua potable y adoptar medidas de inmunización, profilaxis y tratamiento, proporcionadas colectiva o individualmente, a toda la población.",
+      sa110004 = Subarticle.create!(content: "Combatir las enfermedades transmisibles mediante el saneamiento ambiental, el desarrollo de la disponibilidad de agua potable y adoptar medidas de inmunización, profilaxis y tratamiento, proporcionadas colectiva o individualmente, a toda la población.",
         article: a110,
         number: 4)
 
       puts 'creating subarticles for article 110'
-      sa110005 = Subarticle.create!(content: "5. Crear, de acuerdo con las necesidades de cada región, establecimientos en los cuales se presten servicios de salud integral y suministren medicamentos a toda la población. Estos servicios de salud y medicamentos serán proporcionados gratuitamente a quienes carezcan de recursos económicos.",
+      sa110005 = Subarticle.create!(content: "Crear, de acuerdo con las necesidades de cada región, establecimientos en los cuales se presten servicios de salud integral y suministren medicamentos a toda la población. Estos servicios de salud y medicamentos serán proporcionados gratuitamente a quienes carezcan de recursos económicos.",
         article: a110,
         number: 5)
 
       puts 'creating subarticles for article 110'
-      sa110006 = Subarticle.create!(content: "6. Regular y vigilar el cumplimiento de las condiciones de salud y la seguridad que deban reunir los lugares de trabajo, estableciendo una política nacional de medicina e higiene industrial y laboral.",
+      sa110006 = Subarticle.create!(content: "Regular y vigilar el cumplimiento de las condiciones de salud y la seguridad que deban reunir los lugares de trabajo, estableciendo una política nacional de medicina e higiene industrial y laboral.",
         article: a110,
         number: 6)
 
@@ -1039,10 +1039,9 @@ t3 = Title.create!(number: 3,
 
   # nombre de capitulo modificado
   puts 'creating metadata for chapter 7'
-  m37 = Metadatum.create!(number: 7,
-    description: "Régimen Ambiental",
-    title: t3,
-    new: false)
+  m37 = ChapterMetadatum.create!(
+    content: "Régimen Ambiental",
+    chapter: c37)
 
     puts 'creating article 118'
     a118 = Article.create!(content: 'Es deber fundamental del Estado garantizar que la población viva en un ambiente sano y libre de contaminación, en donde el aire, el agua y los alimentos satisfagan los requerimientos del desarrollo adecuado de la vida humana.',
@@ -1117,37 +1116,37 @@ t3 = Title.create!(number: 3,
       new: false)
 
       puts 'creating subarticles for article 126'
-      sa126001 = Subarticle.create!(content: "1. Dotar a los campesinos de las tierras de labor necesarias y regular el uso de las aguas. La Ley podrá establecer un régimen especial de propiedad colectiva para las comunidades campesinas que lo soliciten;",
+      sa126001 = Subarticle.create!(content: "Dotar a los campesinos de las tierras de labor necesarias y regular el uso de las aguas. La Ley podrá establecer un régimen especial de propiedad colectiva para las comunidades campesinas que lo soliciten;",
         article: a126,
         number: 1)
 
       puts 'creating subarticles for article 126'
-      sa126002 = Subarticle.create!(content: "2. Organizar la asistencia crediticia para satisfacer las necesidades de financiamiento de la actividad agropecuaria y, en especial, del sector de escasos recursos y sus grupos organizados y dar atención especial al pequeño y mediano productor;",
+      sa126002 = Subarticle.create!(content: "Organizar la asistencia crediticia para satisfacer las necesidades de financiamiento de la actividad agropecuaria y, en especial, del sector de escasos recursos y sus grupos organizados y dar atención especial al pequeño y mediano productor;",
         article: a126,
         number: 2)
 
       puts 'creating subarticles for article 126'
-      sa126003 = Subarticle.create!(content: "3. Tomar medidas para asegurar mercados estables y precios equitativos a los productos y para impulsar el establecimiento de entidades, corporaciones y cooperativas de producción, industrialización. Distribución y consumo;",
+      sa126003 = Subarticle.create!(content: "Tomar medidas para asegurar mercados estables y precios equitativos a los productos y para impulsar el establecimiento de entidades, corporaciones y cooperativas de producción, industrialización. Distribución y consumo;",
         article: a126,
         number: 3)
 
       puts 'creating subarticles for article 126'
-      sa126004 = Subarticle.create!(content: "4. Establecer medios de comunicación y transporte para unir las comunidades campesinas e indígena con los centros de almacenamiento, distribución y consumo;",
+      sa126004 = Subarticle.create!(content: "Establecer medios de comunicación y transporte para unir las comunidades campesinas e indígena con los centros de almacenamiento, distribución y consumo;",
         article: a126,
         number: 4)
 
       puts 'creating subarticles for article 126'
-      sa126005 = Subarticle.create!(content: "5. Colonizar nuevas tierras y reglamentar la tenencia y el uso de las mismas y de las que se integren a la economía como resultado de la construcción de nuevas carreteras;",
+      sa126005 = Subarticle.create!(content: "Colonizar nuevas tierras y reglamentar la tenencia y el uso de las mismas y de las que se integren a la economía como resultado de la construcción de nuevas carreteras;",
         article: a126,
         number: 5)
 
       puts 'creating subarticles for article 126'
-      sa126006 = Subarticle.create!(content: "6. Estimular el desarrollo del sector agrario mediante asistencia técnica y fomento de la organización, capacitación, protección, tecnificación y demás formas que la Ley determine; y,",
+      sa126006 = Subarticle.create!(content: "Estimular el desarrollo del sector agrario mediante asistencia técnica y fomento de la organización, capacitación, protección, tecnificación y demás formas que la Ley determine; y,",
         article: a126,
         number: 6)
 
       puts 'creating subarticles for article 126'
-      sa126007 = Subarticle.create!(content: "7. Realizar estudios de la tierra a fin de establecer la clasificación agrológica del suelo panameño.",
+      sa126007 = Subarticle.create!(content: "Realizar estudios de la tierra a fin de establecer la clasificación agrológica del suelo panameño.",
         article: a126,
         number: 7)
 
@@ -1190,32 +1189,32 @@ t3 = Title.create!(number: 3,
       new: false)
 
       puts 'creating subarticles for article 130'
-      sa130001 = Subarticle.create!(content: "1. Ser panameño por nacimiento.",
+      sa130001 = Subarticle.create!(content: "Ser panameño por nacimiento.",
         article: a130,
         number: 1)
 
       puts 'creating subarticles for article 130'
-      sa130002 = Subarticle.create!(content: "2. Estar en pleno goce de sus derechos civiles y políticos.",
+      sa130002 = Subarticle.create!(content: "Estar en pleno goce de sus derechos civiles y políticos.",
         article: a130,
         number: 2)
 
       puts 'creating subarticles for article 130'
-      sa130003 = Subarticle.create!(content: "3. Haber cumplido treinta y cinco años o más de edad.",
+      sa130003 = Subarticle.create!(content: "Haber cumplido treinta y cinco años o más de edad.",
         article: a130,
         number: 3)
 
       puts 'creating subarticles for article 130'
-      sa130004 = Subarticle.create!(content: "4. No haber sido condenado por delito doloso con pena privativa de la libertad de cinco años o más.",
+      sa130004 = Subarticle.create!(content: "No haber sido condenado por delito doloso con pena privativa de la libertad de cinco años o más.",
         article: a130,
         number: 4)
 
       puts 'creating subarticles for article 130'
-      sa130005 = Subarticle.create!(content: "5. Tener solvencia moral y prestigio reconocido.",
+      sa130005 = Subarticle.create!(content: "Tener solvencia moral y prestigio reconocido.",
         article: a130,
         number: 5)
 
       puts 'creating subarticles for article 130'
-      sa130006 = Subarticle.create!(content: "6. No tener parentesco, dentro del cuarto grado de consanguinidad y segundo de afinidad, con el Presidente de la República, con ningún otro miembro del Consejo de Gabinete, con Magistrados de la Corte Suprema de Justicia ni con Diputados de la República.",
+      sa130006 = Subarticle.create!(content: "No tener parentesco, dentro del cuarto grado de consanguinidad y segundo de afinidad, con el Presidente de la República, con ningún otro miembro del Consejo de Gabinete, con Magistrados de la Corte Suprema de Justicia ni con Diputados de la República.",
         article: a130,
         number: 6)
 
@@ -1253,12 +1252,12 @@ t4 = Title.create!(number: 4,
       new: false)
 
       puts 'creating subarticles for article 133'
-      sa133001 = Subarticle.create!(content: "1. Por causa expresada en el artículo 13 de esta Constitución.",
+      sa133001 = Subarticle.create!(content: "Por causa expresada en el artículo 13 de esta Constitución.",
         article: a133,
         number: 1)
 
       puts 'creating subarticles for article 133'
-      sa133002 = Subarticle.create!(content: "2. Por pena conforme a la Ley.",
+      sa133002 = Subarticle.create!(content: "Por pena conforme a la Ley.",
         article: a133,
         number: 2)
 
@@ -1289,22 +1288,22 @@ t4 = Title.create!(number: 4,
       new: false)
 
       puts 'creating subarticles for article 136'
-      sa136001 = Subarticle.create!(content: "1. El apoyo oficial, directo o indirecto, a candidatos a puestos de elección popular, aun cuando fueren velados los medios empleados a tal fin.",
+      sa136001 = Subarticle.create!(content: "El apoyo oficial, directo o indirecto, a candidatos a puestos de elección popular, aun cuando fueren velados los medios empleados a tal fin.",
         article: a136,
         number: 1)
 
       puts 'creating subarticles for article 136'
-      sa136002 = Subarticle.create!(content: "2. Las actividades de propaganda y afiliación partidista en las oficinas públicas.",
+      sa136002 = Subarticle.create!(content: "Las actividades de propaganda y afiliación partidista en las oficinas públicas.",
         article: a136,
         number: 2)
 
       puts 'creating subarticles for article 136'
-      sa136003 = Subarticle.create!(content: "3. La exacción de cuotas o contribuciones a los empleados públicos para fines políticos, aun a pretexto de que son voluntarias.",
+      sa136003 = Subarticle.create!(content: "La exacción de cuotas o contribuciones a los empleados públicos para fines políticos, aun a pretexto de que son voluntarias.",
         article: a136,
         number: 3)
 
       puts 'creating subarticles for article 136'
-      sa136004 = Subarticle.create!(content: "4. Cualquier acto que impida o dificulte a un ciudadano obtener, guardar o presentar personalmente su cédula de identidad.",
+      sa136004 = Subarticle.create!(content: "Cualquier acto que impida o dificulte a un ciudadano obtener, guardar o presentar personalmente su cédula de identidad.",
         article: a136,
         number: 4)
 
@@ -1372,58 +1371,58 @@ t4 = Title.create!(number: 4,
       new: false)
 
       puts 'creating subarticles for article 143'
-      sa143001 = Subarticle.create!(content: "1. Efectuar las inscripciones de nacimientos, matrimonios, defunciones, naturalizaciones y demás hechos y actos jurídicos relacionados con el estado civil de las personas, y hacer las anotaciones procedentes en las respectivas inscripciones.",
+      sa143001 = Subarticle.create!(content: "Efectuar las inscripciones de nacimientos, matrimonios, defunciones, naturalizaciones y demás hechos y actos jurídicos relacionados con el estado civil de las personas, y hacer las anotaciones procedentes en las respectivas inscripciones.",
         article: a143,
         number: 1)
 
       puts 'creating subarticles for article 143'
-      sa143002 = Subarticle.create!(content: "2. Expedir la cédula de identidad personal.",
+      sa143002 = Subarticle.create!(content: "Expedir la cédula de identidad personal.",
         article: a143,
         number: 2)
 
       puts 'creating subarticles for article 143'
-      sa143003 = Subarticle.create!(content: "3. Reglamentar la Ley Electoral, interpretarla y aplicarla, y conocer de las controversias que origine su aplicación.",
+      sa143003 = Subarticle.create!(content: "Reglamentar la Ley Electoral, interpretarla y aplicarla, y conocer de las controversias que origine su aplicación.",
         article: a143,
         number: 3)
 
       puts 'creating subarticles for article 143'
-      sa143004 = Subarticle.create!(content: "4. Sancionar las faltas y delitos contra la libertad y pureza del sufragio, de conformidad con la Ley, garantizando la doble instancia.",
+      sa143004 = Subarticle.create!(content: "Sancionar las faltas y delitos contra la libertad y pureza del sufragio, de conformidad con la Ley, garantizando la doble instancia.",
         article: a143,
         number: 4)
 
       puts 'creating subarticles for article 143'
-      sa143005 = Subarticle.create!(content: "5. Levantar el Padrón Electoral.",
+      sa143005 = Subarticle.create!(content: "Levantar el Padrón Electoral.",
         article: a143,
         number: 5)
 
       puts 'creating subarticles for article 143'
-      sa143006 = Subarticle.create!(content: "6. Organizar, dirigir y fiscalizar el registro de electores y resolver las controversias, quejas y denuncias que al respecto ocurrieren.",
+      sa143006 = Subarticle.create!(content: "Organizar, dirigir y fiscalizar el registro de electores y resolver las controversias, quejas y denuncias que al respecto ocurrieren.",
         article: a143,
         number: 6)
 
       puts 'creating subarticles for article 143'
-      sa143007 = Subarticle.create!(content: "7. Tramitar los expedientes de las solicitudes de migración y naturalización.",
+      sa143007 = Subarticle.create!(content: "Tramitar los expedientes de las solicitudes de migración y naturalización.",
         article: a143,
         number: 7)
 
       puts 'creating subarticles for article 143'
-      sa143008 = Subarticle.create!(content: "8. Nombrar los miembros de las corporaciones electorales, en las cuales se deberá garantizar la representación de los partidos políticos legalmente constituidos. La Ley reglamentará esta materia.",
+      sa143008 = Subarticle.create!(content: "Nombrar los miembros de las corporaciones electorales, en las cuales se deberá garantizar la representación de los partidos políticos legalmente constituidos. La Ley reglamentará esta materia.",
         article: a143,
         number: 8)
 
       puts 'creating subarticles for article 143'
-      sa143009 = Subarticle.create!(content: "9. Formular su presupuesto y remitirlo oportunamente al Órgano Ejecutivo para su inclusión en el proyecto de Presupuesto General del Estado. El Tribunal Electoral sustentará, en todas las etapas,su proyecto de presupuesto. El presupuesto finalmente aprobado procurará garantizarle los fondos necesarios para el cumplimiento de sus fines. /n
+      sa143009 = Subarticle.create!(content: "Formular su presupuesto y remitirlo oportunamente al Órgano Ejecutivo para su inclusión en el proyecto de Presupuesto General del Estado. El Tribunal Electoral sustentará, en todas las etapas,su proyecto de presupuesto. El presupuesto finalmente aprobado procurará garantizarle los fondos necesarios para el cumplimiento de sus fines. /n
         En dicho presupuesto se incorporarán los gastos de funcionamiento del Tribunal Electoral y de la Fiscalía General Electoral, las inversiones y los gastos necesarios para realizar los procesos electorales y las demás consultas populares, así como los subsidios a los partidos políticos y a los candidatos independientes a los puestos de elección popular. Durante el año inmediatamente anterior a las elecciones generales y hasta el cierre del periodo electoral, el Tribunal Electoral será fiscalizado por la Contraloría General de la República, solamente mediante el control posterior.",
         article: a143,
         number: 9)
 
       puts 'creating subarticles for article 143'
-      sa1430010 = Subarticle.create!(content: "10. Ejercer iniciativa legislativa en las materias que son de su competencia.",
+      sa1430010 = Subarticle.create!(content: "Ejercer iniciativa legislativa en las materias que son de su competencia.",
         article: a143,
         number: 10)
 
       puts 'creating subarticles for article 143'
-      sa1430011 = Subarticle.create!(content: "11. Conocer privativamente de los recursos y acciones que se presenten en contra de las decisiones de los juzgados penales electorales y de la Fiscalía General Electoral. Las decisiones en materia electoral del Tribunal Electoral únicamente son recurribles ante él mismo y, una vez cumplidos los trámites de Ley, serán definitivas, irrevocables y obligatorias. Contra estas decisiones solo podrá ser admitido el recurso de inconstitucionalidad.",
+      sa1430011 = Subarticle.create!(content: "Conocer privativamente de los recursos y acciones que se presenten en contra de las decisiones de los juzgados penales electorales y de la Fiscalía General Electoral. Las decisiones en materia electoral del Tribunal Electoral únicamente son recurribles ante él mismo y, una vez cumplidos los trámites de Ley, serán definitivas, irrevocables y obligatorias. Contra estas decisiones solo podrá ser admitido el recurso de inconstitucionalidad.",
         article: a143,
         number: 11)
 
@@ -1435,22 +1434,22 @@ t4 = Title.create!(number: 4,
       new: false)
 
       puts 'creating subarticles for article 144'
-      sa144001 = Subarticle.create!(content: "1. Salvaguardar los derechos políticos de los ciudadanos.",
+      sa144001 = Subarticle.create!(content: "Salvaguardar los derechos políticos de los ciudadanos.",
         article: a144,
         number: 1)
 
       puts 'creating subarticles for article 144'
-      sa14402 = Subarticle.create!(content: "2. Vigilar la conducta oficial de los funcionarios públicos en lo que respecta a los derechos y deberes políticos electorales.",
+      sa14402 = Subarticle.create!(content: "Vigilar la conducta oficial de los funcionarios públicos en lo que respecta a los derechos y deberes políticos electorales.",
         article: a144,
         number: 2)
 
       puts 'creating subarticles for article 144'
-      sa144003 = Subarticle.create!(content: "3. Perseguir los delitos y contravenciones electorales.",
+      sa144003 = Subarticle.create!(content: "Perseguir los delitos y contravenciones electorales.",
         article: a144,
         number: 3)
 
       puts 'creating subarticles for article 144'
-      sa144004 = Subarticle.create!(content: "4. Ejercer las demás funciones que señale la Ley.",
+      sa144004 = Subarticle.create!(content: "Ejercer las demás funciones que señale la Ley.",
         article: a144,
         number: 4)
 
@@ -1489,22 +1488,22 @@ t5 = Title.create!(number: 5,
       new: false)
 
       puts 'creating subarticles for article 147'
-      sa147001 = Subarticle.create!(content: "1. Habrá circuitos uninominales y plurinominales, garantizándose el principio de representación proporcional. Integrará un solo circuito electoral todo distrito en donde se elija más de un Diputado, salvo el distrito de Panamá, donde habrá circuitos de tres o más Diputados.",
+      sa147001 = Subarticle.create!(content: "Habrá circuitos uninominales y plurinominales, garantizándose el principio de representación proporcional. Integrará un solo circuito electoral todo distrito en donde se elija más de un Diputado, salvo el distrito de Panamá, donde habrá circuitos de tres o más Diputados.",
         article: a147,
         number: 1)
 
       puts 'creating subarticles for article 147'
-      sa147002 = Subarticle.create!(content: "2. Los circuitos se conformarán en proporción al número de electores que aparezca en el último Padrón Electoral.",
+      sa147002 = Subarticle.create!(content: "Los circuitos se conformarán en proporción al número de electores que aparezca en el último Padrón Electoral.",
         article: a147,
         number: 2)
 
       puts 'creating subarticles for article 147'
-      sa147003 = Subarticle.create!(content: "3. A cada comarca y a la provincia de Darién les corresponderá elegir el número de Diputados con que cuentan al momento de entrar en vigencia la presente norma.",
+      sa147003 = Subarticle.create!(content: "A cada comarca y a la provincia de Darién les corresponderá elegir el número de Diputados con que cuentan al momento de entrar en vigencia la presente norma.",
         article: a147,
         number: 3)
 
       puts 'creating subarticles for article 147'
-      sa147004 = Subarticle.create!(content: "4. Para la creación de los circuitos, se tomará en cuenta la división político administrativa del país, la proximidad territorial, la concentración de la población, los lazos de vecindad, las vías de comunicación y los factores históricos y culturales, como criterios básicos para el agrupamiento de los electores en circuitos electorales. A cada Diputado le corresponderá un suplente personal elegido con el Diputado principal el mismo día que este, quien lo reemplazará en sus faltas. /n
+      sa147004 = Subarticle.create!(content: "Para la creación de los circuitos, se tomará en cuenta la división político administrativa del país, la proximidad territorial, la concentración de la población, los lazos de vecindad, las vías de comunicación y los factores históricos y culturales, como criterios básicos para el agrupamiento de los electores en circuitos electorales. A cada Diputado le corresponderá un suplente personal elegido con el Diputado principal el mismo día que este, quien lo reemplazará en sus faltas. /n
       El Tribunal Electoral, previa consulta con los partidos legalmente reconocidos, en el marco del organismo de consulta instituido, elaborará y presentará a la Asamblea Nacional el proyecto de ley que crea los circuitos electorales que servirán de base para la elección de Diputados, con arreglo a lo dispuesto en esta norma constitucional.",
         article: a147,
         number: 4)
@@ -1515,47 +1514,47 @@ t5 = Title.create!(number: 5,
         article: a147)
 
       puts 'creating metadata subarticles for article 147'
-      msa147001 = MetadatumSubarticle.create!(content: "1. Todos los diputados serán elegidos para un periodo de cinco años mediante el sistema de representación proporcional que determine la Ley, el mismo día en que se celebre la elección ordinaria de Presidente y Vicepresidente de la República.",
+      msa147001 = MetadatumSubarticle.create!(content: "Todos los diputados serán elegidos para un periodo de cinco años mediante el sistema de representación proporcional que determine la Ley, el mismo día en que se celebre la elección ordinaria de Presidente y Vicepresidente de la República.",
         metadatum: m147,
         number: 1)
 
       puts 'creating metadata subarticles for article 147'
-      msa147002 = MetadatumSubarticle.create!(content: "2. Salvo las excepciones a que se refiere el numeral cinco (5) y seis (6), todos los circuitos electorales serán de postulación plurinominal, en los cuales se elegirán no menos de dos diputados.",
+      msa147002 = MetadatumSubarticle.create!(content: "Salvo las excepciones a que se refiere el numeral cinco (5) y seis (6), todos los circuitos electorales serán de postulación plurinominal, en los cuales se elegirán no menos de dos diputados.",
         metadatum: m147,
         number: 2)
 
       puts 'creating metadata subarticles for article 147'
-      msa147003 = MetadatumSubarticle.create!(content: "3. Las provincias de Bocas del Toro y Los Santos en las cuales se eligen actualmente dos (2) diputados y la provincia de Herrera, que elige tres (3), quedan constituidas en sendos circuitos electorales plurinominales.",
+      msa147003 = MetadatumSubarticle.create!(content: "Las provincias de Bocas del Toro y Los Santos en las cuales se eligen actualmente dos (2) diputados y la provincia de Herrera, que elige tres (3), quedan constituidas en sendos circuitos electorales plurinominales.",
         metadatum: m147,
         number: 3)
 
       puts 'creating metadata subarticles for article 147'
-      msa147004 = MetadatumSubarticle.create!(content: "4. Las demás provincias se dividirán en circuitos electorales plurinominales, que se conformarán en proporción al número de electores que aparezca en el último Padrón Electoral. Para la creación de dichos circuitos, se tomarán en cuenta la división políticoadministrativa del país, la proximidad territorial, la concentración de la población, los lazos  de vecindad, las vías de comunicación y los factores históricos y culturales como criterios básicos para el agrupamiento de los electores.",
+      msa147004 = MetadatumSubarticle.create!(content: "Las demás provincias se dividirán en circuitos electorales plurinominales, que se conformarán en proporción al número de electores que aparezca en el último Padrón Electoral. Para la creación de dichos circuitos, se tomarán en cuenta la división políticoadministrativa del país, la proximidad territorial, la concentración de la población, los lazos  de vecindad, las vías de comunicación y los factores históricos y culturales como criterios básicos para el agrupamiento de los electores.",
         metadatum: m147,
         number: 4)
 
       puts 'creating metadata subarticles for article 147'
-      msa147005 = MetadatumSubarticle.create!(content: "5. Los actuales circuitos electorales que constituyen la provincia de Darién y las Comarcas Guna Yala y Ngabe-Buglé seguirán siendo de postulación uninominal.",
+      msa147005 = MetadatumSubarticle.create!(content: "Los actuales circuitos electorales que constituyen la provincia de Darién y las Comarcas Guna Yala y Ngabe-Buglé seguirán siendo de postulación uninominal.",
         metadatum: m147,
         number: 5)
 
       puts 'creating metadata subarticles for article 147'
-      msa147006 = MetadatumSubarticle.create!(content: "6. Se constituye el circuito electoral de la Comarca Emberá-Wounaan, el cual será de postulación uninominal.",
+      msa147006 = MetadatumSubarticle.create!(content: "Se constituye el circuito electoral de la Comarca Emberá-Wounaan, el cual será de postulación uninominal.",
         metadatum: m147,
         number: 6)
 
       puts 'creating metadata subarticles for article 147'
-      msa147007 = MetadatumSubarticle.create!(content: "7. Los diputados solo podrán reelegirse por un periodo adicional, en forma consecutiva.",
+      msa147007 = MetadatumSubarticle.create!(content: "Los diputados solo podrán reelegirse por un periodo adicional, en forma consecutiva.",
         metadatum: m147,
         number: 7)
 
       puts 'creating metadata subarticles for article 147'
-      msa147008 = MetadatumSubarticle.create!(content: "8. A cada Diputado le corresponderá un suplente personal elegido con el Diputado principal el mismo día que éste, quien lo reemplazará en sus faltas y devengará emolumentos solo cuando estén cumpliendo la función de reemplazo del Diputado principal. El suplente no podrá ser ni el cónyuge o pariente dentro del cuarto grado de consanguinidad o segundo de afinidad del Diputado principal.",
+      msa147008 = MetadatumSubarticle.create!(content: "A cada Diputado le corresponderá un suplente personal elegido con el Diputado principal el mismo día que éste, quien lo reemplazará en sus faltas y devengará emolumentos solo cuando estén cumpliendo la función de reemplazo del Diputado principal. El suplente no podrá ser ni el cónyuge o pariente dentro del cuarto grado de consanguinidad o segundo de afinidad del Diputado principal.",
         metadatum: m147,
         number: 8)
 
       puts 'creating metadata subarticles for article 147'
-      msa147009 = MetadatumSubarticle.create!(content: "9. El Tribunal Electoral, previa consulta con los partidos legalmente reconocidos y la Comisión Nacional de Reformas Electorales, en el marco del organismo de consulta instituido, elaborará y presentará a la Asamblea Nacional el proyecto de ley que crea los circuitos electorales que servirán de base para la elección de diputados, con arreglo a lo dispuesto en este artículo.",
+      msa147009 = MetadatumSubarticle.create!(content: "El Tribunal Electoral, previa consulta con los partidos legalmente reconocidos y la Comisión Nacional de Reformas Electorales, en el marco del organismo de consulta instituido, elaborará y presentará a la Asamblea Nacional el proyecto de ley que crea los circuitos electorales que servirán de base para la elección de diputados, con arreglo a lo dispuesto en este artículo.",
         metadatum: m147,
         number: 9)
 
@@ -1586,32 +1585,32 @@ t5 = Title.create!(number: 5,
       new: false)
 
       puts 'creating subarticles for article 151'
-      sa151001 = Subarticle.create!(content: "1. Las causales de revocatoria y el procedimiento aplicable deberán estar previstos en los estatutos del partido.",
+      sa151001 = Subarticle.create!(content: "Las causales de revocatoria y el procedimiento aplicable deberán estar previstos en los estatutos del partido.",
         article: a151,
         number: 1)
 
       puts 'creating subarticles for article 151'
-      sa151002 = Subarticle.create!(content: "2. Las causales deberán referirse a violaciones graves de los estatutos y de la plataforma ideológica, política o programática del partido y haber sido aprobados mediante resolución dictada por el Tribunal Electoral con anterioridad a la fecha de postulación.",
+      sa151002 = Subarticle.create!(content: "Las causales deberán referirse a violaciones graves de los estatutos y de la plataforma ideológica, política o programática del partido y haber sido aprobados mediante resolución dictada por el Tribunal Electoral con anterioridad a la fecha de postulación.",
         article: a151,
         number: 2)
 
       puts 'creating subarticles for article 151'
-      sa151003 = Subarticle.create!(content: "3. También es causal de revocatoria que el Diputado o Suplente haya sido condenado por delito doloso con pena privativa de la libertad de cinco años o más, mediante sentencia ejecutoriada, proferida por un tribunal de justicia.",
+      sa151003 = Subarticle.create!(content: "También es causal de revocatoria que el Diputado o Suplente haya sido condenado por delito doloso con pena privativa de la libertad de cinco años o más, mediante sentencia ejecutoriada, proferida por un tribunal de justicia.",
         article: a151,
         number: 3)
 
       puts 'creating subarticles for article 151'
-      sa151004 = Subarticle.create!(content: "4. El afectado tendrá derecho, dentro de su partido, a ser oído y a defenderse en dos instancias.",
+      sa151004 = Subarticle.create!(content: "El afectado tendrá derecho, dentro de su partido, a ser oído y a defenderse en dos instancias.",
         article: a151,
         number: 4)
 
       puts 'creating subarticles for article 151'
-      sa151005 = Subarticle.create!(content: "5. La decisión del partido en la que se adopte la revocatoria de mandato estará sujeta a recurso del cual conocerá privativamente el Tribunal Electoral y que tendrá efecto suspensivo.",
+      sa151005 = Subarticle.create!(content: "La decisión del partido en la que se adopte la revocatoria de mandato estará sujeta a recurso del cual conocerá privativamente el Tribunal Electoral y que tendrá efecto suspensivo.",
         article: a151,
         number: 5)
 
       puts 'creating subarticles for article 151'
-      sa151006 = Subarticle.create!(content: "6. Para la aplicación de la revocatoria de mandato, los partidos políticos podrán establecer, previo al inicio del proceso, mecanismos de consulta popular con los electores del circuito correspondiente.",
+      sa151006 = Subarticle.create!(content: "Para la aplicación de la revocatoria de mandato, los partidos políticos podrán establecer, previo al inicio del proceso, mecanismos de consulta popular con los electores del circuito correspondiente.",
         article: a151,
         number: 6)
 
@@ -1635,27 +1634,27 @@ t5 = Title.create!(number: 5,
       new: false)
 
       puts 'creating subarticles for article 153'
-      sa153001 = Subarticle.create!(content: "1. Ser panameño por nacimiento, o por naturalización con quince años de residencia en el país después de haber obtenido la nacionalización.",
+      sa153001 = Subarticle.create!(content: "Ser panameño por nacimiento, o por naturalización con quince años de residencia en el país después de haber obtenido la nacionalización.",
         article: a153,
         number: 1)
 
       puts 'creating subarticles for article 153'
-      sa153002 = Subarticle.create!(content: "2. Ser ciudadano en ejercicio.",
+      sa153002 = Subarticle.create!(content: "Ser ciudadano en ejercicio.",
         article: a153,
         number: 2)
 
       puts 'creating subarticles for article 153'
-      sa153003 = Subarticle.create!(content: "3. Haber cumplido por lo menos veintiún años de edad a la fecha de la elección.",
+      sa153003 = Subarticle.create!(content: "Haber cumplido por lo menos veintiún años de edad a la fecha de la elección.",
         article: a153,
         number: 3)
 
       puts 'creating subarticles for article 153'
-      sa153004 = Subarticle.create!(content: "4. No haber sido condenado por delito doloso con pena privativa de la libertad de cinco años o más, mediante sentencia ejecutoriada, proferida por un tribunal de justicia.",
+      sa153004 = Subarticle.create!(content: "No haber sido condenado por delito doloso con pena privativa de la libertad de cinco años o más, mediante sentencia ejecutoriada, proferida por un tribunal de justicia.",
         article: a153,
         number: 4)
 
       puts 'creating subarticles for article 153'
-      sa153005 = Subarticle.create!(content: "5. Ser residente del circuito electoral correspondiente, por lo menos un año inmediatamente anterior a la postulación.",
+      sa153005 = Subarticle.create!(content: "Ser residente del circuito electoral correspondiente, por lo menos un año inmediatamente anterior a la postulación.",
         article: a153,
         number: 5)
 
@@ -1665,27 +1664,27 @@ t5 = Title.create!(number: 5,
 
       # esta es la lista para el articulo 153 modificado
       puts 'creating metadata subarticles for article 153'
-      msa153001 = MetadatumSubarticle.create!(content: "1. Ser panameño por nacimiento, o por naturalización con quince años de residencia en cl país después de haber obtenido la nacionalización.",
+      msa153001 = MetadatumSubarticle.create!(content: "Ser panameño por nacimiento, o por naturalización con quince años de residencia en cl país después de haber obtenido la nacionalización.",
         metadatum: m153,
         number: 1)
 
       puts 'creating metadata subarticles for article 153'
-      msa153002 = MetadatumSubarticle.create!(content: "2. Ser ciudadano en ejercicio.",
+      msa153002 = MetadatumSubarticle.create!(content: "Ser ciudadano en ejercicio.",
         metadatum: m153,
         number: 2)
 
       puts 'creating metadata subarticles for article 153'
-      msa153003 = MetadatumSubarticle.create!(content: "3. Haber cumplido por lo menos veintiún años de edad a la fecha de la elección.",
+      msa153003 = MetadatumSubarticle.create!(content: "Haber cumplido por lo menos veintiún años de edad a la fecha de la elección.",
         metadatum: m153,
         number: 3)
 
       puts 'creating metadata subarticles for article 153'
-      msa153004 = MetadatumSubarticle.create!(content: "4. No haber sido condenado por delito doloso, mediante sentencia ejecutoriada, proferida por un tribunal de justicia.",
+      msa153004 = MetadatumSubarticle.create!(content: "No haber sido condenado por delito doloso, mediante sentencia ejecutoriada, proferida por un tribunal de justicia.",
         metadatum: m153,
         number: 4)
 
       puts 'creating metadata subarticles for article 153'
-      msa153005 = MetadatumSubarticle.create!(content: "5. Ser residente del circuito electoral correspondiente, por lo menos un año inmediatamente anterior a la postulación.",
+      msa153005 = MetadatumSubarticle.create!(content: "Ser residente del circuito electoral correspondiente, por lo menos un año inmediatamente anterior a la postulación.",
         metadatum: m153,
         number: 5)
 
@@ -1734,22 +1733,22 @@ t5 = Title.create!(number: 5,
       new: false)
 
       puts 'creating subarticles for article 158'
-      sa158001 = Subarticle.create!(content: "1. Cuando el Diputado hace uso personal o profesional de servicios públicos o efectúe operaciones corrientes de la misma índole con instituciones o empresas vinculadas al Estado.",
+      sa158001 = Subarticle.create!(content: "Cuando el Diputado hace uso personal o profesional de servicios públicos o efectúe operaciones corrientes de la misma índole con instituciones o empresas vinculadas al Estado.",
         article: a158,
         number: 1)
 
       puts 'creating subarticles for article 158'
-      sa158002 = Subarticle.create!(content: "2. Cuando se trate de contratos con cualesquiera de los Órganos o entidades mencionados en este artículo, mediante licitación, por sociedades que no tengan el carácter de anónimas y de las cuales sea socio un Diputado, siempre que la participación de este en aquellas sea de fecha anterior a su elección para el cargo.",
+      sa158002 = Subarticle.create!(content: "Cuando se trate de contratos con cualesquiera de los Órganos o entidades mencionados en este artículo, mediante licitación, por sociedades que no tengan el carácter de anónimas y de las cuales sea socio un Diputado, siempre que la participación de este en aquellas sea de fecha anterior a su elección para el cargo.",
         article: a158,
         number: 2)
 
       puts 'creating subarticles for article 158'
-      sa158003 = Subarticle.create!(content: "3. Cuando, mediante licitación o sin ella, celebran contratos con tales Órganos o entidades, sociedades anónimas de las cuales no pertenezca un total de más de veinte por ciento de acciones del capital social, a uno o más Diputados.",
+      sa158003 = Subarticle.create!(content: "Cuando, mediante licitación o sin ella, celebran contratos con tales Órganos o entidades, sociedades anónimas de las cuales no pertenezca un total de más de veinte por ciento de acciones del capital social, a uno o más Diputados.",
         article: a158,
         number: 3)
 
       puts 'creating subarticles for article 158'
-      sa158004 = Subarticle.create!(content: "4. Cuando el Diputado actúe en ejercicio de la profesión de abogado ante el Órgano Judicial, fuera del período de sesiones o dentro de este mediante licencia concedida por el Pleno de la Asamblea Nacional.",
+      sa158004 = Subarticle.create!(content: "Cuando el Diputado actúe en ejercicio de la profesión de abogado ante el Órgano Judicial, fuera del período de sesiones o dentro de este mediante licencia concedida por el Pleno de la Asamblea Nacional.",
         article: a158,
         number: 4)
 
@@ -1759,12 +1758,12 @@ t5 = Title.create!(number: 5,
 
       # esta es la lista para el articulo 158 modificado
       puts 'creating metadata subarticles for article 158'
-      msa158001 = MetadatumSubarticle.create!(content: "1. Ejecutar obras públicas ni partidas presupuestarias por sí mismos, ni por interpuestas personas, incluyendo organizaciones sin fines de lucro, o a través de entidades públicas.",
+      msa158001 = MetadatumSubarticle.create!(content: "Ejecutar obras públicas ni partidas presupuestarias por sí mismos, ni por interpuestas personas, incluyendo organizaciones sin fines de lucro, o a través de entidades públicas.",
         metadatum: m158,
         number: 1)
 
       puts 'creating metadata subarticles for article 158'
-      msa158002 = MetadatumSubarticle.create!(content: "2. Hacer por sí mismos, ni por interpuestas personas naturales o jurídicas, contrato alguno con Órganos del Estado o con instituciones o empresas vinculadas a este, ni admitir de nadie poder para gestionar negocios ante esos Órganos, instituciones o empresas.",
+      msa158002 = MetadatumSubarticle.create!(content: "Hacer por sí mismos, ni por interpuestas personas naturales o jurídicas, contrato alguno con Órganos del Estado o con instituciones o empresas vinculadas a este, ni admitir de nadie poder para gestionar negocios ante esos Órganos, instituciones o empresas.",
         metadatum: m158,
         number: 2)
 
@@ -1781,89 +1780,89 @@ t5 = Title.create!(number: 5,
       new: false)
 
       puts 'creating subarticles for article 159'
-      sa159001 = Subarticle.create!(content: "1. Expedir, modificar, reformar o derogar los Códigos Nacionales.",
+      sa159001 = Subarticle.create!(content: "Expedir, modificar, reformar o derogar los Códigos Nacionales.",
         article: a159,
         number: 1)
 
       puts 'creating subarticles for article 159'
-      sa159002 = Subarticle.create!(content: "2. Expedir la Ley general de sueldos propuesta por el Órgano Ejecutivo.",
+      sa159002 = Subarticle.create!(content: "Expedir la Ley general de sueldos propuesta por el Órgano Ejecutivo.",
         article: a159,
         number: 2)
 
       puts 'creating subarticles for article 159'
-      sa159003 = Subarticle.create!(content: "3. Aprobar o desaprobar, antes de su ratificación, los tratados y los convenios internacionales que celebre el Órgano Ejecutivo.",
+      sa159003 = Subarticle.create!(content: "Aprobar o desaprobar, antes de su ratificación, los tratados y los convenios internacionales que celebre el Órgano Ejecutivo.",
         article: a159,
         number: 3)
 
       puts 'creating subarticles for article 159'
-      sa159004 = Subarticle.create!(content: "4. Intervenir en la aprobación del Presupuesto del Estado, según lo establece el Título IX de esta Constitución.",
+      sa159004 = Subarticle.create!(content: "Intervenir en la aprobación del Presupuesto del Estado, según lo establece el Título IX de esta Constitución.",
         article: a159,
         number: 4)
 
       puts 'creating subarticles for article 159'
-      sa159005 = Subarticle.create!(content: "5. Declarar la guerra y facultar al Órgano Ejecutivo para asegurar y concertar la paz.",
+      sa159005 = Subarticle.create!(content: "Declarar la guerra y facultar al Órgano Ejecutivo para asegurar y concertar la paz.",
         article: a159,
         number: 5)
 
       puts 'creating subarticles for article 159'
-      sa159006 = Subarticle.create!(content: "6. Decretar amnistía por delitos políticos.",
+      sa159006 = Subarticle.create!(content: "Decretar amnistía por delitos políticos.",
         article: a159,
         number: 6)
 
       puts 'creating subarticles for article 159'
-      sa159007 = Subarticle.create!(content: "7. Establecer o reformar la división política del territorio nacional.",
+      sa159007 = Subarticle.create!(content: "Establecer o reformar la división política del territorio nacional.",
         article: a159,
         number: 7)
 
       puts 'creating subarticles for article 159'
-      sa159008 = Subarticle.create!(content: "8. Determinar la Ley, el peso, valor, forma, tipo y denominación de la moneda nacional.",
+      sa159008 = Subarticle.create!(content: "Determinar la Ley, el peso, valor, forma, tipo y denominación de la moneda nacional.",
         article: a159,
         number: 8)
 
       puts 'creating subarticles for article 159'
-      sa159009 = Subarticle.create!(content: "9. Disponer sobre la aplicación de los bienes nacionales a usos públicos.",
+      sa159009 = Subarticle.create!(content: "Disponer sobre la aplicación de los bienes nacionales a usos públicos.",
         article: a159,
         number: 9)
 
       puts 'creating subarticles for article 159'
-      sa1590010 = Subarticle.create!(content: "10. Establecer impuestos y contribuciones nacionales, rentas y monopolios oficiales para atender los servicios públicos.",
+      sa1590010 = Subarticle.create!(content: "Establecer impuestos y contribuciones nacionales, rentas y monopolios oficiales para atender los servicios públicos.",
         article: a159,
         number: 10)
 
       puts 'creating subarticles for article 159'
-      sa1590011 = Subarticle.create!(content: "11. Dictar las normas oficiales o específicas a las cuales deben sujetarse el Órgano Ejecutivo, las entidades autónomas y semiautónomas, las empresas estatales y mixtas cuando, con respecto a estas últimas, el Estado tenga su control administrativo, financiero o accionario, para los siguientes efectos: negociar y contratar empréstitos; organizar el crédito público; reconocer la deuda nacional y arreglar su servicio; fijar y modificar los aranceles, tasas y demás disposiciones concernientes al régimen de aduanas.",
+      sa1590011 = Subarticle.create!(content: "Dictar las normas oficiales o específicas a las cuales deben sujetarse el Órgano Ejecutivo, las entidades autónomas y semiautónomas, las empresas estatales y mixtas cuando, con respecto a estas últimas, el Estado tenga su control administrativo, financiero o accionario, para los siguientes efectos: negociar y contratar empréstitos; organizar el crédito público; reconocer la deuda nacional y arreglar su servicio; fijar y modificar los aranceles, tasas y demás disposiciones concernientes al régimen de aduanas.",
         article: a159,
         number: 11)
 
       puts 'creating subarticles for article 159'
-      sa1590012 = Subarticle.create!(content: "12. Determinar, a propuesta del Órgano Ejecutivo, la estructura de la administración nacional mediante la creación de Ministerios, Entidades Autónomas, Semiautónomas, Empresas Estatales y demás establecimientos públicos, y distribuir entre ellos las funciones y negocios de la Administración, con el fin de asegurar la eficacia de las funciones administrativas.",
+      sa1590012 = Subarticle.create!(content: "Determinar, a propuesta del Órgano Ejecutivo, la estructura de la administración nacional mediante la creación de Ministerios, Entidades Autónomas, Semiautónomas, Empresas Estatales y demás establecimientos públicos, y distribuir entre ellos las funciones y negocios de la Administración, con el fin de asegurar la eficacia de las funciones administrativas.",
         article: a159,
         number: 12)
 
       puts 'creating subarticles for article 159'
-      sa1590013 = Subarticle.create!(content: "13. Organizar los servicios públicos establecidos en esta Constitución; expedir o autorizar la expedición del Pacto Social y los Estatutos de las sociedades de economía mixta y las Leyes orgánicas de las empresas industriales o comerciales del Estado, así como dictar las normas correspondientes a las carreras previstas en el TÍTULO XI.",
+      sa1590013 = Subarticle.create!(content: "Organizar los servicios públicos establecidos en esta Constitución; expedir o autorizar la expedición del Pacto Social y los Estatutos de las sociedades de economía mixta y las Leyes orgánicas de las empresas industriales o comerciales del Estado, así como dictar las normas correspondientes a las carreras previstas en el TÍTULO XI.",
         article: a159,
         number: 13)
 
       puts 'creating subarticles for article 159'
-      sa1590014 = Subarticle.create!(content: "14. Decretar las normas relativas a la celebración de contratos en los cuales sea parte o tenga interés el Estado o algunas de sus entidades o empresas.",
+      sa1590014 = Subarticle.create!(content: "Decretar las normas relativas a la celebración de contratos en los cuales sea parte o tenga interés el Estado o algunas de sus entidades o empresas.",
         article: a159,
         number: 14)
 
       puts 'creating subarticles for article 159'
-      sa1590015 = Subarticle.create!(content: "15. Aprobar o improbar los contratos en los cuales sea parte o tenga interés el Estado o alguna de sus entidades o empresas, si su celebración no estuviere reglamentada previamente conforme al numeral catorce o si algunas estipulaciones contractuales no estuvieren ajustadas a la respectiva Ley de autorizaciones.",
+      sa1590015 = Subarticle.create!(content: "Aprobar o improbar los contratos en los cuales sea parte o tenga interés el Estado o alguna de sus entidades o empresas, si su celebración no estuviere reglamentada previamente conforme al numeral catorce o si algunas estipulaciones contractuales no estuvieren ajustadas a la respectiva Ley de autorizaciones.",
         article: a159,
         number: 15)
 
       puts 'creating subarticles for article 159'
-      sa1590016 = Subarticle.create!(content: "16. Conceder al Órgano Ejecutivo, cuando éste lo solicite, y siempre que la necesidad lo exija, facultades extraordinarias precisas, que serán ejercidas durante el receso de la Asamblea Nacional, mediante Decretos Leyes. /n
+      sa1590016 = Subarticle.create!(content: "Conceder al Órgano Ejecutivo, cuando éste lo solicite, y siempre que la necesidad lo exija, facultades extraordinarias precisas, que serán ejercidas durante el receso de la Asamblea Nacional, mediante Decretos Leyes. /n
       La Ley en que se confieran dichas facultades expresará específicamente la materia y los fines que serán objeto de los Decretos-Leyes y no podrá comprender las materias previstas en los numerales tres, cuatro y diez de este artículo, ni el desarrollo de las garantías fundamentales, el sufragio, el régimen de los partidos y la tipificación de delitos y sanciones. La Ley de facultades extraordinarias expira al iniciarse la legislatura ordinaria subsiguiente. /n
       Todo Decreto-Ley que el Ejecutivo expida en el ejercicio de las facultades que se le confieren, deberá ser sometido al Órgano Legislativo para que legisle sobre la materia en la legislatura ordinaria inmediatamente siguiente a la promulgación del Decreto-Ley de que se trate. El Órgano Legislativo podrá en todo tiempo y a iniciativa propia derogar, modificar o adicionar sin limitación de materias los Decretos-Leyes así dictados.",
         article: a159,
         number: 16)
 
       puts 'creating subarticles for article 159'
-      sa1590017 = Subarticle.create!(content: "17. Dictar el Reglamento Orgánico de su régimen interno.",
+      sa1590017 = Subarticle.create!(content: "Dictar el Reglamento Orgánico de su régimen interno.",
         article: a159,
         number: 17)
 
@@ -1884,58 +1883,58 @@ t5 = Title.create!(number: 5,
       new: false)
 
       puts 'creating subarticles for article 161'
-      sa161001 = Subarticle.create!(content: "1. Examinar las credenciales de sus propios miembros y decidir si han sido expedidas en la forma que prescribe la Ley.",
+      sa161001 = Subarticle.create!(content: "Examinar las credenciales de sus propios miembros y decidir si han sido expedidas en la forma que prescribe la Ley.",
         article: a161,
         number: 1)
 
       puts 'creating subarticles for article 161'
-      sa161002 = Subarticle.create!(content: "2. Admitir o rechazar la renuncia del Presidente y del Vicepresidente de la República.",
+      sa161002 = Subarticle.create!(content: "Admitir o rechazar la renuncia del Presidente y del Vicepresidente de la República.",
         article: a161,
         number: 2)
 
       puts 'creating subarticles for article 161'
-      sa161003 = Subarticle.create!(content: "3. Conceder licencia al Presidente de la República cuando se la solicite, y autorizarlo para ausentarse del territorio nacional, conforme a lo dispuesto en esta Constitución.",
+      sa161003 = Subarticle.create!(content: "Conceder licencia al Presidente de la República cuando se la solicite, y autorizarlo para ausentarse del territorio nacional, conforme a lo dispuesto en esta Constitución.",
         article: a161,
         number: 3)
 
       puts 'creating subarticles for article 161'
-      sa161004 = Subarticle.create!(content: "4. Aprobar o improbar los nombramientos de los Magistrados de la Corte Suprema de Justicia, del Procurador General de la Nación, del Procurador de la Administración y los demás que haga el Ejecutivo y que, por disposición de esta Constitución o la Ley, requieran la ratificación de la Asamblea Nacional. Los funcionarios que requieran ratificación no podrán tomar posesión de su cargo hasta tanto sean ratificados.",
+      sa161004 = Subarticle.create!(content: "Aprobar o improbar los nombramientos de los Magistrados de la Corte Suprema de Justicia, del Procurador General de la Nación, del Procurador de la Administración y los demás que haga el Ejecutivo y que, por disposición de esta Constitución o la Ley, requieran la ratificación de la Asamblea Nacional. Los funcionarios que requieran ratificación no podrán tomar posesión de su cargo hasta tanto sean ratificados.",
         article: a161,
         number: 4)
 
       puts 'creating subarticles for article 161'
-      sa161005 = Subarticle.create!(content: "5. Nombrar al Contralor General de la República, al Subcontralor de la República, al Defensor del Pueblo, al Magistrado del Tribunal Electoral y al suplente que le corresponde conforme a esta Constitución.",
+      sa161005 = Subarticle.create!(content: "Nombrar al Contralor General de la República, al Subcontralor de la República, al Defensor del Pueblo, al Magistrado del Tribunal Electoral y al suplente que le corresponde conforme a esta Constitución.",
         article: a161,
         number: 5)
 
       puts 'creating subarticles for article 161'
-      sa161006 = Subarticle.create!(content: "6. Nombrar, con sujeción a lo previsto en esta Constitución y en el Reglamento Interno, las comisiones permanentes de la Asamblea Nacional y las comisiones de investigación sobre cualquier asunto de interés público, para que informen al Pleno a fin de que dicte las medidas que considere apropiadas.",
+      sa161006 = Subarticle.create!(content: "Nombrar, con sujeción a lo previsto en esta Constitución y en el Reglamento Interno, las comisiones permanentes de la Asamblea Nacional y las comisiones de investigación sobre cualquier asunto de interés público, para que informen al Pleno a fin de que dicte las medidas que considere apropiadas.",
         article: a161,
         number: 6)
 
       puts 'creating subarticles for article 161'
-      sa161007 = Subarticle.create!(content: "7. Dar votos de censura contra los Ministros de Estado cuando estos, a juicio de la Asamblea Nacional, sean responsables de actos atentatorios o ilegales, o de errores graves que hayan causado perjuicio a los intereses del Estado. Para que el voto de censura sea exequible se requiere que sea propuesto por escrito con seis días de anticipación a su debate, por no menos de la mitad de los Diputados, y aprobado con el voto de las dos terceras partes de la Asamblea. La Ley establecerá la sanción que corresponda.",
+      sa161007 = Subarticle.create!(content: "Dar votos de censura contra los Ministros de Estado cuando estos, a juicio de la Asamblea Nacional, sean responsables de actos atentatorios o ilegales, o de errores graves que hayan causado perjuicio a los intereses del Estado. Para que el voto de censura sea exequible se requiere que sea propuesto por escrito con seis días de anticipación a su debate, por no menos de la mitad de los Diputados, y aprobado con el voto de las dos terceras partes de la Asamblea. La Ley establecerá la sanción que corresponda.",
         article: a161,
         number: 7)
 
       puts 'creating subarticles for article 161'
-      sa16108 = Subarticle.create!(content: "8. Examinar y aprobar o deslindar responsabilidades sobre la Cuenta General del Tesoro que el Ejecutivo le presente, con el concurso del Contralor General de la República. /n
+      sa16108 = Subarticle.create!(content: "Examinar y aprobar o deslindar responsabilidades sobre la Cuenta General del Tesoro que el Ejecutivo le presente, con el concurso del Contralor General de la República. /n
       Con ese propósito, el Ministro del ramo presentará personalmente ante el Pleno de la Asamblea Nacional la Cuenta General del Tesoro, en marzo de cada año. El Reglamento Interno de la Asamblea Nacional dispondrá lo concerniente a esa comparecencia y a la votación de la Cuenta del Tesoro presentada por el Órgano Ejecutivo.",
         article: a161,
         number: 8)
 
       puts 'creating subarticles for article 161'
-      sa161009 = Subarticle.create!(content: "9. Citar o requerir a los funcionarios que nombre o ratifique el Órgano Legislativo, a los Ministros de Estado, a los Directores Generales o Gerentes de todas las entidades autónomas, semiautónomas, organismos descentralizados, empresas industriales o comerciales del Estado, así como a los de las empresas mixtas a las que se refiere el numeral 11 del artículo 159, para que rindan los informes verbales o escritos sobre las materias propias de su competencia, que la Asamblea Nacional requiera para el mejor desempeño de sus funciones o para conocer los actos de la Administración, salvo lo dispuesto en el numeral 7 del artículo 163. Cuando los informes deban ser verbales, las citaciones se harán con anticipación no menor de cuarenta y ocho horas y se formulará en cuestionario escrito y específico. Los funcionarios que hayan de rendir el informe deberán concurrir y ser oídos en la sesión para la cual fueron citados, sin perjuicio de que el debate continúe en sesiones posteriores por decisión de la Asamblea Nacional. Tal debate no podrá extenderse a asuntos ajenos al cuestionario específico.",
+      sa161009 = Subarticle.create!(content: "Citar o requerir a los funcionarios que nombre o ratifique el Órgano Legislativo, a los Ministros de Estado, a los Directores Generales o Gerentes de todas las entidades autónomas, semiautónomas, organismos descentralizados, empresas industriales o comerciales del Estado, así como a los de las empresas mixtas a las que se refiere el numeral 11 del artículo 159, para que rindan los informes verbales o escritos sobre las materias propias de su competencia, que la Asamblea Nacional requiera para el mejor desempeño de sus funciones o para conocer los actos de la Administración, salvo lo dispuesto en el numeral 7 del artículo 163. Cuando los informes deban ser verbales, las citaciones se harán con anticipación no menor de cuarenta y ocho horas y se formulará en cuestionario escrito y específico. Los funcionarios que hayan de rendir el informe deberán concurrir y ser oídos en la sesión para la cual fueron citados, sin perjuicio de que el debate continúe en sesiones posteriores por decisión de la Asamblea Nacional. Tal debate no podrá extenderse a asuntos ajenos al cuestionario específico.",
         article: a161,
         number: 9)
 
       puts 'creating subarticles for article 161'
-      sa1610010 = Subarticle.create!(content: "10. Rehabilitar a los que hayan perdido derechos inherentes a la ciudadanía.",
+      sa1610010 = Subarticle.create!(content: "Rehabilitar a los que hayan perdido derechos inherentes a la ciudadanía.",
         article: a161,
         number: 10)
 
       puts 'creating subarticles for article 161'
-      sa1610011 = Subarticle.create!(content: "11. Aprobar, reformar o derogar el decreto de estado de urgencia y la suspensión de las garantías constitucionales, conforme a lo dispuesto en esta Constitución.",
+      sa1610011 = Subarticle.create!(content: "Aprobar, reformar o derogar el decreto de estado de urgencia y la suspensión de las garantías constitucionales, conforme a lo dispuesto en esta Constitución.",
         article: a161,
         number: 11)
 
@@ -1952,52 +1951,52 @@ t5 = Title.create!(number: 5,
       new: false)
 
       puts 'creating subarticles for article 163'
-      sa163001 = Subarticle.create!(content: "1. Expedir leyes que contraríen la letra o el espíritu de esta Constitución.",
+      sa163001 = Subarticle.create!(content: "Expedir leyes que contraríen la letra o el espíritu de esta Constitución.",
         article: a163,
         number: 1)
 
       puts 'creating subarticles for article 163'
-      sa163002 = Subarticle.create!(content: "2. Inmiscuirse por medio de resoluciones en asuntos que son de la privativa competencia de los otros Órganos del Estado.",
+      sa163002 = Subarticle.create!(content: "Inmiscuirse por medio de resoluciones en asuntos que son de la privativa competencia de los otros Órganos del Estado.",
         article: a163,
         number: 2)
 
       puts 'creating subarticles for article 163'
-      sa163003 = Subarticle.create!(content: "3. Reconocer a cargo del Tesoro Público indemnizaciones que no hayan sido previamente declaradas por las autoridades competentes y votar partidas para pagar becas, pensiones, jubilaciones, gratificaciones o erogaciones que no hayan sido decretadas conforme a las leyes generales preexistentes.",
+      sa163003 = Subarticle.create!(content: "Reconocer a cargo del Tesoro Público indemnizaciones que no hayan sido previamente declaradas por las autoridades competentes y votar partidas para pagar becas, pensiones, jubilaciones, gratificaciones o erogaciones que no hayan sido decretadas conforme a las leyes generales preexistentes.",
         article: a163,
         number: 3)
 
       puts 'creating subarticles for article 163'
-      sa163004 = Subarticle.create!(content: "4. Decretar actos de proscripción o persecución contra personas o corporaciones.",
+      sa163004 = Subarticle.create!(content: "Decretar actos de proscripción o persecución contra personas o corporaciones.",
         article: a163,
         number: 4)
 
       puts 'creating subarticles for article 163'
-      sa163005 = Subarticle.create!(content: "5. Incitar o compeler a los funcionarios públicos para que adopten determinadas medidas.",
+      sa163005 = Subarticle.create!(content: "Incitar o compeler a los funcionarios públicos para que adopten determinadas medidas.",
         article: a163,
         number: 5)
 
       puts 'creating subarticles for article 163'
-      sa163006 = Subarticle.create!(content: "6. Hacer nombramientos distintos de los que les correspondan de acuerdo con esta Constitución y las leyes.",
+      sa163006 = Subarticle.create!(content: "Hacer nombramientos distintos de los que les correspondan de acuerdo con esta Constitución y las leyes.",
         article: a163,
         number: 6)
 
       puts 'creating subarticles for article 163'
-      sa163007 = Subarticle.create!(content: "7. Exigir al Órgano Ejecutivo comunicación de las instrucciones dadas a los Agentes Diplomáticos o informes sobre negociaciones que tengan carácter reservado.",
+      sa163007 = Subarticle.create!(content: "Exigir al Órgano Ejecutivo comunicación de las instrucciones dadas a los Agentes Diplomáticos o informes sobre negociaciones que tengan carácter reservado.",
         article: a163,
         number: 7)
 
       puts 'creating subarticles for article 163'
-      sa163008 = Subarticle.create!(content: "8. Ordenar o autorizar otras partidas y programas no previstos en el Presupuesto General del Estado, salvo en casos de emergencia así declarados expresamente por el Órgano Ejecutivo.",
+      sa163008 = Subarticle.create!(content: "Ordenar o autorizar otras partidas y programas no previstos en el Presupuesto General del Estado, salvo en casos de emergencia así declarados expresamente por el Órgano Ejecutivo.",
         article: a163,
         number: 8)
 
       puts 'creating subarticles for article 163'
-      sa163009 = Subarticle.create!(content: "9. Delegar cualquiera de las funciones que le correspondan, salvo lo previsto en el numeral 16 del artículo 159.",
+      sa163009 = Subarticle.create!(content: "Delegar cualquiera de las funciones que le correspondan, salvo lo previsto en el numeral 16 del artículo 159.",
         article: a163,
         number: 9)
 
       puts 'creating subarticles for article 163'
-      sa1630010 = Subarticle.create!(content: "10. Dar votos de aplauso o de censura respecto de actos del Presidente de la República.",
+      sa1630010 = Subarticle.create!(content: "Dar votos de aplauso o de censura respecto de actos del Presidente de la República.",
         article: a163,
         number: 10)
 
@@ -2039,7 +2038,7 @@ t5 = Title.create!(number: 5,
       new: false)
 
       puts 'creating subarticles for article 165'
-      sa165001 = Subarticle.create!(content: "1. Cuando sean orgánicas:",
+      sa165001 = Subarticle.create!(content: "Cuando sean orgánicas:",
         article: a165,
         number: 1)
 
@@ -2072,7 +2071,7 @@ t5 = Title.create!(number: 5,
 
 
       puts 'creating subarticles for article 165'
-      sa165002 = Subarticle.create!(content: "2. Cuando sean ordinarias:",
+      sa165002 = Subarticle.create!(content: "Cuando sean ordinarias:",
         article: a165,
         number: 2)
 
@@ -2214,12 +2213,12 @@ t6 = Title.create!(number: 6,
       new: false)
 
       puts 'creating subarticles for article 179'
-      sa179001 = Subarticle.create!(content: "1. Ser panameño por nacimiento.",
+      sa179001 = Subarticle.create!(content: "Ser panameño por nacimiento.",
         article: a179,
         number: 1)
 
       puts 'creating subarticles for article 179'
-      sa179002 = Subarticle.create!(content: "2. Haber cumplido treinta y cinco años de edad.",
+      sa179002 = Subarticle.create!(content: "Haber cumplido treinta y cinco años de edad.",
         article: a179,
         number: 2)
 
@@ -2253,42 +2252,42 @@ t6 = Title.create!(number: 6,
       new: false)
 
       puts 'creating subarticles for article 183'
-      sa183001 = Subarticle.create!(content: "1. Nombrar y separar libremente a los Ministros de Estado.",
+      sa183001 = Subarticle.create!(content: "Nombrar y separar libremente a los Ministros de Estado.",
         article: a183,
         number: 1)
 
       puts 'creating subarticles for article 183'
-      sa183002 = Subarticle.create!(content: "2. Coordinar la labor de la administración y los establecimientos públicos.",
+      sa183002 = Subarticle.create!(content: "Coordinar la labor de la administración y los establecimientos públicos.",
         article: a183,
         number: 2)
 
       puts 'creating subarticles for article 183'
-      sa183003 = Subarticle.create!(content: "3. Velar por la conservación del orden público.",
+      sa183003 = Subarticle.create!(content: "Velar por la conservación del orden público.",
         article: a183,
         number: 3)
 
       puts 'creating subarticles for article 183'
-      sa183004 = Subarticle.create!(content: "4. Adoptar las medidas necesarias para que la Asamblea Legislativa se reúna el día señalado por la Constitución o el Decreto mediante el cual haya sido convocada a sesiones extraordinarias.",
+      sa183004 = Subarticle.create!(content: "Adoptar las medidas necesarias para que la Asamblea Legislativa se reúna el día señalado por la Constitución o el Decreto mediante el cual haya sido convocada a sesiones extraordinarias.",
         article: a183,
         number: 4)
 
       puts 'creating subarticles for article 183'
-      sa183005 = Subarticle.create!(content: "5. Presentar al principio de cada legislatura, el primer día de sus sesiones ordinarias, un mensaje sobre los asuntos de la administración.",
+      sa183005 = Subarticle.create!(content: "Presentar al principio de cada legislatura, el primer día de sus sesiones ordinarias, un mensaje sobre los asuntos de la administración.",
         article: a183,
         number: 5)
 
       puts 'creating subarticles for article 183'
-      sa183006 = Subarticle.create!(content: "6. Objetar los proyectos de Leyes por considerarlos inconvenientes o inexequibles.",
+      sa183006 = Subarticle.create!(content: "Objetar los proyectos de Leyes por considerarlos inconvenientes o inexequibles.",
         article: a183,
         number: 6)
 
       puts 'creating subarticles for article 183'
-      sa183007 = Subarticle.create!(content: "7. Invalidar las órdenes o disposiciones que dicte un Ministro de Estado en virtud del artículo 186.",
+      sa183007 = Subarticle.create!(content: "Invalidar las órdenes o disposiciones que dicte un Ministro de Estado en virtud del artículo 186.",
         article: a183,
         number: 7)
 
       puts 'creating subarticles for article 183'
-      sa183008 = Subarticle.create!(content: "8. Las demás que le correspondan de conformidad con la Constitución o la Ley.",
+      sa183008 = Subarticle.create!(content: "Las demás que le correspondan de conformidad con la Constitución o la Ley.",
         article: a183,
         number: 8)
 
@@ -2299,82 +2298,82 @@ t6 = Title.create!(number: 6,
       new: false)
 
       puts 'creating subarticles for article 184'
-      sa184001 = Subarticle.create!(content: "1. Sancionar y promulgar las Leyes, obedecerlas y velar por su exacto cumplimiento.",
+      sa184001 = Subarticle.create!(content: "Sancionar y promulgar las Leyes, obedecerlas y velar por su exacto cumplimiento.",
         article: a184,
         number: 1)
 
       puts 'creating subarticles for article 184'
-      sa184002 = Subarticle.create!(content: "2. Nombrar y separar los Directores y demás miembros de los servicios de policía y disponer el uso de estos servicios.",
+      sa184002 = Subarticle.create!(content: "Nombrar y separar los Directores y demás miembros de los servicios de policía y disponer el uso de estos servicios.",
         article: a184,
         number: 2)
 
       puts 'creating subarticles for article 184'
-      sa184003 = Subarticle.create!(content: "3. Nombrar y separar libremente a los Gobernadores de las Provincias.",
+      sa184003 = Subarticle.create!(content: "Nombrar y separar libremente a los Gobernadores de las Provincias.",
         article: a184,
         number: 3)
 
       puts 'creating subarticles for article 184'
-      sa184004 = Subarticle.create!(content: "4. Informar al Órgano Legislativo de las vacantes producidas en los cargos que éste debe proveer.",
+      sa184004 = Subarticle.create!(content: "Informar al Órgano Legislativo de las vacantes producidas en los cargos que éste debe proveer.",
         article: a184,
         number: 4)
 
       puts 'creating subarticles for article 184'
-      sa184005 = Subarticle.create!(content: "5. Vigilar la recaudación y administración de las rentas nacionales.",
+      sa184005 = Subarticle.create!(content: "Vigilar la recaudación y administración de las rentas nacionales.",
         article: a184,
         number: 5)
 
       puts 'creating subarticles for article 184'
-      sa184006 = Subarticle.create!(content: "6. Nombrar, con arreglo a lo dispuesto en el Título XI, a las personas que deban desempeñar cualesquiera cargos o empleos nacionales cuya provisión no corresponda a otro funcionario o corporación.",
+      sa184006 = Subarticle.create!(content: "Nombrar, con arreglo a lo dispuesto en el Título XI, a las personas que deban desempeñar cualesquiera cargos o empleos nacionales cuya provisión no corresponda a otro funcionario o corporación.",
         article: a184,
         number: 6)
 
       puts 'creating subarticles for article 184'
-      sa184007 = Subarticle.create!(content: "7. Enviar al Órgano Legislativo, dentro del primer mes de la primera legislatura anual, el Proyecto de Presupuesto General del Estado, salvo que la fecha de toma de posesión del Presidente de la República coincida con la iniciación de dichas sesiones. En este caso, el Presidente de la República deberá hacerlo dentro de los primeros cuarenta días de sesiones.",
+      sa184007 = Subarticle.create!(content: "Enviar al Órgano Legislativo, dentro del primer mes de la primera legislatura anual, el Proyecto de Presupuesto General del Estado, salvo que la fecha de toma de posesión del Presidente de la República coincida con la iniciación de dichas sesiones. En este caso, el Presidente de la República deberá hacerlo dentro de los primeros cuarenta días de sesiones.",
         article: a184,
         number: 7)
 
       puts 'creating subarticles for article 184'
-      sa184008 = Subarticle.create!(content: "8. Celebrar contratos administrativos para la prestación de servicios y ejecución de obras públicas, con arreglo a lo que disponga esta Constitución y la Ley.",
+      sa184008 = Subarticle.create!(content: "Celebrar contratos administrativos para la prestación de servicios y ejecución de obras públicas, con arreglo a lo que disponga esta Constitución y la Ley.",
         article: a184,
         number: 8)
 
       puts 'creating subarticles for article 184'
-      sa184009 = Subarticle.create!(content: "9. Dirigir las relaciones exteriores; celebrar tratados y convenios internacionales, los cuales serán sometidos a la consideración del Órgano Legislativo y acreditar y recibir agentes diplomáticos y consulares.",
+      sa184009 = Subarticle.create!(content: "Dirigir las relaciones exteriores; celebrar tratados y convenios internacionales, los cuales serán sometidos a la consideración del Órgano Legislativo y acreditar y recibir agentes diplomáticos y consulares.",
         article: a184,
         number: 9)
 
       puts 'creating subarticles for article 184'
-      sa1840010 = Subarticle.create!(content: "10. Dirigir, reglamentar e inspeccionar los servicios establecidos en esta Constitución.",
+      sa1840010 = Subarticle.create!(content: "Dirigir, reglamentar e inspeccionar los servicios establecidos en esta Constitución.",
         article: a184,
         number: 10)
 
       puts 'creating subarticles for article 184'
-      sa1840011 = Subarticle.create!(content: "11. Nombrar a los Jefes, Gerentes y Directores de las entidades públicas autónomas, semiautónomas y de las empresas estatales, según lo dispongan las Leyes respectivas.",
+      sa1840011 = Subarticle.create!(content: "Nombrar a los Jefes, Gerentes y Directores de las entidades públicas autónomas, semiautónomas y de las empresas estatales, según lo dispongan las Leyes respectivas.",
         article: a184,
         number: 11)
 
       puts 'creating subarticles for article 184'
-      sa1840012 = Subarticle.create!(content: "12. Decretar indultos por delitos políticos, rebajar penas y conceder libertad condicional a los reos de delitos comunes.",
+      sa1840012 = Subarticle.create!(content: "Decretar indultos por delitos políticos, rebajar penas y conceder libertad condicional a los reos de delitos comunes.",
         article: a184,
         number: 12)
 
       puts 'creating subarticles for article 184'
-      sa1840013 = Subarticle.create!(content: "13. Conferir ascenso a los miembros de los servicios de policía con arreglo al escalafón y a las disposiciones legales correspondientes.",
+      sa1840013 = Subarticle.create!(content: "Conferir ascenso a los miembros de los servicios de policía con arreglo al escalafón y a las disposiciones legales correspondientes.",
         article: a184,
         number: 13)
 
       puts 'creating subarticles for article 184'
-      sa1840014 = Subarticle.create!(content: "14. Reglamentar las Leyes que lo requieran para su mejor cumplimiento, sin apartarse en ningún caso de su texto ni de su espíritu.",
+      sa1840014 = Subarticle.create!(content: "Reglamentar las Leyes que lo requieran para su mejor cumplimiento, sin apartarse en ningún caso de su texto ni de su espíritu.",
         article: a184,
         number: 14)
 
       puts 'creating subarticles for article 184'
-      sa1840015 = Subarticle.create!(content: "15. Conceder a los nacionales que lo soliciten permiso para aceptar cargos de gobiernos extranjeros, en los casos que sea necesario de acuerdo con la Ley.",
+      sa1840015 = Subarticle.create!(content: "Conceder a los nacionales que lo soliciten permiso para aceptar cargos de gobiernos extranjeros, en los casos que sea necesario de acuerdo con la Ley.",
         article: a184,
         number: 15)
 
       puts 'creating subarticles for article 184'
-      sa1840016 = Subarticle.create!(content: "16. Ejercer las demás atribuciones que le correspondan de acuerdo con esta Constitución y la Ley.",
+      sa1840016 = Subarticle.create!(content: "Ejercer las demás atribuciones que le correspondan de acuerdo con esta Constitución y la Ley.",
         article: a184,
         number: 16)
 
@@ -2385,22 +2384,22 @@ t6 = Title.create!(number: 6,
       new: false)
 
       puts 'creating subarticles for article 185'
-      sa185001 = Subarticle.create!(content: "1. Reemplazar al Presidente de la República en caso de falta temporal o absoluta.",
+      sa185001 = Subarticle.create!(content: "Reemplazar al Presidente de la República en caso de falta temporal o absoluta.",
         article: a185,
         number: 1)
 
       puts 'creating subarticles for article 185'
-      sa185002 = Subarticle.create!(content: "2. Asistir con voz, pero sin voto, a las sesiones del Consejo de Gabinete.",
+      sa185002 = Subarticle.create!(content: "Asistir con voz, pero sin voto, a las sesiones del Consejo de Gabinete.",
         article: a185,
         number: 2)
 
       puts 'creating subarticles for article 185'
-      sa185003 = Subarticle.create!(content: "3. Asesorar al Presidente de la República en las materias que este determine.",
+      sa185003 = Subarticle.create!(content: "Asesorar al Presidente de la República en las materias que este determine.",
         article: a185,
         number: 3)
 
       puts 'creating subarticles for article 185'
-      sa185004 = Subarticle.create!(content: "4. Asistir y representar al Presidente de la República en actos públicos y congresos nacionales o internacionales, o en misiones especiales que el Presidente le encomiende.",
+      sa185004 = Subarticle.create!(content: "Asistir y representar al Presidente de la República en actos públicos y congresos nacionales o internacionales, o en misiones especiales que el Presidente le encomiende.",
         article: a185,
         number: 4)
 
@@ -2427,17 +2426,17 @@ t6 = Title.create!(number: 6,
       new: false)
 
      puts 'creating subarticles for article 188'
-      sa188001 = Subarticle.create!(content: "1. Por un periodo máximo de hasta diez días, sin necesidad de autorización alguna.",
+      sa188001 = Subarticle.create!(content: "Por un periodo máximo de hasta diez días, sin necesidad de autorización alguna.",
         article: a188,
         number: 1)
 
       puts 'creating subarticles for article 188'
-      sa188002 = Subarticle.create!(content: "2. Por un periodo que exceda de diez días y no sea mayor de treinta días, con autorización del Consejo de Gabinete.",
+      sa188002 = Subarticle.create!(content: "Por un periodo que exceda de diez días y no sea mayor de treinta días, con autorización del Consejo de Gabinete.",
         article: a188,
         number: 2)
 
       puts 'creating subarticles for article 188'
-      sa188003 = Subarticle.create!(content: "3. Por un periodo mayor de treinta días, con la autorización de la Asamblea Nacional.",
+      sa188003 = Subarticle.create!(content: "Por un periodo mayor de treinta días, con la autorización de la Asamblea Nacional.",
         article: a185,
         number: 3)
 
@@ -2468,17 +2467,17 @@ t6 = Title.create!(number: 6,
       new: false)
 
      puts 'creating subarticles for article 191'
-      sa191001 = Subarticle.create!(content: "1. Por extralimitación de sus funciones constitucionales.",
+      sa191001 = Subarticle.create!(content: "Por extralimitación de sus funciones constitucionales.",
         article: a191,
         number: 1)
 
      puts 'creating subarticles for article 191'
-      sa191002 = Subarticle.create!(content: "2. Por actos de violencia o coacción en el curso del proceso electoral; por impedir la reunión de la Asamblea Nacional; por obstaculizar el ejercicio de las funciones de esta o de los demás organismos o autoridades públicas que establece la Constitución.",
+      sa191002 = Subarticle.create!(content: "Por actos de violencia o coacción en el curso del proceso electoral; por impedir la reunión de la Asamblea Nacional; por obstaculizar el ejercicio de las funciones de esta o de los demás organismos o autoridades públicas que establece la Constitución.",
         article: a191,
         number: 2)
 
      puts 'creating subarticles for article 191'
-      sa191003 = Subarticle.create!(content: "3. Por delitos contra la personalidad internacional del Estado o contra la Administración Pública.",
+      sa191003 = Subarticle.create!(content: "Por delitos contra la personalidad internacional del Estado o contra la Administración Pública.",
         article: a191,
         number: 3)
 
@@ -2494,12 +2493,12 @@ t6 = Title.create!(number: 6,
       new: false)
 
      puts 'creating subarticles for article 192'
-      sa192001 = Subarticle.create!(content: "1. El ciudadano que llamado a ejercer la Presidencia por falta absoluta del titular, la hubiera ejercido en cualquier tiempo durante les tres años inmediatamente anteriores al periodo para el cual se hace la elección.",
+      sa192001 = Subarticle.create!(content: "El ciudadano que llamado a ejercer la Presidencia por falta absoluta del titular, la hubiera ejercido en cualquier tiempo durante les tres años inmediatamente anteriores al periodo para el cual se hace la elección.",
         article: a192,
         number: 1)
 
      puts 'creating subarticles for article 192'
-      sa192002 = Subarticle.create!(content: "2. Los parientes dentro del cuarto grado de consanguinidad o segundo de afinidad del Presidente de la República que haya ejercido sus funciones en el periodo inmediatamente anterior a los del ciudadano indicado en el numeral uno de este artículo.",
+      sa192002 = Subarticle.create!(content: "Los parientes dentro del cuarto grado de consanguinidad o segundo de afinidad del Presidente de la República que haya ejercido sus funciones en el periodo inmediatamente anterior a los del ciudadano indicado en el numeral uno de este artículo.",
         article: a192,
         number: 2)
 
@@ -2510,27 +2509,27 @@ t6 = Title.create!(number: 6,
       new: false)
 
      puts 'creating subarticles for article 193'
-      sa193001 = Subarticle.create!(content: "1. El Presidente de la República que hubiere desempeñado sus funciones en cualquier tiempo, cuando la elección del Vicepresidente de la República sea para el periodo siguiente al suyo.",
+      sa193001 = Subarticle.create!(content: "El Presidente de la República que hubiere desempeñado sus funciones en cualquier tiempo, cuando la elección del Vicepresidente de la República sea para el periodo siguiente al suyo.",
         article: a193,
         number: 1)
 
      puts 'creating subarticles for article 193'
-      sa193002 = Subarticle.create!(content: "2. Los parientes dentro del cuarto grado de consanguinidad o segundo de afinidad del Presidente de la República, para el período que sigue a aquel en que el Presidente de la República hubiere ejercido el cargo.",
+      sa193002 = Subarticle.create!(content: "Los parientes dentro del cuarto grado de consanguinidad o segundo de afinidad del Presidente de la República, para el período que sigue a aquel en que el Presidente de la República hubiere ejercido el cargo.",
         article: a193,
         number: 2)
 
      puts 'creating subarticles for article 193'
-      sa193003 = Subarticle.create!(content: "3. El ciudadano que como Vicepresidente de la República hubiere ejercido el cargo de Presidente de la República en forma permanente en cualquier tiempo durante los tres años anteriores al período para el cual se hace la elección.",
+      sa193003 = Subarticle.create!(content: "El ciudadano que como Vicepresidente de la República hubiere ejercido el cargo de Presidente de la República en forma permanente en cualquier tiempo durante los tres años anteriores al período para el cual se hace la elección.",
         article: a193,
         number: 3)
 
      puts 'creating subarticles for article 193'
-      sa193004 = Subarticle.create!(content: "4. Los parientes dentro del cuarto grado de consanguinidad y segundo de afinidad del ciudadano expresado en el numeral anterior para el período inmediatamente siguiente a aquél en que éste hubiere ejercido la Presidencia de la República.",
+      sa193004 = Subarticle.create!(content: "Los parientes dentro del cuarto grado de consanguinidad y segundo de afinidad del ciudadano expresado en el numeral anterior para el período inmediatamente siguiente a aquél en que éste hubiere ejercido la Presidencia de la República.",
         article: a193,
         number: 4)
 
      puts 'creating subarticles for article 193'
-      sa193005 = Subarticle.create!(content: "5. Los parientes dentro del cuarto grado de consanguinidad o segundo de afinidad del Presidente de la República.",
+      sa193005 = Subarticle.create!(content: "Los parientes dentro del cuarto grado de consanguinidad o segundo de afinidad del Presidente de la República.",
         article: a193,
         number: 5)
 
@@ -2539,32 +2538,32 @@ t6 = Title.create!(number: 6,
         article: a193)
 
       puts 'creating metadata subarticles for article 193'
-      msa193001 = MetadatumSubarticle.create!(content: "1. Los expresidentes, mientras no hayan transcurrido los dos (2) períodos presidenciales a que se refiere el artículo 178.",
+      msa193001 = MetadatumSubarticle.create!(content: "Los expresidentes, mientras no hayan transcurrido los dos (2) períodos presidenciales a que se refiere el artículo 178.",
         metadatum: m193,
         number: 1)
 
       puts 'creating metadata subarticles for article 193'
-      msa193002 = MetadatumSubarticle.create!(content: "2. El Presidente de la República que hubiere desempeñado sus funciones en cualquier tiempo, cuando la elección del Vicepresidente de la República sea para el período siguiente al suyo.",
+      msa193002 = MetadatumSubarticle.create!(content: "El Presidente de la República que hubiere desempeñado sus funciones en cualquier tiempo, cuando la elección del Vicepresidente de la República sea para el período siguiente al suyo.",
         metadatum: m193,
         number: 2)
 
       puts 'creating metadata subarticles for article 193'
-      msa193003 = MetadatumSubarticle.create!(content: "3. El cónyuge y los parientes dentro del cuarto grado de consanguinidad o segundo de afinidad del Presidente de la República, para el período que sigue a aquel en que el Presidente de la República hubiere ejercido el cargo.",
+      msa193003 = MetadatumSubarticle.create!(content: "El cónyuge y los parientes dentro del cuarto grado de consanguinidad o segundo de afinidad del Presidente de la República, para el período que sigue a aquel en que el Presidente de la República hubiere ejercido el cargo.",
         metadatum: m193,
         number: 3)
 
       puts 'creating metadata subarticles for article 193'
-      msa193004 = MetadatumSubarticle.create!(content: "4. El ciudadano que corno Vicepresidente de la República hubiere ejercido el cargo de Presidente de la República en forma permanente en cualquier tiempo durante los tres (3) años anteriores al período para el cual se hace la elección.",
+      msa193004 = MetadatumSubarticle.create!(content: "El ciudadano que corno Vicepresidente de la República hubiere ejercido el cargo de Presidente de la República en forma permanente en cualquier tiempo durante los tres (3) años anteriores al período para el cual se hace la elección.",
         metadatum: m193,
         number: 4)
 
       puts 'creating metadata subarticles for article 193'
-      msa193005 = MetadatumSubarticle.create!(content: "5. El cónyuge y los parientes dentro del cuarto grado de consanguinidad o segundo de afinidad del ciudadano expresado en el numeral anterior para el período inmediatamente siguiente a aquél en que éste hubiere ejercido la Presidencia de la República.",
+      msa193005 = MetadatumSubarticle.create!(content: "El cónyuge y los parientes dentro del cuarto grado de consanguinidad o segundo de afinidad del ciudadano expresado en el numeral anterior para el período inmediatamente siguiente a aquél en que éste hubiere ejercido la Presidencia de la República.",
         metadatum: m193,
         number: 5)
 
       puts 'creating metadata subarticles for article 193'
-      msa193006 = MetadatumSubarticle.create!(content: "6. El cónyuge y los parientes dentro del cuarto grado de consanguinidad o segundo de afinidad del Presidente de la República.",
+      msa193006 = MetadatumSubarticle.create!(content: "El cónyuge y los parientes dentro del cuarto grado de consanguinidad o segundo de afinidad del Presidente de la República.",
         metadatum: m193,
         number: 6)
 
@@ -2625,43 +2624,43 @@ t6 = Title.create!(number: 6,
       new: false)
 
      puts 'creating subarticles for article 200'
-      sa200001 = Subarticle.create!(content: "1. Actuar como cuerpo consultivo en los asuntos que someta a su consideración el Presidente de la República y en los que deba ser oído por mandato de la Constitución o de la Ley.",
+      sa200001 = Subarticle.create!(content: "Actuar como cuerpo consultivo en los asuntos que someta a su consideración el Presidente de la República y en los que deba ser oído por mandato de la Constitución o de la Ley.",
         article: a200,
         number: 1)
 
      puts 'creating subarticles for article 200'
-      sa200002 = Subarticle.create!(content: "2. Acordar con el Presidente de la República los nombramientos de los Magistrados de la Corte Suprema de Justicia, del Procurador General de la Nación, del Procurador de la Administración, y de sus respectivos suplentes, con sujeción a la aprobación de la Asamblea Nacional.",
+      sa200002 = Subarticle.create!(content: "Acordar con el Presidente de la República los nombramientos de los Magistrados de la Corte Suprema de Justicia, del Procurador General de la Nación, del Procurador de la Administración, y de sus respectivos suplentes, con sujeción a la aprobación de la Asamblea Nacional.",
         article: a200,
         number: 2)
 
      puts 'creating subarticles for article 200'
-      sa200003 = Subarticle.create!(content: "3. Acordar la celebración de contratos, la negociación de empréstitos y la enajenación de bienes nacionales muebles o inmuebles, según lo determine la Ley.",
+      sa200003 = Subarticle.create!(content: "Acordar la celebración de contratos, la negociación de empréstitos y la enajenación de bienes nacionales muebles o inmuebles, según lo determine la Ley.",
         article: a200,
         number: 3)
 
      puts 'creating subarticles for article 200'
-      sa200004 = Subarticle.create!(content: "4. Acordar con el Presidente de la República que este pueda transigir o someter a arbitraje los asuntos litigiosos en que el Estado sea parte, para lo cual es necesario el concepto favorable del Procurador General de la Nación. /n
+      sa200004 = Subarticle.create!(content: "Acordar con el Presidente de la República que este pueda transigir o someter a arbitraje los asuntos litigiosos en que el Estado sea parte, para lo cual es necesario el concepto favorable del Procurador General de la Nación. /n
       Este numeral no se aplicará a los convenios arbitrales pactados contractualmente por el Estado, los cuales tendrán eficacia por sí mismos.",
         article: a200,
         number: 4)
 
      puts 'creating subarticles for article 200'
-      sa200005 = Subarticle.create!(content: "5. Decretar, bajo la responsabilidad colectiva de todos sus miembros, el estado de urgencia y la suspensión de las normas constitucionales pertinentes, de conformidad con lo dispuesto en el artículo 55 de esta Constitución.",
+      sa200005 = Subarticle.create!(content: "Decretar, bajo la responsabilidad colectiva de todos sus miembros, el estado de urgencia y la suspensión de las normas constitucionales pertinentes, de conformidad con lo dispuesto en el artículo 55 de esta Constitución.",
         article: a200,
         number: 5)
 
      puts 'creating subarticles for article 200'
-      sa200006 = Subarticle.create!(content: "6. Requerir de los funcionarios públicos, entidades estatales y empresas mixtas los informes que estime necesarios o convenientes para el despacho de los asuntos que deba considerar y citar a los primeros y a los representantes de las segundas para que rindan informes verbales.",
+      sa200006 = Subarticle.create!(content: "Requerir de los funcionarios públicos, entidades estatales y empresas mixtas los informes que estime necesarios o convenientes para el despacho de los asuntos que deba considerar y citar a los primeros y a los representantes de las segundas para que rindan informes verbales.",
         article: a200,
         number: 6)
 
      puts 'creating subarticles for article 200'
-      sa200007 = Subarticle.create!(content: "7. Negociar y contratar empréstitos; organizar el crédito público; reconocer la deuda nacional y arreglar su servicio; fijar y modificar los aranceles, tasas y demás disposiciones concernientes al régimen de aduanas, con sujeción a las normas previstas en las Leyes a que se refiere el numeral 11 del artículo 159. Mientras el Órgano Legislativo no haya dictado Ley o Leyes que contengan las normas generales correspondientes, el Órgano Ejecutivo podrá ejercer estas atribuciones y enviará al Órgano Legislativo copia de todos los Decretos que dicte en ejercicio de esta facultad.",
+      sa200007 = Subarticle.create!(content: "Negociar y contratar empréstitos; organizar el crédito público; reconocer la deuda nacional y arreglar su servicio; fijar y modificar los aranceles, tasas y demás disposiciones concernientes al régimen de aduanas, con sujeción a las normas previstas en las Leyes a que se refiere el numeral 11 del artículo 159. Mientras el Órgano Legislativo no haya dictado Ley o Leyes que contengan las normas generales correspondientes, el Órgano Ejecutivo podrá ejercer estas atribuciones y enviará al Órgano Legislativo copia de todos los Decretos que dicte en ejercicio de esta facultad.",
         article: a200,
         number: 7)
 
      puts 'creating subarticles for article 200'
-      sa200008 = Subarticle.create!(content: "8. Dictar el reglamento de su régimen interno y ejercer las demás funciones que le señale la Constitución o la Ley.",
+      sa200008 = Subarticle.create!(content: "Dictar el reglamento de su régimen interno y ejercer las demás funciones que le señale la Constitución o la Ley.",
         article: a200,
         number: 8)
 
@@ -2670,42 +2669,42 @@ t6 = Title.create!(number: 6,
         article: a200)
 
       puts 'creating metadata subarticles for article 200'
-      msa200001 = MetadatumSubarticle.create!(content: "1. Actuar como cuerpo consultivo en los asuntos que someta a su consideración el Presidente de la República y en los que deba ser oído por mandato de la Constitución o de la Ley.",
+      msa200001 = MetadatumSubarticle.create!(content: "Actuar como cuerpo consultivo en los asuntos que someta a su consideración el Presidente de la República y en los que deba ser oído por mandato de la Constitución o de la Ley.",
         metadatum: m200,
         number: 1)
 
       puts 'creating metadata subarticles for article 200'
-      msa200002 = MetadatumSubarticle.create!(content: "2. Acordar con el Presidente de la República, mediante el procedimiento dispuesto en esta Constitución, los nombramientos de los Magistrados de la Corte Suprema de Justicia, del Tribunal Constitucional, del Procurador General de la Nación, del Procurador de la Administración, de los Magistrados del Tribunal de Cuentas, del Magistrado del Tribunal Electoral que le corresponda y  6 del Fiscal General Electoral, y de sus respectivos suplentes, con sujeción a la aprobación de la Asamblea Nacional.",
+      msa200002 = MetadatumSubarticle.create!(content: "Acordar con el Presidente de la República, mediante el procedimiento dispuesto en esta Constitución, los nombramientos de los Magistrados de la Corte Suprema de Justicia, del Tribunal Constitucional, del Procurador General de la Nación, del Procurador de la Administración, de los Magistrados del Tribunal de Cuentas, del Magistrado del Tribunal Electoral que le corresponda y  6 del Fiscal General Electoral, y de sus respectivos suplentes, con sujeción a la aprobación de la Asamblea Nacional.",
         metadatum: m200,
         number: 2)
 
       puts 'creating metadata subarticles for article 200'
-      msa200003 = MetadatumSubarticle.create!(content: "3. Acordar la celebración de contratos, la negociación de empréstitos y la enajenación de bienes nacionales muebles o inmuebles, según lo determine la Ley.",
+      msa200003 = MetadatumSubarticle.create!(content: "Acordar la celebración de contratos, la negociación de empréstitos y la enajenación de bienes nacionales muebles o inmuebles, según lo determine la Ley.",
         metadatum: m200,
         number: 3)
 
       puts 'creating metadata subarticles for article 200'
-      msa200004 = MetadatumSubarticle.create!(content: "4. Acordar con el Presidente de la República que este pueda transigir o someter a arbitraje los asuntos litigiosos en que el Estado sea parte, para lo cual es necesario el concepto favorable del Procurador General de la Nación. Este numeral no se aplicará a los convenios arbitrales pactados contractualmente por el Estado, los cuales tendrán eficacia por si mismos.",
+      msa200004 = MetadatumSubarticle.create!(content: "Acordar con el Presidente de la República que este pueda transigir o someter a arbitraje los asuntos litigiosos en que el Estado sea parte, para lo cual es necesario el concepto favorable del Procurador General de la Nación. Este numeral no se aplicará a los convenios arbitrales pactados contractualmente por el Estado, los cuales tendrán eficacia por si mismos.",
         metadatum: m200,
         number: 4)
 
       puts 'creating metadata subarticles for article 200'
-      msa200005 = MetadatumSubarticle.create!(content: "5. Decretar, bajo la responsabilidad colectiva de todos sus miembros, el estado de urgencia y la suspensión de las normas constitucionales pertinentes, de conformidad con lo dispuesto en el artículo 55 de esta Constitución.",
+      msa200005 = MetadatumSubarticle.create!(content: "Decretar, bajo la responsabilidad colectiva de todos sus miembros, el estado de urgencia y la suspensión de las normas constitucionales pertinentes, de conformidad con lo dispuesto en el artículo 55 de esta Constitución.",
         metadatum: m200,
         number: 5)
 
       puts 'creating metadata subarticles for article 200'
-      msa200006 = MetadatumSubarticle.create!(content: "6. Requerir de los funcionarios públicos, entidades estatales y empresas mixtas los informes que estime necesarios o convenientes para el despacho de los asuntos que deba considerar y citar a los primeros y a los representantes de las segundas para que rindan informes verbales.",
+      msa200006 = MetadatumSubarticle.create!(content: "Requerir de los funcionarios públicos, entidades estatales y empresas mixtas los informes que estime necesarios o convenientes para el despacho de los asuntos que deba considerar y citar a los primeros y a los representantes de las segundas para que rindan informes verbales.",
         metadatum: m200,
         number: 6)
 
       puts 'creating metadata subarticles for article 200'
-      msa200007 = MetadatumSubarticle.create!(content: "7. Contratar empréstitos; organizar el crédito público; reconocer la deuda nacional y arreglar su servicio; fijar y modificar los aranceles, tasas y demás disposiciones concernientes al régimen de aduanas, con sujeción a las normas previstas en las Leyes a que se refiere el numeral 11 del artículo 159. Mientras el Órgano Legislativo no haya dictado Ley o Leyes que contengan las normas generales correspondientes, el Órgano Ejecutivo podrá ejercer estas atribuciones y enviará al Órgano Legislativo copia de todos los Decretos que dicte en ejercicio de esta facultad.",
+      msa200007 = MetadatumSubarticle.create!(content: "Contratar empréstitos; organizar el crédito público; reconocer la deuda nacional y arreglar su servicio; fijar y modificar los aranceles, tasas y demás disposiciones concernientes al régimen de aduanas, con sujeción a las normas previstas en las Leyes a que se refiere el numeral 11 del artículo 159. Mientras el Órgano Legislativo no haya dictado Ley o Leyes que contengan las normas generales correspondientes, el Órgano Ejecutivo podrá ejercer estas atribuciones y enviará al Órgano Legislativo copia de todos los Decretos que dicte en ejercicio de esta facultad.",
         metadatum: m200,
         number: 7)
 
       puts 'creating metadata subarticles for article 200'
-      msa200008 = MetadatumSubarticle.create!(content: "8. Dictar el reglamento de su régimen interno y ejercer las demás funciones que le señale la Constitución o la Ley.",
+      msa200008 = MetadatumSubarticle.create!(content: "Dictar el reglamento de su régimen interno y ejercer las demás funciones que le señale la Constitución o la Ley.",
         metadatum: m200,
         number: 8)
 
@@ -2754,12 +2753,12 @@ t7 = Title.create!(number: 7,
       new: false)
 
      puts 'creating subarticles for article 203'
-      sa203001 = Subarticle.create!(content: "1. Quien esté ejerciendo o haya ejercido el cargo de Diputado de la República o suplente de Diputado durante el periodo constitucional en curso.",
+      sa203001 = Subarticle.create!(content: "Quien esté ejerciendo o haya ejercido el cargo de Diputado de la República o suplente de Diputado durante el periodo constitucional en curso.",
         article: a203,
         number: 1)
 
      puts 'creating subarticles for article 203'
-      sa203002 = Subarticle.create!(content: "2. Quien esté ejerciendo o haya ejercido cargos de mando y jurisdicción en el Órgano Ejecutivo durante el periodo constitucional en curso. La Ley dividirá la Corte en Salas, formadas por tres Magistrados permanentes cada una.",
+      sa203002 = Subarticle.create!(content: "Quien esté ejerciendo o haya ejercido cargos de mando y jurisdicción en el Órgano Ejecutivo durante el periodo constitucional en curso. La Ley dividirá la Corte en Salas, formadas por tres Magistrados permanentes cada una.",
         article: a203,
         number: 2)
 
@@ -2771,12 +2770,12 @@ t7 = Title.create!(number: 7,
         article: a203)
 
       puts 'creating metadata subarticles for article 203'
-      msa203001 = MetadatumSubarticle.create!(content: "1. Quien esté ejerciendo o haya ejercido el cargo de Diputado de la República o suplente de Diputado durante el periodo constitucional en curso.",
+      msa203001 = MetadatumSubarticle.create!(content: "Quien esté ejerciendo o haya ejercido el cargo de Diputado de la República o suplente de Diputado durante el periodo constitucional en curso.",
         metadatum: m203,
         number: 1)
 
       puts 'creating metadata subarticles for article 203'
-      msa203002 = MetadatumSubarticle.create!(content: "2. Quien esté ejerciendo o haya ejercido cargos de mando y jurisdicción en el Órgano Ejecutivo durante el periodo constitucional en curso. La Ley dividirá la Corte en Salas, formadas por tres Magistrados permanentes cada una.",
+      msa203002 = MetadatumSubarticle.create!(content: "Quien esté ejerciendo o haya ejercido cargos de mando y jurisdicción en el Órgano Ejecutivo durante el periodo constitucional en curso. La Ley dividirá la Corte en Salas, formadas por tres Magistrados permanentes cada una.",
         metadatum: m203,
         number: 2)
 
@@ -2787,27 +2786,27 @@ t7 = Title.create!(number: 7,
       new: false)
 
      puts 'creating subarticles for article 204'
-      sa204001 = Subarticle.create!(content: "1. Ser panameño por nacimiento.",
+      sa204001 = Subarticle.create!(content: "Ser panameño por nacimiento.",
         article: a204,
         number: 1)
 
      puts 'creating subarticles for article 204'
-      sa204002 = Subarticle.create!(content: "2. Haber cumplido treinta y cinco años de edad.",
+      sa204002 = Subarticle.create!(content: "Haber cumplido treinta y cinco años de edad.",
         article: a204,
         number: 2)
 
      puts 'creating subarticles for article 204'
-      sa204003 = Subarticle.create!(content: "3. Hallarse en pleno goce de los derechos civiles y políticos.",
+      sa204003 = Subarticle.create!(content: "Hallarse en pleno goce de los derechos civiles y políticos.",
         article: a204,
         number: 3)
 
      puts 'creating subarticles for article 204'
-      sa204004 = Subarticle.create!(content: "4. Ser graduado en Derecho y haber inscrito el título universitario en la oficina que la Ley señale.",
+      sa204004 = Subarticle.create!(content: "Ser graduado en Derecho y haber inscrito el título universitario en la oficina que la Ley señale.",
         article: a204,
         number: 4)
 
      puts 'creating subarticles for article 204'
-      sa204005 = Subarticle.create!(content: "5. Haber completado un periodo de diez años durante el cual haya ejercido indistintamente la profesión de abogado, cualquier cargo del Órgano Judicial, del Ministerio Público, del Tribunal Electoral o de la Defensoría del Pueblo que requiera título universitario en Derecho, o haber sido profesor de Derecho en un establecimiento de enseñanza universitaria.",
+      sa204005 = Subarticle.create!(content: "Haber completado un periodo de diez años durante el cual haya ejercido indistintamente la profesión de abogado, cualquier cargo del Órgano Judicial, del Ministerio Público, del Tribunal Electoral o de la Defensoría del Pueblo que requiera título universitario en Derecho, o haber sido profesor de Derecho en un establecimiento de enseñanza universitaria.",
         article: a204,
         number: 5)
 
@@ -2822,32 +2821,32 @@ t7 = Title.create!(number: 7,
         article: a204)
 
       puts 'creating metadata subarticles for article 204'
-      msa204001 = MetadatumSubarticle.create!(content: "1. Ser panameño por nacimiento.",
+      msa204001 = MetadatumSubarticle.create!(content: "Ser panameño por nacimiento.",
         metadatum: m204,
         number: 1)
 
       puts 'creating metadata subarticles for article 204'
-      msa204002 = MetadatumSubarticle.create!(content: "2. Haber cumplido cuarenta y cinco años de edad.",
+      msa204002 = MetadatumSubarticle.create!(content: "Haber cumplido cuarenta y cinco años de edad.",
         metadatum: m204,
         number: 2)
 
       puts 'creating metadata subarticles for article 204'
-      msa204003 = MetadatumSubarticle.create!(content: "3. Hallarse en pleno goce de los derechos civiles y políticos.",
+      msa204003 = MetadatumSubarticle.create!(content: "Hallarse en pleno goce de los derechos civiles y políticos.",
         metadatum: m204,
         number: 3)
 
       puts 'creating metadata subarticles for article 204'
-      msa204004 = MetadatumSubarticle.create!(content: "4. Ser graduado en Derecho y haber inscrito el título universitario en la oficina que la Ley señale.",
+      msa204004 = MetadatumSubarticle.create!(content: "Ser graduado en Derecho y haber inscrito el título universitario en la oficina que la Ley señale.",
         metadatum: m204,
         number: 4)
 
       puts 'creating metadata subarticles for article 204'
-      msa204005 = MetadatumSubarticle.create!(content: "5. Haber completado un periodo de quince años durante el cual haya ejercido indistintamente la profesión de abogado, cualquier cargo del Órgano Judicial, del Ministerio Público, del Tribunal Electoral o de la Defensoría del Pueblo que requiera título universitario en Derecho, o haber sido profesor de Derecho en un establecimiento de enseñanza universitaria.",
+      msa204005 = MetadatumSubarticle.create!(content: "Haber completado un periodo de quince años durante el cual haya ejercido indistintamente la profesión de abogado, cualquier cargo del Órgano Judicial, del Ministerio Público, del Tribunal Electoral o de la Defensoría del Pueblo que requiera título universitario en Derecho, o haber sido profesor de Derecho en un establecimiento de enseñanza universitaria.",
         metadatum: m204,
         number: 5)
 
       puts 'creating metadata subarticles for article 204'
-      msa204006 = MetadatumSubarticle.create!(content: "6. Haber realizado estudios de especialización o experiencia profesional en temas afines al ejercicio del cargo y de la sala correspondiente.",
+      msa204006 = MetadatumSubarticle.create!(content: "Haber realizado estudios de especialización o experiencia profesional en temas afines al ejercicio del cargo y de la sala correspondiente.",
         metadatum: m204,
         number: 6)
 
@@ -2864,21 +2863,21 @@ t7 = Title.create!(number: 7,
       new: false)
 
       puts 'creating subarticles for article 206'
-      sa206001 = Subarticle.create!(content: "1. La guarda de la integridad de la Constitución para lo cual la Corte en pleno conocerá y decidirá, con audiencia del Procurador General de la Nación o del Procurador de la Administración, sobre la inconstitucionalidad de las Leyes, decretos, acuerdos, resoluciones y demás actos que por razones de fondo o de forma impugne ante ella cualquier persona. /n
+      sa206001 = Subarticle.create!(content: "La guarda de la integridad de la Constitución para lo cual la Corte en pleno conocerá y decidirá, con audiencia del Procurador General de la Nación o del Procurador de la Administración, sobre la inconstitucionalidad de las Leyes, decretos, acuerdos, resoluciones y demás actos que por razones de fondo o de forma impugne ante ella cualquier persona. /n
       Cuando en un proceso el funcionario público encargado de impartir justicia advirtiere o se lo advirtiere alguna de las partes que la disposición legal o reglamentaria aplicable al caso es inconstitucional, someterá la cuestión al conocimiento del pleno de la Corte, salvo que la disposición haya sido objeto de pronunciamiento por parte de ésta, y continuará el curso del negocio hasta colocarlo en estado de decidir. /n
       Las partes sólo podrán formular tales advertencias una sola vez por instancia.",
         article: a206,
         number: 1)
 
       puts 'creating subarticles for article 206'
-      sa206002 = Subarticle.create!(content: "2. La jurisdicción contencioso-administrativa respecto de los actos, omisiones, prestación defectuosa o deficiente de los servicios públicos, resoluciones, órdenes o disposiciones que ejecuten, adopten, expidan o en que incurran en ejercicio de sus funciones o pretextando ejercerlas, los funcionarios públicos y autoridades nacionales, provinciales, municipales y de las entidades públicas autónomas o semiautónomas. /n
+      sa206002 = Subarticle.create!(content: "La jurisdicción contencioso-administrativa respecto de los actos, omisiones, prestación defectuosa o deficiente de los servicios públicos, resoluciones, órdenes o disposiciones que ejecuten, adopten, expidan o en que incurran en ejercicio de sus funciones o pretextando ejercerlas, los funcionarios públicos y autoridades nacionales, provinciales, municipales y de las entidades públicas autónomas o semiautónomas. /n
       A tal fin, la Corte Suprema de Justicia con audiencia del Procurador de la Administración, podrá anular los actos acusados de ilegalidad; restablecer el derecho particular violado; estatuir nuevas disposiciones en reemplazo de las impugnadas y pronunciarse prejudicialmente acerca del sentido y alcance de un acto administrativo o de su valor legal. /n
       Podrán acogerse a la jurisdicción contencioso-administrativa las personas afectadas por el acto, resolución, orden o disposición de que se trate; y, en ejercicio de la acción pública, cualquier persona natural o jurídica domiciliada en el país.",
         article: a206,
         number: 2)
 
       puts 'creating subarticles for article 206'
-      sa206003 = Subarticle.create!(content: "3. Investigar y procesar a los Diputados. Para efectos de la investigación, el Pleno de la Corte Suprema de Justicia comisionará a un agente de instrucción. /n
+      sa206003 = Subarticle.create!(content: "Investigar y procesar a los Diputados. Para efectos de la investigación, el Pleno de la Corte Suprema de Justicia comisionará a un agente de instrucción. /n
       Las decisiones de la Corte en el ejercicio de las atribuciones señaladas en este artículo son finales, definitivas, obligatorias y deben publicarse en la Gaceta Oficial.",
         article: a206,
         number: 3)
@@ -2888,13 +2887,13 @@ t7 = Title.create!(number: 7,
         article: a206)
 
       puts 'creating metadata subarticles for article 206'
-      msa206001 = MetadatumSubarticle.create!(content: "1. La jurisdicción contencioso-administrativa respecto de los actos, omisiones, prestación defectuosa o deficiente de los servicios públicos, resoluciones, órdenes o disposiciones que ejecuten, adopten, expidan o en que incurran en ejercicio de sus funciones o pretextando ejercerlas, los funcionarios públicos y autoridades nacionales, provinciales, municipales y de las entidades públicas autónomas o semiautónomas. A tal fin, la Corte Suprema de Justicia con audiencia del Procurador de la Administración, podrá anular los actos acusados de ilegalidad; restablecer el derecho particular violado; estatuir nuevas disposiciones en reemplazo de las impugnadas y pronunciarse prejudicialmente acerca del sentido y alcance de un acto administrativo o de su valor legal.  /n
+      msa206001 = MetadatumSubarticle.create!(content: "La jurisdicción contencioso-administrativa respecto de los actos, omisiones, prestación defectuosa o deficiente de los servicios públicos, resoluciones, órdenes o disposiciones que ejecuten, adopten, expidan o en que incurran en ejercicio de sus funciones o pretextando ejercerlas, los funcionarios públicos y autoridades nacionales, provinciales, municipales y de las entidades públicas autónomas o semiautónomas. A tal fin, la Corte Suprema de Justicia con audiencia del Procurador de la Administración, podrá anular los actos acusados de ilegalidad; restablecer el derecho particular violado; estatuir nuevas disposiciones en reemplazo de las impugnadas y pronunciarse prejudicialmente acerca del sentido y alcance de un acto administrativo o de su valor legal.  /n
       Podrán acogerse a la jurisdicción contencioso-administrativa las personas afectadas por el acto, resolución, orden o disposición de que se trate; y, en ejercicio de la acción pública, cualquier persona natural o jurídica domiciliada en el país.",
         metadatum: m206,
         number: 1)
 
       puts 'creating metadata subarticles for article 206'
-      msa206002 = MetadatumSubarticle.create!(content: "2. La jurisdicción penal, civil y laboral, conforme lo dispone esta Constitución y la Ley.",
+      msa206002 = MetadatumSubarticle.create!(content: "La jurisdicción penal, civil y laboral, conforme lo dispone esta Constitución y la Ley.",
         metadatum: m206,
         number: 2)
 
@@ -2974,12 +2973,12 @@ t7 = Title.create!(number: 7,
       new: false)
 
       puts 'creating subarticles for article 215'
-      sa215001 = Subarticle.create!(content: "1. Simplificación de los trámites, economía procesal y ausencia de formalismos.",
+      sa215001 = Subarticle.create!(content: "Simplificación de los trámites, economía procesal y ausencia de formalismos.",
         article: a215,
         number: 1)
 
       puts 'creating subarticles for article 215'
-      sa215002 = Subarticle.create!(content: "2. El objeto del proceso es el reconocimiento de los derechos consignados en la Ley substancial.",
+      sa215002 = Subarticle.create!(content: "El objeto del proceso es el reconocimiento de los derechos consignados en la Ley substancial.",
         article: a215,
         number: 2)
 
@@ -3032,52 +3031,44 @@ t7 = Title.create!(number: 7,
 
       # listas nuevas
       puts 'creating subarticles for article 220'
-      sa220001 = Subarticle.create!(content: "1. Conocer de las demandas de inconstitucionalidad contra las leyes, decretos y demás disposiciones normativas con fuerza de Ley.",
+      sa220001 = Subarticle.create!(content: "Conocer de las demandas de inconstitucionalidad contra las leyes, decretos y demás disposiciones normativas con fuerza de Ley.",
         article: a220,
-        number: 1,
-        new: true)
+        number: 1)
 
       puts 'creating subarticles for article 220'
-      sa220002 = Subarticle.create!(content: "2. Decidir sobre las advertencias o consultas sobre la constitucionalidad de una norma juridica de inferior rango a la Constitución aplicable a un caso concreto.",
+      sa220002 = Subarticle.create!(content: "Decidir sobre las advertencias o consultas sobre la constitucionalidad de una norma juridica de inferior rango a la Constitución aplicable a un caso concreto.",
         article: a220,
-        number: 2,
-        new: true)
+        number: 2)
 
       puts 'creating subarticles for article 220'
-      sa220003 = Subarticle.create!(content: "3. Conocer de la inexequibilidad de los proyectos de ley objetados por el Órgano Ejecutivo al estimarlos como inconstitucionales.",
+      sa220003 = Subarticle.create!(content: "Conocer de la inexequibilidad de los proyectos de ley objetados por el Órgano Ejecutivo al estimarlos como inconstitucionales.",
         article: a220,
-        number: 3,
-        new: true)
+        number: 3)
 
       puts 'creating subarticles for article 220'
-      sa220004 = Subarticle.create!(content: "4. Decidir, sobre las demandas de inconstitucionalidad contra los actos reformatorios de la Constitución, por vicios de procedimiento en su formación.",
+      sa220004 = Subarticle.create!(content: "Decidir, sobre las demandas de inconstitucionalidad contra los actos reformatorios de la Constitución, por vicios de procedimiento en su formación.",
         article: a220,
-        number: 4,
-        new: true)
+        number: 4)
 
       puts 'creating subarticles for article 220'
-      sa220005 = Subarticle.create!(content: "5. Decidir, con anterioridad al pronunciamiento popular, sobre la constitucionalidad de la convocatoria a un referéndum, plebiscito o a una Asamblea Constituyente, solo en caso de vicios de procedimiento en su formación.",
+      sa220005 = Subarticle.create!(content: "Decidir, con anterioridad al pronunciamiento popular, sobre la constitucionalidad de la convocatoria a un referéndum, plebiscito o a una Asamblea Constituyente, solo en caso de vicios de procedimiento en su formación.",
         article: a220,
-        number: 5,
-        new: true)
+        number: 5)
 
       puts 'creating subarticles for article 220'
-      sa220006 = Subarticle.create!(content: "6. Conocer de la exequibilidad de [os Tratados Internacionales y de las leyes que los aprueben. Si la corte los declara constitucionales, el Gobierno podrá efectuar el canje de notas, de lo contrario, no serán ratificados. En caso de inexequibilidad de una o varias normas del Tratado multilateral, cabe la formulación de reserva.",
+      sa220006 = Subarticle.create!(content: "Conocer de la exequibilidad de [os Tratados Internacionales y de las leyes que los aprueben. Si la corte los declara constitucionales, el Gobierno podrá efectuar el canje de notas, de lo contrario, no serán ratificados. En caso de inexequibilidad de una o varias normas del Tratado multilateral, cabe la formulación de reserva.",
         article: a220,
-        number: 6,
-        new: true)
+        number: 6)
 
       puts 'creating subarticles for article 220'
-      sa220007 = Subarticle.create!(content: "7. Conocer de las querellas o denuncias que se presenten contra los magistrados de la Corte Suprema de Justicia, con sujeción a lo establecido en el artículo siguiente. La fase de investigación corresponde al Ministerio Público.",
+      sa220007 = Subarticle.create!(content: "Conocer de las querellas o denuncias que se presenten contra los magistrados de la Corte Suprema de Justicia, con sujeción a lo establecido en el artículo siguiente. La fase de investigación corresponde al Ministerio Público.",
         article: a220,
-        number: 7,
-        new: true)
+        number: 7)
 
       puts 'creating subarticles for article 220'
-      sa220008 = Subarticle.create!(content: "8. Revisar, en la forma que determine la Ley, las decisiones judiciales sobre [a acción de amparo de las garantías constitucionales fundamentales; atendiendo la excepción contenida en el artículo 207. Las decisiones del Tribunal Constitucional, en el ejercicio de las atribuciones señaladas en esta Constitución, son finales, definitivas, obligatorias y deben publicarse en la Gaceta Oficial.",
+      sa220008 = Subarticle.create!(content: "Revisar, en la forma que determine la Ley, las decisiones judiciales sobre [a acción de amparo de las garantías constitucionales fundamentales; atendiendo la excepción contenida en el artículo 207. Las decisiones del Tribunal Constitucional, en el ejercicio de las atribuciones señaladas en esta Constitución, son finales, definitivas, obligatorias y deben publicarse en la Gaceta Oficial.",
         article: a220,
-        number: 8,
-        new: true)
+        number: 8)
 
     # articulo nuevo 7. debe venir despues del 221 con ese titulo
     puts 'creating article 221'
@@ -3106,32 +3097,32 @@ t7 = Title.create!(number: 7,
       new: false)
 
       puts 'creating subarticles for article 220'
-      sa220001 = Subarticle.create!(content: "1. Defender los intereses del Estado o del Municipio.",
+      sa220001 = Subarticle.create!(content: "Defender los intereses del Estado o del Municipio.",
         article: a220,
         number: 1)
 
       puts 'creating subarticles for article 220'
-      sa220002 = Subarticle.create!(content: "2. Promover el cumplimiento o ejecución de las Leyes, sentencias judiciales y disposiciones administrativas.",
+      sa220002 = Subarticle.create!(content: "Promover el cumplimiento o ejecución de las Leyes, sentencias judiciales y disposiciones administrativas.",
         article: a220,
         number: 2)
 
       puts 'creating subarticles for article 220'
-      sa220003 = Subarticle.create!(content: "3. Vigilar la conducta oficial de los funcionarios públicos y cuidar que todos desempeñen cumplidamente sus deberes.",
+      sa220003 = Subarticle.create!(content: "Vigilar la conducta oficial de los funcionarios públicos y cuidar que todos desempeñen cumplidamente sus deberes.",
         article: a220,
         number: 3)
 
       puts 'creating subarticles for article 220'
-      sa220004 = Subarticle.create!(content: "4. Perseguir los delitos y contravenciones de disposiciones constitucionales o legales.",
+      sa220004 = Subarticle.create!(content: "Perseguir los delitos y contravenciones de disposiciones constitucionales o legales.",
         article: a220,
         number: 4)
 
       puts 'creating subarticles for article 220'
-      sa220005 = Subarticle.create!(content: "5. Servir de consejeros jurídicos a los funcionarios administrativos.",
+      sa220005 = Subarticle.create!(content: "Servir de consejeros jurídicos a los funcionarios administrativos.",
         article: a220,
         number: 5)
 
       puts 'creating subarticles for article 220'
-      sa220006 = Subarticle.create!(content: "6. Ejercer las demás funciones que determine la Ley.",
+      sa220006 = Subarticle.create!(content: "Ejercer las demás funciones que determine la Ley.",
         article: a220,
         number: 6)
 
@@ -3148,12 +3139,12 @@ t7 = Title.create!(number: 7,
       new: false)
 
       puts 'creating subarticles for article 222'
-      sa222001 = Subarticle.create!(content: "1. Acusar ante la Corte Suprema de Justicia a los funcionarios públicos cuyo juzgamiento corresponda a esta Corporación.",
+      sa222001 = Subarticle.create!(content: "Acusar ante la Corte Suprema de Justicia a los funcionarios públicos cuyo juzgamiento corresponda a esta Corporación.",
         article: a222,
         number: 1)
 
       puts 'creating subarticles for article 222'
-      sa222002 = Subarticle.create!(content: "2. Velar por que los demás Agentes del Ministerio Público desempeñen fielmente su cargo, y que se les exija responsabilidad por falta o delitos que cometan.",
+      sa222002 = Subarticle.create!(content: "Velar por que los demás Agentes del Ministerio Público desempeñen fielmente su cargo, y que se les exija responsabilidad por falta o delitos que cometan.",
         article: a222,
         number: 2)
 
@@ -3162,12 +3153,12 @@ t7 = Title.create!(number: 7,
         article: a222)
 
       puts 'creating metadata subarticles for article 222'
-      msa222001 = MetadatumSubarticle.create!(content: "1. El ejercicio de la acción penal ante la Corte Suprema de Justicia y el Tribunal Constitucional contra a los funcionarios públicos cuyo juzgamiento corresponda a estas corporaciones.",
+      msa222001 = MetadatumSubarticle.create!(content: "El ejercicio de la acción penal ante la Corte Suprema de Justicia y el Tribunal Constitucional contra a los funcionarios públicos cuyo juzgamiento corresponda a estas corporaciones.",
         metadatum: m222,
         number: 1)
 
       puts 'creating metadata subarticles for article 222'
-      msa222002 = MetadatumSubarticle.create!(content: "2. Velar por que los demás Agentes del Ministerio Público desempeñen fielmente su cargo, y que se les exija responsabilidad por falta o delitos que cometan.",
+      msa222002 = MetadatumSubarticle.create!(content: "Velar por que los demás Agentes del Ministerio Público desempeñen fielmente su cargo, y que se les exija responsabilidad por falta o delitos que cometan.",
         metadatum: m222,
         number: 2)
 
@@ -3214,22 +3205,22 @@ t8 = Title.create!(number: 8,
       new: false)
 
       puts 'creating subarticles for article 226'
-      sa226001 = Subarticle.create!(content: "1. Ser panameño por nacimiento o haber adquirido en forma definitiva la nacionalidad panameña diez años antes de la fecha de la elección.",
+      sa226001 = Subarticle.create!(content: "Ser panameño por nacimiento o haber adquirido en forma definitiva la nacionalidad panameña diez años antes de la fecha de la elección.",
         article: a226,
         number: 1)
 
       puts 'creating subarticles for article 226'
-      sa226002 = Subarticle.create!(content: "2. Haber cumplido dieciocho años de edad.",
+      sa226002 = Subarticle.create!(content: "Haber cumplido dieciocho años de edad.",
         article: a226,
         number: 2)
 
       puts 'creating subarticles for article 226'
-      sa226003 = Subarticle.create!(content: "3. No haber sido condenado por delito doloso con pena privativa de la libertad de cinco años o más, mediante sentencia ejecutoriada, proferida por un tribunal de justicia.",
+      sa226003 = Subarticle.create!(content: "No haber sido condenado por delito doloso con pena privativa de la libertad de cinco años o más, mediante sentencia ejecutoriada, proferida por un tribunal de justicia.",
         article: a226,
         number: 3)
 
       puts 'creating subarticles for article 226'
-      sa226004 = Subarticle.create!(content: "4. Ser residente del corregimiento que representa, por lo menos, el año inmediatamente anterior a la elección.",
+      sa226004 = Subarticle.create!(content: "Ser residente del corregimiento que representa, por lo menos, el año inmediatamente anterior a la elección.",
         article: a226,
         number: 4)
 
@@ -3238,22 +3229,22 @@ t8 = Title.create!(number: 8,
         article: a226)
 
       puts 'creating metadata subarticles for article 226'
-      msa26001 = MetadatumSubarticle.create!(content: "1. Ser panameño por nacimiento o haber adquirido en forma definitiva la nacionalidad panameña diez años antes de la fecha de la elección.",
+      msa26001 = MetadatumSubarticle.create!(content: "Ser panameño por nacimiento o haber adquirido en forma definitiva la nacionalidad panameña diez años antes de la fecha de la elección.",
         metadatum: m226,
         number: 1)
 
       puts 'creating metadata subarticles for article 226'
-      msa26002 = MetadatumSubarticle.create!(content: "2. Haber cumplido dieciocho años de edad.",
+      msa26002 = MetadatumSubarticle.create!(content: "Haber cumplido dieciocho años de edad.",
         metadatum: m226,
         number: 2)
 
       puts 'creating metadata subarticles for article 226'
-      msa26003 = MetadatumSubarticle.create!(content: "3. No haber sido condenado por delito doloso, mediante sentencia ejecutoriada, proferida por un tribunal de justicia.",
+      msa26003 = MetadatumSubarticle.create!(content: "No haber sido condenado por delito doloso, mediante sentencia ejecutoriada, proferida por un tribunal de justicia.",
         metadatum: m226,
         number: 3)
 
       puts 'creating metadata subarticles for article 226'
-      msa26004 = MetadatumSubarticle.create!(content: "4. Ser residente del corregimiento que representa, por lo menos, el año inmediatamente anterior a la elección.",
+      msa26004 = MetadatumSubarticle.create!(content: "Ser residente del corregimiento que representa, por lo menos, el año inmediatamente anterior a la elección.",
         metadatum: m226,
         number: 4)
 
@@ -3264,17 +3255,17 @@ t8 = Title.create!(number: 8,
       new: false)
 
       puts 'creating subarticles for article 227'
-      sa227001 = Subarticle.create!(content: "1. El cambio voluntario de residencia a otro Corregimiento.",
+      sa227001 = Subarticle.create!(content: "El cambio voluntario de residencia a otro Corregimiento.",
         article: a227,
         number: 1)
 
       puts 'creating subarticles for article 227'
-      sa227002 = Subarticle.create!(content: "2. La condena judicial fundada en delito.",
+      sa227002 = Subarticle.create!(content: "La condena judicial fundada en delito.",
         article: a227,
         number: 2)
 
       puts 'creating subarticles for article 227'
-      sa227003 = Subarticle.create!(content: "3. La revocatoria de mandato, conforme lo reglamenta la Ley.",
+      sa227003 = Subarticle.create!(content: "La revocatoria de mandato, conforme lo reglamenta la Ley.",
         article: a227,
         number: 3)
 
@@ -3390,47 +3381,47 @@ t8 = Title.create!(number: 8,
       new: false)
 
       puts 'creating subarticles for article 242'
-      sa242001 = Subarticle.create!(content: "1. La aprobación o el rechazo del Presupuesto de Rentas y Gastos Municipal que formule la Alcaldía.",
+      sa242001 = Subarticle.create!(content: "La aprobación o el rechazo del Presupuesto de Rentas y Gastos Municipal que formule la Alcaldía.",
         article: a242,
         number: 1)
 
       puts 'creating subarticles for article 242'
-      sa242002 = Subarticle.create!(content: "2. La determinación de la estructura de la Administración Municipal que proponga el Alcalde.",
+      sa242002 = Subarticle.create!(content: "La determinación de la estructura de la Administración Municipal que proponga el Alcalde.",
         article: a242,
         number: 2)
 
       puts 'creating subarticles for article 242'
-      sa242003 = Subarticle.create!(content: "3. La fiscalización de la Administración Municipal.",
+      sa242003 = Subarticle.create!(content: "La fiscalización de la Administración Municipal.",
         article: a242,
         number: 3)
 
       puts 'creating subarticles for article 242'
-      sa242004 = Subarticle.create!(content: "4. La aprobación o el rechazo de la celebración de contratos sobre concesiones y otros modos de prestación de servicios públicos, y lo relativo a la construcción de obras públicas municipales.",
+      sa242004 = Subarticle.create!(content: "La aprobación o el rechazo de la celebración de contratos sobre concesiones y otros modos de prestación de servicios públicos, y lo relativo a la construcción de obras públicas municipales.",
         article: a242,
         number: 4)
 
       puts 'creating subarticles for article 242'
-      sa242005 = Subarticle.create!(content: "5. La aprobación o la eliminación de impuestos, contribuciones, derechos y tasas, conforme a la Ley.",
+      sa242005 = Subarticle.create!(content: "La aprobación o la eliminación de impuestos, contribuciones, derechos y tasas, conforme a la Ley.",
         article: a242,
         number: 5)
 
       puts 'creating subarticles for article 242'
-      sa242006 = Subarticle.create!(content: "6. La creación o la eliminación de la prestación de servicios públicos municipales.",
+      sa242006 = Subarticle.create!(content: "La creación o la eliminación de la prestación de servicios públicos municipales.",
         article: a242,
         number: 6)
 
       puts 'creating subarticles for article 242'
-      sa242007 = Subarticle.create!(content: "7. El nombramiento, la suspensión y remoción de los funcionarios municipales que laboran en el Concejo Municipal.",
+      sa242007 = Subarticle.create!(content: "El nombramiento, la suspensión y remoción de los funcionarios municipales que laboran en el Concejo Municipal.",
         article: a242,
         number: 7)
 
       puts 'creating subarticles for article 242'
-      sa242008 = Subarticle.create!(content: "8. La ratificación del nombramiento del Tesorero Municipal que haga el Alcalde.",
+      sa242008 = Subarticle.create!(content: "La ratificación del nombramiento del Tesorero Municipal que haga el Alcalde.",
         article: a242,
         number: 8)
 
       puts 'creating subarticles for article 242'
-      sa242009 = Subarticle.create!(content: "9. Las materias vinculadas a las competencias del municipio, según la Ley. Los acuerdos municipales tienen fuerza de Ley dentro del respectivo municipio.",
+      sa242009 = Subarticle.create!(content: "Las materias vinculadas a las competencias del municipio, según la Ley. Los acuerdos municipales tienen fuerza de Ley dentro del respectivo municipio.",
         article: a242,
         number: 9)
 
@@ -3441,27 +3432,27 @@ t8 = Title.create!(number: 8,
       new: false)
 
       puts 'creating subarticles for article 243'
-      sa243001 = Subarticle.create!(content: "1. Presentar proyectos de acuerdos, especialmente el de Presupuesto de Rentas y Gastos.",
+      sa243001 = Subarticle.create!(content: "Presentar proyectos de acuerdos, especialmente el de Presupuesto de Rentas y Gastos.",
         article: a243,
         number: 1)
 
       puts 'creating subarticles for article 243'
-      sa243002 = Subarticle.create!(content: "2. Ordenar los gastos de la administración local, ajustándose al Presupuesto y a los reglamentos de contabilidad.",
+      sa243002 = Subarticle.create!(content: "Ordenar los gastos de la administración local, ajustándose al Presupuesto y a los reglamentos de contabilidad.",
         article: a243,
         number: 2)
 
       puts 'creating subarticles for article 243'
-      sa243003 = Subarticle.create!(content: "3. Nombrar y remover a los funcionarios públicos municipales, cuya designación no corresponda a otra autoridad, con sujeción a lo que dispone el Título XI.",
+      sa243003 = Subarticle.create!(content: "Nombrar y remover a los funcionarios públicos municipales, cuya designación no corresponda a otra autoridad, con sujeción a lo que dispone el Título XI.",
         article: a243,
         number: 3)
 
       puts 'creating subarticles for article 243'
-      sa243004 = Subarticle.create!(content: "4. Promover el progreso de la comunidad municipal y velar por el cumplimiento de los deberes de sus funcionarios públicos.",
+      sa243004 = Subarticle.create!(content: "Promover el progreso de la comunidad municipal y velar por el cumplimiento de los deberes de sus funcionarios públicos.",
         article: a243,
         number: 4)
 
       puts 'creating subarticles for article 243'
-      sa243005 = Subarticle.create!(content: "5. Ejercer las otras atribuciones que le asigne la Ley.",
+      sa243005 = Subarticle.create!(content: "Ejercer las otras atribuciones que le asigne la Ley.",
         article: a243,
         number: 5)
 
@@ -3484,47 +3475,47 @@ t8 = Title.create!(number: 8,
       new: false)
 
       puts 'creating subarticles for article 246'
-      sa246001 = Subarticle.create!(content: "1. El producto de sus áreas o ejidos lo mismo que de sus bienes propios.",
+      sa246001 = Subarticle.create!(content: "El producto de sus áreas o ejidos lo mismo que de sus bienes propios.",
         article: a246,
         number: 1)
 
       puts 'creating subarticles for article 246'
-      sa246002 = Subarticle.create!(content: "2. Las tasas por el uso de sus bienes o servicios.",
+      sa246002 = Subarticle.create!(content: "Las tasas por el uso de sus bienes o servicios.",
         article: a246,
         number: 2)
 
       puts 'creating subarticles for article 246'
-      sa246003 = Subarticle.create!(content: "3. Los derechos sobre espectáculos públicos.",
+      sa246003 = Subarticle.create!(content: "Los derechos sobre espectáculos públicos.",
         article: a246,
         number: 3)
 
       puts 'creating subarticles for article 246'
-      sa246004 = Subarticle.create!(content: "4. Los impuestos sobre expendio de bebidas alcohólicas.",
+      sa246004 = Subarticle.create!(content: "Los impuestos sobre expendio de bebidas alcohólicas.",
         article: a246,
         number: 4)
 
       puts 'creating subarticles for article 246'
-      sa246005 = Subarticle.create!(content: "5. Los derechos, determinados por la Ley, sobre extracción de arena, piedra de cantera, tosca, arcilla, coral, cascajo y piedra caliza.",
+      sa246005 = Subarticle.create!(content: "Los derechos, determinados por la Ley, sobre extracción de arena, piedra de cantera, tosca, arcilla, coral, cascajo y piedra caliza.",
         article: a246,
         number: 5)
 
       puts 'creating subarticles for article 246'
-      sa246006 = Subarticle.create!(content: "6. Las multas que impongan las autoridades municipales.",
+      sa246006 = Subarticle.create!(content: "Las multas que impongan las autoridades municipales.",
         article: a246,
         number: 6)
 
       puts 'creating subarticles for article 246'
-      sa246007 = Subarticle.create!(content: "7. Las subvenciones estatales y las donaciones.",
+      sa246007 = Subarticle.create!(content: "Las subvenciones estatales y las donaciones.",
         article: a246,
         number: 7)
 
       puts 'creating subarticles for article 246'
-      sa246008 = Subarticle.create!(content: "8. Los derechos sobre extracción de madera, explotación y tala de bosques.",
+      sa246008 = Subarticle.create!(content: "Los derechos sobre extracción de madera, explotación y tala de bosques.",
         article: a246,
         number: 8)
 
       puts 'creating subarticles for article 246'
-      sa246009 = Subarticle.create!(content: "9. El impuesto de degüello de ganado vacuno y porcino que se pagará en el Municipio de donde proceda la res.",
+      sa246009 = Subarticle.create!(content: "El impuesto de degüello de ganado vacuno y porcino que se pagará en el Municipio de donde proceda la res.",
         article: a246,
         number: 9)
 
@@ -3592,33 +3583,33 @@ t8 = Title.create!(number: 8,
       new: false)
 
       puts 'creating subarticles for article 255'
-      sa255001 = Subarticle.create!(content: "1. Actuar como órgano de consulta del Gobernador de la Provincia, de las autoridades provinciales y de las autoridades nacionales en general.",
+      sa255001 = Subarticle.create!(content: "Actuar como órgano de consulta del Gobernador de la Provincia, de las autoridades provinciales y de las autoridades nacionales en general.",
         article: a255,
         number: 1)
 
       puts 'creating subarticles for article 255'
-      sa255002 = Subarticle.create!(content: "2. Requerir informes de los funcionarios nacionales, provinciales y municipales en relación con asuntos concernientes a la Provincia. /n
+      sa255002 = Subarticle.create!(content: "Requerir informes de los funcionarios nacionales, provinciales y municipales en relación con asuntos concernientes a la Provincia. /n
       Para estos efectos, los funcionarios provinciales y municipales están obligados, cuando los Concejos Provinciales así lo soliciten, a comparecer personalmente ante éstos a rendir informes verbales. Los funcionarios nacionales pueden rendir sus informes por escrito.",
         article: a255,
         number: 2)
 
       puts 'creating subarticles for article 255'
-      sa255003 = Subarticle.create!(content: "3. Preparar cada año, para la consideración del Órgano Ejecutivo, el plan de obras públicas, de inversiones y de servicios de la Provincia y fiscalizar su ejecución.",
+      sa255003 = Subarticle.create!(content: "Preparar cada año, para la consideración del Órgano Ejecutivo, el plan de obras públicas, de inversiones y de servicios de la Provincia y fiscalizar su ejecución.",
         article: a255,
         number: 3)
 
       puts 'creating subarticles for article 255'
-      sa255004 = Subarticle.create!(content: "4. Supervisar la marcha de los servicios públicos que se presten en su respectiva Provincia.",
+      sa255004 = Subarticle.create!(content: "Supervisar la marcha de los servicios públicos que se presten en su respectiva Provincia.",
         article: a255,
         number: 4)
 
       puts 'creating subarticles for article 255'
-      sa255005 = Subarticle.create!(content: "5. Recomendar a la Asamblea Nacional los cambios que estime convenientes en las divisiones políticas de la Provincia.",
+      sa255005 = Subarticle.create!(content: "Recomendar a la Asamblea Nacional los cambios que estime convenientes en las divisiones políticas de la Provincia.",
         article: a255,
         number: 5)
 
       puts 'creating subarticles for article 255'
-      sa255006 = Subarticle.create!(content: "6. Solicitar a las autoridades nacionales y provinciales estudios y programas de interés provincial.",
+      sa255006 = Subarticle.create!(content: "Solicitar a las autoridades nacionales y provinciales estudios y programas de interés provincial.",
         article: a255,
         number: 6)
 
@@ -3649,42 +3640,42 @@ t9 = Title.create!(number: 9,
       new: false)
 
       puts 'creating subarticles for article 257'
-      sa257001 = Subarticle.create!(content: "1. Los bienes existentes en el territorio que pertenecieron a la República de Colombia.",
+      sa257001 = Subarticle.create!(content: "Los bienes existentes en el territorio que pertenecieron a la República de Colombia.",
         article: a257,
         number: 1)
 
       puts 'creating subarticles for article 257'
-      sa257002 = Subarticle.create!(content: "2. Los derechos y acciones que la República de Colombia poseyó como dueña, dentro o fuera del país, por razón de la soberanía que ejerció sobre el territorio del Istmo de Panamá.",
+      sa257002 = Subarticle.create!(content: "Los derechos y acciones que la República de Colombia poseyó como dueña, dentro o fuera del país, por razón de la soberanía que ejerció sobre el territorio del Istmo de Panamá.",
         article: a257,
         number: 2)
 
       puts 'creating subarticles for article 257'
-      sa257003 = Subarticle.create!(content: "3. Los bienes, rentas, fincas, valores, derechos y acciones que pertenecieron al extinguido Departamento de Panamá.",
+      sa257003 = Subarticle.create!(content: "Los bienes, rentas, fincas, valores, derechos y acciones que pertenecieron al extinguido Departamento de Panamá.",
         article: a257,
         number: 3)
 
       puts 'creating subarticles for article 257'
-      sa257004 = Subarticle.create!(content: "4. Las tierras baldías o indultadas.",
+      sa257004 = Subarticle.create!(content: "Las tierras baldías o indultadas.",
         article: a257,
         number: 4)
 
       puts 'creating subarticles for article 257'
-      sa257005 = Subarticle.create!(content: "5. Las riquezas del subsuelo, que podrán ser explotadas por empresas estatales o mixtas o ser objeto de concesiones o contratos para su explotación según lo establezca la Ley. Los derechos mineros otorgados y no ejercidos dentro del término y condiciones que fije la Ley, revertirán al Estado.",
+      sa257005 = Subarticle.create!(content: "Las riquezas del subsuelo, que podrán ser explotadas por empresas estatales o mixtas o ser objeto de concesiones o contratos para su explotación según lo establezca la Ley. Los derechos mineros otorgados y no ejercidos dentro del término y condiciones que fije la Ley, revertirán al Estado.",
         article: a257,
         number: 5)
 
       puts 'creating subarticles for article 257'
-      sa257006 = Subarticle.create!(content: "6. Las salinas, las minas, las aguas subterráneas y termales, depósitos de hidrocarburos, las canteras y los yacimientos de toda clase que no podrán ser objeto de apropiación privada, pero podrán ser explotados directamente por el Estado, mediante empresas estatales o mixtas, o ser objeto de concesión u otros contratos para su explotación, por empresas privadas. La Ley reglamentará todo lo concerniente a las distintas formas de explotación señaladas en este ordinal.",
+      sa257006 = Subarticle.create!(content: "Las salinas, las minas, las aguas subterráneas y termales, depósitos de hidrocarburos, las canteras y los yacimientos de toda clase que no podrán ser objeto de apropiación privada, pero podrán ser explotados directamente por el Estado, mediante empresas estatales o mixtas, o ser objeto de concesión u otros contratos para su explotación, por empresas privadas. La Ley reglamentará todo lo concerniente a las distintas formas de explotación señaladas en este ordinal.",
         article: a257,
         number: 6)
 
       puts 'creating subarticles for article 257'
-      sa257007 = Subarticle.create!(content: "7. Los monumentos históricos, documentos y otros bienes que son testimonio del pasado de la Nación. La Ley señalará el procedimiento por medio del cual revertirán al Estado tales bienes cuando se encuentren bajo la tenencia de particulares por cualquier título.",
+      sa257007 = Subarticle.create!(content: "Los monumentos históricos, documentos y otros bienes que son testimonio del pasado de la Nación. La Ley señalará el procedimiento por medio del cual revertirán al Estado tales bienes cuando se encuentren bajo la tenencia de particulares por cualquier título.",
         article: a257,
         number: 7)
 
       puts 'creating subarticles for article 257'
-      sa257008 = Subarticle.create!(content: "8. Los sitios y objetos arqueológicos, cuya explotación, estudio y rescate serán regulados por la Ley.",
+      sa257008 = Subarticle.create!(content: "Los sitios y objetos arqueológicos, cuya explotación, estudio y rescate serán regulados por la Ley.",
         article: a257,
         number: 8)
 
@@ -3695,32 +3686,32 @@ t9 = Title.create!(number: 9,
       new: false)
 
       puts 'creating subarticles for article 258'
-      sa258001 = Subarticle.create!(content: "1. El mar territorial y las aguas lacustres y fluviales, las playas y riberas de las mismas y de los ríos navegables, y los puertos y esteros. Todos estos bienes son de aprovechamiento libre y común, sujetos a la reglamentación que establezca la Ley.",
+      sa258001 = Subarticle.create!(content: "El mar territorial y las aguas lacustres y fluviales, las playas y riberas de las mismas y de los ríos navegables, y los puertos y esteros. Todos estos bienes son de aprovechamiento libre y común, sujetos a la reglamentación que establezca la Ley.",
         article: a258,
         number: 1)
 
       puts 'creating subarticles for article 258'
-      sa258002 = Subarticle.create!(content: "2. Las tierras y las aguas destinadas a servicios públicos y a toda clase de comunicaciones.",
+      sa258002 = Subarticle.create!(content: "Las tierras y las aguas destinadas a servicios públicos y a toda clase de comunicaciones.",
         article: a258,
         number: 2)
 
       puts 'creating subarticles for article 258'
-      sa258003 = Subarticle.create!(content: "3. Las tierras y las aguas destinadas o que el Estado destine a servicios públicos de irrigación, de producción hidroeléctrica, de desagües y de acueductos.",
+      sa258003 = Subarticle.create!(content: "Las tierras y las aguas destinadas o que el Estado destine a servicios públicos de irrigación, de producción hidroeléctrica, de desagües y de acueductos.",
         article: a258,
         number: 3)
 
       puts 'creating subarticles for article 258'
-      sa258004 = Subarticle.create!(content: "4. El espacio aéreo, la plataforma continental submarina, el lecho y el subsuelo del mar territorial.",
+      sa258004 = Subarticle.create!(content: "El espacio aéreo, la plataforma continental submarina, el lecho y el subsuelo del mar territorial.",
         article: a258,
         number: 4)
 
       puts 'creating subarticles for article 258'
-      sa258005 = Subarticle.create!(content: "5. Los demás bienes que la Ley defina como de uso público.",
+      sa258005 = Subarticle.create!(content: "Los demás bienes que la Ley defina como de uso público.",
         article: a258,
         number: 5)
 
       puts 'creating subarticles for article 258'
-      sa258006 = Subarticle.create!(content: "6. En todos los casos en que los bienes de propiedad privada se conviertan por disposición legal en bienes de uso público, el dueño de ellos será indemnizado.",
+      sa258006 = Subarticle.create!(content: "En todos los casos en que los bienes de propiedad privada se conviertan por disposición legal en bienes de uso público, el dueño de ellos será indemnizado.",
         article: a258,
         number: 6)
 
@@ -3894,67 +3885,67 @@ t9 = Title.create!(number: 9,
       new: false)
 
       puts 'creating subarticles for article 280'
-      sa280001 = Subarticle.create!(content: "1. Efectuar las inscripciones de nacimientos, matrimonios, defunciones, naturalizaciones y demás hechos y actos jurídicos relacionados con el estado civil de las personas, y hacer las anotaciones procedentes en las respectivas inscripciones.",
+      sa280001 = Subarticle.create!(content: "Efectuar las inscripciones de nacimientos, matrimonios, defunciones, naturalizaciones y demás hechos y actos jurídicos relacionados con el estado civil de las personas, y hacer las anotaciones procedentes en las respectivas inscripciones.",
         article: a280,
         number: 1)
 
       puts 'creating subarticles for article 280'
-      sa280002 = Subarticle.create!(content: "1. Llevar las cuentas nacionales, incluso las referentes a las deudas interna y externa.",
+      sa280002 = Subarticle.create!(content: "Llevar las cuentas nacionales, incluso las referentes a las deudas interna y externa.",
         article: a280,
         number: 2)
 
       puts 'creating subarticles for article 280'
-      sa280003 = Subarticle.create!(content: "2. Fiscalizar y regular, mediante el control previo o posterior, todos los actos de manejo de fondos y otros bienes públicos, a fin de que se realicen con corrección, según lo establecido en la Ley. La Contraloría determinará los casos en que ejercerá tanto el control previo como el posterior sobre los actos de manejo, al igual que aquellos en que solo ejercerá este último.",
+      sa280003 = Subarticle.create!(content: "Fiscalizar y regular, mediante el control previo o posterior, todos los actos de manejo de fondos y otros bienes públicos, a fin de que se realicen con corrección, según lo establecido en la Ley. La Contraloría determinará los casos en que ejercerá tanto el control previo como el posterior sobre los actos de manejo, al igual que aquellos en que solo ejercerá este último.",
         article: a280,
         number: 3)
 
       puts 'creating subarticles for article 280'
-      sa280004 = Subarticle.create!(content: "4. Realizar inspecciones e investigaciones tendientes a determinar la corrección o incorrección de las operaciones que afecten patrimonios públicos y, en su caso, presentar las denuncias respectivas.",
+      sa280004 = Subarticle.create!(content: "Realizar inspecciones e investigaciones tendientes a determinar la corrección o incorrección de las operaciones que afecten patrimonios públicos y, en su caso, presentar las denuncias respectivas.",
         article: a280,
         number: 4)
 
       puts 'creating subarticles for article 280'
-      sa280005 = Subarticle.create!(content: "5. Recabar de los funcionarios públicos correspondientes informes sobre la gestión fiscal de las dependencias públicas, nacionales, provinciales, municipales, autónomas o semiautónomas y de las empresas estatales.",
+      sa280005 = Subarticle.create!(content: "Recabar de los funcionarios públicos correspondientes informes sobre la gestión fiscal de las dependencias públicas, nacionales, provinciales, municipales, autónomas o semiautónomas y de las empresas estatales.",
         article: a280,
         number: 5)
 
       puts 'creating subarticles for article 280'
-      sa280006 = Subarticle.create!(content: "6. Establecer y promover la adopción de las medidas necesarias para que se hagan efectivos los créditos a favor de las entidades públicas.",
+      sa280006 = Subarticle.create!(content: "Establecer y promover la adopción de las medidas necesarias para que se hagan efectivos los créditos a favor de las entidades públicas.",
         article: a280,
         number: 6)
 
       puts 'creating subarticles for article 280'
-      sa280007 = Subarticle.create!(content: "7. Demandar la declaratoria de inconstitucionalidad o de ilegalidad, según los casos, de las leyes y demás actos violatorios de la Constitución o de la Ley que afecten patrimonios públicos. ",
+      sa280007 = Subarticle.create!(content: "Demandar la declaratoria de inconstitucionalidad o de ilegalidad, según los casos, de las leyes y demás actos violatorios de la Constitución o de la Ley que afecten patrimonios públicos. ",
         article: a280,
         number: 7)
 
       puts 'creating subarticles for article 280'
-      sa280008 = Subarticle.create!(content: "8. Establecer los métodos de contabilidad de las dependencias públicas señaladas en el numeral 5 de este artículo.",
+      sa280008 = Subarticle.create!(content: "Establecer los métodos de contabilidad de las dependencias públicas señaladas en el numeral 5 de este artículo.",
         article: a280,
         number: 8)
 
       puts 'creating subarticles for article 280'
-      sa280009 = Subarticle.create!(content: "9. Informar a la Asamblea Nacional y al Órgano Ejecutivo sobre el estado financiero de la Administración Pública y emitir concepto sobre la viabilidad y conveniencia de la expedición de créditos supleméntales o extraordinarios.",
+      sa280009 = Subarticle.create!(content: "Informar a la Asamblea Nacional y al Órgano Ejecutivo sobre el estado financiero de la Administración Pública y emitir concepto sobre la viabilidad y conveniencia de la expedición de créditos supleméntales o extraordinarios.",
         article: a280,
         number: 9)
 
       puts 'creating subarticles for article 280'
-      sa2800010 = Subarticle.create!(content: "10. Dirigir y formar la estadística nacional.",
+      sa2800010 = Subarticle.create!(content: "Dirigir y formar la estadística nacional.",
         article: a280,
         number: 10)
 
       puts 'creating subarticles for article 280'
-      sa2800011 = Subarticle.create!(content: "11. Nombrar a los empleados de sus departamentos de acuerdo con esta Constitución y la Ley.",
+      sa2800011 = Subarticle.create!(content: "Nombrar a los empleados de sus departamentos de acuerdo con esta Constitución y la Ley.",
         article: a280,
         number: 11)
 
       puts 'creating subarticles for article 280'
-      sa2800012 = Subarticle.create!(content: "12. Presentar al Órgano Ejecutivo y a la Asamblea Nacional el informe anual de sus actividades.",
+      sa2800012 = Subarticle.create!(content: "Presentar al Órgano Ejecutivo y a la Asamblea Nacional el informe anual de sus actividades.",
         article: a280,
         number: 12)
 
       puts 'creating subarticles for article 280'
-      sa2800013 = Subarticle.create!(content: "13. Presentar para su juzgamiento, a través del Tribunal de Cuentas, las cuentas de los agentes y servidores públicos de manejo cuando surjan reparos por razón de supuestas irregularidades.",
+      sa2800013 = Subarticle.create!(content: "Presentar para su juzgamiento, a través del Tribunal de Cuentas, las cuentas de los agentes y servidores públicos de manejo cuando surjan reparos por razón de supuestas irregularidades.",
         article: a280,
         number: 13)
 
@@ -3982,7 +3973,7 @@ t10 = Title.create!(number: 10,
 
 
   puts 'creating chapter 1'
-  c101 = Chapter.create!(number: 1,
+  c101 = Chapter.create!(number: 0,
     description: "xxx",
     title: t10)
 
@@ -4000,22 +3991,22 @@ t10 = Title.create!(number: 10,
       new: false)
 
       puts 'creating subarticles for article 283'
-      sa283001 = Subarticle.create!(content: "1. Crear comisiones de técnicos o de especialistas para que estudien las condiciones y posibilidades en todo tipo de actividades económicas y formulen recomendaciones para desarrollarlas.",
+      sa283001 = Subarticle.create!(content: "Crear comisiones de técnicos o de especialistas para que estudien las condiciones y posibilidades en todo tipo de actividades económicas y formulen recomendaciones para desarrollarlas.",
         article: a283,
         number: 1)
 
       puts 'creating subarticles for article 283'
-      sa283002 = Subarticle.create!(content: "2. Promover la creación de empresas particulares que funcionen de acuerdo con las recomendaciones mencionadas en el aparte anterior, establecer empresas estatales e impulsar la creación de las mixtas, en las cuales participará el Estado, y podrá crear las estatales, para atender las necesidades sociales y la seguridad e intereses públicos.",
+      sa283002 = Subarticle.create!(content: "Promover la creación de empresas particulares que funcionen de acuerdo con las recomendaciones mencionadas en el aparte anterior, establecer empresas estatales e impulsar la creación de las mixtas, en las cuales participará el Estado, y podrá crear las estatales, para atender las necesidades sociales y la seguridad e intereses públicos.",
         article: a283,
         number: 2)
 
       puts 'creating subarticles for article 283'
-      sa283003 = Subarticle.create!(content: "3. Fundar instituciones de crédito y de fomento o establecer otros medios adecuados con el fin de dar facilidades a los que se dediquen a actividades económicas en pequeña escala.",
+      sa283003 = Subarticle.create!(content: "Fundar instituciones de crédito y de fomento o establecer otros medios adecuados con el fin de dar facilidades a los que se dediquen a actividades económicas en pequeña escala.",
         article: a283,
         number: 3)
 
       puts 'creating subarticles for article 283'
-      sa283004 = Subarticle.create!(content: "4. Establecer centros teórico-prácticos para la enseñanza del comercio, la agricultura, la ganadería y el turismo, los oficios y las artes, incluyendo en estas últimas las manuales, y para la formación de obreros y directores industriales especializados.",
+      sa283004 = Subarticle.create!(content: "Establecer centros teórico-prácticos para la enseñanza del comercio, la agricultura, la ganadería y el turismo, los oficios y las artes, incluyendo en estas últimas las manuales, y para la formación de obreros y directores industriales especializados.",
         article: a283,
         number: 4)
 
@@ -4026,17 +4017,17 @@ t10 = Title.create!(number: 10,
       new: false)
 
       puts 'creating subarticles for article 284'
-      sa284001 = Subarticle.create!(content: "1. Regular por medio de organismos especiales las tarifas, los servicios y los precios de los artículos de cualquier naturaleza, y especialmente los de primera necesidad.",
+      sa284001 = Subarticle.create!(content: "Regular por medio de organismos especiales las tarifas, los servicios y los precios de los artículos de cualquier naturaleza, y especialmente los de primera necesidad.",
         article: a284,
         number: 1)
 
       puts 'creating subarticles for article 284'
-      sa284002 = Subarticle.create!(content: "2. Exigir la debida eficacia en los servicios y la adecuada calidad de los artículos mencionados en el aparte anterior.",
+      sa284002 = Subarticle.create!(content: "Exigir la debida eficacia en los servicios y la adecuada calidad de los artículos mencionados en el aparte anterior.",
         article: a284,
         number: 2)
 
       puts 'creating subarticles for article 284'
-      sa284003 = Subarticle.create!(content: "3. Coordinar los servicios y la producción de artículos. La Ley definirá los artículos de primera necesidad.",
+      sa284003 = Subarticle.create!(content: "Coordinar los servicios y la producción de artículos. La Ley definirá los artículos de primera necesidad.",
         article: a284,
         number: 3)
 
@@ -4084,12 +4075,12 @@ t10 = Title.create!(number: 10,
       new: false)
 
       puts 'creating subarticles for article 291'
-      sa291001 = Subarticle.create!(content: "1. Cuando no sea considerado área estratégica o reservada para programas gubernamentales.",
+      sa291001 = Subarticle.create!(content: "Cuando no sea considerado área estratégica o reservada para programas gubernamentales.",
         article: a291,
         number: 1)
 
       puts 'creating subarticles for article 291'
-      sa291002 = Subarticle.create!(content: "2. Cuando sea declarado área de desarrollo especial y se haya dictado legislación sobre su aprovechamiento, siempre que se garantice la Seguridad Nacional.",
+      sa291002 = Subarticle.create!(content: "Cuando sea declarado área de desarrollo especial y se haya dictado legislación sobre su aprovechamiento, siempre que se garantice la Seguridad Nacional.",
         article: a291,
         number: 2)
 
@@ -4111,27 +4102,27 @@ t10 = Title.create!(number: 10,
       new: false)
 
       puts 'creating subarticles for article 293'
-      sa293001 = Subarticle.create!(content: "1. Los panameños por nacimiento.",
+      sa293001 = Subarticle.create!(content: "Los panameños por nacimiento.",
         article: a293,
         number: 1)
 
       puts 'creating subarticles for article 293'
-      sa293002 = Subarticle.create!(content: "2. Los individuos que al entrar en vigencia esta Constitución estén naturalizados y sean casados con nacional panameño o panameña o tengan hijos con nacional panameño o panameña.",
+      sa293002 = Subarticle.create!(content: "Los individuos que al entrar en vigencia esta Constitución estén naturalizados y sean casados con nacional panameño o panameña o tengan hijos con nacional panameño o panameña.",
         article: a293,
         number: 2)
 
       puts 'creating subarticles for article 293'
-      sa293003 = Subarticle.create!(content: "3. Los panameños por naturalización que no se encuentren en el caso anterior, después de tres años de la fecha en que hubieren obtenido su carta definitiva.",
+      sa293003 = Subarticle.create!(content: "Los panameños por naturalización que no se encuentren en el caso anterior, después de tres años de la fecha en que hubieren obtenido su carta definitiva.",
         article: a293,
         number: 3)
 
       puts 'creating subarticles for article 293'
-      sa293004 = Subarticle.create!(content: "4. Las personas jurídicas nacionales o extranjeras y las naturales extranjeras que a la fecha de la vigencia de esta Constitución estuvieron ejerciendo el comercio al por menor de acuerdo con la Ley.",
+      sa293004 = Subarticle.create!(content: "Las personas jurídicas nacionales o extranjeras y las naturales extranjeras que a la fecha de la vigencia de esta Constitución estuvieron ejerciendo el comercio al por menor de acuerdo con la Ley.",
         article: a293,
         number: 4)
 
       puts 'creating subarticles for article 293'
-      sa293005 = Subarticle.create!(content: "5. Las personas jurídicas formadas por panameños o por extranjeros facultados para ejercerlo individualmente de acuerdo con este artículo, y también las que, sin estar constituidas en la forma aquí expresadas, ejerzan el comercio al por menor en el momento de entrar en vigencia esta Constitución. Los extranjeros no autorizados para ejercer el comercio al por menor podrán, sin embargo, tener participación en aquellas compañías que vendan productos manufacturados por ellas mismas.",
+      sa293005 = Subarticle.create!(content: "Las personas jurídicas formadas por panameños o por extranjeros facultados para ejercerlo individualmente de acuerdo con este artículo, y también las que, sin estar constituidas en la forma aquí expresadas, ejerzan el comercio al por menor en el momento de entrar en vigencia esta Constitución. Los extranjeros no autorizados para ejercer el comercio al por menor podrán, sin embargo, tener participación en aquellas compañías que vendan productos manufacturados por ellas mismas.",
         article: a293,
         number: 5)
 
@@ -4260,47 +4251,47 @@ t11 = Title.create!(number: 11,
       new: false)
 
       puts 'creating subarticles for article 305'
-      sa305001 = Subarticle.create!(content: "1. La Carrera Administrativa.",
+      sa305001 = Subarticle.create!(content: "La Carrera Administrativa.",
         article: a305,
         number: 1)
 
       puts 'creating subarticles for article 305'
-      sa305002 = Subarticle.create!(content: "2. La Carrera Judicial.",
+      sa305002 = Subarticle.create!(content: "La Carrera Judicial.",
         article: a305,
         number: 2)
 
       puts 'creating subarticles for article 305'
-      sa305003 = Subarticle.create!(content: "3. La Carrera Docente.",
+      sa305003 = Subarticle.create!(content: "La Carrera Docente.",
         article: a305,
         number: 3)
 
       puts 'creating subarticles for article 305'
-      sa305004 = Subarticle.create!(content: "4. La Carrera Diplomática y Consular.",
+      sa305004 = Subarticle.create!(content: "La Carrera Diplomática y Consular.",
         article: a305,
         number: 4)
 
       puts 'creating subarticles for article 305'
-      sa305005 = Subarticle.create!(content: "5. La Carrera de las Ciencias de la Salud.",
+      sa305005 = Subarticle.create!(content: "La Carrera de las Ciencias de la Salud.",
         article: a305,
         number: 5)
 
       puts 'creating subarticles for article 305'
-      sa305006 = Subarticle.create!(content: "6. La Carrera Policial.",
+      sa305006 = Subarticle.create!(content: "La Carrera Policial.",
         article: a305,
         number: 6)
 
       puts 'creating subarticles for article 305'
-      sa305007 = Subarticle.create!(content: "7. La Carrera de las Ciencias Agropecuarias.",
+      sa305007 = Subarticle.create!(content: "La Carrera de las Ciencias Agropecuarias.",
         article: a305,
         number: 7)
 
       puts 'creating subarticles for article 305'
-      sa305008 = Subarticle.create!(content: "8. La Carrera del Servicio Legislativo.",
+      sa305008 = Subarticle.create!(content: "La Carrera del Servicio Legislativo.",
         article: a305,
         number: 8)
 
       puts 'creating subarticles for article 305'
-      sa305009 = Subarticle.create!(content: "9. Las otras que la Ley determine.",
+      sa305009 = Subarticle.create!(content: "Las otras que la Ley determine.",
         article: a305,
         number: 9)
 
@@ -4322,37 +4313,37 @@ t11 = Title.create!(number: 11,
       new: false)
 
       puts 'creating subarticles for article 307'
-      sa307001 = Subarticle.create!(content: "1. Los servidores públicos cuyo nombramiento regula esta Constitución.",
+      sa307001 = Subarticle.create!(content: "Los servidores públicos cuyo nombramiento regula esta Constitución.",
         article: a307,
         number: 1)
 
       puts 'creating subarticles for article 307'
-      sa307002 = Subarticle.create!(content: "2. Los Directores y Subdirectores Generales de entidades autónomas y semiautónomas, los servidores públicos nombrados por tiempo determinado o por periodos fijos establecidos por la Ley o los que sirvan cargos ad honorem.",
+      sa307002 = Subarticle.create!(content: "Los Directores y Subdirectores Generales de entidades autónomas y semiautónomas, los servidores públicos nombrados por tiempo determinado o por periodos fijos establecidos por la Ley o los que sirvan cargos ad honorem.",
         article: a307,
         number: 2)
 
       puts 'creating subarticles for article 307'
-      sa307003 = Subarticle.create!(content: "3. El personal de secretaría y de servicio inmediatamente adscrito a los servidores públicos que no forman parte de ninguna carrera.",
+      sa307003 = Subarticle.create!(content: "El personal de secretaría y de servicio inmediatamente adscrito a los servidores públicos que no forman parte de ninguna carrera.",
         article: a307,
         number: 3)
 
       puts 'creating subarticles for article 307'
-      sa307004 = Subarticle.create!(content: "4. Los servidores públicos con mando y jurisdicción que no estén dentro de una carrera.",
+      sa307004 = Subarticle.create!(content: "Los servidores públicos con mando y jurisdicción que no estén dentro de una carrera.",
         article: a307,
         number: 4)
 
       puts 'creating subarticles for article 307'
-      sa307005 = Subarticle.create!(content: "5. Los profesionales, técnicos trabajadores manuales que se requieran para servicios temporales, interinos o transitorios en los Ministerios o en las instituciones autónomas y semiautónomas.",
+      sa307005 = Subarticle.create!(content: "Los profesionales, técnicos trabajadores manuales que se requieran para servicios temporales, interinos o transitorios en los Ministerios o en las instituciones autónomas y semiautónomas.",
         article: a307,
         number: 5)
 
       puts 'creating subarticles for article 307'
-      sa307006 = Subarticle.create!(content: "6. Los servidores públicos cuyos cargos estén regulados por el Código de Trabajo.",
+      sa307006 = Subarticle.create!(content: "Los servidores públicos cuyos cargos estén regulados por el Código de Trabajo.",
         article: a307,
         number: 6)
 
       puts 'creating subarticles for article 307'
-      sa307007 = Subarticle.create!(content: "7. Los jefes de Misiones Diplomáticas que la Ley determine.",
+      sa307007 = Subarticle.create!(content: "Los jefes de Misiones Diplomáticas que la Ley determine.",
         article: a307,
         number: 7)
 
@@ -4385,7 +4376,7 @@ t12 = Title.create!(number: 12,
 
 
   puts 'creating chapter 1'
-  c121 = Chapter.create!(number: 1,
+  c121 = Chapter.create!(number: 0,
     description: "xxx",
     title: t12,
     new: false)
@@ -4421,7 +4412,7 @@ t13 = Title.create!(number: 13,
 
 
   puts 'creating chapter 1'
-  c131 = Chapter.create!(number: 1,
+  c131 = Chapter.create!(number: 0,
     description: "xxx",
     title: t13,
     new: false)
@@ -4433,12 +4424,12 @@ t13 = Title.create!(number: 13,
       new: false)
 
       puts 'creating subarticles for article 313'
-      sa313001 = Subarticle.create!(content: "1. Por un Acto Constitucional aprobado en tres debates por la mayoría absoluta de los miembros de la Asamblea Nacional, el cual debe ser publicado en la Gaceta Oficial y transmitido por el Órgano Ejecutivo a dicha Asamblea, dentro de los primeros cinco días de las sesiones ordinarias siguientes a la instalación de la Asamblea Nacional electa en las últimas elecciones generales, a efecto de que en su primera legislatura sea debatido y aprobado sin modificación, en un solo debate, por la mayoría absoluta de los miembros que la integran.",
+      sa313001 = Subarticle.create!(content: "Por un Acto Constitucional aprobado en tres debates por la mayoría absoluta de los miembros de la Asamblea Nacional, el cual debe ser publicado en la Gaceta Oficial y transmitido por el Órgano Ejecutivo a dicha Asamblea, dentro de los primeros cinco días de las sesiones ordinarias siguientes a la instalación de la Asamblea Nacional electa en las últimas elecciones generales, a efecto de que en su primera legislatura sea debatido y aprobado sin modificación, en un solo debate, por la mayoría absoluta de los miembros que la integran.",
         article: a313,
         number: 1)
 
       puts 'creating subarticles for article 313'
-      sa313002 = Subarticle.create!(content: "2. Por un Acto Constitucional aprobado en tres debates por la mayoría absoluta de los miembros de la Asamblea Nacional, en una legislatura, y aprobado, igualmente, en tres debates, por mayoría absoluta de los miembros de la mencionada Asamblea, en la legislatura inmediatamente siguiente. En esta se podrá modificar el texto aprobado en la legislatura anterior. El Acto Constitucional aprobado de esta forma deberá ser publicado en la Gaceta Oficial y sometido a consulta popular directa mediante referéndum que se celebrará en la fecha que señale la Asamblea Nacional, dentro de un plazo que no podrá ser menor de tres meses ni exceder de seis meses, contados desde la aprobación del Acto Constitucional por la segunda legislatura.",
+      sa313002 = Subarticle.create!(content: "Por un Acto Constitucional aprobado en tres debates por la mayoría absoluta de los miembros de la Asamblea Nacional, en una legislatura, y aprobado, igualmente, en tres debates, por mayoría absoluta de los miembros de la mencionada Asamblea, en la legislatura inmediatamente siguiente. En esta se podrá modificar el texto aprobado en la legislatura anterior. El Acto Constitucional aprobado de esta forma deberá ser publicado en la Gaceta Oficial y sometido a consulta popular directa mediante referéndum que se celebrará en la fecha que señale la Asamblea Nacional, dentro de un plazo que no podrá ser menor de tres meses ni exceder de seis meses, contados desde la aprobación del Acto Constitucional por la segunda legislatura.",
         article: a313,
         number: 2)
 
@@ -4447,12 +4438,12 @@ t13 = Title.create!(number: 13,
         article: a313)
 
       puts 'creating metadata subarticles for article 313'
-      msa313001 = MetadatumSubarticle.create!(content: "1. Por un Acto Constitucional aprobado en tres debates por la mayoría absoluta de los miembros de la Asamblea Nacional, el cual debe ser publicado en la Gaceta Oficial y transmitido por el Órgano Ejecutivo a dicha Asamblea, dentro de los primeros cinco días de las sesiones ordinarias siguientes a la instalación de la Asamblea Nacional electa en las últimas elecciones generales, a efecto de que en su primera legislatura sea debatido y aprobado sin modificación, en un solo debate, por la mayoría absoluta de los miembros que la integran.",
+      msa313001 = MetadatumSubarticle.create!(content: "Por un Acto Constitucional aprobado en tres debates por la mayoría absoluta de los miembros de la Asamblea Nacional, el cual debe ser publicado en la Gaceta Oficial y transmitido por el Órgano Ejecutivo a dicha Asamblea, dentro de los primeros cinco días de las sesiones ordinarias siguientes a la instalación de la Asamblea Nacional electa en las últimas elecciones generales, a efecto de que en su primera legislatura sea debatido y aprobado sin modificación, en un solo debate, por la mayoría absoluta de los miembros que la integran.",
         metadatum: m313,
         number: 1)
 
       puts 'creating metadata subarticles for article 313'
-      msa313002 = MetadatumSubarticle.create!(content: "2. Por un Acto Constitucional aprobado en tres debates por la mayoría absoluta de los miembros de la Asamblea Nacional, en una legislatura, y aprobado, igualmente, en tres debates, por mayoría absoluta de los miembros de la mencionada Asamblea, en la legislatura inmediatamente siguiente. En esta se podrá modificar el texto aprobado en la legislatura anterior. El Acto Constitucional aprobado de esta forma deberá ser publicado en la Gaceta Oficial y sometido a consulta popular directa mediante referéndum que se celebrará en la fecha que señale la Asamblea Nacional, dentro de un plazo que no podrá ser menor de tres meses ni exceder de seis meses, contados desde la aprobación del Acto Constitucional por la segunda legislatura.",
+      msa313002 = MetadatumSubarticle.create!(content: "Por un Acto Constitucional aprobado en tres debates por la mayoría absoluta de los miembros de la Asamblea Nacional, en una legislatura, y aprobado, igualmente, en tres debates, por mayoría absoluta de los miembros de la mencionada Asamblea, en la legislatura inmediatamente siguiente. En esta se podrá modificar el texto aprobado en la legislatura anterior. El Acto Constitucional aprobado de esta forma deberá ser publicado en la Gaceta Oficial y sometido a consulta popular directa mediante referéndum que se celebrará en la fecha que señale la Asamblea Nacional, dentro de un plazo que no podrá ser menor de tres meses ni exceder de seis meses, contados desde la aprobación del Acto Constitucional por la segunda legislatura.",
         metadatum: m313,
         number: 2)
 
@@ -4477,7 +4468,7 @@ t14 = Title.create!(number: 14,
 
 
   puts 'creating chapter 1'
-  c141 = Chapter.create!(number: 1,
+  c141 = Chapter.create!(number: 0,
     description: "xxx",
     title: t14,
     new: false)
@@ -4510,17 +4501,17 @@ t14 = Title.create!(number: 14,
       new: false)
 
       puts 'creating subarticles for article 318'
-      sa318001 = Subarticle.create!(content: "1. Un director designado por el Presidente de la República, quien presidirá la Junta Directiva y tendrá la condición de Ministro de Estado para Asuntos del Canal.",
+      sa318001 = Subarticle.create!(content: "Un director designado por el Presidente de la República, quien presidirá la Junta Directiva y tendrá la condición de Ministro de Estado para Asuntos del Canal.",
         article: a318,
         number: 1)
 
       puts 'creating subarticles for article 318'
-      sa318002 = Subarticle.create!(content: "2. Un director asignado por el Órgano Legislativo que será de su libre nombramiento y remoción.",
+      sa318002 = Subarticle.create!(content: "Un director asignado por el Órgano Legislativo que será de su libre nombramiento y remoción.",
         article: a318,
         number: 2)
 
       puts 'creating subarticles for article 318'
-      sa318003 = Subarticle.create!(content: "3. Nueve directores nombrados por el Presidente de la República, con acuerdo del Consejo de Gabinete y ratificados por el Órgano Legislativo, por mayoría absoluta de sus miembros. La Ley establecerá los requisitos para ocupar el cargo de director, garantizando la renovación escalonada de los directores señalados en el numeral 3 de este artículo, en grupos de tres y cada tres años. A partir de la primera renovación, el período de todos los directores será de nueve años.",
+      sa318003 = Subarticle.create!(content: "Nueve directores nombrados por el Presidente de la República, con acuerdo del Consejo de Gabinete y ratificados por el Órgano Legislativo, por mayoría absoluta de sus miembros. La Ley establecerá los requisitos para ocupar el cargo de director, garantizando la renovación escalonada de los directores señalados en el numeral 3 de este artículo, en grupos de tres y cada tres años. A partir de la primera renovación, el período de todos los directores será de nueve años.",
         article: a318,
         number: 3)
 
@@ -4531,37 +4522,37 @@ t14 = Title.create!(number: 14,
       new: false)
 
       puts 'creating subarticles for article 319'
-      sa319001 = Subarticle.create!(content: "1. Nombrar y remover al Administrador y al Subadministrador del Canal y determinar sus atribuciones, de acuerdo con la Ley.",
+      sa319001 = Subarticle.create!(content: "Nombrar y remover al Administrador y al Subadministrador del Canal y determinar sus atribuciones, de acuerdo con la Ley.",
         article: a319,
         number: 1)
 
       puts 'creating subarticles for article 319'
-      sa319002 = Subarticle.create!(content: "2. Fijar los peajes, tasas y derechos por el uso del Canal, sus servicios conexos, sujetos a la aprobación final del Consejo de Gabinete.",
+      sa319002 = Subarticle.create!(content: "Fijar los peajes, tasas y derechos por el uso del Canal, sus servicios conexos, sujetos a la aprobación final del Consejo de Gabinete.",
         article: a319,
         number: 2)
 
       puts 'creating subarticles for article 319'
-      sa319003 = Subarticle.create!(content: "3. Contratar empréstitos, previa aprobación del Consejo de Gabinete y dentro de los límites establecidos en la Ley.",
+      sa319003 = Subarticle.create!(content: "Contratar empréstitos, previa aprobación del Consejo de Gabinete y dentro de los límites establecidos en la Ley.",
         article: a319,
         number: 3)
 
       puts 'creating subarticles for article 319'
-      sa319004 = Subarticle.create!(content: "4. Otorgar concesiones para la prestación de servicios a la Autoridad del Canal de Panamá y a las naves que lo transiten.",
+      sa319004 = Subarticle.create!(content: "Otorgar concesiones para la prestación de servicios a la Autoridad del Canal de Panamá y a las naves que lo transiten.",
         article: a319,
         number: 4)
 
       puts 'creating subarticles for article 319'
-      sa319005 = Subarticle.create!(content: "5. Proponer los límites de la cuenca hidrográfica del Canal para la aprobación del Consejo de Gabinete y la Asamblea Nacional.",
+      sa319005 = Subarticle.create!(content: "Proponer los límites de la cuenca hidrográfica del Canal para la aprobación del Consejo de Gabinete y la Asamblea Nacional.",
         article: a319,
         number: 5)
 
       puts 'creating subarticles for article 319'
-      sa319006 = Subarticle.create!(content: "6. Aprobar privativamente los reglamentos que desarrollen las normas generales que dicte el Órgano Legislativo a propuesta del Órgano Ejecutivo, sobre el régimen de contratación, compras y todas las materias necesarias para el mejor funcionamiento, mantenimiento, conservación y modernización del Canal, dentro de la estrategia marítima nacional.",
+      sa319006 = Subarticle.create!(content: "Aprobar privativamente los reglamentos que desarrollen las normas generales que dicte el Órgano Legislativo a propuesta del Órgano Ejecutivo, sobre el régimen de contratación, compras y todas las materias necesarias para el mejor funcionamiento, mantenimiento, conservación y modernización del Canal, dentro de la estrategia marítima nacional.",
         article: a319,
         number: 6)
 
       puts 'creating subarticles for article 319'
-      sa319007 = Subarticle.create!(content: "7. Ejercer todas aquellas que establezcan esta Constitución y la Ley.",
+      sa319007 = Subarticle.create!(content: "Ejercer todas aquellas que establezcan esta Constitución y la Ley.",
         article: a319,
         number: 7)
 
@@ -4643,7 +4634,7 @@ t15 = Title.create!(number: 15,
       new: false)
 
       puts 'creating subarticles for article 327'
-      sa327001 = Subarticle.create!(content: "1. Por regla general, las disposiciones de la presente reforma constitucional tienen vigencia inmediata, a partir de su promulgación, excepto en los siguientes casos:",
+      sa327001 = Subarticle.create!(content: "Por regla general, las disposiciones de la presente reforma constitucional tienen vigencia inmediata, a partir de su promulgación, excepto en los siguientes casos:",
         article: a327,
         number: 1)
 
@@ -4651,42 +4642,42 @@ t15 = Title.create!(number: 15,
 
 
       puts 'creating subarticles for article 327'
-      sa327002 = Subarticle.create!(content: "2. Los cambios referidos al inicio y terminación de las legislaturas ordinarias, entrarán en vigencia a partir del primero de julio de 2009.",
+      sa327002 = Subarticle.create!(content: "Los cambios referidos al inicio y terminación de las legislaturas ordinarias, entrarán en vigencia a partir del primero de julio de 2009.",
         article: a327,
         number: 2)
 
       puts 'creating subarticles for article 327'
-      sa327003 = Subarticle.create!(content: "3. Los Magistrados del Tribunal Electoral que se escojan al vencimiento del periodo de los actuales Magistrados, se designarán por los siguientes términos: el designado por el Órgano Judicial, por un periodo de seis años; el designado por el Órgano Ejecutivo, por un periodo de ocho años; y el designado por el Órgano Legislativo, por un periodo de diez años, a efecto de establecer el sistema de nombramientos escalonados de los Magistrados del Tribunal Electoral.",
+      sa327003 = Subarticle.create!(content: "Los Magistrados del Tribunal Electoral que se escojan al vencimiento del periodo de los actuales Magistrados, se designarán por los siguientes términos: el designado por el Órgano Judicial, por un periodo de seis años; el designado por el Órgano Ejecutivo, por un periodo de ocho años; y el designado por el Órgano Legislativo, por un periodo de diez años, a efecto de establecer el sistema de nombramientos escalonados de los Magistrados del Tribunal Electoral.",
         article: a327,
         number: 3)
 
       puts 'creating subarticles for article 327'
-      sa327004 = Subarticle.create!(content: "4. Hasta tanto no se dicte y entre en vigencia la Ley que regule el Tribunal de Cuentas, continuarán vigentes todas las normas y procedimientos existentes sobre jurisdicción de cuentas. Una vez el Tribunal de Cuentas entre en función, todos los procesos que se siguen ante la Dirección de Responsabilidad Patrimonial de la Contraloría General, pasarán a ser de competencia de dicho Tribunal. Para asegurar el nombramiento escalonado, los primeros Magistrados que conformen el Tribunal de Cuentas serán nombrados así: el designado por el Órgano Judicial, por un periodo de seis años; el designado por el Órgano Ejecutivo, por un periodo de ocho años; y el designado por el Órgano Legislativo, por un periodo de diez años.",
+      sa327004 = Subarticle.create!(content: "Hasta tanto no se dicte y entre en vigencia la Ley que regule el Tribunal de Cuentas, continuarán vigentes todas las normas y procedimientos existentes sobre jurisdicción de cuentas. Una vez el Tribunal de Cuentas entre en función, todos los procesos que se siguen ante la Dirección de Responsabilidad Patrimonial de la Contraloría General, pasarán a ser de competencia de dicho Tribunal. Para asegurar el nombramiento escalonado, los primeros Magistrados que conformen el Tribunal de Cuentas serán nombrados así: el designado por el Órgano Judicial, por un periodo de seis años; el designado por el Órgano Ejecutivo, por un periodo de ocho años; y el designado por el Órgano Legislativo, por un periodo de diez años.",
         article: a327,
         number: 4)
 
       puts 'creating subarticles for article 327'
-      sa327005 = Subarticle.create!(content: "5. Los funcionarios de elección popular electos para el periodo 2004-2009, concluirán su periodo el 30 de junio de 2009.",
+      sa327005 = Subarticle.create!(content: "Los funcionarios de elección popular electos para el periodo 2004-2009, concluirán su periodo el 30 de junio de 2009.",
         article: a327,
         number: 5)
 
       puts 'creating subarticles for article 327'
-      sa327006 = Subarticle.create!(content: "6. El Órgano Legislativo nombrará una Comisión de Estilo para ordenar los artículos de la Constitución, junto a sus modificaciones, en una numeración corrida, la cual velará por la concordancia de dicha numeración con los números de los artículos a los que haga referencia alguna norma constitucional.",
+      sa327006 = Subarticle.create!(content: "El Órgano Legislativo nombrará una Comisión de Estilo para ordenar los artículos de la Constitución, junto a sus modificaciones, en una numeración corrida, la cual velará por la concordancia de dicha numeración con los números de los artículos a los que haga referencia alguna norma constitucional.",
         article: a327,
         number: 6)
 
       puts 'creating subarticles for article 327'
-      sa327007 = Subarticle.create!(content: "7. Este Acto Legislativo del año 2004, empezará a regir desde su publicación en la Gaceta Oficial, la cual deberá hacer el Órgano Ejecutivo, dentro de los diez días hábiles que siguen a su ratificación por la Asamblea Nacional.",
+      sa327007 = Subarticle.create!(content: "Este Acto Legislativo del año 2004, empezará a regir desde su publicación en la Gaceta Oficial, la cual deberá hacer el Órgano Ejecutivo, dentro de los diez días hábiles que siguen a su ratificación por la Asamblea Nacional.",
         article: a327,
         number: 7)
 
       puts 'creating subarticles for article 327'
-      sa327008 = Subarticle.create!(content: "8. La eliminación de los cargos de elección popular que se señalan en esta reforma constitucional tendrán vigencia a partir de las elecciones generales de 2009.",
+      sa327008 = Subarticle.create!(content: "La eliminación de los cargos de elección popular que se señalan en esta reforma constitucional tendrán vigencia a partir de las elecciones generales de 2009.",
         article: a327,
         number: 8)
 
       puts 'creating subarticles for article 327'
-      sa327009 = Subarticle.create!(content: "9. Los funcionarios públicos cuyos nombramientos son contemplados en esta Constitución y que se encuentren en funciones al momento de entrada en vigencia de estas reformas, ejercerán sus cargos hasta cuando venza el periodo para el cual fueron nombrados.",
+      sa327009 = Subarticle.create!(content: "Los funcionarios públicos cuyos nombramientos son contemplados en esta Constitución y que se encuentren en funciones al momento de entrada en vigencia de estas reformas, ejercerán sus cargos hasta cuando venza el periodo para el cual fueron nombrados.",
         article: a327,
         number: 9)
 
@@ -4732,14 +4723,14 @@ t15 = Title.create!(number: 15,
 
       # subarticulos
       puts 'creating subarticles for article 165'
-      sa165 = Subarticle.create!(content: "1. Cuando sean orgánicas:",
+      sa165 = Subarticle.create!(content: "Cuando sean orgánicas:",
         article: a165,
         number: 1)
 
 
       # listas
       puts 'creating subarticles for article 126'
-      sa126 = Subarticle.create!(content: "1. Efectuar las inscripciones de nacimientos, matrimonios, defunciones, naturalizaciones y demás hechos y actos jurídicos relacionados con el estado civil de las personas, y hacer las anotaciones procedentes en las respectivas inscripciones.",
+      sa126 = Subarticle.create!(content: "Efectuar las inscripciones de nacimientos, matrimonios, defunciones, naturalizaciones y demás hechos y actos jurídicos relacionados con el estado civil de las personas, y hacer las anotaciones procedentes en las respectivas inscripciones.",
         article: a126,
         number: 1)
 
@@ -4758,7 +4749,7 @@ t3 = Title.create!(number: 1,
       # continua parrafo del articulo
       puts 'creating subarticles for article 63'
       sa2000 = Subarticle.create!(content: "La Ley organizará y determinará el funcionamiento de la jurisdicción especial de menores la cual, entre otras funciones, conocerá sobre la investigación de la paternidad, el abandono de familia y los problemas de conducta juvenil.",
-        article: a2000,
+        article: a63,
         number: 2000)
 
 
@@ -4771,46 +4762,46 @@ t3 = Title.create!(number: 1,
 
 
 
-    # Así luciría un artículo nuevo *new: true*
-    puts 'creating article 8'
-    a8 = Article.create!(content: "Son fines esenciales del Estado promover la vigencia, aplicación y respeto de los Derechos Humanos de todos los ciudadanos y la comunidad, promover la prosperidad general y garantizar la efectividad de los principios, derechos, garantías y deberes consagrados en la Constitución, Tratados y Convenios Internacionales; garantizar el ejercicio de la consulta libre previa informada; facilitar la participación en paridad de todas las personas en las decisiones que las afectan y en la vida económica, política, administrativa, ambiental y cultural de la nación; defender la independencia nacional, mantener la integridad territorial y asegurar la convivencia pacífica y la vigencia de un orden justo.",
-      chapter: c1,
-      number: 8,
-      new: true)
+    # # Así luciría un artículo nuevo *new: true*
+    # puts 'creating article 8'
+    # a8 = Article.create!(content: "Son fines esenciales del Estado promover la vigencia, aplicación y respeto de los Derechos Humanos de todos los ciudadanos y la comunidad, promover la prosperidad general y garantizar la efectividad de los principios, derechos, garantías y deberes consagrados en la Constitución, Tratados y Convenios Internacionales; garantizar el ejercicio de la consulta libre previa informada; facilitar la participación en paridad de todas las personas en las decisiones que las afectan y en la vida económica, política, administrativa, ambiental y cultural de la nación; defender la independencia nacional, mantener la integridad territorial y asegurar la convivencia pacífica y la vigencia de un orden justo.",
+    #   chapter: c1,
+    #   number: 8,
+    #   new: true)
 
-    puts 'creating article 147'
-    a147 = Article.create!(content: "La Asamblea Nacional se compondrá de setenta y un Diputados que resulten elegidos de conformidad con la Ley y sujeto a lo que se dispone a continuación:",
-      chapter: c1,
-      number: 147,
-      new: false)
+    # puts 'creating article 147'
+    # a147 = Article.create!(content: "La Asamblea Nacional se compondrá de setenta y un Diputados que resulten elegidos de conformidad con la Ley y sujeto a lo que se dispone a continuación:",
+    #   chapter: c1,
+    #   number: 147,
+    #   new: false)
 
-      puts 'creating subarticles for article 147'
-      sa1 = Subarticle.create!(content: "Habrá circuitos uninominales y plurinominales, garantizándose el principio de representación proporcional. Integrará un solo circuito electoral todo distrito en donde se elija más de un Diputado, salvo el distrito de Panamá, donde habrá circuitos de tres o más Diputados.",
-        article: a147,
-        number: 1)
+    #   puts 'creating subarticles for article 147'
+    #   sa1 = Subarticle.create!(content: "Habrá circuitos uninominales y plurinominales, garantizándose el principio de representación proporcional. Integrará un solo circuito electoral todo distrito en donde se elija más de un Diputado, salvo el distrito de Panamá, donde habrá circuitos de tres o más Diputados.",
+    #     article: a147,
+    #     number: 1)
 
-      sa2 = Subarticle.create!(content: "Los circuitos se conformarán en proporción al número de electores que aparezca en el último Padrón Electoral.",
-        article: a147,
-        number: 2)
+    #   sa2 = Subarticle.create!(content: "Los circuitos se conformarán en proporción al número de electores que aparezca en el último Padrón Electoral.",
+    #     article: a147,
+    #     number: 2)
 
-      sa3 = Subarticle.create!(content: "A cada comarca y a la provincia de Darién les corresponderá elegir el número de Diputados con que cuentan al momento de entrar en vigencia la presente norma.",
-        article: a147,
-        number: 3)
+    #   sa3 = Subarticle.create!(content: "A cada comarca y a la provincia de Darién les corresponderá elegir el número de Diputados con que cuentan al momento de entrar en vigencia la presente norma.",
+    #     article: a147,
+    #     number: 3)
 
-      # asi es como se quisiera modificar el articulo
-      puts 'creating metadata for article 147'
-      m3 = Metadatum.create!(content: "La Asamblea Nacional se compondrá de setenta y un (71) diputados elegidos de conformidad con la Ley y con sujeción a lo que se dispone a continuación:",
-        article: a147)
+    #   # asi es como se quisiera modificar el articulo
+    #   puts 'creating metadata for article 147'
+    #   m3 = Metadatum.create!(content: "La Asamblea Nacional se compondrá de setenta y un (71) diputados elegidos de conformidad con la Ley y con sujeción a lo que se dispone a continuación:",
+    #     article: a147)
 
-      # esta es la lista para el articulo modificado
-      puts 'creating metadata subarticles for article 147'
-      msa1 = MetadatumSubarticle.create!(content: "Todos los diputados serán elegidos para un periodo de cinco años mediante el sistema de representación proporcional que determine la Ley, el mismo día en que se celebre la elección ordinaria de Presidente y Vicepresidente de la República.",
-        metadatum: m3,
-        number: 1)
+    #   # esta es la lista para el articulo modificado
+    #   puts 'creating metadata subarticles for article 147'
+    #   msa1 = MetadatumSubarticle.create!(content: "Todos los diputados serán elegidos para un periodo de cinco años mediante el sistema de representación proporcional que determine la Ley, el mismo día en que se celebre la elección ordinaria de Presidente y Vicepresidente de la República.",
+    #     metadatum: m3,
+    #     number: 1)
 
-      msa2 = MetadatumSubarticle.create!(content: "Salvo las excepciones a que se refiere el numeral cinco (5) y seis (6), todos los circuitos electorales serán de postulación plurinominal, en los cuales se elegirán no menos de dos diputados.",
-        metadatum: m3,
-        number: 2)
+    #   msa2 = MetadatumSubarticle.create!(content: "Salvo las excepciones a que se refiere el numeral cinco (5) y seis (6), todos los circuitos electorales serán de postulación plurinominal, en los cuales se elegirán no menos de dos diputados.",
+    #     metadatum: m3,
+    #     number: 2)
 
 # Esta sección se puede quedar igual. Lo unico a cambiar son las preguntas mismas.
 # Las primeras dos preguntas tendran una escala del 1 - 5 como respuestas posibles.
