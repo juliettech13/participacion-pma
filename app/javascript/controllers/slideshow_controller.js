@@ -10,8 +10,9 @@ export default class extends Controller {
   answered(){
     var injection = document.getElementById('answered_badge');
     var alertSpot = document.getElementById('success-badges');
+    console.log(this.element, "hello from answered method inside slideshow controller");
     var answerSection = this.element.parentNode.parentNode.querySelector(".success-badges");
-    answerSection.insertAdjacentHTML('afterbegin', '<span class="badge badge-success" id="answered_badge">Respondido</span>');
+    answerSection.insertAdjacentHTML('beforebegin', '<span class="badge badge-success" id="answered_badge">Respondido</span>');
   }
 
   revised(){

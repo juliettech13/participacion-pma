@@ -61,10 +61,12 @@
             <!-- </div> -->
             <div class="success-badges">
              <% if article.questions[1].answers.exists?(consultation: current_user.consultations.last) %>
-             <%# raise %>
+             <% raise %>
               <span class="badge badge-success" id="answered_badge">Respondido</span>
              <% end %>
+             <%# raise %>
              <% if article.questions[2].answers.exists?(consultation: current_user.consultations.last) %>
+             <%= raise %>
               <span class="badge badge-success" id="revised_badge">Sugerencia registrada</span>
              <% end %>
            </div>
