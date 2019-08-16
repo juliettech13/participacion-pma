@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_14_194333) do
+ActiveRecord::Schema.define(version: 2019_08_16_135412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,14 @@ ActiveRecord::Schema.define(version: 2019_08_14_194333) do
     t.datetime "updated_at", null: false
     t.boolean "new"
     t.index ["chapter_id"], name: "index_articles_on_chapter_id"
+  end
+
+  create_table "chapter_metadata", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chapter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chapter_id"], name: "index_chapter_metadata_on_chapter_id"
   end
 
   create_table "chapters", force: :cascade do |t|
@@ -182,6 +190,7 @@ ActiveRecord::Schema.define(version: 2019_08_14_194333) do
   add_foreign_key "answers", "consultations"
   add_foreign_key "answers", "questions"
   add_foreign_key "articles", "chapters"
+  add_foreign_key "chapter_metadata", "chapters"
   add_foreign_key "chapters", "titles"
   add_foreign_key "consultations", "legislations"
   add_foreign_key "consultations", "users"
