@@ -126,6 +126,10 @@ class Article < ApplicationRecord
           return question_array.group_by(&:to_s).values.max_by(&:size).try(:first)
     end
 
+    def spaced_content
+      self.content.gsub("/n", "<br><br>")
+    end
+
   # NEW % calculation yes/no
 
   #  def division_of_answers_goaldriven

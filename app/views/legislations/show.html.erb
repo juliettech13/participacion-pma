@@ -13,7 +13,7 @@
 <p id="notice"><%= notice %></p>
 <div class="container legislationshow" data-controller="legislation">
 
-  <h1 class="display-4"><%= @legislation.title %></h1>
+  <h1 class="display-4"><%= @legislation.capitalized_title %></h1>
   <div class="doc-header">
     <div class="help">
       <a data-html="true" data-toggle="popover" data-trigger="hover" title="How It Works" data-content="<%= render 'howitworks' %>" class="badge badge-warning">Ayuda</a>
@@ -24,52 +24,78 @@
 
   <div data-controller="slideshow">
 
-    <div id="Introduction" data-target="slideshow.slide" class="slide">
+<!--     <div id="Introduction" data-target="slideshow.slide" class="slide">
      <h3>Introducción</h3>
      <div class="card-header" id="headingOne">
       <h5 class="mb-0">
         <a class="btn btn-link" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal; text-align: left;">
-          <%= render 'introduction' %>
+          <%#= render 'introduction' %>
         </a>
       </h5>
-    </div>
-  </div>
+    </div> -->
+  <!-- </div> -->
 
   <% @legislation.titles.each do |title| %>
   <div id="<%= title.description %>" data-target="slideshow.slide" class="slide">
 
     <div class="title-info">
-      <h3>Titulo <%= title.id %>: <%= title.description %></h3>
+      <h3>Titulo <%= title.number %>: <%= title.capitalized_title %></h3>
       <p>Artículos <%= title.articles.first.number %> a <%= title.articles.last.number %> de <%= Article.all.count %></p>
       <!-- <p><%#= title.description %></p> -->
     </div>
 
     <div id="accordion">
-      <% title.articles.each do |article| %>
+      <% title.articles.order(number: :asc).each do |article| %>
 
       <div class="card">
-       <div class="card-header" id="headingOne">
         <a class="btn btn-link article" data-toggle="collapse" data-target="#collapse_<%= article.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
+         <div class="card-header" id="headingOne">
+          <!-- <div class="hello"></div> -->
           <div id="supporting-content">
             <% if Metadatum.exists?(article: article) %>
-              <% @metadata = Metadatum.find_by(article: article) %>
-              <h6 class="align-left list-inline-item">Artículo <%= article.number %></h6>
-              <a  data-html="true" data-toggle="popover" data-trigger="hover" title="Artículo Modificado" data-content="<%= render 'metadata_show', metadata: @metadata %>" class="badge badge-warning">Modificación</a>
+              <%# @metadata = Metadatum.find_by(article: article) %>
+              <div class="flex flex-row">
+                <h6 class="align-left p-2">Artículo <%= article.number %></h6>
+                <p class="p-2"><button data-html="true" data-toggle="popover" data-trigger="hover" title="Artículo Modificado" class='badge badge-danger text-white' data-content="<%= render 'metadata_show', metadata: Metadatum.find_by(article: article) %>" >Modificación</button></p>
+              </div>
             <% else %>
-              <h6 class="align-left">Artículo <%= article.number %></h6>
+              <% if article.new == true %>
+                <div class="flex flex-row">
+                  <h6 class="align-left p-2">Artículo</h6>
+                  <p class="p-2 badge badge-info">Nuevo</p>
+                </div>
+              <% else %>
+                <h6 class="align-left">Artículo <%= article.number %></h6>
+              <% end %>
             <% end %>
-            <!-- </div> -->
-            <div class="success-badges">
+
+         <!--    <div class="header-article">
+              <div class="d-flex flex-row">
+              <%# if article.new == true %>
+                <h6 class="align-left p-2">Artículo</h6>
+                <div class="p-2 badge badge-warning">Nuevo</div>
+              <%# else %>
+                <h6 class="align-left p-2">Artículo <%#= article.number %></h6>
+                <%# if Metadatum.exists?(article: article) %>
+                  <%# @metadata = Metadatum.find_by(article: article) %>
+                  <a data-html="true" data-toggle="popover" data-trigger="hover" title="Artículo Modificado" data-content="<%#= render 'metadata_show', metadata: @metadata %>" class="p-2 badge badge-warning">Modificación</a>
+                <%# end %>
+              <%# end %>
+             </div>
+           -->
+           <!-- </div> -->
+           <div class="success-badges">
              <% if article.questions[1].answers.exists?(consultation: current_user.consultations.last) %>
-             <%# raise %>
               <span class="badge badge-success" id="answered_badge">Respondido</span>
              <% end %>
+
              <% if article.questions[2].answers.exists?(consultation: current_user.consultations.last) %>
               <span class="badge badge-success" id="revised_badge">Sugerencia registrada</span>
              <% end %>
            </div>
          </div>
-         <p class="align-left"><%= article.content %></p>
+         <p class="align-left"><%= raw article.spaced_content %></p>
+       </a>
        </a>
      </div>
      <!-- </div> -->
@@ -77,32 +103,32 @@
      <div id="collapse_<%= article.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body" data-controller="slideshow">
         <% unless article.questions[0].answers.exists?(consultation: current_user.consultations.last) %>
-          <div data-target="slideshow.slide" class="slide">
-            <%= article.questions[0].content %><p>(1 = not at all, 5 = very much)</p>
-            <%= form_for @answer, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"}, method: :post do |f| %>
-            <%= f.hidden_field :user_id, :value => current_user.id  %>
-            <%= f.hidden_field :question_id, :value => article.questions[0].id  %>
-            <%= f.hidden_field :consultation_id, :value => @consultation.id  %>
-            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-            <div class="buttonspacing">
-              <a data-action="slideshow#next">
-                <%= f.submit '1', :name => "content", :class => 'btn-primary' %>
-              </a>
-              <a data-action="slideshow#next">
-                <%= f.submit '2', :name => "content", :class => 'btn-primary' %>
-              </a>
-              <a data-action="slideshow#next">
-                <%= f.submit '3', :name => "content", :class => 'btn-primary' %>
-              </a>
-              <a data-action="slideshow#next">
-                <%= f.submit '4', :name => "content", :class => 'btn-primary' %>
-              </a>
-              <a data-action="slideshow#next">
-                <%= f.submit '5', :name => "content", :class => 'btn-primary' %>
-              </a>
-            </div>
-            <% end %>
+        <div data-target="slideshow.slide" class="slide">
+          <%= article.questions[0].content %><p>(1 = not at all, 5 = very much)</p>
+          <%= form_for @answer, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"}, method: :post do |f| %>
+          <%= f.hidden_field :user_id, :value => current_user.id  %>
+          <%= f.hidden_field :question_id, :value => article.questions[0].id  %>
+          <%= f.hidden_field :consultation_id, :value => @consultation.id  %>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <div class="buttonspacing">
+            <a data-action="slideshow#next">
+              <%= f.submit '1', :name => "content", :class => 'btn-primary' %>
+            </a>
+            <a data-action="slideshow#next">
+              <%= f.submit '2', :name => "content", :class => 'btn-primary' %>
+            </a>
+            <a data-action="slideshow#next">
+              <%= f.submit '3', :name => "content", :class => 'btn-primary' %>
+            </a>
+            <a data-action="slideshow#next">
+              <%= f.submit '4', :name => "content", :class => 'btn-primary' %>
+            </a>
+            <a data-action="slideshow#next">
+              <%= f.submit '5', :name => "content", :class => 'btn-primary' %>
+            </a>
           </div>
+          <% end %>
+        </div>
         <% end %>
 
         <% unless article.questions[1].answers.exists?(consultation: current_user.consultations.last) %>
@@ -175,12 +201,13 @@
 <% end %>
 
 <div class="finished row">
-  <button id="continueto" class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Continue to titles</button>
-  <button id="prevbutton" style="display: none;" class="btn-lg btn-primary" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">Previous title</button>
-  <button id="nextbutton" style="display: none;" class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Next title</button>
-  <%= link_to "Finish Consultation", new_consultation_general_feedback_path(@consultation), :id => 'finished', :class => 'btn-lg btn-primary', :style => ' text-decoration: none;' %>
-  <div class="finished">
+  <button id="continueto" class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Continúa</button>
+  <button id="prevbutton" style="display: none;" class="btn-lg btn-primary" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">Título Anterior</button>
+  <button id="nextbutton" style="display: none;" class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Próximo Título</button>
+  <!-- <div class="finished"> -->
+
+    <%= link_to "Terminar la Consulta", new_consultation_general_feedback_path(@consultation), :id => 'finished', :class => 'btn-lg btn-primary', :style => ' text-decoration: none;' %>
+    <!-- </div> -->
   </div>
-</div>
 
 </div>

@@ -10,6 +10,7 @@ export default class extends Controller {
   answered(){
     var injection = document.getElementById('answered_badge');
     var alertSpot = document.getElementById('success-badges');
+    console.log(this.element, "hello from answered method inside slideshow controller");
     var answerSection = this.element.parentNode.parentNode.querySelector(".success-badges");
     answerSection.insertAdjacentHTML('afterbegin', '<span class="badge badge-success" id="answered_badge">Respondido</span>');
   }
@@ -26,11 +27,11 @@ export default class extends Controller {
   }
 
 showFinished(){
-  var lastSection = document.getElementById("El Estado Panameño")
+  var lastSection = document.getElementById("DISPOSICIONES FINALES Y TRANSITORIAS")
   // var lastSection = document.getElementById("Supporting the Ecosystem for Innovative Entrepreneurship")
-  var firstSection = document.getElementById("El Estado Panameño")
+  var firstSection = document.getElementById("EL ESTADO PANAMEÑO")
   // var firstSection = document.getElementById("Digital Infrastructure")
-  var secondSection = document.getElementById("El Estado Panameño")
+  var secondSection = document.getElementById("NACIONALIDAD Y EXTRANJERÍA")
   var continueTo = document.getElementById("continueto")
   var intro = document.getElementById("Introduction")
   var finished = document.getElementById("finished");

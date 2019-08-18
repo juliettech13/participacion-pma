@@ -200,6 +200,22 @@
   justify-content: space-between
 }
 
+.card{
+  padding-top: 0px !important
+}
+
+// .card-header{
+//   padding-top: 0px !important
+// }
+
+.p-2{
+  padding: 6px !important
+}
+
+.popover{
+  width: 300px
+}
+
 @media only screen and (max-width: 600px) {
 
   .title .jumbotron {
