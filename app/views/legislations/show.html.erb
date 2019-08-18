@@ -13,7 +13,7 @@
 <p id="notice"><%= notice %></p>
 <div class="container legislationshow" data-controller="legislation">
 
-  <h1 class="display-4"><%= @legislation.title.split.each{ |word| word.capitalize }.join(" ") %></h1>
+  <h1 class="display-4"><%= @legislation.capitalized_title %></h1>
   <div class="doc-header">
     <div class="help">
       <a data-html="true" data-toggle="popover" data-trigger="hover" title="How It Works" data-content="<%= render 'howitworks' %>" class="badge badge-warning">Ayuda</a>
@@ -39,13 +39,13 @@
   <div id="<%= title.description %>" data-target="slideshow.slide" class="slide">
 
     <div class="title-info">
-      <h3>Titulo <%= title.id %>: <%= title.description %></h3>
+      <h3>Titulo <%= title.number %>: <%= title.capitalized_title %></h3>
       <p>Artículos <%= title.articles.first.number %> a <%= title.articles.last.number %> de <%= Article.all.count %></p>
       <!-- <p><%#= title.description %></p> -->
     </div>
 
     <div id="accordion">
-      <% title.articles.each do |article| %>
+      <% title.articles.order(number: :asc).each do |article| %>
 
       <div class="card">
         <a class="btn btn-link article" data-toggle="collapse" data-target="#collapse_<%= article.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
@@ -94,7 +94,7 @@
              <% end %>
            </div>
          </div>
-         <p class="align-left"><%= raw article.content %></p>
+         <p class="align-left"><%= raw article.spaced_content %></p>
        </a>
        </a>
      </div>

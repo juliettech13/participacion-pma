@@ -57,7 +57,7 @@ AdminUser.create!(email: 'admin@example.com', password: 'password', password_con
 
 puts "creating legislation"
 l = Legislation.create!(
-title: 'CONSTITUCIÓN POLÍTICA DE LA REPÚBLICA DE PANAMÁ',
+title: 'Constitución Política de la República de Panamá',
 introduction: "Constitución Política de la República de Panamá y Texto Único del
 Reglamento Orgánico del Régimen Interno de la Asamblea Nacional",
 user: user)
