@@ -34,10 +34,11 @@
 }
 
 .popover-body {
-  font-size: 14px;
-  ol {
-    padding-left: 18px;
-  }
+  // font-size: 14px;
+  max-width: 400px;
+  // ol {
+  //   padding-left: 18px;
+  // }
 }
 
 // #accordion .card {
@@ -213,7 +214,7 @@
 }
 
 .popover{
-  width: 300px
+  max-width: 300px
 }
 
 @media only screen and (max-width: 600px) {

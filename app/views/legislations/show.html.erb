@@ -56,7 +56,7 @@
               <%# @metadata = Metadatum.find_by(article: article) %>
               <div class="flex flex-row">
                 <h6 class="align-left p-2">Artículo <%= article.number %></h6>
-                <p class="p-2"><button data-html="true" data-toggle="popover" data-trigger="hover" title="Artículo Modificado" class='badge badge-danger text-white' data-content="<%= render 'metadata_show', metadata: Metadatum.find_by(article: article) %>" >Modificación</button></p>
+                <p class="p-2"><button data-html="true" data-toggle="popover" data-trigger="hover" title="Artículo Modificado" class='badge badge-danger text-white popover-body' data-content="<%= render 'metadata_show', metadata: Metadatum.find_by(article: article) %>" >Modificación</button></p>
               </div>
             <% else %>
               <% if article.new == true %>
