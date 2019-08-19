@@ -5,7 +5,9 @@
     }).on('ajax:error',function(e, xhr, status, error){
       $(console.log("Hello, Failed!"));
     });
-    $("[data-toggle=popover]").popover();
+    $("[data-toggle=popover]").popover({
+      style: "max-width: 600px;"
+    });
   });
 </script>
 
@@ -56,7 +58,7 @@
               <%# @metadata = Metadatum.find_by(article: article) %>
               <div class="flex flex-row">
                 <h6 class="align-left p-2">Artículo <%= article.number %></h6>
-                <p class="p-2"><button data-html="true" data-toggle="popover" data-trigger="hover" title="Artículo Modificado" class='badge badge-danger text-white popover-body' data-content="<%= render 'metadata_show', metadata: Metadatum.find_by(article: article) %>" >Modificación</button></p>
+                <p class="p-2"><button data-html="true" data-toggle="popover" data-trigger="hover" title="Artículo Modificado" class='badge badge-danger text-white popover-body' data-content="<%= render 'metadata_show', metadata: Metadatum.find_by(article: article) %>" data-boundary='scrollParent'>Modificación</button></p>
               </div>
             <% else %>
               <% if article.new == true %>
@@ -95,6 +97,24 @@
            </div>
          </div>
          <p class="align-left"><%= raw article.spaced_content %></p>
+         <% if article.subarticles.exists? %>
+           <ol>
+            <% article.subarticles.order(number: :asc).each do |subarticle|  %>
+               <li>
+                <p class='align-left'><%= raw subarticle.spaced_content %></p>
+                <% if subarticle.subsubarticles.exists? %>
+                  <ul>
+                    <li>
+                      <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
+                        <p class='align-left'><%= raw subsubarticle.spaced_content %></p>
+                      <% end %>
+                    </li>
+                  </ul>
+                <% end %>
+              </li>
+             <% end %>
+           </ol>
+        <% end %>
        </a>
        </a>
      </div>

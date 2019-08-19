@@ -1,15 +1,15 @@
 
 <div class="container legislationshow">
-  <h1 class="display-4"><%= @consultation.legislation.title %></h1>
-  <p class="lead">Please provide your feedback based on what you've read, take into account all three sections and the overall objective of the vision</p>
+  <h1 class="display-4"><%= @consultation.legislation.capitalized_title %></h1>
+  <p class="lead">Este es tu espacio para darnos una última opinión. ¿Que te pareció lo que leiste? ¿Alguna idea adicional que quieras compartir?</p>
 
 <div class="form-group feedback">
   <%= simple_form_for [@consultation, @general_feedback] do |f| %>
   <%= f.text_area :content, :rows => 5, :class => 'form-control' %>
-  <%= f.submit "Submit & Finish", :class => 'btn-primary btn-lg' %>
+  <%= f.submit "Terminar la consulta", :class => 'btn-primary btn-lg' %>
   <% end %>
 </div>
 
-<%= link_to 'Back to Consultation', legislation_path(1) %>
+<%= link_to 'Vuelve a la consulta', legislation_path(@consultation.legislation) %>
 
 </div>
