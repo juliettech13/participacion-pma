@@ -4,7 +4,7 @@ class Title < ApplicationRecord
   has_many :articles, through: :chapters
 
   def capitalized_title
-    self.description.split.each { |word| word.capitalize }.join(" ")
+    self.description.split.map { |word| word.capitalize }.join(" ")
   end
 end
 
