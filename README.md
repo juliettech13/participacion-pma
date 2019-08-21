@@ -71,5 +71,5 @@ De tener algún inconveniente en producción, empiece por correr `heroku logs` e
 
 * **Juliette Chevalier** - [juliettech](https://github.com/juliet-tech)
 
-[Contribuidores](https://github.com/your/project/contributors)
+[Contribuidores](https://github.com/juliet-tech/participacion-pma/graphs/contributors)
 
