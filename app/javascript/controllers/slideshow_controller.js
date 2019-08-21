@@ -8,16 +8,11 @@ export default class extends Controller {
   }
 
   answered(){
-    var injection = document.getElementById('answered_badge');
-    var alertSpot = document.getElementById('success-badges');
-    console.log(this.element, "hello from answered method inside slideshow controller");
     var answerSection = this.element.parentNode.parentNode;
     answerSection.insertAdjacentHTML('beforeend', '<span class="badge badge-success badges p-2" id="answered_badge">Respondido</span>');
   }
 
   revised(){
-    var injection = document.getElementById('revised_badge');
-    var alertSpot = document.getElementById('success-badges');
     var answerSection = this.element.parentNode.parentNode;
     answerSection.insertAdjacentHTML('beforeend', '<span class="badge badge-success badges p-2" id="revised_badge">Sugerido</span>');
   }

@@ -88,15 +88,15 @@
              </div>
            -->
            <!-- </div> -->
-           <div class="success-badges">
-             <% if article.questions[1].answers.exists?(consultation: current_user.consultations.last) %>
+        <!--    <div class="success-badges">
+             <%# if article.questions[1].answers.exists?(consultation: current_user.consultations.last) %>
               <span class="badge badge-success" id="answered_badge">Respondido</span>
-             <% end %>
+             <%# end %>
 
-             <% if article.questions[2].answers.exists?(consultation: current_user.consultations.last) %>
+             <%# if article.questions[2].answers.exists?(consultation: current_user.consultations.last) %>
               <span class="badge badge-success" id="revised_badge">Sugerencia registrada</span>
-             <% end %>
-           </div>
+             <%# end %>
+           </div> -->
          </div>
          <p class="align-left"><%= raw article.spaced_content %></p>
          <% if article.subarticles.exists? %>
