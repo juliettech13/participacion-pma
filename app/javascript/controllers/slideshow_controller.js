@@ -34,7 +34,7 @@ showFinished(){
       previous.style.display = 'none';
       next.style.display = '';
       continueto.style.display = 'none';
-      finished.style.display = 'none';
+      finished.style.display = '';
   }
 
   // if (intro.classList.contains("slide--current")) {
