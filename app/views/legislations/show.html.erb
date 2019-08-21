@@ -56,18 +56,20 @@
           <div id="supporting-content">
             <% if Metadatum.exists?(article: article) %>
               <%# @metadata = Metadatum.find_by(article: article) %>
-              <div class="flex flex-row">
+              <div class="flex flex-row success-badges">
                 <h6 class="align-left p-2">Artículo <%= article.number %></h6>
                 <p class="p-2"><button data-html="true" data-toggle="popover" data-trigger="hover" title="Artículo Modificado" class='badge badge-danger text-white popover-body' data-content="<%= render 'metadata_show', metadata: Metadatum.find_by(article: article) %>" data-boundary='scrollParent'>Modificación</button></p>
               </div>
             <% else %>
               <% if article.new == true %>
-                <div class="flex flex-row">
+                <div class="flex flex-row success-badges">
                   <h6 class="align-left p-2">Artículo</h6>
                   <p class="p-2 badge badge-info">Nuevo</p>
                 </div>
               <% else %>
-                <h6 class="align-left">Artículo <%= article.number %></h6>
+                <div class="success-badges">
+                  <h6 class="align-left">Artículo <%= article.number %></h6>
+                </div>
               <% end %>
             <% end %>
 
@@ -86,15 +88,15 @@
              </div>
            -->
            <!-- </div> -->
-           <div class="success-badges">
-             <% if article.questions[1].answers.exists?(consultation: current_user.consultations.last) %>
+        <!--    <div class="success-badges">
+             <%# if article.questions[1].answers.exists?(consultation: current_user.consultations.last) %>
               <span class="badge badge-success" id="answered_badge">Respondido</span>
-             <% end %>
+             <%# end %>
 
-             <% if article.questions[2].answers.exists?(consultation: current_user.consultations.last) %>
+             <%# if article.questions[2].answers.exists?(consultation: current_user.consultations.last) %>
               <span class="badge badge-success" id="revised_badge">Sugerencia registrada</span>
-             <% end %>
-           </div>
+             <%# end %>
+           </div> -->
          </div>
          <p class="align-left"><%= raw article.spaced_content %></p>
          <% if article.subarticles.exists? %>
