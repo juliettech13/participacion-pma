@@ -18,7 +18,7 @@
   <h1 class="display-4"><%= @legislation.capitalized_title %></h1>
   <div class="doc-header">
     <div class="help">
-      <a data-html="true" data-toggle="popover" data-trigger="hover" title="How It Works" data-content="<%= render 'howitworks' %>" class="badge badge-warning">Ayuda</a>
+      <a data-html="true" data-toggle="popover" data-trigger="hover" title="¿Cómo funciona?" data-content="<%= render 'howitworks' %>" class="badge badge-warning">Ayuda</a>
       <a href="../download_pdf" class="badge badge-primary" target="_blank">Descargar PDF</a>
     </div>
   </div>
@@ -38,7 +38,7 @@
   <!-- </div> -->
 
   <% @legislation.titles.each do |title| %>
-  <div id="<%= title.description %>" data-target="slideshow.slide" class="slide">
+  <div id="title<%= title.number %>" data-target="slideshow.slide" class="slide">
 
     <div class="title-info">
       <h3>Titulo <%= title.number %>: <%= title.capitalized_title %></h3>
@@ -228,7 +228,7 @@
   <button id="nextbutton" style="display: none;" class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Próximo Título</button>
   <!-- <div class="finished"> -->
 
-    <%= link_to "Terminar la Consulta", new_consultation_general_feedback_path(@consultation), :id => 'finished', :class => 'btn-lg btn-primary', :style => ' text-decoration: none;' %>
+    <%= link_to "Terminar la Consulta", new_consultation_general_feedback_path(@consultation), id: 'finished', class: 'btn-lg btn-primary', style: ' text-decoration: none;' %>
     <!-- </div> -->
   </div>
 

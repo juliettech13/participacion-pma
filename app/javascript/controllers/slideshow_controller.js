@@ -22,56 +22,52 @@ export default class extends Controller {
   }
 
 showFinished(){
-  var lastSection = document.getElementById("DISPOSICIONES FINALES Y TRANSITORIAS")
-  // var lastSection = document.getElementById("Supporting the Ecosystem for Innovative Entrepreneurship")
-  var firstSection = document.getElementById("EL ESTADO PANAMEÑO")
-  // var firstSection = document.getElementById("Digital Infrastructure")
-  var secondSection = document.getElementById("NACIONALIDAD Y EXTRANJERÍA")
+  var lastSection = document.getElementById("title15")
+  var firstSection = document.getElementById("title1")
+  var secondSection = document.getElementById("title2")
   var continueTo = document.getElementById("continueto")
-  var intro = document.getElementById("Introduction")
   var finished = document.getElementById("finished");
   var next = document.getElementById("nextbutton");
   var previous = document.getElementById("prevbutton");
 
-
   if (firstSection.classList.contains("slide--current")) {
-      previous.style.display = 'none' ? '' : 'none';
-      next.style.display = 'none' ? '' : 'none';
+      previous.style.display = 'none';
+      next.style.display = '';
       continueto.style.display = 'none';
-      finished.style.display = 'none';
+      finished.style.display = '';
   }
 
-  if (intro.classList.contains("slide--current")) {
-      previous.style.display = 'none';
-      next.style.display = 'none';
-      continueto.style.display = 'none' ? '' : 'none';
-      finished.style.display = 'none';
-  }
+  // if (intro.classList.contains("slide--current")) {
+  //     previous.style.display = 'none';
+  //     next.style.display = 'none';
+  //     continueto.style.display = 'none' ? '' : 'none';
+  //     finished.style.display = 'none';
+  // }
 
   if (secondSection.classList.contains("slide--current")) {
       finished.style.display = 'none';
-      next.style.display = 'none' ? '' : 'none';
+      continueTo.style.display = 'none';
+      previous.style.display = ''
+      next.style.display = '';
   }
 
   if (lastSection.classList.contains("slide--current")) {
       next.style.display = 'none';
+      continueTo.style.display = 'none';
       finished.style.display = 'none' ? '' : 'none';
+      previous.style.display = ''
   }
 }
 
   showButton(){
-    var lastSection = document.getElementById("last");
-    var secondSection = document.getElementById("second");
-    var firstSection = document.getElementById("first");
-    var thirdSection = document.getElementById("third");
+    var lastSection = document.getElementById("title15");
+    var secondSection = document.getElementById("title2");
+    var firstSection = document.getElementById("title1");
     var next = document.getElementById("nextbutton");
-    var back = document.getElementById("backbutton");
+    var back = document.getElementById("prevbutton");
 
     if (lastSection.classList.contains("slide--current")) {
       next.style.display = 'none';
-    }
-    else if (thirdSection.classList.contains("slide--current")) {
-      next.style.display = 'none' ? '' : 'none';
     }
     else if (secondSection.classList.contains("slide--current")) {
       back.style.display = 'none' ? '' : 'none';
@@ -82,15 +78,15 @@ showFinished(){
   }
 
   close() {
-   this.element.parentNode.classList.remove("show")
+   this.element.parentNode.classList.remove("show");
   }
 
   next() {
-    this.showSlide(this.index + 1)
+    this.showSlide(this.index + 1);
   }
 
   previous() {
-    this.showSlide(this.index - 1)
+    this.showSlide(this.index - 1);
   }
 
   showSlide(index) {
