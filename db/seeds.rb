@@ -15,6 +15,9 @@ MetadatumSubarticle.destroy_all
 puts 'deleting metadata'
 Metadatum.destroy_all
 
+puts 'deleting subsubarticles'
+Subsubarticle.destroy_all
+
 puts 'deleting subarticles'
 Subarticle.destroy_all
 
@@ -2022,12 +2025,12 @@ t5 = Title.create!(number: 5,
 
       # esta lista debe ser del tipo a b c
       puts 'creating subarticles for article 164'
-      sa164001 = Subarticle.create!(content: "a) Orgánicas, las que se expidan en cumplimiento de los numerales 1, 2, 3, 4, 7, 8, 9, 10, 11, 12, 13, 14, 15 y 16 del artículo 159.",
+      sa164001 = Subarticle.create!(content: "Orgánicas, las que se expidan en cumplimiento de los numerales 1, 2, 3, 4, 7, 8, 9, 10, 11, 12, 13, 14, 15 y 16 del artículo 159.",
         article: a164,
         number: 1)
 
       puts 'creating subarticles for article 164'
-      sa164002 = Subarticle.create!(content: "b) Ordinarias, las que se expidan en relación con los demás numerales de dicho artículo.",
+      sa164002 = Subarticle.create!(content: "Ordinarias, las que se expidan en relación con los demás numerales de dicho artículo.",
         article: a164,
         number: 2)
 
@@ -2048,24 +2051,24 @@ t5 = Title.create!(number: 5,
 
 
       puts 'creating subarticles for article 165'
-      ssa165001a = Subarticle.create!(content: "a) Por Comisiones Permanentes de la Asamblea Nacional.",
-        article: a165,
+      ssa165001a = Subsubarticle.create!(content: "Por Comisiones Permanentes de la Asamblea Nacional.",
+        subarticle: sa165001,
         number: 1)
 
       puts 'creating subarticles for article 165'
-      ssa165001b = Subarticle.create!(content: "b) Por los Ministros de Estado, en virtud de autorización del Consejo de Gabinete.",
-        article: a165,
-        number: 1)
+      ssa165001b = Subsubarticle.create!(content: "Por los Ministros de Estado, en virtud de autorización del Consejo de Gabinete.",
+        subarticle: sa165001,
+        number: 2)
 
       puts 'creating subarticles for article 165'
-      ssa165001c = Subarticle.create!(content: "c) Por la Corte Suprema de Justicia, el Procurador General de la Nación y el Procurador de la Administración, siempre que se trate de la expedición o reformas de los Códigos Nacionales.",
-        article: a165,
-        number: 1)
+      ssa165001c = Subsubarticle.create!(content: "Por la Corte Suprema de Justicia, el Procurador General de la Nación y el Procurador de la Administración, siempre que se trate de la expedición o reformas de los Códigos Nacionales.",
+        subarticle: sa165001,
+        number: 3)
 
       puts 'creating subarticles for article 165'
-      ssa165001d = Subarticle.create!(content: "d) Por el Tribunal Electoral cuando se trate de materia de su competencia.",
-        article: a165,
-        number: 1)
+      ssa165001d = Subsubarticle.create!(content: "Por el Tribunal Electoral cuando se trate de materia de su competencia.",
+        subarticle: sa165001,
+        number: 4)
 
       # aqui termina la subsubsublista con letras.
 
@@ -2079,19 +2082,19 @@ t5 = Title.create!(number: 5,
       # aqui empieza una subsubsublista con letras.
 
       puts 'creating subarticles for article 165'
-      ssa165002a = Subarticle.create!(content: "a) Por cualquier miembro de la Asamblea Nacional.",
-        article: a165,
+      ssa165002a = Subsubarticle.create!(content: "Por cualquier miembro de la Asamblea Nacional.",
+        subarticle: sa165002,
+        number: 1)
+
+      puts 'creating subarticles for article 165'
+      ssa165002b = Subsubarticle.create!(content: "Por los Ministros de Estado, en virtud de autorización del Consejo de Gabinete.",
+        subarticle: sa165002,
         number: 2)
 
       puts 'creating subarticles for article 165'
-      ssa165002b = Subarticle.create!(content: "b) Por los Ministros de Estado, en virtud de autorización del Consejo de Gabinete.",
-        article: a165,
-        number: 2)
-
-      puts 'creating subarticles for article 165'
-      ssa165002c = Subarticle.create!(content: "c) Por los Presidentes de los Concejos Provinciales, con autorización del Concejo Provincial.",
-        article: a165,
-        number: 2)
+      ssa165002c = Subsubarticle.create!(content: "Por los Presidentes de los Concejos Provinciales, con autorización del Concejo Provincial.",
+        subarticle: sa165002,
+        number: 3)
 
       # aqui termina la subsubsublista con letras.
 

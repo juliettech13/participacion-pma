@@ -106,11 +106,11 @@
                 <p class='align-left'><%= raw subarticle.spaced_content %></p>
                 <% if subarticle.subsubarticles.exists? %>
                   <ul>
-                    <li>
-                      <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
+                    <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
+                      <li>
                         <p class='align-left'><%= raw subsubarticle.spaced_content %></p>
-                      <% end %>
-                    </li>
+                      </li>
+                    <% end %>
                   </ul>
                 <% end %>
               </li>
