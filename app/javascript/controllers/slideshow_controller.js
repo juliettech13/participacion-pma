@@ -11,15 +11,15 @@ export default class extends Controller {
     var injection = document.getElementById('answered_badge');
     var alertSpot = document.getElementById('success-badges');
     console.log(this.element, "hello from answered method inside slideshow controller");
-    var answerSection = this.element.parentNode.parentNode.querySelector(".success-badges");
-    answerSection.insertAdjacentHTML('afterbegin', '<span class="badge badge-success" id="answered_badge">Respondido</span>');
+    var answerSection = this.element.parentNode.parentNode;
+    answerSection.insertAdjacentHTML('beforeend', '<span class="badge badge-success badges p-2" id="answered_badge">Respondido</span>');
   }
 
   revised(){
     var injection = document.getElementById('revised_badge');
     var alertSpot = document.getElementById('success-badges');
-    var answerSection = this.element.parentNode.parentNode.querySelector(".success-badges");
-    alertSpot.insertAdjacentHTML('beforeend', '<span class="badge badge-success" id="revised_badge">Revisado</span>');
+    var answerSection = this.element.parentNode.parentNode;
+    answerSection.insertAdjacentHTML('beforeend', '<span class="badge badge-success badges p-2" id="revised_badge">Sugerido</span>');
   }
 
   scrolltop(){
