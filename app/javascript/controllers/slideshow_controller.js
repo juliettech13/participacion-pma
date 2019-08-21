@@ -60,9 +60,9 @@ showFinished(){
 }
 
   showButton(){
-    var lastSection = document.getElementById("title15");
-    var secondSection = document.getElementById("title2");
-    var firstSection = document.getElementById("title1");
+    var lastSection = document.getElementById("last");
+    var secondSection = document.getElementById("second");
+    var firstSection = document.getElementById("first");
     var next = document.getElementById("nextbutton");
     var back = document.getElementById("prevbutton");
 
