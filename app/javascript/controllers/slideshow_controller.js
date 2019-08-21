@@ -22,22 +22,13 @@ export default class extends Controller {
   }
 
 showFinished(){
-  console.log(this.element.childNodes);
-  console.log(this);
   var lastSection = document.getElementById("title15")
-  // var lastSection = document.getElementById("Supporting the Ecosystem for Innovative Entrepreneurship")
   var firstSection = document.getElementById("title1")
-  // var firstSection = document.getElementById("Digital Infrastructure")
   var secondSection = document.getElementById("title2")
-  console.log(firstSection, 'first')
-  console.log(secondSection, 'second')
   var continueTo = document.getElementById("continueto")
-  // var intro = document.getElementById("Introduction")
   var finished = document.getElementById("finished");
   var next = document.getElementById("nextbutton");
-  console.log(next, 'next')
   var previous = document.getElementById("prevbutton");
-  console.log(previous, 'previous')
 
   if (firstSection.classList.contains("slide--current")) {
       previous.style.display = 'none';
@@ -72,21 +63,12 @@ showFinished(){
     var lastSection = document.getElementById("title15");
     var secondSection = document.getElementById("title2");
     var firstSection = document.getElementById("title1");
-    console.log(firstSection, 'first');
-    console.log(secondSection, 'second')
-    // var thirdSection = document.getElementById("title3");
     var next = document.getElementById("nextbutton");
-    console.log(next, 'next button')
     var back = document.getElementById("prevbutton");
-    console.log(back, 'back button')
-
 
     if (lastSection.classList.contains("slide--current")) {
       next.style.display = 'none';
     }
-    // else if (thirdSection.classList.contains("slide--current")) {
-    //   next.style.display = 'none' ? '' : 'none';
-    // }
     else if (secondSection.classList.contains("slide--current")) {
       back.style.display = 'none' ? '' : 'none';
     }
@@ -97,17 +79,14 @@ showFinished(){
 
   close() {
    this.element.parentNode.classList.remove("show");
-   console.log("hello from close")
   }
 
   next() {
     this.showSlide(this.index + 1);
-    console.log("hello from next")
   }
 
   previous() {
     this.showSlide(this.index - 1);
-    console.log("hello from previous")
   }
 
   showSlide(index) {
