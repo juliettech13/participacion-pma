@@ -4811,7 +4811,7 @@ t15 = Title.create!(number: 15,
 # La ultima pregunta referirá a un Si/No sobre si el ciudadano quiere escribir alguna sugerencia.
 puts 'Creating questions for each article'
 Article.all.each do |article|
-  Question.create!(content: "Pregunta de prueba1", article: article)
-  Question.create!(content: "Pregunta de prueba2", article: article)
-  Question.create!(content: "Tienes alguna sugerencia?", article: article)
+  Question.create!(content: "¿Tienes alguna sugerencia?", article: article)
+  Question.create!(content: "¿Piensas que este artículo beneficia a Panamá a largo plazo?", article: article)
+  Question.create!(content: "¿Sientes que este artículo representa tu opinión sobre este tema?", article: article)
 end
