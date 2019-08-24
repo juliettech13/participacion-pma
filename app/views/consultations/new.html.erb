@@ -13,7 +13,7 @@
             <div data-target="slideshow.slide" class="slide" id="first">
               <div id="welcome">
                 <div class="page-header">
-                  <h2>Bienvenido a tu plataforma de consulta ciudadana</h2>
+                  <h4>Bienvenido a tu plataforma de consulta ciudadana</h4>
                 </div>
                 <p>La idea es que todos podamos contribuir nuestras opiniones e ideas sobre como debe lucir el documento mas importante de la república: la Constitución.</p>
               </div>
@@ -22,67 +22,66 @@
 <!-- instruciton 2 -->
             <div data-target="slideshow.slide" class="slide" id="second">
                <div id="how-it-works" style="">
-                <h2>¿Cómo funciona?</h2>
-                <ol>
-                  <br>
+                <h4>¿Cómo funciona?</h4>
+                <ol class='align-left'>
                   <li>
-                    <strong>Click</strong> en el artículo que te interesa
+                    <p><strong>Haz "click"</strong> en el artículo que te interesa comentar.</p>
                   </li>
                   <li>
-                    <strong>Responde</strong> las preguntas utilizando la escala del 1 al 5
+                    <p><strong>Responde</strong> las preguntas utilizando la escala del 1 al 5 (donde 1 es "no me gusta en absoluto" y 5 "estoy absolutamente de acuerdo").</p>
                   </li>
                   <li>
-                    <strong>Sugiere</strong> revisiones
+                    <p><strong>Sugiere</strong> los cambios que consideres necesarios.</p>
                   </li>
                   <br>
                   <li style='list-style: none; text-align: justify;' class='align-left'>
-                    Toma en cuenta que para leer los <strong>artículos modificados</strong> sólo debes pasar el cursor sobre el botón <span class="badge badge-danger">MODIFICADO</span>. Al hacerlo, se abrirá una ventana con el contenido propuesto por la <strong>Concertación Nacional para el Desarrollo</strong>.
+                    <p>Toma en cuenta que para leer los <strong>artículos modificados</strong> sólo debes pasar el cursor sobre el botón <span class="badge badge-danger">MODIFICADO</span>. Al hacerlo, se abrirá una ventana con el contenido propuesto por la <strong>Concertación Nacional para el Desarrollo</strong>.</p>
                   </li>
                 </ol>
-                <p style="font-size: 14px;"><strong>Nota:</strong> Puedes bajar el PDF del texto <a href="../download_pdf" style='font-weight: bold' target="_blank">aquí</a> si así lo deseas</p>
+                <p style="font-size: 14px;"><strong>Nota:</strong> Si lo deseas, puedes bajar el PDF del texto <a href="../download_pdf" style='font-weight: bold'target="_blank">aquí</a>.</p>
               </div>
             </div>
 
 <!-- instruciton 3 -->
             <div data-target="slideshow.slide" class="slide">
               <div id="scale" style="">
-                <h2>Escala del 1 al 5</h2>
-                <p>Cuando veas esta escala, toma en cuenta que </p>
-                  <p>1 = <strong>para nada</strong></p>
-                  <p>5 = <strong>mucho</strong></p>
+                <h4>Cuando debas responder con esta escala, toma en cuenta que:</h4>
+                  <p>1 = no me gusta en absoluto 👎🏽</p>
+                  <p>5 = estoy absolutamente de acuerdo 👍🏽</p>
                 </div>
               </div>
 
               <div data-target="slideshow.slide" class="slide" id="third">
                 <div id="own-pace" style="">
-                  <h2>Ve a tu propio paso</h2>
-                  <p>No hay ningun requerimiento de participacion, puedes volver cuantas veces quieras. Cualquier idea es aceptada para mejorar al pais.</p>
-                  <p>Click en <button class="btn btn-primary">Terminar la Consulta</button> cuando termines de leer el texto.</p>
+                  <h4>Lee el documento a tu propio ritmo</h4>
+                  <p>No hay ningun requerimiento de participación. Todos están invitados a colaborar y a leer y comentar todas las veces que quieran. Cualquier idea es aceptada para mejorar el país.</p>
+                  <p>Has "click" en <button class="btn btn-primary">terminar la Consulta</button> cuando termines de leer el texto.</p>
                 </div>
               </div>
 
 <!-- instruciton 4 -->
               <div data-target="slideshow.slide" class="slide" id="last">
                 <div id="abstract" style="">
-                  <h2>Abstracto</h2>
+                  <h4>Abstracto</h4>
                   <div class="abstract-text">
-                    <p>
-                      Este documento que veran a continuacion es parte del esfuerzo creado por la Concertacion Nacional creada el año pasado por actores de toda la sociedad civil, gobierno, y organizaciones pertinentes.
-                    </p>
+                    <p>El <strong>Consejo de la Concertación Nacional para el Desarrollo</strong>, creado mendiante <strong>Ley 20 de 2008</strong>, aprobó un paquete de "reformas constitucionales" que presentó a la consideración del Consejo de Gabinete. El documento fue aprobado, sin modificaciones, por el Órgano Ejecutivo, que a su vez autorizó al ministro de la Presidencia a presentarlo ante la Asamblea Nacional de Diputados. </p>
+                    <p>Este Órgano del Estado lo acogió para darle el trámite correspondiente, de conformidad con el artículo 313.2 de la Constitución Nacional sobre reformas constitucionales.</p>
+                    <p>La <strong>Comisión de Gobierno, Justicia y Asuntos Constitucionales de la Asamblea Nacional</strong> decidió realizar una gira de consultas ciudadanas a nivel nacional para escuchar las sugerencias de la población, a fin de evaluar su viabilidad y posterior incorporación al documento definitivo que será discutido en tres debates en el pleno parlamentario durante éste y el próximo periodo que <strong>culmina en abril de 2020</strong>.</p>
+                    <p>Los diputados de la <strong>bancada independiente</strong> queremos que los ciudadanos conozcan y den sus opiniones sobre este pliego de reformas, previo al referéndum en el cual los ciudadanos emitirán su decisión final.</p>
                   </div>
                 </div>
 
                 <div id="start">
                   <%= simple_form_for [@legislation, @consultation] do |f| %>
                   <%= f.input :user_id, as: :hidden %>
-                  <%= f.submit "Empieza mi Consulta", class: "new-consultation btn-lg btn-primary" %>
+                  <%= f.submit "empieza mi Consulta", class: "new-consultation btn-lg btn-primary" %>
                   <% end %>
                 </div>
               </div>
 
               <div class="navigation-btns">
-                <button id ="backbutton" class="btn btn-outline-primary" style="display: none;" data-action="slideshow#previous slideshow#showButton">Atrás</button>
-                <button id= "nextbutton" class="btn btn-outline-primary" data-action="slideshow#next slideshow#showButton">Adelante</button>
+                <button id ="backbutton" class="btn btn-outline-primary" style="display: none;" data-action="slideshow#previous slideshow#showButton">atrás</button>
+                <button id= "nextbutton" class="btn btn-outline-primary" data-action="slideshow#next slideshow#showButton">adelante</button>
               </div>
             </div>
           </div>
