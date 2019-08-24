@@ -15,7 +15,7 @@
 <p id="notice"><%= notice %></p>
 <div class="container legislationshow" data-controller="legislation">
 
-  <h1 class="display-4"><%= @legislation.capitalized_title %></h1>
+  <h1 class="display-4 font-"><%= @legislation.capitalized_title %></h1>
   <div class="doc-header">
     <div class="help">
       <a data-html="true" data-toggle="popover" data-trigger="hover" title="¿Cómo funciona?" data-content="<%= render 'howitworks' %>" class="badge badge-warning">Ayuda</a>
@@ -62,13 +62,13 @@
               <%# @metadata = Metadatum.find_by(article: article) %>
               <div class="flex flex-row success-badges">
                 <h6 class="align-left p-2">Artículo <%= article.number %></h6>
-                <p class="p-2"><button data-html="true" data-toggle="popover" data-trigger="hover" title="Artículo Modificado" class='badge badge-danger text-white popover-body' data-content="<%= render 'metadata_show', metadata: Metadatum.find_by(article: article) %>" data-boundary='scrollParent'>Modificación</button></p>
+                <p class="p-2"><button data-html="true" data-toggle="popover" data-trigger="hover" title="Artículo Modificado" class='badge badge-danger text-white popover-body font-12' data-content="<%= render 'metadata_show', metadata: Metadatum.find_by(article: article) %>" data-boundary='scrollParent'>MODIFICADO</button></p>
               </div>
               <% else %>
               <% if article.new == true %>
               <div class="flex flex-row success-badges">
                 <h6 class="align-left p-2">Artículo</h6>
-                <p class="p-2 badge badge-info">Nuevo</p>
+                <p class="p-2" style='font-size: 12px;'><button  class='badge badge-info text-white font-12 badge-padding' disabled>NUEVO</button></p>
               </div>
               <% else %>
               <div class="success-badges">
@@ -229,9 +229,9 @@
 <% end %>
 
 <div class="finished row">
-  <button id="continueto" style='display: none' class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Continúa</button>
-  <button id="prevbutton" style="display: none" class="btn-lg btn-primary" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">Título Anterior</button>
-  <button id="nextbutton" class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">Próximo Título</button>
+  <button id="continueto" style='display: none' class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">continúa</button>
+  <button id="prevbutton" style="display: none" class="btn-lg btn-primary" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">título Anterior</button>
+  <button id="nextbutton" class="btn-lg btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">próximo Título</button>
   <%= link_to "Terminar la Consulta", new_consultation_general_feedback_path(@consultation), id: 'finished', class: 'btn-lg btn-primary', style: 'text-decoration: none; display: none' %>
 </div>
 
