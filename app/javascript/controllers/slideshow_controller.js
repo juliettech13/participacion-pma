@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "slide"];
+  static targets = [ "slide", 'welcome' ];
 
   initialize() {
     this.showSlide(0)
@@ -71,7 +71,7 @@ showButton(){
   var secondSection = document.getElementById("second");
   var firstSection = document.getElementById("first");
   var next = document.getElementById("nextbutton");
-  var back = document.getElementById("prevbutton");
+  var back = document.getElementById("backbutton");
 
   if (lastSection.classList.contains("slide--current")) {
     next.style.display = 'none';

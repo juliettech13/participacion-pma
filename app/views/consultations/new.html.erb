@@ -10,8 +10,8 @@
 
           <div data-controller="slideshow" id="instructions">
 
-            <div data-target="slideshow.slide" class="slide" id="first">
-              <div id="welcome">
+            <div data-target="slideshow.slide" class="slide introductory-section" id="first">
+              <div id="welcome" data-target='slideshow.welcome'>
                 <div class="page-header">
                   <h4>Bienvenido a tu plataforma de consulta ciudadana</h4>
                 </div>
@@ -20,7 +20,7 @@
             </div>
 
 <!-- instruciton 2 -->
-            <div data-target="slideshow.slide" class="slide" id="second">
+            <div data-target="slideshow.slide" class="slide introductory-section" id="second">
                <div id="how-it-works" style="">
                 <h4>¿Cómo funciona?</h4>
                 <ol class='align-left'>
@@ -33,7 +33,7 @@
                   <li>
                     <p><strong>Sugiere</strong> los cambios que consideres necesarios.</p>
                   </li>
-                  <br>
+                  <hr>
                   <li style='list-style: none; text-align: justify;' class='align-left'>
                     <p>Toma en cuenta que para leer los <strong>artículos modificados</strong> sólo debes pasar el cursor sobre el botón <span class="badge badge-danger">MODIFICADO</span>. Al hacerlo, se abrirá una ventana con el contenido propuesto por la <strong>Concertación Nacional para el Desarrollo</strong>.</p>
                   </li>
@@ -43,15 +43,15 @@
             </div>
 
 <!-- instruciton 3 -->
-            <div data-target="slideshow.slide" class="slide">
+            <div data-target="slideshow.slide" class="slide introductory-section">
               <div id="scale" style="">
-                <h4>Cuando debas responder con esta escala, toma en cuenta que:</h4>
-                  <p>1 = no me gusta en absoluto 👎🏽</p>
-                  <p>5 = estoy absolutamente de acuerdo 👍🏽</p>
+                <h4>Cuando veas esta escala, toma en cuenta que:</h4>
+                  <p>1 = <strong>no me gusta en absoluto</strong> 👎🏽</p>
+                  <p>5 = <strong>estoy absolutamente de acuerdo</strong> 👍🏽</p>
                 </div>
               </div>
 
-              <div data-target="slideshow.slide" class="slide" id="third">
+              <div data-target="slideshow.slide" class="slide introductory-section" id="third">
                 <div id="own-pace" style="">
                   <h4>Lee el documento a tu propio ritmo</h4>
                   <p>No hay ningun requerimiento de participación. Todos están invitados a colaborar y a leer y comentar todas las veces que quieran. Cualquier idea es aceptada para mejorar el país.</p>
@@ -60,7 +60,7 @@
               </div>
 
 <!-- instruciton 4 -->
-              <div data-target="slideshow.slide" class="slide" id="last">
+              <div data-target="slideshow.slide" class="slide introductory-section" id="last">
                 <div id="abstract" style="">
                   <h4>Abstracto</h4>
                   <div class="abstract-text">
@@ -74,13 +74,13 @@
                 <div id="start">
                   <%= simple_form_for [@legislation, @consultation] do |f| %>
                   <%= f.input :user_id, as: :hidden %>
-                  <%= f.submit "empieza mi Consulta", class: "new-consultation btn-lg btn-primary" %>
+                  <%= f.submit "empieza mi consulta", class: "new-consultation btn btn-primary" %>
                   <% end %>
                 </div>
               </div>
 
               <div class="navigation-btns">
-                <button id ="backbutton" class="btn btn-outline-primary" style="display: none;" data-action="slideshow#previous slideshow#showButton">atrás</button>
+                <button id ="backbutton" class="btn btn-outline-primary" data-action="slideshow#previous slideshow#showButton" style='display: none'>atrás</button>
                 <button id= "nextbutton" class="btn btn-outline-primary" data-action="slideshow#next slideshow#showButton">adelante</button>
               </div>
             </div>

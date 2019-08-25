@@ -37,9 +37,13 @@
 }
 
 .home .card-description p {
-  font-size: 23px;
+  font-size: large;
   font-weight: lighter;
   letter-spacing: 0.2px;
+}
+
+.home .card-description h1{
+  font-size:2.5rem
 }
 
 .row {
@@ -70,6 +74,7 @@
   font-weight: bold;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
 }
+
 .banner p {
   font-size: 25px;
   font-weight: lighter;
@@ -77,3 +82,12 @@
   opacity: 0.6;
   margin-bottom: 30px;
 }
+
+label, input{
+  font-size: large
+}
+
+.introductory-section p{
+  font-size: large
+}
+
