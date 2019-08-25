@@ -10,20 +10,20 @@
 
           <div class=" form-control ">
             <div class=" form-group ">
-            Email
+            email
               <%= f.input :email, label: false, required: false, autofocus: true, placeholder: "bob@gmail.com", class: "form-control" %>
             </div>
             <div class="form-group ">
-            Contaseña
+            contaseña
                <%= f.input :password, label: false, required: true, placeholder: "••••••(6 characters min.)" %>
             </div>
             <div class="form-group">
-              Confirma la contraseña
+              confirma la contraseña
                <%= f.input :password_confirmation, label: false, required: true %>
             </div>
 
             <div class="form-actions ">
-              <%= f.button :submit, "Registrate y continua", class: "btn-login-custom form-control"  %>
+              <%= f.button :submit, "regístrate y continúa", class: "btn-login-custom form-control"  %>
 
             </div>
              <% end %>

@@ -8,9 +8,9 @@
           <% if current_user.nil? %>
           <%= render 'signuphomepage' %>
           <% else %>
-          <%= link_to "Empecemos", new_legislation_consultation_path(@legislation), :class => 'btn btn-lg btn-primary get-started-button', :role => 'button' %>
+          <%= link_to "empecemos", new_legislation_consultation_path(@legislation), :class => 'btn btn-primary get-started-button', :role => 'button' %>
           <p>
-            Gracias al interés de la ciudadanía de querer actualizar nuestra Constitución, los diputados de la bancada independiente queriamos crear un espacio para preguntarle a las personas qué opinan de este documento tan importante.
+            Te invitamos a leer el documento completo. Anímate a contribuir con tus ideas y opiniones para que juntos demos forma a nuestra nueva Constitución.
           </p>
           <% end %>
         </div>

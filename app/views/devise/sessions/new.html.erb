@@ -3,23 +3,23 @@
     <div class="col-xs-12 col-lg-4 col-sm-4 col-sm-offset-4">
       <div class="login_form">
         <div class="login-form-header col-sm-12">
-          <h3>Accede a tu cuenta</h3>
+          <h5>Accede a tu cuenta</h5>
         </div>
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class=" form-control ">
           <div class=" form-group ">
-            Email
+            email
             <%= f.input :email, label: false, required: false, autofocus: true, placeholder: "juan@gmail.com", class: "form-control" %>
           </div>
           <div class="form-group ">
-            Contraseña
+            contraseña
             <%= f.input :password, label: false, required: false, placeholder: "••••••", class: "form-control"  %>
           </div>
          <!--  <div class="form-check">
             <%#= f.input :remember_me, as: :boolean, class: "form-control"   if devise_mapping.rememberable?%>
           </div> -->
           <div class="form-actions ">
-            <%= f.button :submit, "Accede", class: "btn-login-custom form-control"  %>
+            <%= f.button :submit, "accede", class: "btn-login-custom form-control"  %>
           </div>
             <% end %>
           <div>
