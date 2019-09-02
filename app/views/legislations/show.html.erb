@@ -65,40 +65,49 @@
                 <p class="p-2"><button data-html="true" data-toggle="popover" data-trigger="hover" title="Artículo Modificado" class='badge badge-danger text-white popover-body font-12' data-content="<%= render 'metadata_show', metadata: Metadatum.find_by(article: article) %>" data-boundary='scrollParent'>VER MODIFICADO</button></p>
               </div>
               <% else %>
-              <% if article.new == true %>
-              <div class="flex flex-row success-badges">
-                <h6 class="align-left p-2">Artículo</h6>
-                <p class="p-2" style='font-size: 12px;'><button  class='badge badge-info text-white font-12 badge-padding' disabled>NUEVO</button></p>
-              </div>
-              <% else %>
-              <div class="success-badges">
-                <h6 class="align-left">Artículo <%= article.number %></h6>
-              </div>
-              <% end %>
+                <% if article.new == true %>
+                  <div class="flex flex-row success-badges">
+                    <h6 class="align-left p-2">Artículo</h6>
+                    <p class="p-2" style='font-size: 12px;'><button  class='badge badge-info text-white font-12 badge-padding' disabled>NUEVO</button></p>
+                  </div>
+                <% else %>
+                  <div class="success-badges">
+                    <h6 class="align-left">Artículo <%= article.number %></h6>
+                  </div>
+                <% end %>
               <% end %>
             </div>
+
             <p class="align-left"><%= raw article.spaced_content %></p>
+
             <% if article.subarticles.exists? %>
-              <ol>
-                <% article.subarticles.order(number: :asc).each do |subarticle|  %>
-                  <li>
-                    <p class='align-left'><%= raw subarticle.spaced_content %></p>
-                    <% if subarticle.subsubarticles.exists? %>
-                      <ul>
-                        <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
-                          <li>
-                            <p class='align-left'><%= raw subsubarticle.spaced_content %></p>
-                          </li>
-                        <% end %>
-                      </ul>
-                    <% end %>
-                  </li>
-                <% end %>
-              </ol>
+                  <ol>
+              <% article.subarticles.select{ |sa| sa.number < 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+                <%# if subarticle.number < 2000 %>
+                    <li>
+                      <p class='align-left'><%= raw subarticle.spaced_content %></p>
+                      <% if subarticle.subsubarticles.exists? %>
+                        <ul>
+                          <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
+                            <li>
+                              <p class='align-left'><%= raw subsubarticle.spaced_content %></p>
+                            </li>
+                          <% end %>
+                        </ul>
+                      <% end %>
+                    </li>
+            <% end %>
+                  </ol>
+                <%# else %>
+              <%# end %>
+            <% article.subarticles.select{ |sa| sa.number >= 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+              <p class='align-left'><%= raw subarticle.spaced_content %></p>
+            <% end %>
             <% end %>
           </a>
         </a>
       </div>
+
       <!-- </div> -->
 
       <div id="collapse_<%= article.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
