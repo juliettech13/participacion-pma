@@ -4,6 +4,11 @@ class Article < ApplicationRecord
   has_many :metadata
   has_many :subarticles
 
+
+  def integer
+    number.to_i
+  end
+
     def number_of_answers_introduction
       question_array = []
       self.questions.each do |question|
