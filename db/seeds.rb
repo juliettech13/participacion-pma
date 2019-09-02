@@ -617,7 +617,7 @@ t3 = Title.create!(number: 3,
       puts 'creating subarticles for article 63'
       sa0063 = Subarticle.create!(content: "La Ley organizará y determinará el funcionamiento de la jurisdicción especial de menores la cual, entre otras funciones, conocerá sobre la investigación de la paternidad, el abandono de familia y los problemas de conducta juvenil.",
         article: a63,
-        number: 63)
+        number: 2000)
 
 
   puts 'creating chapter 3'
@@ -1157,7 +1157,7 @@ t3 = Title.create!(number: 3,
       puts 'creating subarticles for article 126'
       sa00126 = Subarticle.create!(content: "La política establecida para el desarrollo de este Capítulo será aplicable a las comunidades indígenas de acuerdo con los métodos científicos de cambio cultural.",
         article: a126,
-        number: 00126)
+        number: 2000)
 
     puts 'creating article 127'
     a127 = Article.create!(content: 'El Estado garantizará a las comunidades indígenas la reserva de las tierras necesarias y la propiedad colectiva de las mismas para el logro de su bienestar económico y social. La Ley regulará los procedimientos que deban seguirse para lograr esta finalidad y las delimitaciones correspondientes dentro de las cuales se prohíbe la apropiación privada de tierras.',
@@ -1315,7 +1315,7 @@ t4 = Title.create!(number: 4,
       sa00136 = Subarticle.create!(content: "Igualmente, se prohíbe la exacción de cuotas, contribuciones, cobros o descuentos a los trabajadores del sector privado por los empleadores para fines políticos, aun a pretexto que son voluntarias. /n
       La Ley tipificará los delitos electorales y señalará las sanciones respectivas.",
         article: a136,
-        number: 00136)
+        number: 2000)
 
     puts 'creating article 137'
     a137 = Article.create!(content: 'Las condiciones de elegibilidad para ser candidato a cargos de elección popular, por parte de funcionarios públicos, serán definidas en la Ley.',
@@ -1619,10 +1619,13 @@ t5 = Title.create!(number: 5,
 
       # continua parrafo del articulo
       puts 'creating subarticles for article 151'
-      sa00151 = Subarticle.create!(content: "Los partidos políticos también podrán, mediante proceso sumario, revocar el mandato de los Diputados Principales y Suplentes que hayan renunciado a su partido.  /n
-      Los electores de un circuito electoral podrán solicitar al Tribunal Electoral revocar el mandato de los Diputados Principales o Suplentes de libre postulación que hayan elegido, para lo cual cumplirán los requisitos y formalidades establecidas en la Ley.",
+      sa00151 = Subarticle.create!(content: "Los partidos políticos también podrán, mediante proceso sumario, revocar el mandato de los Diputados Principales y Suplentes que hayan renunciado a su partido.",
         article: a151,
-        number: 00151)
+        number: 2000)
+
+      sa00151 = Subarticle.create!(content: "Los electores de un circuito electoral podrán solicitar al Tribunal Electoral revocar el mandato de los Diputados Principales o Suplentes de libre postulación que hayan elegido, para lo cual cumplirán los requisitos y formalidades establecidas en la Ley.",
+        article: a151,
+        number: 2001)
 
     puts 'creating article 152'
     a152 = Article.create!(content: 'Se denominarán sesiones judiciales las dedicadas al ejercicio de las atribuciones jurisdiccionales de la Asamblea Nacional, sea cual fuere el tiempo en que se celebren y la forma como dicha Asamblea Nacional hubiere sido convocada. Su celebración no alterará la continuidad y la duración de una legislatura, y sólo terminarán cuando la Asamblea hubiese fallado la causa pendiente. Para ejercer funciones jurisdiccionales, la Asamblea Nacional podrá reunirse por derecho propio, sin previa convocatoria.',
@@ -1755,6 +1758,11 @@ t5 = Title.create!(number: 5,
         article: a158,
         number: 4)
 
+      puts 'creating subarticles for article 158'
+      sa158004 = Subarticle.create!(content: "Queda exceptuado el caso cuando el Diputado hace uso personal o profesional de servicios públicos o efectúe operaciones corrientes de la misma índole con instituciones o empresas vinculadas al Estado.",
+        article: a158,
+        number: 2000)
+
       puts 'creating metadata for article 158'
       m158 = Metadatum.create!(content: "Los Diputados no podrán:",
         article: a158)
@@ -1867,7 +1875,7 @@ t5 = Title.create!(number: 5,
       puts 'creating subarticles for article 159'
       sa1590017 = Subarticle.create!(content: "Dictar el Reglamento Orgánico de su régimen interno.",
         article: a159,
-        number: 17)
+        number: 2000)
 
     puts 'creating article 160'
     a160 = Article.create!(content: 'Es función judicial de la Asamblea Nacional conocer de las acusaciones o denuncias que se presenten contra el Presidente de la República y los Magistrados de la Corte Suprema de Justicia, y juzgarlos, si a ello diere lugar, por actos ejecutados en el ejercicio de sus funciones en perjuicio del libre funcionamiento del poder público o violatorios de esta Constitución o las leyes.',
