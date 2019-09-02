@@ -264,6 +264,15 @@ button{
   margin-right: 10px
 }
 
+.medium-font{
+  font-weight: bold;
+  font-size: 15px
+}
+
+.small-font{
+  font-size: 13px;
+}
+
 @media only screen and (max-width: 600px) {
 
   .title .jumbotron {

@@ -112,7 +112,7 @@ ActiveAdmin.setup do |config|
   # roots for each namespace.
   #
   # Default:
-  config.root_to = 'general_feedbacks#index'
+  config.root_to = 'answers#index'
 
   # == Admin Comments
   #
