@@ -6,7 +6,7 @@
       $(console.log("Hello, Failed!"));
     });
     $("[data-toggle=popover]").popover({
-      style: "max-width: 600px;"
+      trigger: 'focus'
     });
   });
 </script>
@@ -58,13 +58,13 @@
         <div class="card">
           <a class="btn btn-link article" data-toggle="collapse" data-target="#collapse_<%= article.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
            <div class="card-header" id="headingOne">
-            <!-- <div class="hello"></div> -->
             <div id="supporting-content">
               <% if Metadatum.exists?(article: article) %>
-              <%# @metadata = Metadatum.find_by(article: article) %>
               <div class="flex flex-row success-badges">
                 <h6 class="align-left p-2">Artículo <%= article.integer %></h6>
-                <p class="p-2"><button data-html="true" data-toggle="popover" data-trigger="hover" title="Artículo Modificado" class='badge badge-danger text-white popover-body font-12' data-content="<%= render 'metadata_show', metadata: Metadatum.find_by(article: article) %>" data-boundary='scrollParent'>VER MODIFICADO</button></p>
+
+                  <a role='button' type='button' data-html="true" data-toggle="popover" tabindex='0' data-trigger='focus' title="Artículo Modificado" class='badge badge-danger text-white popover-body font-12 p-2' data-content="<%= render 'metadata_show', metadata: Metadatum.find_by(article: article) %>" data-boundary='scrollParent'><p>VER MODIFICADO</p></a>
+                </p>
               </div>
               <% else %>
                 <% if article.new == true %>
