@@ -1056,7 +1056,7 @@ t3 = Title.create!(number: 3,
     puts 'creating article 118'
     a118 = Article.create!(content: "Es deber del Estado enfrentar el cambio climático en el contexto del desarrollo sostenible, adoptando medidas para la mitigación y eficiencia energética, incluyendo el desarrollo y uso de tecnologías limpias y fuentes de energía renovables, encaminadas hacia un modelo de descarbonización; e implementando las medidas de adaptación, restaurauración de ecosistemas y educación necesarias para reducir la vulnerabilidad e incrementar la resiliencia de la población, los ecosistemas y los sistemas productivos a los impactos producidos por la degradación ambiental y el cambio climático.",
       chapter: c37,
-      number: 118.1,
+      number: 118.2,
       new: true)
 
     puts 'creating article 119'
@@ -2018,7 +2018,7 @@ t5 = Title.create!(number: 5,
       La sentencia condenatoria dictada por dicha comisión será recurrible ante la Asamblea Nacional, sin la participación de los diputados que hayan integrado la referida comisión En estos procesos actuará como juez de garantías el diputado designado por la referida comisión. /n
       Cualquier medida cautelar solicitada por el Procurador General será autorizada por el juez de garantías, cuyas decisiones serán recurribles ante la mencionada Comisión especial de la Asamblea Nacional.",
       chapter: c51,
-      number: 163.1,
+      number: 163.3,
       new: true)
 
 
@@ -3039,7 +3039,7 @@ t7 = Title.create!(number: 7,
     puts 'creating article 218'
     a218 = Article.create!(content: "Se establece la Jurisdicción Constitucional con competencia nacional, a cargo del Tribunal Constitucional, que es el máximo órgano judicial, independiente, único en su orden jurisdiccional y como intérprete de la Constitución Política de la República de Panamá, está encargado de la guarda de la integridad y supremacía de la misma.",
       chapter: c72,
-      number: 218.1,
+      number: 218.4,
       new: true)
 
 
@@ -3049,7 +3049,7 @@ t7 = Title.create!(number: 7,
     puts 'creating article 221'
     a221 = Article.create!(content: "Toda denuncia o querella que se presente contra un magistrado de la Corte Suprema de Justicia, será investigada por el Procurador General de la Nación o Fiscal delegado. En caso de ser imputado por éste, el mismo será procesado, en primera instancia, por el Tribunal Constitucional. En la primera instancia el juzgamiento corresponderá a dos magistrados principales y un suplente de dicho tribunal. La sentencia dictada en primera instancia será recurrible ante otros tres magistrados principales o suplentes distintos de los que hayan dictado el fallo de primera instancia. En estos casos actuará como juez de garantías el magistrado que se designe por el resto del Tribunal Constitucional. Las medidas cautelares solicitadas por el Procurador General de la Nación serán autorizadas por el juez de garantías, cuyas decisiones serán recurribles ante los magistrados de primera instancia.",
       chapter: c72,
-      number: 221.1,
+      number: 221.5,
       new: true)
 
 
@@ -3069,7 +3069,7 @@ t7 = Title.create!(number: 7,
     puts 'creating article 219'
     a2191 = Article.create!(content: "El Tribunal Constitucional estará integrada por cinco (5) magistrados y sus respectivos suplentes, quienes deberán cumplir con iguales requisitos que para ser Magistrado de la Corte Suprema de Justicia, y serán nombrados de igual forma que éstos, mediante el principio de nombramientos escalonados. A los magistrados del Tribunal Constitucional les son aplicables las mismas prohibiciones y prerrogativas que establece esta Constitución para los Magistrados de la Corte Suprema de Justicia.",
       chapter: c72,
-      number: 219.1,
+      number: 219.6,
       new: true)
 
     puts 'creating article 220'
@@ -3112,7 +3112,7 @@ t7 = Title.create!(number: 7,
       puts 'creating article 220'
       a2201 = Article.create!(content: "Son funciones del Tribunal Constitucional las siguientes:",
         chapter: c72,
-        number: 220.1,
+        number: 220.7,
         new: true)
 
         # listas nuevas
@@ -4728,14 +4728,14 @@ t15 = Title.create!(number: 15,
     puts 'creating article 328'
     Article.create!(content: "Todos los casos en materia constitucional que se encuentren pendientes en el Pleno de la Corte Suprema de Justicia, se adjudicarán al Tribunal Constitucional, excepto aquellos que ya estén en lectura o con proyectos de fallo.",
       chapter: c152,
-      number: 328.1,
+      number: 328.8,
       new: true)
 
     # articulo nuevo 9. debe venir despues del 328 con ese titulo
     puts 'creating article 328'
     Article.create!(content: "En vista de que las presentes reformas constitucionales modifican y eliminan artículos de la Constitución de 1972, e introducen en ella artículos nuevos, quedando numerosos artículos sin modificar, se faculta al Órgano Ejecutivo para que, de ser aprobadas estas reformas constitucionales, elabore una ordenación sistemática de las disposiciones no reformadas y de las nuevas disposiciones en forma de texto único, que tenga una numeración corrida de artículos, comenzando con el número uno, con las debidas menciones de artículos puestas en orden, eliminando o reemplazando aquellos términos o expresiones que contravengan las nuevas disposiciones, y que se publique este texto único de la Constitución en la Gaceta Oficial, en el término de veinte (20) días calendarios, contados a partir de la fecha de aprobación del Acto Constitucional. El mismo texto único se ubicará en un folleto de edición oficial, para los fines de su amplia difusión.",
       chapter: c152,
-      number: 328.2,
+      number: 328.9,
       new: true)
 
 

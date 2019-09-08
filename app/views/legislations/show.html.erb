@@ -47,17 +47,25 @@
            <div class="card-header" id="headingOne">
             <div id="supporting-content">
               <% if Metadatum.exists?(article: article) %>
-              <div class="flex flex-row success-badges">
-                <h6 class="align-left p-2">Artículo <%= article.integer %></h6>
-
-                  <p class='font-12 p-2'><button type='button' data-html="true" data-toggle="popover" data-trigger="hover" title="Artículo Modificado" class='badge badge-danger text-white popover-body' data-content="<%= render 'metadata_show', metadata: Metadatum.find_by(article: article) %>" data-boundary='scrollParent'>VER MODIFICADO</button></p>
+              <!-- <div class="flex flex-row success-badges"> -->
+                <!-- <h6 class="align-left p-2">Artículo <%#= article.integer %></h6> -->
+                <div class="success-badges row">
+                  <!-- <h6 class="align-left">Artículo <%#= article.integer %> ACTUAL</h6> -->
+                  <div class='col-xs-12 col-md-6 padding-left-0'>
+                    <h6 class='font-12 align-left'>Artículo <%= article.integer %> <strong>(actual)</strong></h6>
+                  </div>
+                  <div class='col-xs-12 col-md-6'>
+                    <p class='font-12 text-center'>
+                      <button type='button' class='badge badge-danger text-white'>MODIFICACIÓN PROPUESTA</button>
+                    </p>
+                  </div>
                 </p>
               </div>
               <% else %>
                 <% if article.new == true %>
                   <div class="flex flex-row success-badges">
-                    <h6 class="align-left p-2">Artículo</h6>
-                    <p class="p-2" style='font-size: 12px;'><button  class='badge badge-info text-white font-12 badge-padding' disabled>NUEVO</button></p>
+                    <!-- <h6 class="align-left p-2">Artículo</h6> -->
+                    <p class="p-2" style='font-size: 12px;'><button  class='badge badge-info text-white font-12 badge-padding' disabled>ARTÍCULO NUEVO <%= article.new_art_number %></button></p>
                   </div>
                 <% else %>
                   <div class="success-badges">
@@ -67,31 +75,46 @@
               <% end %>
             </div>
 
-            <p class="align-left"><%= raw article.spaced_content %></p>
+            <% if Metadatum.exists?(article: article) %>
+              <div class="row">
+                <p class="align-left col-xs-12 col-md-6"><%= raw article.spaced_content %></p>
+                <p class="align-left col-xs-12 col-md-6">
+                  <%= raw article.metadata.first.spaced_content %>
+                  <ol>
+                    <% article.metadata.first.metadatum_subarticles.order(number: :asc).each do |subarticle| %>
+                      <li>
+                        <p><%= raw subarticle.content %></p>
+                      </li>
+                    <% end %>
+                  </ol>
+                </p>
+              </div>
+
+
+            <% else %>
+              <p class="align-left"><%= raw article.spaced_content %></p>
+            <% end %>
 
             <% if article.subarticles.exists? %>
-                  <ol>
+              <ol>
               <% article.subarticles.select{ |sa| sa.number < 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
-                <%# if subarticle.number < 2000 %>
-                    <li>
-                      <p class='align-left'><%= raw subarticle.spaced_content %></p>
-                      <% if subarticle.subsubarticles.exists? %>
-                        <ol type='a'>
-                          <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
-                            <li>
-                              <p class='align-left'><%= raw subsubarticle.spaced_content %></p>
-                            </li>
-                          <% end %>
-                        </ol>
+                <li>
+                  <p class='align-left'><%= raw subarticle.spaced_content %></p>
+                  <% if subarticle.subsubarticles.exists? %>
+                    <ol type='a'>
+                      <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
+                        <li>
+                          <p class='align-left'><%= raw subsubarticle.spaced_content %></p>
+                        </li>
                       <% end %>
-                    </li>
-            <% end %>
-                  </ol>
-                <%# else %>
-              <%# end %>
-            <% article.subarticles.select{ |sa| sa.number >= 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
-              <p class='align-left'><%= raw subarticle.spaced_content %></p>
-            <% end %>
+                    </ol>
+                  <% end %>
+                </li>
+              <% end %>
+              </ol>
+              <% article.subarticles.select{ |sa| sa.number >= 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+                <p class='align-left'><%= raw subarticle.spaced_content %></p>
+              <% end %>
             <% end %>
           </a>
         </a>
