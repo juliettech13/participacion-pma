@@ -2,6 +2,7 @@
   "name": "policy_consultation_test",
   "private": true,
   "dependencies": {
+    "@patternfly/react-core": "^3.87.3",
     "@rails/webpacker": "3.5",
     "bootstrap": "3",
     "jquery": "^3.3.1",
