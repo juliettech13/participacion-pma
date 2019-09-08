@@ -24,17 +24,17 @@
   </div>
 
   <div data-controller="slideshow" class='d-flex flex-row'>
-    <div class="p-2 filter sticky-top">
-        <h6>Index</h6>
-        <ol>
-          <% @legislation.titles.each do |title| %>
-            <li>
-              <a href="#title<%= title.number %>" class='font-12'><%= title.capitalized_title %></a>
-            </li>
-          <% end %>
-        </ol>
+    <div class="p-2 filter">
+      <h6>Index</h6>
+      <ol>
+        <% @legislation.titles.each do |title| %>
+        <li>
+          <a href="#title<%= title.number %>" class='font-12'><%= title.capitalized_title %></a>
+        </li>
+        <% end %>
+      </ol>
     </div>
-    <div class="p-2 legislation-content flex-grow-0">
+    <div class="p-2 legislation-content">
       <% @legislation.titles.order(number: :asc).each do |title| %>
       <div id="title<%= title.number %>" data-target="slideshow.slide" class="slide">
         <div class="title-info">
@@ -45,9 +45,9 @@
         <div id="accordion">
           <% title.chapters.order(number: :asc).each do |chapter| %>
           <% if chapter.number != 0 %>
-            <div id="chapter<%= chapter.number %>" class="margin-top-btm-25">
-              <h5>Capítulo <%= chapter.number %>: <%= chapter.description %></h5>
-            </div>
+          <div id="chapter<%= chapter.number %>" class="margin-top-btm-25">
+            <h5>Capítulo <%= chapter.number %>: <%= chapter.description %></h5>
+          </div>
           <% end %>
           <% chapter.articles.order(number: :asc).each do |article| %>
 
@@ -71,59 +71,59 @@
                   </p>
                 </div>
                 <% else %>
-                  <% if article.new == true %>
-                    <div class="flex flex-row success-badges">
-                      <!-- <h6 class="align-left p-2">Artículo</h6> -->
-                      <p class="p-2" style='font-size: 12px;'><button  class='badge badge-info text-white font-12 badge-padding' disabled>ARTÍCULO NUEVO <%= article.new_art_number %></button></p>
-                    </div>
-                  <% else %>
-                    <div class="success-badges">
-                      <h6 class="align-left">Artículo <%= article.integer %></h6>
-                    </div>
-                  <% end %>
+                <% if article.new == true %>
+                <div class="flex flex-row success-badges">
+                  <!-- <h6 class="align-left p-2">Artículo</h6> -->
+                  <p class="p-2" style='font-size: 12px;'><button  class='badge badge-info text-white font-12 badge-padding' disabled>ARTÍCULO NUEVO <%= article.new_art_number %></button></p>
+                </div>
+                <% else %>
+                <div class="success-badges">
+                  <h6 class="align-left">Artículo <%= article.integer %></h6>
+                </div>
+                <% end %>
                 <% end %>
               </div>
 
               <% if Metadatum.exists?(article: article) %>
-                <div class="row">
-                  <p class="align-left col-xs-12 col-md-6"><%= raw article.spaced_content %></p>
-                  <p class="align-left col-xs-12 col-md-6">
-                    <%= raw article.metadata.first.spaced_content %>
-                    <ol>
-                      <% article.metadata.first.metadatum_subarticles.order(number: :asc).each do |subarticle| %>
-                        <li>
-                          <p><%= raw subarticle.content %></p>
-                        </li>
-                      <% end %>
-                    </ol>
-                  </p>
-                </div>
+              <div class="row">
+                <p class="align-left col-xs-12 col-md-6"><%= raw article.spaced_content %></p>
+                <p class="align-left col-xs-12 col-md-6">
+                  <%= raw article.metadata.first.spaced_content %>
+                  <ol>
+                    <% article.metadata.first.metadatum_subarticles.order(number: :asc).each do |subarticle| %>
+                    <li>
+                      <p><%= raw subarticle.content %></p>
+                    </li>
+                    <% end %>
+                  </ol>
+                </p>
+              </div>
 
 
               <% else %>
-                <p class="align-left"><%= raw article.spaced_content %></p>
+              <p class="align-left"><%= raw article.spaced_content %></p>
               <% end %>
 
               <% if article.subarticles.exists? %>
-                <ol>
+              <ol>
                 <% article.subarticles.select{ |sa| sa.number < 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
-                  <li>
-                    <p class='align-left'><%= raw subarticle.spaced_content %></p>
-                    <% if subarticle.subsubarticles.exists? %>
-                      <ol type='a'>
-                        <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
-                          <li>
-                            <p class='align-left'><%= raw subsubarticle.spaced_content %></p>
-                          </li>
-                        <% end %>
-                      </ol>
-                    <% end %>
-                  </li>
-                <% end %>
-                </ol>
-                <% article.subarticles.select{ |sa| sa.number >= 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+                <li>
                   <p class='align-left'><%= raw subarticle.spaced_content %></p>
+                  <% if subarticle.subsubarticles.exists? %>
+                  <ol type='a'>
+                    <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
+                    <li>
+                      <p class='align-left'><%= raw subsubarticle.spaced_content %></p>
+                    </li>
+                    <% end %>
+                  </ol>
+                  <% end %>
+                </li>
                 <% end %>
+              </ol>
+              <% article.subarticles.select{ |sa| sa.number >= 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+              <p class='align-left'><%= raw subarticle.spaced_content %></p>
+              <% end %>
               <% end %>
             </a>
           </a>
@@ -214,15 +214,11 @@
         </div>
       </div>
 
-        </div>
-
-
-        <%# end %>
-        <% end %>
-        <% end %> <!-- chapter loop ends -->
-      </div>
+    </div>
+    <% end %>
+    <% end %> <!-- chapter loop ends -->
+  </div>
 </div>
-<!-- </div> #row -->
 </div>
 <% end %>
 
