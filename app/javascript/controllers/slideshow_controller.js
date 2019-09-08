@@ -89,6 +89,7 @@ close() {
 }
 
 next() {
+  console.log(this)
   this.showSlide(this.index + 1);
 }
 
