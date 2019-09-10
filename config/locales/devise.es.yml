@@ -125,3 +125,5 @@ es:
         not_saved:
           one: "Ha ocurrido 1 error:"
           other: "Han ocurrido %{count} errores:"
+        passwords:
+            too_short: "Tu contraseña ha sido demasiado corta"
