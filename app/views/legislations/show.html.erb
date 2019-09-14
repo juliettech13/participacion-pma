@@ -11,7 +11,6 @@
   });
 </script>
 
-
 <p id="notice"><%= notice %></p>
 <div class="container legislationshow" data-controller="legislation">
 
@@ -19,10 +18,9 @@
   <div class="doc-header">
     <div class="help">
       <a data-html="true" data-toggle="popover" data-trigger="hover" title="¿Cómo funciona?" data-content="<%= render 'howitworks' %>" class="badge badge-warning">Ayuda</a>
-      <a href="../download_pdf" class="badge badge-primary" target="_blank">Descargar PDF</a>
+      <a href="../download_pdf" class="badge badge-primary text-white" target="_blank">Descargar PDF</a>
     </div>
   </div>
-
 
   <div data-controller="slideshow">
     <% @legislation.titles.order(number: :asc).each do |title| %>
@@ -36,9 +34,15 @@
       <div id="accordion">
         <% title.chapters.order(number: :asc).each do |chapter| %>
         <% if chapter.number != 0 %>
-          <div id="chapter<%= chapter.number %>" class="margin-top-btm-25">
-            <h5>Capítulo <%= chapter.number %>: <%= chapter.description %></h5>
-          </div>
+          <% if chapter.new == true %>
+            <div id="chapter<%= chapter.number %>" class="margin-top-btm-25">
+              <h5>Capítulo <button  class='badge badge-info text-white font-12 badge-padding' disabled>NUEVO</button>: <%= chapter.description %></h5>
+            </div>
+          <% else %>
+            <div id="chapter<%= chapter.number %>" class="margin-top-btm-25">
+              <h5>Capítulo <%= chapter.number %>: <%= chapter.description %></h5>
+            </div>
+          <% end %>
         <% end %>
         <% chapter.articles.order(number: :asc).each do |article| %>
 
@@ -56,7 +60,7 @@
                   </div>
                   <div class='col-xs-12 col-md-6'>
                     <p class='font-12 text-center'>
-                      <button type='button' class='badge badge-danger text-white'>MODIFICACIÓN PROPUESTA</button>
+                      <button type='button' class='badge badge-danger text-white badge-padding'>MODIFICACIÓN PROPUESTA</button>
                     </p>
                   </div>
                 </p>
@@ -65,7 +69,7 @@
                 <% if article.new == true %>
                   <div class="flex flex-row success-badges">
                     <!-- <h6 class="align-left p-2">Artículo</h6> -->
-                    <p class="p-2" style='font-size: 12px;'><button  class='badge badge-info text-white font-12 badge-padding' disabled>ARTÍCULO NUEVO <%= article.new_art_number %></button></p>
+                    <h6>Artículo  <button  class='badge badge-info text-white font-12 badge-padding' disabled>NUEVO</button></h6>
                   </div>
                 <% else %>
                   <div class="success-badges">
@@ -224,15 +228,10 @@
             <% end %>
           </div>
           <% end %>
-
         </a>
-
       </div>
     </div>
-
   </div>
-
-
   <%# end %>
   <% end %>
   <% end %> <!-- chapter loop ends -->
@@ -242,9 +241,9 @@
 <% end %>
 
 <div class="finished row">
-  <button id="continueto" style='display: none' class="btn btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">continúa</button>
-  <button id="prevbutton" style="display: none" class="btn btn-primary margin-right-10" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">título anterior</button>
-  <button id="nextbutton" class="btn btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">próximo título</button>
+  <button id="continueto" style='display: none' class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">continúa</button>
+  <button id="prevbutton" style="display: none" class="btn btn-primary text-white margin-right-10" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">título anterior</button>
+  <button id="nextbutton" class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">próximo título</button>
   <%= link_to "terminar la consulta", new_consultation_general_feedback_path(@consultation), id: 'finished', class: 'btn btn-primary', style: 'text-decoration: none; display: none' %>
 </div>
 
