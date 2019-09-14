@@ -23,25 +23,24 @@
   </div>
 
   <div data-controller="slideshow">
-    <div class="p-2 filter">
+ <!--    <div class="p-2 filter">
       <h6>Index</h6>
       <ol>
-        <% @legislation.titles.each do |title| %>
+        <%# @legislation.titles.each do |title| %>
         <li>
-          <a href="#title<%= title.number %>" class='font-12'><%= title.capitalized_title %></a>
+          <a href="#title<%#= title.number %>" class='font-12'><%#= title.capitalized_title %></a>
         </li>
-        <% end %>
+        <%# end %>
       </ol>
-    </div>
+    </div> -->
+
     <div class="p-2 legislation-content">
     <% @legislation.titles.order(number: :asc).each do |title| %>
     <div id="title<%= title.number %>" data-target="slideshow.slide" class="slide">
-
       <div class="title-info">
         <p>Artículos <%= title.articles.first.integer %> a <%= title.articles.last.integer %> de <%= Article.all.count %></p>
         <h3>Título <%= title.number %>: <%= title.capitalized_title %></h3>
       </div>
-
       <div id="accordion">
         <% title.chapters.order(number: :asc).each do |chapter| %>
         <% if chapter.number != 0 %>
