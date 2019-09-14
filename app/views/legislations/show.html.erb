@@ -77,8 +77,35 @@
 
             <% if Metadatum.exists?(article: article) %>
               <div class="row">
-                <p class="align-left col-xs-12 col-md-6"><%= raw article.spaced_content %></p>
-                <p class="align-left col-xs-12 col-md-6">
+                <div class="old-article align-left col-xs-12 col-md-6">
+                <p>
+                  <%= raw article.spaced_content %>
+                  </p>
+                  <% if article.subarticles.exists? %>
+                    <ol>
+                    <% article.subarticles.select{ |sa| sa.number < 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+                      <li>
+                        <p class='align-left'><%= raw subarticle.spaced_content %></p>
+                        <% if subarticle.subsubarticles.exists? %>
+                          <ol type='a'>
+                            <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
+                              <li>
+                                <p class='align-left'><%= raw subsubarticle.spaced_content %></p>
+                              </li>
+                            <% end %>
+                          </ol>
+                        <% end %>
+                      </li>
+                    <% end %>
+                    </ol>
+                    <% article.subarticles.select{ |sa| sa.number >= 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+                      <p class='align-left'><%= raw subarticle.spaced_content %></p>
+                    <% end %>
+                  <% end %>
+
+                </div>
+                <div class="new-article align-left col-xs-12 col-md-6">
+                <p>
                   <%= raw article.metadata.first.spaced_content %>
                   <ol>
                     <% article.metadata.first.metadatum_subarticles.order(number: :asc).each do |subarticle| %>
@@ -87,35 +114,33 @@
                       </li>
                     <% end %>
                   </ol>
-                </p>
               </div>
-
-
+              </div>
             <% else %>
               <p class="align-left"><%= raw article.spaced_content %></p>
+              <% if article.subarticles.exists? %>
+                <ol>
+                <% article.subarticles.select{ |sa| sa.number < 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+                  <li>
+                    <p class='align-left'><%= raw subarticle.spaced_content %></p>
+                    <% if subarticle.subsubarticles.exists? %>
+                      <ol type='a'>
+                        <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
+                          <li>
+                            <p class='align-left'><%= raw subsubarticle.spaced_content %></p>
+                          </li>
+                        <% end %>
+                      </ol>
+                    <% end %>
+                  </li>
+                <% end %>
+                </ol>
+                <% article.subarticles.select{ |sa| sa.number >= 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+                  <p class='align-left'><%= raw subarticle.spaced_content %></p>
+                <% end %>
+              <% end %>
             <% end %>
 
-            <% if article.subarticles.exists? %>
-              <ol>
-              <% article.subarticles.select{ |sa| sa.number < 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
-                <li>
-                  <p class='align-left'><%= raw subarticle.spaced_content %></p>
-                  <% if subarticle.subsubarticles.exists? %>
-                    <ol type='a'>
-                      <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
-                        <li>
-                          <p class='align-left'><%= raw subsubarticle.spaced_content %></p>
-                        </li>
-                      <% end %>
-                    </ol>
-                  <% end %>
-                </li>
-              <% end %>
-              </ol>
-              <% article.subarticles.select{ |sa| sa.number >= 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
-                <p class='align-left'><%= raw subarticle.spaced_content %></p>
-              <% end %>
-            <% end %>
           </a>
         </a>
       </div>
