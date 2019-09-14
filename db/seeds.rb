@@ -3054,27 +3054,27 @@ t7 = Title.create!(number: 7,
 
 
   puts 'creating chapter 2'
-  c72 = Chapter.create!(number: 2,
+  c721 = Chapter.create!(number: 2.1,
     description: "El Ministerio Público",
     title: t7,
     new: false)
 
     puts 'creating article 219'
     a219 = Article.create!(content: 'El Ministerio Público será ejercido por el Procurador General de la Nación, el Procurador de la Administración, los Fiscales y Personeros y por los demás funcionarios que establezca la Ley. Los agentes del Ministerio Público podrán ejercer por delegación, conforme lo determine la Ley, las funciones del Procurador General de la Nación.',
-      chapter: c72,
+      chapter: c721,
       number: 219,
       new: false)
 
     # articulo nuevo 5. debe venir despues del 219 con ese titulo
     puts 'creating article 219'
     a2191 = Article.create!(content: "El Tribunal Constitucional estará integrada por cinco (5) magistrados y sus respectivos suplentes, quienes deberán cumplir con iguales requisitos que para ser Magistrado de la Corte Suprema de Justicia, y serán nombrados de igual forma que éstos, mediante el principio de nombramientos escalonados. A los magistrados del Tribunal Constitucional les son aplicables las mismas prohibiciones y prerrogativas que establece esta Constitución para los Magistrados de la Corte Suprema de Justicia.",
-      chapter: c72,
+      chapter: c721,
       number: 219.6,
       new: true)
 
     puts 'creating article 220'
     a220 = Article.create!(content: 'Son atribuciones del Ministerio Público:',
-      chapter: c72,
+      chapter: c721,
       number: 220,
       new: false)
 
@@ -3111,7 +3111,7 @@ t7 = Title.create!(number: 7,
       # articulo nuevo 6. debe venir despues del 220 con ese titulo
       puts 'creating article 220'
       a2201 = Article.create!(content: "Son funciones del Tribunal Constitucional las siguientes:",
-        chapter: c72,
+        chapter: c721,
         number: 220.7,
         new: true)
 
@@ -3158,7 +3158,7 @@ t7 = Title.create!(number: 7,
 
     puts 'creating article 221'
     a221 = Article.create!(content: 'Para ser Procurador General de la Nación y Procurador de la Administración se necesitan los mismos requisitos que para ser Magistrado de la Corte Suprema de Justicia. Ambos serán nombrados por un período de diez años.',
-      chapter: c72,
+      chapter: c721,
       number: 221,
       new: false)
 
@@ -3195,7 +3195,7 @@ t7 = Title.create!(number: 7,
 
     puts 'creating article 223'
     a223 = Article.create!(content: 'Rigen respecto a los Agentes del Ministerio Público las mismas disposiciones que para los funcionarios judiciales establecen los artículos 205, 208, 210, 211, 212 y 216.',
-      chapter: c72,
+      chapter: c721,
       number: 223,
       new: false)
 
@@ -3203,11 +3203,9 @@ t7 = Title.create!(number: 7,
     a224 = Article.create!(content: 'El Procurador General de la Nación y el Procurador de la Administración serán nombrados de acuerdo con los mismos requisitos y prohibiciones establecidos para los Magistrados de la Corte Suprema de Justicia. /n
     Las faltas temporales de alguno de los Procuradores serán cubiertas por un funcionario del Ministerio Público, en calidad de Procurador Encargado, que cumpla con los mismos requisitos para el cargo y quien será designado temporalmente por el respectivo Procurador. /n
     Los Fiscales y Personeros serán nombrados por sus superiores jerárquicos. El personal subalterno será nombrado por el Fiscal o Personero respectivo. Todos estos nombramientos serán hechos con arreglo a la Carrera Judicial.',
-      chapter: c72,
+      chapter: c721,
       number: 224,
       new: false)
-
-
 
 puts "creating title 8"
 t8 = Title.create!(number: 8,
