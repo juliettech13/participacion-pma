@@ -23,14 +23,24 @@
   </div>
 
   <div data-controller="slideshow">
+    <div class="">
+      <h6>Index</h6>
+      <ol>
+        <% @legislation.titles.each do |title| %>
+        <li>
+          <a href="#title<%= title.number %>" class='font-12'><%= title.capitalized_title %></a>
+        </li>
+        <% end %>
+      </ol>
+    </div>
+
+    <div class="">
     <% @legislation.titles.order(number: :asc).each do |title| %>
     <div id="title<%= title.number %>" data-target="slideshow.slide" class="slide">
-
       <div class="title-info">
         <p>Artículos <%= title.articles.first.integer %> a <%= title.articles.last.integer %> de <%= Article.all.count %></p>
         <h3>Título <%= title.number %>: <%= title.capitalized_title %></h3>
       </div>
-
       <div id="accordion">
         <% title.chapters.order(number: :asc).each do |chapter| %>
         <% if chapter.number != 0 %>
@@ -69,7 +79,7 @@
                 <% if article.new == true %>
                   <div class="flex flex-row success-badges">
                     <!-- <h6 class="align-left p-2">Artículo</h6> -->
-                    <h6>Artículo  <button  class='badge badge-info text-white font-12 badge-padding' disabled>NUEVO</button></h6>
+                    <h6>Artículo   <button class='badge badge-info text-white font-12 badge-padding' disabled>NUEVO</button></h6>
                   </div>
                 <% else %>
                   <div class="success-badges">
@@ -224,21 +234,24 @@
               <a data-action="slideshow#close slideshow#revised slideshow#next">
                 <%= f.submit 'sugiere tu revisión', :class => 'btn-primary' %>
               </a>
-            </div>
-            <% end %>
-          </div>
-          <% end %>
-        </a>
-      </div>
-    </div>
-  </div>
-  <%# end %>
-  <% end %>
-  <% end %> <!-- chapter loop ends -->
-</div>
+               </div>
+                         <% end %>
+                       </div>
+                       <% end %>
+           <!--  -->
 
-</div>
-<% end %>
+                     </a>
+
+                   </div>
+                 </div>
+
+               </div>
+               <% end %>
+               <% end %> <!-- chapter loop ends -->
+             </div>
+           </div>
+           <% end %>
+           </div>
 
 <div class="finished row">
   <button id="continueto" style='display: none' class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">continúa</button>

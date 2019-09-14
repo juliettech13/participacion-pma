@@ -31,10 +31,12 @@ export default class extends Controller {
   showFinished(){
     var lastSection = document.getElementById("title15")
     var firstSection = document.getElementById("title1")
+    console.log(firstSection, 'first section exists')
     var secondSection = document.getElementById("title2")
     var continueTo = document.getElementById("continueto")
     var finished = document.getElementById("finished");
     var next = document.getElementById("nextbutton");
+    console.log(next, 'next button exists')
     var previous = document.getElementById("prevbutton");
 
     if (firstSection.classList.contains("slide--current")) {
