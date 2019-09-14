@@ -237,7 +237,6 @@
     <% end %> <!-- chapter loop ends -->
   </div>
 </div>
-</div>
 <% end %>
 
 <div class="finished row">
@@ -245,6 +244,7 @@
   <button id="prevbutton" style="display: none" class="btn btn-primary text-white margin-right-10" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">título anterior</button>
   <button id="nextbutton" class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">próximo título</button>
   <%= link_to "terminar la consulta", new_consultation_general_feedback_path(@consultation), id: 'finished', class: 'btn btn-primary', style: 'text-decoration: none; display: none' %>
+</div>
 </div>
 
 <!-- </div> -->
