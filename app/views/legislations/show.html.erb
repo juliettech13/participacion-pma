@@ -23,6 +23,17 @@
   </div>
 
   <div data-controller="slideshow">
+    <div class="p-2 filter">
+      <h6>Index</h6>
+      <ol>
+        <% @legislation.titles.each do |title| %>
+        <li>
+          <a href="#title<%= title.number %>" class='font-12'><%= title.capitalized_title %></a>
+        </li>
+        <% end %>
+      </ol>
+    </div>
+
     <% @legislation.titles.order(number: :asc).each do |title| %>
     <div id="title<%= title.number %>" data-target="slideshow.slide" class="slide">
 

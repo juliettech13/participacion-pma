@@ -284,6 +284,21 @@ button{
 .badge-danger{
   background-color: #139679
 }
+.filter{
+  width: 20%;
+  // margin-bottom: 35px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 15px;
+  border-radius: 10px;
+  top:0;
+  // position: -webkit-sticky;
+  // position: sticky;
+}
+
+.legislation-content{
+  width: 80%;
+}
 
 
 @media only screen and (max-width: 600px) {
