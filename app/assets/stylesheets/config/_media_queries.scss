@@ -1,9 +1,9 @@
 @media only screen and (min-width: 600px) {
   .home .card {
-    margin-top: 100px;
+    margin-top: 80px;
   }
   .card {
-    margin-top: 120px;
+    margin-top: 70px;
   }
   .login_form {
     margin-top: 140px;
@@ -23,6 +23,7 @@
       width:100%;
     }
    }
+
   .login_form {
     .form-control {
       width: 100%;
@@ -30,9 +31,8 @@
   }
 
   .popover {
-  max-width: 400px;
-}
-
+    max-width: 400px;
+  }
 }
 
 @media only screen and (width: 1024px) {

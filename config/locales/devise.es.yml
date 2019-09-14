@@ -101,7 +101,7 @@ es:
         updated_not_active: "Tu contraseña fue modificada correctamente."
       registrations:
         destroyed: "Adiós, tu cuenta ha sido eliminada. Esperamos verte de vuelta pronto!"
-        signed_up: "Bienvenido! Te has registrado correctamente."
+        signed_up: "Bienvenido(a)! Te has registrado correctamente."
         signed_up_but_inactive: "Te has registrado correctamente, pero tu cuenta aun no ha sido activada."
         signed_up_but_locked: "Te has registrado correctamente, pero tu cuenta está bloqueada."
         signed_up_but_unconfirmed: "Te hemos enviado un email con instrucciones para que confirmes tu cuenta."
@@ -125,3 +125,5 @@ es:
         not_saved:
           one: "Ha ocurrido 1 error:"
           other: "Han ocurrido %{count} errores:"
+        passwords:
+            too_short: "Tu contraseña ha sido demasiado corta"

@@ -11,7 +11,6 @@
   });
 </script>
 
-
 <p id="notice"><%= notice %></p>
 <div class="container legislationshow" data-controller="legislation">
 
@@ -19,7 +18,7 @@
   <div class="doc-header">
     <div class="help">
       <a data-html="true" data-toggle="popover" data-trigger="hover" title="¿Cómo funciona?" data-content="<%= render 'howitworks' %>" class="badge badge-warning">Ayuda</a>
-      <a href="../download_pdf" class="badge badge-primary" target="_blank">Descargar PDF</a>
+      <a href="../download_pdf" class="badge badge-primary text-white" target="_blank">Descargar PDF</a>
     </div>
   </div>
 
@@ -86,8 +85,35 @@
 
               <% if Metadatum.exists?(article: article) %>
               <div class="row">
-                <p class="align-left col-xs-12 col-md-6"><%= raw article.spaced_content %></p>
-                <p class="align-left col-xs-12 col-md-6">
+                <div class="old-article align-left col-xs-12 col-md-6">
+                <p>
+                  <%= raw article.spaced_content %>
+                  </p>
+                  <% if article.subarticles.exists? %>
+                    <ol>
+                    <% article.subarticles.select{ |sa| sa.number < 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+                      <li>
+                        <p class='align-left'><%= raw subarticle.spaced_content %></p>
+                        <% if subarticle.subsubarticles.exists? %>
+                          <ol type='a'>
+                            <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
+                              <li>
+                                <p class='align-left'><%= raw subsubarticle.spaced_content %></p>
+                              </li>
+                            <% end %>
+                          </ol>
+                        <% end %>
+                      </li>
+                    <% end %>
+                    </ol>
+                    <% article.subarticles.select{ |sa| sa.number >= 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+                      <p class='align-left'><%= raw subarticle.spaced_content %></p>
+                    <% end %>
+                  <% end %>
+
+                </div>
+                <div class="new-article align-left col-xs-12 col-md-6">
+                <p>
                   <%= raw article.metadata.first.spaced_content %>
                   <ol>
                     <% article.metadata.first.metadatum_subarticles.order(number: :asc).each do |subarticle| %>
@@ -96,8 +122,8 @@
                     </li>
                     <% end %>
                   </ol>
-                </p>
               </div>
+<<<<<<< HEAD
 
 
               <% else %>
@@ -126,6 +152,34 @@
               <% end %>
               <% end %>
             </a>
+=======
+              </div>
+            <% else %>
+              <p class="align-left"><%= raw article.spaced_content %></p>
+              <% if article.subarticles.exists? %>
+                <ol>
+                <% article.subarticles.select{ |sa| sa.number < 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+                  <li>
+                    <p class='align-left'><%= raw subarticle.spaced_content %></p>
+                    <% if subarticle.subsubarticles.exists? %>
+                      <ol type='a'>
+                        <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
+                          <li>
+                            <p class='align-left'><%= raw subsubarticle.spaced_content %></p>
+                          </li>
+                        <% end %>
+                      </ol>
+                    <% end %>
+                  </li>
+                <% end %>
+                </ol>
+                <% article.subarticles.select{ |sa| sa.number >= 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+                  <p class='align-left'><%= raw subarticle.spaced_content %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+
+>>>>>>> 952dd68d1246105aea949d2db359ce11ec8c6a9d
           </a>
         </div>
 
@@ -208,6 +262,7 @@
               <% end %>
             </div>
             <% end %>
+<<<<<<< HEAD
 
           </a>
 
@@ -218,14 +273,25 @@
     <% end %>
     <% end %> <!-- chapter loop ends -->
   </div>
+=======
+          </div>
+          <% end %>
+        </a>
+      </div>
+    </div>
+  </div>
+  <%# end %>
+  <% end %>
+  <% end %> <!-- chapter loop ends -->
+>>>>>>> 952dd68d1246105aea949d2db359ce11ec8c6a9d
 </div>
 </div>
 <% end %>
 
 <div class="finished row">
-  <button id="continueto" style='display: none' class="btn btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">continúa</button>
-  <button id="prevbutton" style="display: none" class="btn btn-primary margin-right-10" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">título anterior</button>
-  <button id="nextbutton" class="btn btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">próximo título</button>
+  <button id="continueto" style='display: none' class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">continúa</button>
+  <button id="prevbutton" style="display: none" class="btn btn-primary text-white margin-right-10" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">título anterior</button>
+  <button id="nextbutton" class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">próximo título</button>
   <%= link_to "terminar la consulta", new_consultation_general_feedback_path(@consultation), id: 'finished', class: 'btn btn-primary', style: 'text-decoration: none; display: none' %>
 </div>
 

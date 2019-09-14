@@ -51,6 +51,16 @@ $ rails console
   Aquí podrá ver todas las respuestas y sugerencias que los usuarios han presentado sobre el documento.
   Esto funciona en producción de igual manera accediendo a `https://participa-panama.herokuapp.com`.
 
+## Legislation#show
+
+Aquí es donde podrás ver la legislación misma.
+
+La manera en la que está estructurada la página es que loadea toda la `@legislation` de un solo, pero solo la va enseñando por partes debido al JavaScript que permite un slideshow de Titulos basicamente.
+
+Este slideshow es creado por medio de [StimulusJS](https://stimulusjs.org/). Se creó un `slideshow_controller.js` file que existe bajo `app/javascripts/controllers` y es activado una vez se llame en el view de `legislation/show` a un atributo `data-controller='slideshow'`. -- Más información sobre esto se puede encontrar en la documentación de StimulusJS.
+
+De ahí, podrá encontrar abajo los botones que son los que deben aparecer dependiendo de si es el primer título, alguno en el medio o el último. Estos condicionales se pueden encontrar en `app/javascripts/controllers/slideshow_controller.js`.
+
 ## Deployment
 
 El servidor en producción está en Heroku actualmente bajo el sitio `http://participa-panama.herokuapp.com` <br>

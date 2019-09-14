@@ -10,15 +10,15 @@ $body-bg:                 white;
 $font-size-base: 1.25rem;
 
 // Colors
-$gray-base:       $gray;
-$brand-primary:   #005293;
+$gray-base:       #4e4a47;
+$brand-primary:   #71a2d3;
 $brand-success:   #55d472;
 $brand-info:      $yellow;
-$brand-danger:    $red;
+$brand-danger:    #139679;
 $brand-warning:   $orange;
 
 $theme-colors: (
-  primary: #005293,
+  primary: #71a2d3,
 ) !default;
 
 // Buttons & inputs' radius
