@@ -33,7 +33,7 @@
         <% end %>
       </ol>
     </div>
-
+    <div class="p-2 legislation-content">
     <% @legislation.titles.order(number: :asc).each do |title| %>
     <div id="title<%= title.number %>" data-target="slideshow.slide" class="slide">
 
@@ -247,6 +247,7 @@
   <% end %>
   <% end %> <!-- chapter loop ends -->
 </div>
+    </div>
 
 </div>
 <% end %>
