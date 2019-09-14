@@ -123,36 +123,36 @@
                     <% end %>
                   </ol>
               </div>
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD
 
 
-              <% else %>
-              <p class="align-left"><%= raw article.spaced_content %></p>
-              <% end %>
+              <%# else %>
+              <p class="align-left"><%#= raw article.spaced_content %></p>
+              <%# end %>
 
-              <% if article.subarticles.exists? %>
+              <%# if article.subarticles.exists? %>
               <ol>
-                <% article.subarticles.select{ |sa| sa.number < 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+                <%# article.subarticles.select{ |sa| sa.number < 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
                 <li>
-                  <p class='align-left'><%= raw subarticle.spaced_content %></p>
-                  <% if subarticle.subsubarticles.exists? %>
+                  <p class='align-left'><%#= raw subarticle.spaced_content %></p>
+                  <%# if subarticle.subsubarticles.exists? %>
                   <ol type='a'>
-                    <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
+                    <%# subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
                     <li>
-                      <p class='align-left'><%= raw subsubarticle.spaced_content %></p>
+                      <p class='align-left'><%#= raw subsubarticle.spaced_content %></p>
                     </li>
-                    <% end %>
+                    <%# end %>
                   </ol>
-                  <% end %>
+                  <%# end %>
                 </li>
-                <% end %>
+                <%# end %>
               </ol>
-              <% article.subarticles.select{ |sa| sa.number >= 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
-              <p class='align-left'><%= raw subarticle.spaced_content %></p>
-              <% end %>
-              <% end %>
+              <%# article.subarticles.select{ |sa| sa.number >= 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+              <p class='align-left'><%#= raw subarticle.spaced_content %></p>
+              <%# end %>
+              <%# end %>
             </a>
-=======
+======= -->
               </div>
             <% else %>
               <p class="align-left"><%= raw article.spaced_content %></p>
@@ -179,7 +179,7 @@
               <% end %>
             <% end %>
 
->>>>>>> 952dd68d1246105aea949d2db359ce11ec8c6a9d
+<!-- >>>>>>> 952dd68d1246105aea949d2db359ce11ec8c6a9d -->
           </a>
         </div>
 
@@ -262,7 +262,7 @@
               <% end %>
             </div>
             <% end %>
-<<<<<<< HEAD
+<!--  -->
 
           </a>
 
@@ -273,17 +273,6 @@
     <% end %>
     <% end %> <!-- chapter loop ends -->
   </div>
-=======
-          </div>
-          <% end %>
-        </a>
-      </div>
-    </div>
-  </div>
-  <%# end %>
-  <% end %>
-  <% end %> <!-- chapter loop ends -->
->>>>>>> 952dd68d1246105aea949d2db359ce11ec8c6a9d
 </div>
 </div>
 <% end %>
