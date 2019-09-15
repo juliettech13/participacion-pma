@@ -32,12 +32,9 @@ export default class extends Controller {
     var allActive = document.querySelectorAll('.slide--current');
     allActive.forEach(function(activeTitle) {
       activeTitle.classList.remove('slide--current')
-      console.log('activeTitles', activeTitle)
     })
-    var titleLink = event.target
-    var titleNum = titleLink.dataset.info
+    var titleNum = event.target.dataset.info
     var titleToActivate = document.querySelector(`#title${titleNum}`);
-    var activeTitle = document.querySelector('.slide--current');
     titleToActivate.classList.add('slide--current');
   }
 
