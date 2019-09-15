@@ -55,60 +55,60 @@
              <div class="card-header" id="headingOne">
               <div id="supporting-content">
                 <% if Metadatum.exists?(article: article) %>
-                  <div class="success-badges row">
-                    <div class='col-xs-12 col-md-6 padding-left-0'>
-                      <h6 class='align-left'>Artículo <%= article.integer %> <strong>(actual)</strong></h6>
-                    </div>
-                    <div class='col-xs-12 col-md-6'>
-                      <p class='font-12 text-center'>
-                        <button type='button' class='badge badge-danger text-white badge-padding'>MODIFICACIÓN PROPUESTA</button>
-                      </p>
-                    </div>
-                  </p>
-                </div>
-                <% else %>
-                <% if article.new == true %>
-                <div class="flex flex-row success-badges">
-                  <h6 class="p-2">Artículo<button class='badge badge-info text-white badge-padding' disabled>NUEVO</button></h6>
-                </div>
-                <% else %>
-                <div class="success-badges">
-                  <h6 class="align-left">Artículo <%= article.integer %></h6>
-                </div>
-                <% end %>
-                <% end %>
+                <div class="success-badges row">
+                  <div class='col-xs-12 col-md-6 padding-left-0'>
+                    <h6 class='align-left'>Artículo <%= article.integer %> <strong>(actual)</strong></h6>
+                  </div>
+                  <div class='col-xs-12 col-md-6'>
+                    <p class='font-12 text-center'>
+                      <button type='button' class='badge badge-danger text-white badge-padding'>MODIFICACIÓN PROPUESTA</button>
+                    </p>
+                  </div>
+                </p>
               </div>
+              <% else %>
+              <% if article.new == true %>
+              <div class="flex flex-row success-badges">
+                <h6 class="p-2">Artículo<button class='badge badge-info text-white badge-padding' disabled>NUEVO</button></h6>
+              </div>
+              <% else %>
+              <div class="success-badges">
+                <h6 class="align-left">Artículo <%= article.integer %></h6>
+              </div>
+              <% end %>
+              <% end %>
+            </div>
 
-              <% if Metadatum.exists?(article: article) %>
-              <div class="row">
-                <div class="old-article align-left col-xs-12 col-md-6">
+            <% if Metadatum.exists?(article: article) %>
+            <div class="row">
+              <div class="old-article align-left col-xs-12 col-md-6">
                 <p>
                   <%= raw article.spaced_content %>
-                  </p>
-                  <% if article.subarticles.exists? %>
-                    <ol>
-                    <% article.subarticles.select{ |sa| sa.number < 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+                </p>
+                <% if article.subarticles.exists? %>
+                <ol>
+                  <% article.subarticles.select{ |sa| sa.number < 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+                  <li>
+                    <p class='align-left'><%= raw subarticle.spaced_content %></p>
+                    <% if subarticle.subsubarticles.exists? %>
+                    <ol type='a'>
+                      <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
                       <li>
-                        <p class='align-left'><%= raw subarticle.spaced_content %></p>
-                        <% if subarticle.subsubarticles.exists? %>
-                          <ol type='a'>
-                            <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
-                              <li>
-                                <p class='align-left'><%= raw subsubarticle.spaced_content %></p>
-                              </li>
-                            <% end %>
-                          </ol>
-                        <% end %>
+                        <p class='align-left'><%= raw subsubarticle.spaced_content %></p>
                       </li>
-                    <% end %>
+                      <% end %>
                     </ol>
-                    <% article.subarticles.select{ |sa| sa.number >= 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
-                      <p class='align-left'><%= raw subarticle.spaced_content %></p>
                     <% end %>
+                  </li>
                   <% end %>
+                </ol>
+                <% article.subarticles.select{ |sa| sa.number >= 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+                <p class='align-left'><%= raw subarticle.spaced_content %></p>
+                <% end %>
+                <% end %>
 
-                </div>
-                <div class="new-article align-left col-xs-12 col-md-6">
+              </div>
+              <div class="new-article align-left col-xs-12 col-md-6">
                 <p>
                   <%= raw article.metadata.first.spaced_content %>
                   <ol>
@@ -118,128 +118,125 @@
                     </li>
                     <% end %>
                   </ol>
+                </div>
               </div>
-              </div>
-            <% else %>
+              <% else %>
               <p class="align-left"><%= raw article.spaced_content %></p>
               <% if article.subarticles.exists? %>
-                <ol>
+              <ol>
                 <% article.subarticles.select{ |sa| sa.number < 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
-                  <li>
-                    <p class='align-left'><%= raw subarticle.spaced_content %></p>
-                    <% if subarticle.subsubarticles.exists? %>
-                      <ol type='a'>
-                        <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
-                          <li>
-                            <p class='align-left'><%= raw subsubarticle.spaced_content %></p>
-                          </li>
-                        <% end %>
-                      </ol>
-                    <% end %>
-                  </li>
-                <% end %>
-                </ol>
-                <% article.subarticles.select{ |sa| sa.number >= 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+                <li>
                   <p class='align-left'><%= raw subarticle.spaced_content %></p>
+                  <% if subarticle.subsubarticles.exists? %>
+                  <ol type='a'>
+                    <% subarticle.subsubarticles.order(number: :asc).each do |subsubarticle| %>
+                    <li>
+                      <p class='align-left'><%= raw subsubarticle.spaced_content %></p>
+                    </li>
+                    <% end %>
+                  </ol>
+                  <% end %>
+                </li>
                 <% end %>
+              </ol>
+              <% article.subarticles.select{ |sa| sa.number >= 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+              <p class='align-left'><%= raw subarticle.spaced_content %></p>
               <% end %>
-            <% end %>
-          </a>
-        </div>
-
-
-
-        <div id="collapse_<%= article.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
-          <div class="card-body" data-controller="slideshow">
-            <% unless article.questions.find_by(number: 1).answers.exists?(consultation: current_user.consultations.last) %>
-            <div data-target="slideshow.slide" class="slide">
-              <p class='medium-font'><%= article.questions.find_by(number: 1).content %></p>
-              <p style="font-size: 12px">(1 = no me gusta en absoluto, 5 = estoy absolutamente de acuerdo)</p>
-              <%= form_for @answer, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"}, method: :post do |f| %>
-              <%= f.hidden_field :user_id, :value => current_user.id  %>
-              <%= f.hidden_field :question_id, :value => article.questions.find_by(number: 1).id  %>
-              <%= f.hidden_field :consultation_id, :value => @consultation.id  %>
-              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-              <div class="buttonspacing">
-                <a data-action="slideshow#next">
-                  <%= f.submit '1', name: "content", class: 'btn-primary' %>
-                </a>
-                <a data-action="slideshow#next">
-                  <%= f.submit '2', name: "content", class: 'btn-primary' %>
-                </a>
-                <a data-action="slideshow#next">
-                  <%= f.submit '3', name: "content", class: 'btn-primary' %>
-                </a>
-                <a data-action="slideshow#next">
-                  <%= f.submit '4', name: "content", class: 'btn-primary' %>
-                </a>
-                <a data-action="slideshow#next">
-                  <%= f.submit '5', name: "content", class: 'btn-primary' %>
-                </a>
-              </div>
               <% end %>
-            </div>
-            <% end %>
-
-            <% unless article.questions.find_by(number: 2).answers.exists?(consultation: current_user.consultations.last) %>
-            <div data-target="slideshow.slide" class="slide">
-              <p class='medium-font'><%= article.questions.find_by(number: 2).content %></p>
-              <%= form_for @answer, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
-              <%= f.hidden_field :user_id, :value => current_user.id  %>
-              <%= f.hidden_field :question_id, :value => article.questions.find_by(number: 2).id  %>
-              <%= f.hidden_field :consultation_id, :value => @consultation.id  %>
-              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-              <div class="buttonspacing">
-                <a data-action="slideshow#next slideshow#answered">
-                  <%= f.submit 'SÍ', name: "content", class: 'btn-primary' %>
-                </a>
-                <a data-action="slideshow#next slideshow#answered">
-                  <%= f.submit 'NO', name: "content", class: 'btn-primary' %>
-                </a>
-              </div>
               <% end %>
-            </div>
-            <% end %>
+            </a>
+          </div>
 
-            <% unless article.questions.find_by(number: 3).answers.exists?(consultation: current_user.consultations.last) %>
-            <div data-target="slideshow.slide" class="slide">
-              <p class='medium-font'>¿Quisieras sugerir algún comentario sobre el artículo?</p>
-              <div class=" form-group buttonspacing">
-                <button data-action="slideshow#next" class="btn-primary">Sí</button>
-                <button data-action="slideshow#close" class="btn-primary">No</button>
-              </div>
-            </div>
 
-            <div data-target="slideshow.slide" class="slide">
-              <p class="medium-font"><%= article.questions.find_by(number: 3).content %></p>
-              <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
-              <div class="form-group">
+
+          <div id="collapse_<%= article.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body" data-controller="slideshow">
+              <% unless article.questions.find_by(number: 1).answers.exists?(consultation: current_user.consultations.last) %>
+              <div data-target="slideshow.slide" class="slide">
+                <p class='medium-font'><%= article.questions.find_by(number: 1).content %></p>
+                <p style="font-size: 12px">(1 = no me gusta en absoluto, 5 = estoy absolutamente de acuerdo)</p>
+                <%= form_for @answer, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"}, method: :post do |f| %>
                 <%= f.hidden_field :user_id, :value => current_user.id  %>
-                <%= f.hidden_field :question_id, :value => article.questions.find_by(number: 3).id  %>
+                <%= f.hidden_field :question_id, :value => article.questions.find_by(number: 1).id  %>
                 <%= f.hidden_field :consultation_id, :value => @consultation.id  %>
                 <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                <%= f.text_area :content, :name => "content", required: true, :class => 'form-control', placeholder: "Me parece que este artículo es bueno/malo porque .... Esto se podría arreglar agregando/quitando ...." %>
-                <a data-action="slideshow#close slideshow#revised slideshow#next">
-                  <%= f.submit 'sugiere tu revisión', :class => 'btn-primary' %>
-                </a>
+                <div class="buttonspacing">
+                  <a data-action="slideshow#next">
+                    <%= f.submit '1', name: "content", class: 'btn-primary' %>
+                  </a>
+                  <a data-action="slideshow#next">
+                    <%= f.submit '2', name: "content", class: 'btn-primary' %>
+                  </a>
+                  <a data-action="slideshow#next">
+                    <%= f.submit '3', name: "content", class: 'btn-primary' %>
+                  </a>
+                  <a data-action="slideshow#next">
+                    <%= f.submit '4', name: "content", class: 'btn-primary' %>
+                  </a>
+                  <a data-action="slideshow#next">
+                    <%= f.submit '5', name: "content", class: 'btn-primary' %>
+                  </a>
+                </div>
+                <% end %>
               </div>
               <% end %>
-            </div>
-            <% end %>
-          </a>
+
+              <% unless article.questions.find_by(number: 2).answers.exists?(consultation: current_user.consultations.last) %>
+              <div data-target="slideshow.slide" class="slide">
+                <p class='medium-font'><%= article.questions.find_by(number: 2).content %></p>
+                <%= form_for @answer, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
+                <%= f.hidden_field :user_id, :value => current_user.id  %>
+                <%= f.hidden_field :question_id, :value => article.questions.find_by(number: 2).id  %>
+                <%= f.hidden_field :consultation_id, :value => @consultation.id  %>
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                <div class="buttonspacing">
+                  <a data-action="slideshow#next slideshow#answered">
+                    <%= f.submit 'SÍ', name: "content", class: 'btn-primary' %>
+                  </a>
+                  <a data-action="slideshow#next slideshow#answered">
+                    <%= f.submit 'NO', name: "content", class: 'btn-primary' %>
+                  </a>
+                </div>
+                <% end %>
+              </div>
+              <% end %>
+
+              <% unless article.questions.find_by(number: 3).answers.exists?(consultation: current_user.consultations.last) %>
+              <div data-target="slideshow.slide" class="slide">
+                <p class='medium-font'>¿Quisieras sugerir algún comentario sobre el artículo?</p>
+                <div class=" form-group buttonspacing">
+                  <button data-action="slideshow#next" class="btn-primary">Sí</button>
+                  <button data-action="slideshow#close" class="btn-primary">No</button>
+                </div>
+              </div>
+
+              <div data-target="slideshow.slide" class="slide">
+                <p class="medium-font"><%= article.questions.find_by(number: 3).content %></p>
+                <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
+                <div class="form-group">
+                  <%= f.hidden_field :user_id, :value => current_user.id  %>
+                  <%= f.hidden_field :question_id, :value => article.questions.find_by(number: 3).id  %>
+                  <%= f.hidden_field :consultation_id, :value => @consultation.id  %>
+                  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                  <%= f.text_area :content, :name => "content", required: true, :class => 'form-control', placeholder: "Me parece que este artículo es bueno/malo porque .... Esto se podría arreglar agregando/quitando ...." %>
+                  <a data-action="slideshow#close slideshow#revised slideshow#next">
+                    <%= f.submit 'sugiere tu revisión', :class => 'btn-primary' %>
+                  </a>
+                </div>
+                <% end %>
+              </div>
+              <% end %>
+            </a>
+          </div>
         </div>
       </div>
+      <% end %>
+      <% end %> <!-- chapter loop ends -->
     </div>
-    <% end %>
-    <% end %> <!-- chapter loop ends -->
   </div>
   <% end %>
-  <% end %> <!-- chapter loop ends -->
-</div>
-</div>
-<% end %>
 
-<div class="finished row">
+  <div class="finished row">
  <!--  <button id="continueto" style='display: none' class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">continúa</button>
   <button id="prevbutton" style="display: none" class="btn btn-primary text-white margin-right-10" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">título anterior</button>
   <button id="nextbutton" class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">próximo título</button> -->
