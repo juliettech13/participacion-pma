@@ -25,7 +25,7 @@
   <div data-controller="slideshow" class='d-flex flex-row'>
     <div class="p-2 filter">
       <h6>Index</h6>
-      <ol data-target='slideshow.titleLinks'>
+      <ol>
         <% @legislation.titles.each do |title| %>
         <li>
           <a class='font-12' id="titleLink<%= title.number %>" data-action="slideshow#activateSelection" data-info="<%= title.number %>"><%= title.capitalized_title %></a>
@@ -55,10 +55,7 @@
              <div class="card-header" id="headingOne">
               <div id="supporting-content">
                 <% if Metadatum.exists?(article: article) %>
-                <!-- <div class="flex flex-row success-badges"> -->
-                  <!-- <h6 class="align-left p-2">Artículo <%#= article.integer %></h6> -->
                   <div class="success-badges row">
-                    <!-- <h6 class="align-left">Artículo <%#= article.integer %> ACTUAL</h6> -->
                     <div class='col-xs-12 col-md-6 padding-left-0'>
                       <h6 class='align-left'>Artículo <%= article.integer %> <strong>(actual)</strong></h6>
                     </div>
@@ -240,10 +237,10 @@
 <% end %>
 
 <div class="finished row">
-  <button id="continueto" style='display: none' class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">continúa</button>
+ <!--  <button id="continueto" style='display: none' class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">continúa</button>
   <button id="prevbutton" style="display: none" class="btn btn-primary text-white margin-right-10" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">título anterior</button>
-  <button id="nextbutton" class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">próximo título</button>
-  <%= link_to "terminar la consulta", new_consultation_general_feedback_path(@consultation), id: 'finished', class: 'btn btn-primary', style: 'text-decoration: none; display: none' %>
+  <button id="nextbutton" class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">próximo título</button> -->
+  <%= link_to "terminar la consulta", new_consultation_general_feedback_path(@consultation), id: 'finished', class: 'btn btn-primary' %>
 </div>
 </div>
 

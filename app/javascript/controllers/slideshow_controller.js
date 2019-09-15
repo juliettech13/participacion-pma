@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "slide", 'welcome', 'titleLinks' ];
+  static targets = [ "slide", 'welcome' ];
 
   initialize() {
     this.showSlide(0)
@@ -99,7 +99,10 @@ export default class extends Controller {
   }
 
   next() {
-    console.log(this)
+    var activeTitle = document.querySelector('.slide--current')
+    console.log('this', this)
+    // console.log('index from active title', activeTitle.index)
+    // console.log('currently this.index', this.index)
     this.showSlide(this.index + 1);
   }
 
