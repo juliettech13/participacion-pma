@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "slide", 'welcome' ];
+  static targets = [ "slide", 'welcome', 'titleLinks' ];
 
   initialize() {
     this.showSlide(0)
@@ -28,6 +28,19 @@ export default class extends Controller {
     document.body.scrollTop = document.documentElement.scrollTop = 150;
   }
 
+  activateSelection(){
+    var allActive = document.querySelectorAll('.slide--current');
+    allActive.forEach(function(activeTitle) {
+      activeTitle.classList.remove('slide--current')
+      console.log('activeTitles', activeTitle)
+    })
+    var titleLink = event.target
+    var titleNum = titleLink.dataset.info
+    var titleToActivate = document.querySelector(`#title${titleNum}`);
+    var activeTitle = document.querySelector('.slide--current');
+    titleToActivate.classList.add('slide--current');
+  }
+
   showFinished(){
     var lastSection = document.getElementById("title15")
     var firstSection = document.getElementById("title1")
@@ -51,58 +64,60 @@ export default class extends Controller {
   //     finished.style.display = 'none';
   // }
 
-  if (secondSection.classList.contains("slide--current")) {
-    finished.style.display = 'none';
-    continueTo.style.display = 'none';
-    previous.style.display = ''
-    next.style.display = '';
+    if (secondSection.classList.contains("slide--current")) {
+      finished.style.display = 'none';
+      continueTo.style.display = 'none';
+      previous.style.display = ''
+      next.style.display = '';
+    }
+
+    if (lastSection.classList.contains("slide--current")) {
+      next.style.display = 'none';
+      continueTo.style.display = 'none';
+      finished.style.display = 'none' ? '' : 'none';
+      previous.style.display = ''
+    }
   }
 
-  if (lastSection.classList.contains("slide--current")) {
-    next.style.display = 'none';
-    continueTo.style.display = 'none';
-    finished.style.display = 'none' ? '' : 'none';
-    previous.style.display = ''
+  showButton(){
+    var lastSection = document.getElementById("last");
+    var secondSection = document.getElementById("second");
+    var firstSection = document.getElementById("first");
+    var next = document.getElementById("nextbutton");
+    var back = document.getElementById("backbutton");
+
+    if (lastSection.classList.contains("slide--current")) {
+      next.style.display = 'none';
+    }
+    else if (secondSection.classList.contains("slide--current")) {
+      back.style.display = 'none' ? '' : 'none';
+    }
+    else if (firstSection.classList.contains("slide--current")) {
+      back.style.display = 'none';
+    }
   }
-}
 
-showButton(){
-  var lastSection = document.getElementById("last");
-  var secondSection = document.getElementById("second");
-  var firstSection = document.getElementById("first");
-  var next = document.getElementById("nextbutton");
-  var back = document.getElementById("backbutton");
-
-  if (lastSection.classList.contains("slide--current")) {
-    next.style.display = 'none';
+  close() {
+   this.element.parentNode.classList.remove("show");
   }
-  else if (secondSection.classList.contains("slide--current")) {
-    back.style.display = 'none' ? '' : 'none';
+
+  next() {
+    console.log(this)
+    this.showSlide(this.index + 1);
   }
-  else if (firstSection.classList.contains("slide--current")) {
-    back.style.display = 'none';
+
+  previous() {
+    this.showSlide(this.index - 1);
   }
-}
 
-close() {
- this.element.parentNode.classList.remove("show");
-}
+  showSlide(index) {
+    this.index = index
+    this.slideTargets.forEach((el, i) => {
+      el.classList.toggle("slide--current", index == i)
+    })
+  }
 
-next() {
-  console.log(this)
-  this.showSlide(this.index + 1);
-}
 
-previous() {
-  this.showSlide(this.index - 1);
-}
-
-showSlide(index) {
-  this.index = index
-  this.slideTargets.forEach((el, i) => {
-    el.classList.toggle("slide--current", index == i)
-  })
-}
 }
 
 // if index is the last one, then toggleClassList to close the collapse

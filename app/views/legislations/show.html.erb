@@ -25,10 +25,10 @@
   <div data-controller="slideshow" class='d-flex flex-row'>
     <div class="p-2 filter">
       <h6>Index</h6>
-      <ol>
+      <ol data-target='slideshow.titleLinks'>
         <% @legislation.titles.each do |title| %>
         <li>
-          <a href="#title<%= title.number %>" class='font-12'><%= title.capitalized_title %></a>
+          <a class='font-12' id="titleLink<%= title.number %>" data-action="slideshow#activateSelection" data-info="<%= title.number %>"><%= title.capitalized_title %></a>
         </li>
         <% end %>
       </ol>
