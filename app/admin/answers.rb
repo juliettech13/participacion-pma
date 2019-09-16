@@ -15,13 +15,24 @@ ActiveAdmin.register Answer do
   actions :all, except: [:edit, :update, :destroy]
   menu priority: 3
 
-  # index do
-  #   column :user_id
-  #   column :question_id
-  #   column :content
-  #   column :created_at
-  #   actions
-  # end
+  index do
+
+    column "Usuarios" do |answer|
+      user = answer.consultation.user
+      link_to user.first_name ? user.full_name : user.email, admin_user_path(answer.consultation.user)
+    end
+
+    column "Preguntas" do |answer|
+      answer.question.content
+    end
+
+    column "Respuestas" do |answer|
+      answer = answer.content
+      link_to answer, admin_answer_path(answer)
+    end
+
+    actions
+  end
 
   show do
     attributes_table do
@@ -30,6 +41,7 @@ ActiveAdmin.register Answer do
       row :user_id
     end
     h3 "Question: #{answer.question.content}"
+    h3 "Email: #{answer.consultation.user.email}"
     h3 "User Full Name: #{answer.consultation.user.full_name}"
     active_admin_comments
   end
