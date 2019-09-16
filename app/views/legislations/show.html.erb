@@ -35,7 +35,7 @@
     </div>
     <div class="p-2 legislation-content">
       <% @legislation.titles.order(number: :asc).each do |title| %>
-        <div id="title<%= title.number %>" data-target="slideshow.slide" class="slide">
+        <div id="title<%= title.number %>" data-target="slideshow.slide" class="slide title">
           <div class="title-info">
             <p class='font-12'>Artículos <%= title.articles.first.integer %> a <%= title.articles.last.integer %> de <%= Article.all.count %></p>
             <h3>Título <%= title.number %>: <%= title.capitalized_title %></h3>
@@ -84,59 +84,23 @@
 
             <div id="collapse_<%= article.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
               <div class="card-body" data-controller="slideshow">
-                <% unless article.questions.find_by(number: 1).answers.exists?(consultation: @consultation) %>
+
+                <% unless article.questions.find_by(number: 1).answers.exists?(consultation: current_user.consultations.last) %>
                   <div data-target="slideshow.slide" class="slide">
                     <p class='medium-font'><%= article.questions.find_by(number: 1).content %></p>
                     <p style="font-size: 12px">(1 = no me gusta en absoluto, 5 = estoy absolutamente de acuerdo)</p>
-                    <%#= render 'form_question1', article: article, answer: @answer, consultation: @consultation %>
-                    <%= form_for @answer, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"}, method: :post do |f| %>
-                      <%= f.hidden_field :user_id, value: current_user.id  %>
-                      <%= f.hidden_field :question_id, value: article.questions.find_by(number: 1).id  %>
-                      <%= f.hidden_field :consultation_id, value: @consultation.id  %>
-                      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                      <div class="buttonspacing">
-                        <a data-action="slideshow#next">
-                          <%= f.submit '1', name: "content", class: 'btn-primary' %>
-                        </a>
-                        <a data-action="slideshow#next">
-                          <%= f.submit '2', name: "content", class: 'btn-primary' %>
-                        </a>
-                        <a data-action="slideshow#next">
-                          <%= f.submit '3', name: "content", class: 'btn-primary' %>
-                        </a>
-                        <a data-action="slideshow#next">
-                          <%= f.submit '4', name: "content", class: 'btn-primary' %>
-                        </a>
-                        <a data-action="slideshow#next">
-                          <%= f.submit '5', name: "content", class: 'btn-primary' %>
-                        </a>
-                      </div>
-                    <% end %>
-
+                    <%= render 'form_question1', article: article, answer: @answer, consultation: @consultation %>
                   </div>
                 <% end %>
 
-                <% unless article.questions.find_by(number: 2).answers.exists?(consultation: @consultation) %>
-                <div data-target="slideshow.slide" class="slide">
-                  <p class='medium-font'><%= article.questions.find_by(number: 2).content %></p>
-                  <%= form_for @answer, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
-                  <%= f.hidden_field :user_id, :value => current_user.id  %>
-                  <%= f.hidden_field :question_id, :value => article.questions.find_by(number: 2).id  %>
-                  <%= f.hidden_field :consultation_id, :value => @consultation.id  %>
-                  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                  <div class="buttonspacing">
-                    <a data-action="slideshow#next slideshow#answered">
-                      <%= f.submit 'SÍ', name: "content", class: 'btn-primary' %>
-                    </a>
-                    <a data-action="slideshow#next slideshow#answered">
-                      <%= f.submit 'NO', name: "content", class: 'btn-primary' %>
-                    </a>
+                <% unless article.questions.find_by(number: 2).answers.exists?(consultation: current_user.consultations.last) %>
+                  <div data-target="slideshow.slide" class="slide">
+                    <p class='medium-font'><%= article.questions.find_by(number: 2).content %></p>
+                      <%= render 'form_question2', article: article, answer: @answer, consultation: @consultation %>
                   </div>
-                  <% end %>
-                </div>
                 <% end %>
 
-                <% unless article.questions.find_by(number: 3).answers.exists?(consultation: @consultation) %>
+                <% unless article.questions.find_by(number: 3).answers.exists?(consultation: current_user.consultations.last) %>
                   <div data-target="slideshow.slide" class="slide">
                     <p class='medium-font'>¿Quisieras sugerir algún comentario sobre el artículo?</p>
                     <div class=" form-group buttonspacing">
@@ -146,18 +110,7 @@
                   </div>
                   <div data-target="slideshow.slide" class="slide">
                     <p class="medium-font"><%= article.questions.find_by(number: 3).content %></p>
-                    <%= form_for Answer.new, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
-                    <div class="form-group">
-                      <%= f.hidden_field :user_id, :value => current_user.id  %>
-                      <%= f.hidden_field :question_id, :value => article.questions.find_by(number: 3).id  %>
-                      <%= f.hidden_field :consultation_id, :value => @consultation.id  %>
-                      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                      <%= f.text_area :content, :name => "content", required: true, :class => 'form-control', placeholder: "Me parece que este artículo es bueno/malo porque .... Esto se podría arreglar agregando/quitando ...." %>
-                      <a data-action="slideshow#close slideshow#revised slideshow#next">
-                        <%= f.submit 'sugiere tu revisión', class: 'btn-primary' %>
-                      </a>
-                    </div>
-                    <% end %>
+                      <%= render 'form_question3', article: article, answer: @answer, consultation: @consultation %>
                   </div>
                 <% else %>
                   <p class="bold-font">Ya respondiste todas las preguntas. Gracias por tu colaboración!</p>
@@ -173,11 +126,6 @@
 <% end %>
 
 <div class="finished row">
- <!--  <button id="continueto" style='display: none' class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">continúa</button>
-  <button id="prevbutton" style="display: none" class="btn btn-primary text-white margin-right-10" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">título anterior</button>
-  <button id="nextbutton" class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">próximo título</button> -->
   <%= link_to "terminar la consulta", new_consultation_general_feedback_path(@consultation), id: 'finished', class: 'btn btn-primary' %>
 </div>
 </div>
-
-<!-- </div> -->
