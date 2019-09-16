@@ -30,6 +30,7 @@ ActiveAdmin.register Answer do
       row :user_id
     end
     h3 "Question: #{answer.question.content}"
+    h3 "Email: #{answer.consultation.user.email}"
     h3 "User Full Name: #{answer.consultation.user.full_name}"
     active_admin_comments
   end
