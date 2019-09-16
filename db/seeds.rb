@@ -3042,12 +3042,9 @@ t7 = Title.create!(number: 7,
       number: 218.4,
       new: true)
 
-
-
-
     # articulo nuevo 7. debe venir despues del 221 con ese titulo
     puts 'creating article 221'
-    a221 = Article.create!(content: "Toda denuncia o querella que se presente contra un magistrado de la Corte Suprema de Justicia, será investigada por el Procurador General de la Nación o Fiscal delegado. En caso de ser imputado por éste, el mismo será procesado, en primera instancia, por el Tribunal Constitucional. En la primera instancia el juzgamiento corresponderá a dos magistrados principales y un suplente de dicho tribunal. La sentencia dictada en primera instancia será recurrible ante otros tres magistrados principales o suplentes distintos de los que hayan dictado el fallo de primera instancia. En estos casos actuará como juez de garantías el magistrado que se designe por el resto del Tribunal Constitucional. Las medidas cautelares solicitadas por el Procurador General de la Nación serán autorizadas por el juez de garantías, cuyas decisiones serán recurribles ante los magistrados de primera instancia.",
+    a221 = Article.create!(content: "El Tribunal Constitucional estará integrada por cinco (5) magistrados y sus respectivos suplentes, quienes deberán cumplir con iguales requisitos que para ser Magistrado de la Corte Suprema de Justicia, y serán nombrados de igual forma que éstos, mediante el principio de nombramientos escalonados. /n A los magistrados del Tribunal Constitucional les son aplicables las mismas prohibiciones y prerrogativas que establece esta Constitución para los Magistrados de la Corte Suprema de Justicia.",
       chapter: c72,
       number: 221.5,
       new: true)
@@ -3067,10 +3064,49 @@ t7 = Title.create!(number: 7,
 
     # articulo nuevo 5. debe venir despues del 219 con ese titulo
     puts 'creating article 219'
-    a2191 = Article.create!(content: "El Tribunal Constitucional estará integrada por cinco (5) magistrados y sus respectivos suplentes, quienes deberán cumplir con iguales requisitos que para ser Magistrado de la Corte Suprema de Justicia, y serán nombrados de igual forma que éstos, mediante el principio de nombramientos escalonados. A los magistrados del Tribunal Constitucional les son aplicables las mismas prohibiciones y prerrogativas que establece esta Constitución para los Magistrados de la Corte Suprema de Justicia.",
+    a2191 = Article.create!(content: "Son funciones del Tribunal Constitucional las siguientes:",
       chapter: c721,
       number: 219.6,
       new: true)
+
+      puts 'creating subarticles for article 219'
+
+      sa219101 = Subarticle.create!(content: 'Conocer de las demandas de inconstitucionalidad contra las leyes, decretos y demás disposiciones normativas con fuerza de Ley.',
+        article: a2191,
+        number: 1)
+
+      sa219102 = Subarticle.create!(content: 'Decidir sobre las advertencias o consultas sobre la constitucionalidad de una norma juridica de inferior rango a la Constitución aplicable a un caso concreto. ',
+        article: a2191,
+        number: 2)
+
+      sa219103 = Subarticle.create!(content: 'Conocer de la inexequibilidad de los proyectos de ley objetados por el Órgano Ejecutivo al estimarlos como inconstitucionales.',
+        article: a2191,
+        number: 3)
+
+      sa219104 = Subarticle.create!(content: 'Decidir, sobre las demandas de inconstitucionalidad contra los actos reformatorios de la Constitución, por vicios de procedimiento en su formación.',
+        article: a2191,
+        number: 4)
+
+      sa219105 = Subarticle.create!(content: 'Decidir, con anterioridad al pronunciamiento popular, sobre la constitucionalidad de la convocatoria a un referéndum, plebiscito o a una Asamblea Constituyente, solo en caso de vicios de procedimiento en su formación.',
+        article: a2191,
+        number: 5)
+      sa219106 = Subarticle.create!(content: 'Conocer de la exequibilidad de [os Tratados Internacionales y de las leyes que los aprueben. Si la corte los declara constitucionales, el Gobierno podrá efectuar el canje de notas, de lo contrario, no serán ratificados. En caso de inexequibilidad de una o varias normas del Tratado multilateral, cabe la formulación de reserva. ',
+        article: a2191,
+        number: 6)
+
+      sa219107 = Subarticle.create!(content: 'Conocer de las querellas o denuncias que se presenten contra los magistrados de la Corte Suprema de Justicia, con sujeción a lo establecido en el artículo siguiente. La fase de investigación corresponde al Ministerio Público.',
+        article: a2191,
+        number: 7)
+
+      sa219108 = Subarticle.create!(content: 'Revisar, en la forma que determine la Ley, las decisiones judiciales sobre la acción de amparo de las garantías constitucionales fundamentales; atendiendo la excepción contenida en el artículo 207.',
+        article: a2191,
+        number: 8)
+
+      sa219109 = Subarticle.create!(content: 'Las decisiones del Tribunal Constitucional, en el ejercicio de las atribuciones señaladas en esta Constitución, son finales, definitivas, obligatorias y deben publicarse en la Gaceta Oficial.',
+        article: a2191,
+        number: 2001)
+
+
 
     puts 'creating article 220'
     a220 = Article.create!(content: 'Son atribuciones del Ministerio Público:',
@@ -3110,7 +3146,7 @@ t7 = Title.create!(number: 7,
 
       # articulo nuevo 6. debe venir despues del 220 con ese titulo
       puts 'creating article 220'
-      a2201 = Article.create!(content: "Son funciones del Tribunal Constitucional las siguientes:",
+      a2201 = Article.create!(content: " Toda denuncia o querella que se presente contra un magistrado de la Corte Suprema de Justicia, será investigada por el Procurador General de la Nación o Fiscal delegado. En caso de ser imputado por éste, el mismo será procesado, en primera instancia, por el Tribunal Constitucional. En la primera instancia el juzgamiento corresponderá a dos magistrados principales y un suplente de dicho tribunal. /n La sentencia dictada en primera instancia será recurrible ante otros tres magistrados principales o suplentes distintos de los que hayan dictado el fallo de primera instancia. En estos casos actuará como juez de garantías el magistrado que se designe por el resto del Tribunal Constitucional. /n Las medidas cautelares solicitadas por el Procurador General de la Nación serán autorizadas por el juez de garantías, cuyas decisiones serán recurribles ante los magistrados de primera instancia. ",
         chapter: c721,
         number: 220.7,
         new: true)

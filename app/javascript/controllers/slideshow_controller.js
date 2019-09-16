@@ -29,9 +29,11 @@ export default class extends Controller {
   }
 
   activateSelection(){
-    var allActive = document.querySelectorAll('.slide--current');
-    allActive.forEach(function(activeTitle) {
-      activeTitle.classList.remove('slide--current')
+    var titles = document.querySelectorAll('.title');
+    titles.forEach((title) => {
+      if (title.classList.contains("slide--current")){
+        title.classList.remove('slide--current')
+      }
     })
     var titleNum = event.target.dataset.info
     var titleToActivate = document.querySelector(`#title${titleNum}`);
@@ -53,13 +55,6 @@ export default class extends Controller {
       continueto.style.display = 'none';
       finished.style.display = '';
     }
-
-  // if (intro.classList.contains("slide--current")) {
-  //     previous.style.display = 'none';
-  //     next.style.display = 'none';
-  //     continueto.style.display = 'none' ? '' : 'none';
-  //     finished.style.display = 'none';
-  // }
 
     if (secondSection.classList.contains("slide--current")) {
       finished.style.display = 'none';
@@ -99,10 +94,6 @@ export default class extends Controller {
   }
 
   next() {
-    var activeTitle = document.querySelector('.slide--current')
-    console.log('this', this)
-    // console.log('index from active title', activeTitle.index)
-    // console.log('currently this.index', this.index)
     this.showSlide(this.index + 1);
   }
 
@@ -111,7 +102,7 @@ export default class extends Controller {
   }
 
   showSlide(index) {
-    this.index = index
+    this.index = index;
     this.slideTargets.forEach((el, i) => {
       el.classList.toggle("slide--current", index == i)
     })

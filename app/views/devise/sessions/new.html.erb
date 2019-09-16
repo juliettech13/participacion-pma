@@ -8,15 +8,15 @@
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class=" form-control ">
           <div class=" form-group ">
-            email
+            <p class="bold-font">email</p>
             <%= f.input :email, label: false, required: false, autofocus: true, placeholder: "juan@gmail.com", class: "form-control" %>
           </div>
           <div class="form-group ">
-            contraseña
+            <p class="bold-font">contraseña</p>
             <%= f.input :password, label: false, required: false, placeholder: "••••••", class: "form-control"  %>
           </div>
-         <!--  <div class="form-check">
-            <%#= f.input :remember_me, as: :boolean, class: "form-control"   if devise_mapping.rememberable?%>
+          <!--   <div class="form-check">
+            <%#= f.input remember_me, as: :boolean, class: "form-control"   if devise_mapping.rememberable?%>
           </div> -->
           <div class="form-actions ">
             <%= f.button :submit, "accede", class: "btn-login-custom form-control"  %>

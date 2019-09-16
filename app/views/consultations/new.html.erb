@@ -15,7 +15,7 @@
                 <div class="page-header">
                   <h4>Bienvenido a tu plataforma de consulta ciudadana</h4>
                 </div>
-                <p>La idea es que todos podamos contribuir nuestras opiniones e ideas sobre como debe lucir el documento mas importante de la república: la Constitución.</p>
+                <p>La idea es que todos podamos contribuir nuestras opiniones e ideas sobre como debe lucir el documento más importante de la república: la Constitución.</p>
               </div>
             </div>
 
@@ -25,17 +25,21 @@
                 <h4>¿Cómo funciona?</h4>
                 <ol class='align-left'>
                   <li>
-                    <p><strong>Haz "click"</strong> en el artículo que te interesa comentar.</p>
+                    <p>No hay <strong>ningún requerimiento</strong> para participar.</p>
                   </li>
                   <li>
-                    <p><strong>Responde</strong> las preguntas utilizando la escala del 1 al 5 (donde 1 es "no me gusta en absoluto" y 5 "estoy absolutamente de acuerdo").</p>
+                    <p><strong>Haz "clic"</strong> en el artículo que te interesa comentar.</p>
+                  </li>
+                  <li>
+                    <p><strong>Responde</strong> las preguntas utilizando la escala del 1 al 5 (donde 1 es "no me gusta en absoluto" y 5 "estoy completamente de acuerdo").</p>
                   </li>
                   <li>
                     <p><strong>Sugiere</strong> los cambios que consideres necesarios.</p>
                   </li>
                   <hr>
                   <li style='list-style: none; text-align: justify;' class='align-left'>
-                    <p>Toma en cuenta que para leer los <strong>artículos modificados</strong> sólo debes pasar el cursor sobre el botón <span class="badge badge-danger">VER MODIFICADO</span>. Al hacerlo, se abrirá una ventana con el contenido propuesto por la <strong>Concertación Nacional para el Desarrollo</strong>.</p>
+                    <p>Cuando veás que un artículo tiene una <span class="badge badge-danger badge-padding">MODIFICACIÓN PROPUESTA</span>, verás el texto propuesto por la <strong>Concertación Nacional para el Desarrollo</strong> comparado con cómo está el artículo actualmente.</p>
+                    <p>Este grupo también creó <strong>artículos y capítulos nuevos</strong> señalizados cuando veas <span class="badge badge-info badge-padding">NUEVO</span>.</p>
                   </li>
                 </ol>
                 <p style="font-size: 14px;"><strong>Nota:</strong> Si lo deseas, puedes bajar el PDF del texto <a href="../download_pdf" style='font-weight: bold'target="_blank">aquí</a>.</p>
@@ -47,22 +51,23 @@
               <div id="scale">
                 <h4>Cuando veas esta escala, toma en cuenta que:</h4>
                   <p>1 = <strong>no me gusta en absoluto</strong> 👎🏽</p>
-                  <p>5 = <strong>estoy absolutamente de acuerdo</strong> 👍🏽</p>
+                  <p>5 = <strong>estoy completamente de acuerdo</strong> 👍🏽</p>
                 </div>
               </div>
 
               <div data-target="slideshow.slide" class="slide introductory-section" id="third">
                 <div id="own-pace">
                   <h4>Lee el documento a tu propio ritmo</h4>
-                  <p>No hay ningun requerimiento de participación. Todos están invitados a colaborar y a leer y comentar todas las veces que quieran. Cualquier idea es aceptada para mejorar el país.</p>
-                  <p>Has "click" en <button class="btn btn-primary">terminar la consulta</button> cuando termines de leer el texto.</p>
+                  <p>No hay ningun requerimiento de participación.</p>
+                  <p> Todos están invitados a colaborar, leer y comentar todas las veces que quieran. Cualquier idea es aceptada para mejorar el país.</p>
+                  <p>Una vez hayas terminado de dar tus opiniones, haz 'clic' en <button class="btn btn-primary text-white">terminar la consulta</button> para finalizar la consulta y dar tus opiniones.</p>
                 </div>
               </div>
 
 <!-- instruciton 4 -->
               <div data-target="slideshow.slide" class="slide introductory-section" id="last">
-                <div id="abstract" style="">
-                  <h4>Abstracto</h4>
+                <div id="abstract">
+                  <h4>Introducción</h4>
                   <div class="abstract-text">
                     <p>El <strong>Consejo de la Concertación Nacional para el Desarrollo</strong>, creado mendiante <strong>Ley 20 de 2008</strong>, aprobó un paquete de "reformas constitucionales" que presentó a la consideración del Consejo de Gabinete. El documento fue aprobado, sin modificaciones, por el Órgano Ejecutivo, que a su vez autorizó al ministro de la Presidencia a presentarlo ante la Asamblea Nacional de Diputados. </p>
                     <p>Este Órgano del Estado lo acogió para darle el trámite correspondiente, de conformidad con el artículo 313.2 de la Constitución Nacional sobre reformas constitucionales.</p>
@@ -73,7 +78,7 @@
                 <div id="start">
                   <%= simple_form_for [@legislation, @consultation] do |f| %>
                   <%= f.input :user_id, as: :hidden %>
-                  <%= f.submit "empieza mi consulta", class: "new-consultation btn btn-primary" %>
+                  <%= f.submit "empieza mi consulta", class: "new-consultation btn btn-primary text-white" %>
                   <% end %>
                 </div>
               </div>
