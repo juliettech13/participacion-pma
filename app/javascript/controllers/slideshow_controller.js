@@ -99,10 +99,8 @@ export default class extends Controller {
   }
 
   next() {
-    var activeTitle = document.querySelector('.slide--current')
-    console.log('this', this)
-    // console.log('index from active title', activeTitle.index)
-    // console.log('currently this.index', this.index)
+    console.log('this from slideshow#next', this)
+    console.log('this.index next', this.index)
     this.showSlide(this.index + 1);
   }
 
@@ -112,6 +110,9 @@ export default class extends Controller {
 
   showSlide(index) {
     this.index = index
+    // console.log('this from slideshow#showslide', this)
+    // console.log('this.index showslide', this.index)
+    // console.log('slidetargets', this.slideTargets)
     this.slideTargets.forEach((el, i) => {
       el.classList.toggle("slide--current", index == i)
     })

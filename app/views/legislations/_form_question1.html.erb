@@ -1,0 +1,23 @@
+<%= form_for answer, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"}, method: :post do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id  %>
+  <%= f.hidden_field :question_id, value: article.questions.find_by(number: 1).id  %>
+  <%= f.hidden_field :consultation_id, value: consultation.id  %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <div class="buttonspacing">
+    <a data-action="slideshow#next">
+      <%= f.submit '1', name: "content", class: 'btn-primary' %>
+    </a>
+    <a data-action="slideshow#next">
+      <%= f.submit '2', name: "content", class: 'btn-primary' %>
+    </a>
+    <a data-action="slideshow#next">
+      <%= f.submit '3', name: "content", class: 'btn-primary' %>
+    </a>
+    <a data-action="slideshow#next">
+      <%= f.submit '4', name: "content", class: 'btn-primary' %>
+    </a>
+    <a data-action="slideshow#next">
+      <%= f.submit '5', name: "content", class: 'btn-primary' %>
+    </a>
+  </div>
+<% end %>

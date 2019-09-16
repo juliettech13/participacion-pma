@@ -128,7 +128,7 @@
 
 #supporting-content {
   justify-content: flex-start;
-  margin-left: -15px;
+  // margin-left: -15px;
   // margin-top: 10px;
   margin-right: 0px;
 }
@@ -294,6 +294,14 @@ button{
 
 .legislation-content{
   width: 80%;
+}
+
+.cursor-link{
+  cursor: pointer
+}
+
+.bold-font{
+  font-weight: bold
 }
 
 @media only screen and (max-width: 600px) {
