@@ -28,7 +28,7 @@
       <ol>
         <% @legislation.titles.each do |title| %>
           <li>
-            <a class='font-12 cursor-link' id="titleLink<%= title.number %>" data-action="slideshow#activateSelection" data-info="<%= title.number %>"><%= title.capitalized_title %></a>
+            <a class='font-12 cursor-link title-link' id="titleLink<%= title.number %>" data-action="slideshow#activateSelection slideshow#scrollTop" data-info="<%= title.number %>"><%= title.capitalized_title %></a>
           </li>
         <% end %>
       </ol>
