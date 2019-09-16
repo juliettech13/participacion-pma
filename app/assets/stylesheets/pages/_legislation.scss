@@ -305,6 +305,15 @@ button{
   margin-bottom: 25px
 }
 
+textarea::placeholder{
+  font-size: 16px
+}
+
+.buttonspacing input {
+  color: white;
+  border-radius: 6px
+}
+
 @media only screen and (max-width: 600px) {
 
   .title .jumbotron {

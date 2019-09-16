@@ -43,12 +43,7 @@
 
           <div id="accordion">
             <% title.chapters.order(number: :asc).each do |chapter| %>
-              <%# if !chapter.number.zero? %>
-                <%# if chapter.new == true %>
-                <!-- <div id="chapter<%#= chapter.number %>" class="margin-top-btm-25">
-                  <h5>Capítulo <%#= chapter.number %>: <%#= chapter.description %></h5>
-                </div> -->
-              <!-- <%# end %> -->
+
             <div id="chapter<%= chapter.number %>" class="margin-top-btm-25">
               <% if chapter.new == true %>
                 <h5>Capítulo <button  class='badge badge-info text-white font-12 badge-padding' disabled>NUEVO</button> <%= chapter.description %></h5>
@@ -112,8 +107,8 @@
                   <div data-target="slideshow.slide" class="slide">
                     <p class='medium-font'>¿Quisieras sugerir algún comentario sobre el artículo?</p>
                     <div class=" form-group buttonspacing">
-                      <button data-action="slideshow#next" class="btn-primary">Sí</button>
-                      <button data-action="slideshow#close" class="btn-primary">No</button>
+                      <button data-action="slideshow#next" class="btn-primary text-white">Sí</button>
+                      <button data-action="slideshow#close" class="btn-primary text-white">No</button>
                     </div>
                   </div>
                   <div data-target="slideshow.slide" class="slide">
