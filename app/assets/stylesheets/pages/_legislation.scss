@@ -143,10 +143,6 @@
   font-weight: 700;
 }
 
-.success-badges {
-  margin-left: 15px;
-}
-
 .card-header {
   background-color: #ffffff;
   padding: 1rem .5rem;
@@ -155,10 +151,6 @@
     font-weight: lighter;
   }
 }
-
-// .card-header:hover {
-//   color: green;
-// }
 
 .scrollable {
     height: 100vh; /* or any value */
@@ -227,10 +219,6 @@
   padding-top: 0px !important
 }
 
-// .card-header{
-//   padding-top: 0px !important
-// }
-
 .p-2{
   padding: 6px !important
 }
@@ -287,7 +275,6 @@ button{
   position: sticky;
   border-style: solid;
   border-width: 1px;
-  // padding: 15px;
   border-radius: 10px;
   top: 0;
   margin: 10px
@@ -311,6 +298,10 @@ button{
 
 .title-link:hover{
   font-weight: bold
+}
+
+.margin-btm-25{
+  margin-bottom: 25px
 }
 
 @media only screen and (max-width: 600px) {

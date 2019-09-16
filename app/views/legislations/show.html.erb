@@ -24,7 +24,7 @@
 
   <div data-controller="slideshow" class='d-flex flex-row'>
     <div class="p-2 filter">
-      <h6 class='text-center'>Index</h6>
+      <h6 class='text-center'>Títulos</h6>
       <ol>
         <% @legislation.titles.each do |title| %>
           <li>
@@ -43,11 +43,19 @@
 
           <div id="accordion">
             <% title.chapters.order(number: :asc).each do |chapter| %>
-              <% if !chapter.number.zero? %>
-                <div id="chapter<%= chapter.number %>" class="margin-top-btm-25">
-                  <h5>Capítulo <%= chapter.number %>: <%= chapter.description %></h5>
-                </div>
+              <%# if !chapter.number.zero? %>
+                <%# if chapter.new == true %>
+                <!-- <div id="chapter<%#= chapter.number %>" class="margin-top-btm-25">
+                  <h5>Capítulo <%#= chapter.number %>: <%#= chapter.description %></h5>
+                </div> -->
+              <!-- <%# end %> -->
+            <div id="chapter<%= chapter.number %>" class="margin-top-btm-25">
+              <% if chapter.new == true %>
+                <h5>Capítulo <button  class='badge badge-info text-white font-12 badge-padding' disabled>NUEVO</button> <%= chapter.description %></h5>
+              <% elsif !chapter.number.zero? %>
+                <h5>Capítulo <%= chapter.number %>: <%= chapter.description %></h5>
               <% end %>
+            </div>
               <% chapter.articles.order(number: :asc).each do |article| %>
 
                 <div class="card">
@@ -57,7 +65,7 @@
                         <% if Metadatum.exists?(article: article) %>
                           <div class="success-badges row">
                             <div class='col-xs-12 col-md-6 padding-left-0'>
-                              <h6 class='align-left'>Artículo <%= article.integer %> <strong>(actual)</strong></h6>
+                              <h6 class='align-left margin-btm-25'>Artículo <%= article.integer %> <strong>(actual)</strong></h6>
                               <%= render 'article_show', article: article %>
                             </div>
                             <div class='col-xs-12 col-md-6 padding-left-0'>
@@ -85,7 +93,7 @@
             <div id="collapse_<%= article.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
               <div class="card-body" data-controller="slideshow">
 
-                <% unless article.questions.find_by(number: 1).answers.exists?(consultation: current_user.consultations.last) %>
+                <% unless article.questions.find_by(number: 1).answers.exists?(consultation: @consultation) %>
                   <div data-target="slideshow.slide" class="slide">
                     <p class='medium-font'><%= article.questions.find_by(number: 1).content %></p>
                     <p style="font-size: 12px">(1 = no me gusta en absoluto, 5 = estoy absolutamente de acuerdo)</p>
@@ -93,14 +101,14 @@
                   </div>
                 <% end %>
 
-                <% unless article.questions.find_by(number: 2).answers.exists?(consultation: current_user.consultations.last) %>
+                <% unless article.questions.find_by(number: 2).answers.exists?(consultation: @consultation) %>
                   <div data-target="slideshow.slide" class="slide">
                     <p class='medium-font'><%= article.questions.find_by(number: 2).content %></p>
                       <%= render 'form_question2', article: article, answer: @answer, consultation: @consultation %>
                   </div>
                 <% end %>
 
-                <% unless article.questions.find_by(number: 3).answers.exists?(consultation: current_user.consultations.last) %>
+                <% unless article.questions.find_by(number: 3).answers.exists?(consultation: @consultation) %>
                   <div data-target="slideshow.slide" class="slide">
                     <p class='medium-font'>¿Quisieras sugerir algún comentario sobre el artículo?</p>
                     <div class=" form-group buttonspacing">
@@ -126,6 +134,6 @@
 <% end %>
 
 <div class="finished row">
-  <%= link_to "terminar la consulta", new_consultation_general_feedback_path(@consultation), id: 'finished', class: 'btn btn-primary' %>
+  <%= link_to "terminar la consulta", new_consultation_general_feedback_path(@consultation), id: 'finished', class: 'btn btn-primary text-white' %>
 </div>
 </div>
