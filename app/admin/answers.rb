@@ -15,6 +15,18 @@ ActiveAdmin.register Answer do
   actions :all, except: [:edit, :update, :destroy]
   menu priority: 3
 
+  # filter :created_at do |answer|
+  #   answer.created_at.strftime("%d/%m/%y")
+  # end
+
+  # filter :question do |answer|
+  #   answer.question.content
+  # end
+
+  filter :user do |answer|
+    answer.consultation.user.full_name
+  end
+
   index do
 
     column "Usuarios" do |answer|
@@ -29,6 +41,10 @@ ActiveAdmin.register Answer do
     column "Respuestas" do |answer|
       answer = answer.content
       link_to answer, admin_answer_path(answer)
+    end
+
+    column "Fecha" do |general_feedback|
+      general_feedback.created_at.strftime("%d/%m/%y")
     end
 
     actions

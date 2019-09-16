@@ -25,7 +25,7 @@ ActiveAdmin.register GeneralFeedback do
       general_feedback.content
     end
 
-     column "Fecha" do |general_feedback|
+    column "Fecha" do |general_feedback|
       general_feedback.created_at.strftime("%d/%m/%y")
     end
   end
