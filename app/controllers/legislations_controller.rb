@@ -1,14 +1,10 @@
 class LegislationsController < ApplicationController
   before_action :set_legislation, only: [:show, :edit, :update, :destroy]
 
-  # GET /legislations
-  # GET /legislations.json
   def index
     @legislations = Legislation.all
   end
 
-  # GET /legislations/1
-  # GET /legislations/1.json
   def show
     @consultation = Consultation.find_by(user_id: current_user.id)
     @answer = Answer.new
@@ -19,17 +15,13 @@ class LegislationsController < ApplicationController
     send_file "#{Rails.root}/public/docs/CONSTITUCION-REFORMAS-2019.pdf", type: "application/pdf", x_sendfile: true
   end
 
-  # GET /legislations/new
   def new
     @legislation = Legislation.new
   end
 
-  # GET /legislations/1/edit
   def edit
   end
 
-  # POST /legislations
-  # POST /legislations.json
   def create
     @legislation = Legislation.new(legislation_params)
 
@@ -44,8 +36,6 @@ class LegislationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /legislations/1
-  # PATCH/PUT /legislations/1.json
   def update
     respond_to do |format|
       if @legislation.update(legislation_params)
@@ -58,8 +48,6 @@ class LegislationsController < ApplicationController
     end
   end
 
-  # DELETE /legislations/1
-  # DELETE /legislations/1.json
   def destroy
     @legislation.destroy
     respond_to do |format|

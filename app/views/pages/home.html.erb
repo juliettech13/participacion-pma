@@ -8,7 +8,7 @@
           <% if current_user.nil? %>
           <%= render 'signuphomepage' %>
           <% else %>
-          <%= link_to "empecemos", new_legislation_consultation_path(@legislation), :class => 'btn btn-primary get-started-button', :role => 'button' %>
+          <%= link_to "empecemos", new_legislation_consultation_path(@legislation), :class => 'btn btn-primary get-started-button text-white', :role => 'button' %>
           <p>
             Te invitamos a leer el documento completo. Anímate a contribuir con tus ideas y opiniones para que juntos demos forma a nuestra nueva Constitución.
           </p>

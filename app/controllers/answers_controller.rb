@@ -17,31 +17,15 @@ class AnswersController < ApplicationController
   end
 
   def create
-    # raise
-    @answer = Answer.new
-    @answer.content = params[:content]
-    # @answer.user_id = current_user.id
-    @answer.consultation = Consultation.find(params[:answer][:consultation_id])
-    @answer.question = Question.find(params[:answer][:question_id])
-
     if current_user == nil
       redirect_to new_user_registration_path
     else
-      # @answer.user_id = current_user.id
-      # @answer.question_id = @question.id
+      @answer = Answer.new
+      @answer.content = params[:content]
+      @answer.consultation = Consultation.find(params[:answer][:consultation_id])
+      @answer.question = Question.find(params[:answer][:question_id])
+      @answer.save!
     end
-   @answer.save!
-    # @answer.question = @question
-
-    # respond_to do |format|
-    #   if @answer.save
-    #     format.html { redirect_to questions_path }
-    #     format.json { render :show, status: :created, location: @question }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @answer.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   def update
