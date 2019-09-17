@@ -2,7 +2,7 @@
 <ol>
   <% metadata.metadatum_subarticles.order(number: :asc).each do |subarticle| %>
     <li>
-      <p><%= raw subarticle.content %></p>
+      <p class='align-left'><%= raw subarticle.content %></p>
     </li>
   <% end %>
 </ol>
