@@ -7,8 +7,9 @@ class LegislationsController < ApplicationController
 
   def show
     @consultation = Consultation.find_by(user_id: current_user.id)
+    @titles = @legislation.titles
+    @articles_count = Article.count
     @answer = Answer.new
-    # @questions = Question.where(:clause_id => @legislation.sections.each(&:clauses)).all
   end
 
   def download_pdf

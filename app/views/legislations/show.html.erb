@@ -21,11 +21,12 @@
     </div>
   </div>
 
+
   <div data-controller="slideshow" class='d-flex flex-row'>
     <div class="p-2 filter">
       <h6 class='text-center'>Títulos</h6>
       <ol>
-        <% @legislation.titles.each do |title| %>
+        <% @titles.each do |title| %>
           <li>
             <a class='font-12 cursor-link title-link' id="titleLink<%= title.number %>" data-action="slideshow#activateSelection slideshow#scrollTop" data-info="<%= title.number %>">
               <%= title.capitalized_title %>
@@ -35,29 +36,34 @@
       </ol>
     </div>
     <div class="p-2 legislation-content">
-      <% @legislation.titles.order(number: :asc).each do |title| %>
+      <% @titles.order(number: :asc).each do |title| %>
+        <% @articles = title.articles %>
+        <% @chapters = title.chapters %>
         <div id="title<%= title.number %>" data-target="slideshow.slide" class="slide title">
           <div class="title-info">
-            <p class='font-12'>Artículos <%= title.articles.first.integer %> a <%= title.articles.last.integer %> de <%= Article.all.count %></p>
+            <p class='font-12'>Artículos <%= @articles.first.integer %> a <%= @articles.last.integer %> de <%= @articles_count %></p>
             <h3>Título <%= title.number %>: <%= title.capitalized_title %></h3>
           </div>
 
           <div id="accordion">
-            <% title.chapters.order(number: :asc).each do |chapter| %>
+            <% @chapters.order(number: :asc).each do |chapter| %>
+              <% @chapter_articles = chapter.articles %>
 
-            <div id="chapter<%= chapter.number %>" class="margin-top-btm-25">
-              <% if chapter.new == true %>
-                <h5>Capítulo <button  class='badge badge-info text-white font-12 badge-padding' disabled>NUEVO</button> <%= chapter.description %></h5>
-              <% elsif !chapter.number.zero? %>
-                <h5>Capítulo <%= chapter.number %>: <%= chapter.description %></h5>
-              <% end %>
-            </div>
-              <% chapter.articles.order(number: :asc).each do |article| %>
+              <div id="chapter<%= chapter.number %>" class="margin-top-btm-25">
+                <% if chapter.new == true %>
+                  <h5>Capítulo <button  class='badge badge-info text-white font-12 badge-padding' disabled>NUEVO</button> <%= chapter.description %></h5>
+                <% elsif !chapter.number.zero? %>
+                  <h5>Capítulo <%= chapter.number %>: <%= chapter.description %></h5>
+                <% end %>
+              </div>
+
+              <% @chapter_articles.order(number: :asc).each do |article| %>
                 <div class="card">
                   <a class="btn btn-link article" data-toggle="collapse" data-target="#collapse_<%= article.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
                     <div class="card-header" id='headingOne'>
                       <div id="supporting-content">
-                        <% if Metadatum.exists?(article: article) %>
+                        <% if !
+                          article.metadata.empty? %>
                           <div class="success-badges row">
                             <div class='col-xs-12 col-md-6 padding-left-0'>
                               <h6 class='align-left margin-btm-25'>Artículo <%= article.integer %> <strong>(actual)</strong></h6>
@@ -87,23 +93,27 @@
 
             <div id="collapse_<%= article.id %>" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
               <div class="card-body" data-controller="slideshow">
+                <% @questions = article.questions %>
+                <% @question1 = @questions.find_by(number: 1) %>
+                <% @question2 = @questions.find_by(number: 2) %>
+                <% @question3 = @questions.find_by(number: 3) %>
 
-                <% unless article.questions.find_by(number: 1).answers.exists?(consultation: @consultation) %>
+                <% unless @question1.answers.exists?(consultation: @consultation) %>
                   <div data-target="slideshow.slide" class="slide">
-                    <p class='medium-font'><%= article.questions.find_by(number: 1).content %></p>
+                    <p class='medium-font'><%=  @question1.content %></p>
                     <p style="font-size: 12px">(1 = no me gusta en absoluto, 5 = estoy absolutamente de acuerdo)</p>
                     <%= render 'form_question1', article: article, answer: @answer, consultation: @consultation %>
                   </div>
                 <% end %>
 
-                <% unless article.questions.find_by(number: 2).answers.exists?(consultation: @consultation) %>
+                <% unless @question2.answers.exists?(consultation: @consultation) %>
                   <div data-target="slideshow.slide" class="slide">
-                    <p class='medium-font'><%= article.questions.find_by(number: 2).content %></p>
+                    <p class='medium-font'><%= @question2.content %></p>
                       <%= render 'form_question2', article: article, answer: @answer, consultation: @consultation %>
                   </div>
                 <% end %>
 
-                <% unless article.questions.find_by(number: 3).answers.exists?(consultation: @consultation) %>
+                <% unless @question3.answers.exists?(consultation: @consultation) %>
                   <div data-target="slideshow.slide" class="slide">
                     <p class='medium-font'>¿Quisieras sugerir algún comentario sobre el artículo?</p>
                     <div class=" form-group buttonspacing">
@@ -112,7 +122,7 @@
                     </div>
                   </div>
                   <div data-target="slideshow.slide" class="slide">
-                    <p class="medium-font"><%= article.questions.find_by(number: 3).content %></p>
+                    <p class="medium-font"><%= @question3.content %></p>
                       <%= render 'form_question3', article: article, answer: @answer, consultation: @consultation %>
                   </div>
                 <% else %>
