@@ -1054,7 +1054,7 @@ t3 = Title.create!(number: 3,
 
     # articulo nuevo 2. debe venir despues del 118 con ese titulo
     puts 'creating article 118'
-    a118 = Article.create!(content: "Es deber del Estado enfrentar el cambio climático en el contexto del desarrollo sostenible, adoptando medidas para la mitigación y eficiencia energética, incluyendo el desarrollo y uso de tecnologías limpias y fuentes de energía renovables, encaminadas hacia un modelo de descarbonización; e implementando las medidas de adaptación, restaurauración de ecosistemas y educación necesarias para reducir la vulnerabilidad e incrementar la resiliencia de la población, los ecosistemas y los sistemas productivos a los impactos producidos por la degradación ambiental y el cambio climático.",
+    a118 = Article.create!(content: "Es deber del Estado enfrentar el cambio climático en el contexto del desarrollo sostenible, adoptando medidas para la mitigación y eficiencia energética, incluyendo el desarrollo y uso de tecnologías limpias y fuentes de energía renovables, encaminadas hacia un modelo de descarbonización; e implementando las medidas de adaptación, restauración de ecosistemas y educación necesarias para reducir la vulnerabilidad e incrementar la resiliencia de la población, los ecosistemas y los sistemas productivos a los impactos producidos por la degradación ambiental y el cambio climático.",
       chapter: c37,
       number: 118.2,
       new: true)
@@ -1627,15 +1627,21 @@ t5 = Title.create!(number: 5,
         article: a151,
         number: 2001)
 
+  puts 'creating chapter 1'
+  c510 = Chapter.create!(number: 2,
+    description: "El Régimen Provincial",
+    title: t5,
+    new: false)
+
     puts 'creating article 152'
     a152 = Article.create!(content: 'Se denominarán sesiones judiciales las dedicadas al ejercicio de las atribuciones jurisdiccionales de la Asamblea Nacional, sea cual fuere el tiempo en que se celebren y la forma como dicha Asamblea Nacional hubiere sido convocada. Su celebración no alterará la continuidad y la duración de una legislatura, y sólo terminarán cuando la Asamblea hubiese fallado la causa pendiente. Para ejercer funciones jurisdiccionales, la Asamblea Nacional podrá reunirse por derecho propio, sin previa convocatoria.',
-      chapter: c51,
+      chapter: c510,
       number: 152,
       new: false)
 
     puts 'creating article 153'
     a153 = Article.create!(content: 'Para ser Diputado se requiere:',
-      chapter: c51,
+      chapter: c510,
       number: 153,
       new: false)
 
@@ -1696,14 +1702,14 @@ t5 = Title.create!(number: 5,
 
     puts 'creating article 154'
     a154 = Article.create!(content: 'Los miembros de la Asamblea Nacional no son legalmente responsables por las opiniones y votos que emitan en el ejercicio de su cargo.',
-      chapter: c51,
+      chapter: c510,
       number: 154,
       new: false)
 
     puts 'creating article 155'
     a155 = Article.create!(content: 'Los miembros de la Asamblea Nacional podrán ser investigados y procesados por el Pleno de la Corte Suprema de Justicia, por la presunta comisión de algún acto delictivo o policivo, sin que para estos efectos se requiera autorización de la Asamblea Nacional. La detención preventiva o cualquier medida cautelar será determinada por el Pleno de la Corte Suprema de Justicia. /n
     El Diputado Principal o Suplente podrá ser demandado civilmente, pero no podrá decretarse secuestro u otra medida cautelar sobre su patrimonio, sin previa autorización del Pleno de la Corte Suprema de Justicia, con excepción de las medidas que tengan como fundamento asegurar el cumplimiento de obligaciones por Derecho de Familia y Derecho Laboral.',
-      chapter: c51,
+      chapter: c510,
       number: 155,
       new: false)
 
@@ -1716,7 +1722,7 @@ t5 = Title.create!(number: 5,
     puts 'creating article 156'
     a156 = Article.create!(content: 'Los Diputados principales y suplentes, cuando estos últimos estén ejerciendo el cargo, no podrán aceptar ningún empleo público remunerado. /n
     Si lo hicieren, se producirá la vacante absoluta del cargo de Diputado principal o suplente, según sea el caso. Se exceptúan los nombramientos de Ministro, Viceministro, Director General o Gerente de entidades autónomas o semiautónomas y Agentes Diplomáticos, cuya aceptación sólo produce vacante transitoria por el tiempo en que se desempeñe el cargo. El ejercicio de los cargos de maestro o profesor en centros de educación oficial o particular es compatible con la calidad de Diputado.',
-      chapter: c51,
+      chapter: c510,
       number: 156,
       new: false)
 
@@ -1727,14 +1733,14 @@ t5 = Title.create!(number: 5,
 
     puts 'creating article 157'
     a157 = Article.create!(content: 'Los Diputados devengarán los emolumentos que señale la Ley, los cuales serán imputables al Tesoro Nacional, pero su aumento sólo será efectivo después de terminar el período de la Asamblea Nacional que lo hubiere aprobado.',
-      chapter: c51,
+      chapter: c510,
       number: 157,
       new: false)
 
     puts 'creating article 158'
     a158 = Article.create!(content: 'Los Diputados no podrán hacer por sí mismos, ni por interpuestas personas, contrato alguno con Órganos del Estado o con instituciones o empresas vinculadas a este, ni admitir de nadie poder para gestionar negocios ante esos Órganos, instituciones o empresas.  /n
     Quedan exceptuados los casos siguientes:',
-      chapter: c51,
+      chapter: c510,
       number: 158,
       new: false)
 
@@ -1758,11 +1764,6 @@ t5 = Title.create!(number: 5,
         article: a158,
         number: 4)
 
-      puts 'creating subarticles for article 158'
-      sa158004 = Subarticle.create!(content: "Queda exceptuado el caso cuando el Diputado hace uso personal o profesional de servicios públicos o efectúe operaciones corrientes de la misma índole con instituciones o empresas vinculadas al Estado.",
-        article: a158,
-        number: 2000)
-
       puts 'creating metadata for article 158'
       m158 = Metadatum.create!(content: "Los Diputados no podrán:",
         article: a158)
@@ -1778,6 +1779,11 @@ t5 = Title.create!(number: 5,
         metadatum: m158,
         number: 2)
 
+      puts 'creating metadata subarticles for article 158'
+      msa158003 = MetadatumSubarticle.create!(content: "Queda exceptuado el caso cuando el Diputado hace uso personal o profesional de servicios públicos o efectúe operaciones corrientes de la misma índole con instituciones o empresas vinculadas al Estado.",
+        metadatum: m158,
+        number: 2000)
+
       # continua parrafo del articulo
       puts 'creating subarticles for article 158'
       msa00158 = Subarticle.create!(content: "Queda exceptuado el caso cuando el Diputado hace uso personal o profesional de servicios públicos o efectúe operaciones corrientes de la misma índole con instituciones o empresas vinculadas al Estado.",
@@ -1786,7 +1792,7 @@ t5 = Title.create!(number: 5,
 
     puts 'creating article 159'
     a159 = Article.create!(content: 'La función legislativa, es ejercida por medio de la Asamblea Nacional y consiste en expedir las leyes necesarias para el cumplimiento de los fines y el ejercicio de las funciones del Estado declaradas en esta Constitución y en especial para lo siguiente:',
-      chapter: c51,
+      chapter: c510,
       number: 159,
       new: false)
 
@@ -1875,11 +1881,11 @@ t5 = Title.create!(number: 5,
       puts 'creating subarticles for article 159'
       sa1590017 = Subarticle.create!(content: "Dictar el Reglamento Orgánico de su régimen interno.",
         article: a159,
-        number: 2000)
+        number: 17)
 
     puts 'creating article 160'
     a160 = Article.create!(content: 'Es función judicial de la Asamblea Nacional conocer de las acusaciones o denuncias que se presenten contra el Presidente de la República y los Magistrados de la Corte Suprema de Justicia, y juzgarlos, si a ello diere lugar, por actos ejecutados en el ejercicio de sus funciones en perjuicio del libre funcionamiento del poder público o violatorios de esta Constitución o las leyes.',
-      chapter: c51,
+      chapter: c510,
       number: 160,
       new: false)
 
@@ -1889,7 +1895,7 @@ t5 = Title.create!(number: 5,
 
     puts 'creating article 161'
     a161 = Article.create!(content: 'Son funciones administrativas de la Asamblea Nacional:',
-      chapter: c51,
+      chapter: c510,
       number: 161,
       new: false)
 
@@ -1951,13 +1957,13 @@ t5 = Title.create!(number: 5,
 
     puts 'creating article 162'
     a162 = Article.create!(content: 'Todas las Comisiones de la Asamblea Nacional serán elegidas por ésta mediante un sistema que garantice la representación proporcional de la minoría.',
-      chapter: c51,
+      chapter: c510,
       number: 162,
       new: false)
 
     puts 'creating article 163'
     a163 = Article.create!(content: 'Es prohibido a la Asamblea Nacional:',
-      chapter: c51,
+      chapter: c510,
       number: 163,
       new: false)
 
@@ -2017,7 +2023,7 @@ t5 = Title.create!(number: 5,
       En caso de ser acusado, el Magistrado será procesado, en primera instancia, por una Comisión especial de la Asamblea Nacional, que se compondrá de nueve (9) miembros, la cual no ejercerá ninguna otra función y tomará todas sus decisiones por el voto de cinco (5) de sus miembros. /n
       La sentencia condenatoria dictada por dicha comisión será recurrible ante la Asamblea Nacional, sin la participación de los diputados que hayan integrado la referida comisión En estos procesos actuará como juez de garantías el diputado designado por la referida comisión. /n
       Cualquier medida cautelar solicitada por el Procurador General será autorizada por el juez de garantías, cuyas decisiones serán recurribles ante la mencionada Comisión especial de la Asamblea Nacional.",
-      chapter: c51,
+      chapter: c510,
       number: 163.3,
       new: true)
 
@@ -2026,7 +2032,7 @@ t5 = Title.create!(number: 5,
   c52 = Chapter.create!(number: 2,
     description: "Formación de Leyes",
     title: t5,
-    new: true)
+    new: false)
 
     puts 'creating article 164'
     a164 = Article.create!(content: 'Las Leyes tienen su origen en la Asamblea Nacional y se dividen así:',
@@ -2780,9 +2786,14 @@ t7 = Title.create!(number: 7,
         number: 1)
 
      puts 'creating subarticles for article 203'
-      sa203002 = Subarticle.create!(content: "Quien esté ejerciendo o haya ejercido cargos de mando y jurisdicción en el Órgano Ejecutivo durante el periodo constitucional en curso. La Ley dividirá la Corte en Salas, formadas por tres Magistrados permanentes cada una.",
+      sa203002 = Subarticle.create!(content: "Quien esté ejerciendo o haya ejercido cargos de mando y jurisdicción en el Órgano Ejecutivo durante el periodo constitucional en curso.",
         article: a203,
         number: 2)
+
+      puts 'creating subarticles for article 203'
+      sa203002 = Subarticle.create!(content: "La Ley dividirá la Corte en Salas, formadas por tres Magistrados permanentes cada una.",
+        article: a203,
+        number: 2000)
 
       puts 'creating metadata for article 203'
       m203 = Metadatum.create!(content: "La Corte Suprema de Justicia estará compuesta del número de Magistrados que determine la Ley. Cada Magistrado será nombrado mediante acuerdo del Consejo de Gabinete, escogido de una tema propuesta por el Consejo de la Concertación Nacional para el Desarrollo, con 7 sujeción a la aprobación del Órgano Legislativo, para un periodo de quince (15) años2, manteniendo  el principio de nombramiento escalonado. La falta absoluta de un Magistrado será cubierta mediante nuevo nombramiento para el resto del periodo respectivo.  /n
@@ -2909,7 +2920,7 @@ t7 = Title.create!(number: 7,
         article: a206)
 
       puts 'creating metadata subarticles for article 206'
-      msa206001 = MetadatumSubarticle.create!(content: "La jurisdicción contencioso-administrativa respecto de los actos, omisiones, prestación defectuosa o deficiente de los servicios públicos, resoluciones, órdenes o disposiciones que ejecuten, adopten, expidan o en que incurran en ejercicio de sus funciones o pretextando ejercerlas, los funcionarios públicos y autoridades nacionales, provinciales, municipales y de las entidades públicas autónomas o semiautónomas. A tal fin, la Corte Suprema de Justicia con audiencia del Procurador de la Administración, podrá anular los actos acusados de ilegalidad; restablecer el derecho particular violado; estatuir nuevas disposiciones en reemplazo de las impugnadas y pronunciarse prejudicialmente acerca del sentido y alcance de un acto administrativo o de su valor legal.  /n
+      msa206001 = MetadatumSubarticle.create!(content: "La jurisdicción contencioso-administrativa respecto de los actos, omisiones, prestación defectuosa o deficiente de los servicios públicos, resoluciones, órdenes o disposiciones que ejecuten, adopten, expidan o en que incurran en ejercicio de sus funciones o pretextando ejercerlas, los funcionarios públicos y autoridades nacionales, provinciales, municipales y de las entidades públicas autónomas o semiautónomas. A tal fin, la Corte Suprema de Justicia con audiencia del Procurador de la Administración, podrá anular los actos acusados de ilegalidad; restablecer el derecho particular violado; estatuir nuevas disposiciones en reemplazo de las impugnadas y pronunciarse prejudicialmente acerca del sentido y alcance de un acto administrativo o de su valor legal. /n
       Podrán acogerse a la jurisdicción contencioso-administrativa las personas afectadas por el acto, resolución, orden o disposición de que se trate; y, en ejercicio de la acción pública, cualquier persona natural o jurídica domiciliada en el país.",
         metadatum: m206,
         number: 1)
@@ -2923,15 +2934,6 @@ t7 = Title.create!(number: 7,
       msa206002 = MetadatumSubarticle.create!(content: "Las decisiones de la Corte Suprema de Justicia, en el ejercicio de las atribuciones señaladas en esta Constitución, son finales, definitivas, obligatorias y deben publicarse en la Gaceta Oficial.",
         metadatum: m206,
         number: 2000)
-
-
-
-
-      # corregir codigo continuo de articulo modificaado
-      # puts 'creating subarticles for article 206'
-      # sa00206 = Subarticle.create!(content: "La Ley organizará y determinará el funcionamiento de la jurisdicción especial de menores la cual, entre otras funciones, conocerá sobre la investigación de la paternidad, el abandono de familia y los problemas de conducta juvenil.",
-      #   article: a206,
-      #   number: 00206)
 
     puts 'creating article 207'
     a207 = Article.create!(content: 'No se admitirán recursos de inconstitucionalidad ni de amparo de garantías constitucionales contra los fallos de la Corte Suprema de Justicia o sus Salas.',
@@ -3046,9 +3048,20 @@ t7 = Title.create!(number: 7,
     puts 'creating article 221'
     a221 = Article.create!(content: "El Tribunal Constitucional estará integrada por cinco (5) magistrados y sus respectivos suplentes, quienes deberán cumplir con iguales requisitos que para ser Magistrado de la Corte Suprema de Justicia, y serán nombrados de igual forma que éstos, mediante el principio de nombramientos escalonados. /n A los magistrados del Tribunal Constitucional les son aplicables las mismas prohibiciones y prerrogativas que establece esta Constitución para los Magistrados de la Corte Suprema de Justicia.",
       chapter: c72,
-      number: 221.5,
+      number: 218.5,
       new: true)
 
+    puts 'creating article 219'
+    a2191 = Article.create!(content: "Son funciones del Tribunal Constitucional las siguientes:",
+      chapter: c72,
+      number: 218.6,
+      new: true)
+
+    puts 'creating article 220'
+    a2201 = Article.create!(content: " Toda denuncia o querella que se presente contra un magistrado de la Corte Suprema de Justicia, será investigada por el Procurador General de la Nación o Fiscal delegado. En caso de ser imputado por éste, el mismo será procesado, en primera instancia, por el Tribunal Constitucional. En la primera instancia el juzgamiento corresponderá a dos magistrados principales y un suplente de dicho tribunal. /n La sentencia dictada en primera instancia será recurrible ante otros tres magistrados principales o suplentes distintos de los que hayan dictado el fallo de primera instancia. En estos casos actuará como juez de garantías el magistrado que se designe por el resto del Tribunal Constitucional. /n Las medidas cautelares solicitadas por el Procurador General de la Nación serán autorizadas por el juez de garantías, cuyas decisiones serán recurribles ante los magistrados de primera instancia. ",
+      chapter: c72,
+      number: 218.7,
+      new: true)
 
   puts 'creating chapter 2'
   c721 = Chapter.create!(number: 2.1,
@@ -3063,11 +3076,6 @@ t7 = Title.create!(number: 7,
       new: false)
 
     # articulo nuevo 5. debe venir despues del 219 con ese titulo
-    puts 'creating article 219'
-    a2191 = Article.create!(content: "Son funciones del Tribunal Constitucional las siguientes:",
-      chapter: c721,
-      number: 219.6,
-      new: true)
 
       puts 'creating subarticles for article 219'
 
@@ -3145,52 +3153,47 @@ t7 = Title.create!(number: 7,
         number: 6)
 
       # articulo nuevo 6. debe venir despues del 220 con ese titulo
-      puts 'creating article 220'
-      a2201 = Article.create!(content: " Toda denuncia o querella que se presente contra un magistrado de la Corte Suprema de Justicia, será investigada por el Procurador General de la Nación o Fiscal delegado. En caso de ser imputado por éste, el mismo será procesado, en primera instancia, por el Tribunal Constitucional. En la primera instancia el juzgamiento corresponderá a dos magistrados principales y un suplente de dicho tribunal. /n La sentencia dictada en primera instancia será recurrible ante otros tres magistrados principales o suplentes distintos de los que hayan dictado el fallo de primera instancia. En estos casos actuará como juez de garantías el magistrado que se designe por el resto del Tribunal Constitucional. /n Las medidas cautelares solicitadas por el Procurador General de la Nación serán autorizadas por el juez de garantías, cuyas decisiones serán recurribles ante los magistrados de primera instancia. ",
-        chapter: c721,
-        number: 220.7,
-        new: true)
 
         # listas nuevas
-        puts 'creating subarticles for article 220'
-        sa220001 = Subarticle.create!(content: "Conocer de las demandas de inconstitucionalidad contra las leyes, decretos y demás disposiciones normativas con fuerza de Ley.",
-          article: a2201,
-          number: 1)
+        # puts 'creating subarticles for article 220'
+        # sa220001 = Subarticle.create!(content: "Conocer de las demandas de inconstitucionalidad contra las leyes, decretos y demás disposiciones normativas con fuerza de Ley.",
+        #   article: a2201,
+        #   number: 1)
 
-        puts 'creating subarticles for article 220'
-        sa220002 = Subarticle.create!(content: "Decidir sobre las advertencias o consultas sobre la constitucionalidad de una norma juridica de inferior rango a la Constitución aplicable a un caso concreto.",
-          article: a2201,
-          number: 2)
+        # puts 'creating subarticles for article 220'
+        # sa220002 = Subarticle.create!(content: "Decidir sobre las advertencias o consultas sobre la constitucionalidad de una norma juridica de inferior rango a la Constitución aplicable a un caso concreto.",
+        #   article: a2201,
+        #   number: 2)
 
-        puts 'creating subarticles for article 220'
-        sa220003 = Subarticle.create!(content: "Conocer de la inexequibilidad de los proyectos de ley objetados por el Órgano Ejecutivo al estimarlos como inconstitucionales.",
-          article: a2201,
-          number: 3)
+        # puts 'creating subarticles for article 220'
+        # sa220003 = Subarticle.create!(content: "Conocer de la inexequibilidad de los proyectos de ley objetados por el Órgano Ejecutivo al estimarlos como inconstitucionales.",
+        #   article: a2201,
+        #   number: 3)
 
-        puts 'creating subarticles for article 220'
-        sa220004 = Subarticle.create!(content: "Decidir, sobre las demandas de inconstitucionalidad contra los actos reformatorios de la Constitución, por vicios de procedimiento en su formación.",
-          article: a2201,
-          number: 4)
+        # puts 'creating subarticles for article 220'
+        # sa220004 = Subarticle.create!(content: "Decidir, sobre las demandas de inconstitucionalidad contra los actos reformatorios de la Constitución, por vicios de procedimiento en su formación.",
+        #   article: a2201,
+        #   number: 4)
 
-        puts 'creating subarticles for article 220'
-        sa220005 = Subarticle.create!(content: "Decidir, con anterioridad al pronunciamiento popular, sobre la constitucionalidad de la convocatoria a un referéndum, plebiscito o a una Asamblea Constituyente, solo en caso de vicios de procedimiento en su formación.",
-          article: a2201,
-          number: 5)
+        # puts 'creating subarticles for article 220'
+        # sa220005 = Subarticle.create!(content: "Decidir, con anterioridad al pronunciamiento popular, sobre la constitucionalidad de la convocatoria a un referéndum, plebiscito o a una Asamblea Constituyente, solo en caso de vicios de procedimiento en su formación.",
+        #   article: a2201,
+        #   number: 5)
 
-        puts 'creating subarticles for article 220'
-        sa220006 = Subarticle.create!(content: "Conocer de la exequibilidad de [os Tratados Internacionales y de las leyes que los aprueben. Si la corte los declara constitucionales, el Gobierno podrá efectuar el canje de notas, de lo contrario, no serán ratificados. En caso de inexequibilidad de una o varias normas del Tratado multilateral, cabe la formulación de reserva.",
-          article: a2201,
-          number: 6)
+        # puts 'creating subarticles for article 220'
+        # sa220006 = Subarticle.create!(content: "Conocer de la exequibilidad de [os Tratados Internacionales y de las leyes que los aprueben. Si la corte los declara constitucionales, el Gobierno podrá efectuar el canje de notas, de lo contrario, no serán ratificados. En caso de inexequibilidad de una o varias normas del Tratado multilateral, cabe la formulación de reserva.",
+        #   article: a2201,
+        #   number: 6)
 
-        puts 'creating subarticles for article 220'
-        sa220007 = Subarticle.create!(content: "Conocer de las querellas o denuncias que se presenten contra los magistrados de la Corte Suprema de Justicia, con sujeción a lo establecido en el artículo siguiente. La fase de investigación corresponde al Ministerio Público.",
-          article: a2201,
-          number: 7)
+        # puts 'creating subarticles for article 220'
+        # sa220007 = Subarticle.create!(content: "Conocer de las querellas o denuncias que se presenten contra los magistrados de la Corte Suprema de Justicia, con sujeción a lo establecido en el artículo siguiente. La fase de investigación corresponde al Ministerio Público.",
+        #   article: a2201,
+        #   number: 7)
 
-        puts 'creating subarticles for article 220'
-        sa220008 = Subarticle.create!(content: "Revisar, en la forma que determine la Ley, las decisiones judiciales sobre [a acción de amparo de las garantías constitucionales fundamentales; atendiendo la excepción contenida en el artículo 207. Las decisiones del Tribunal Constitucional, en el ejercicio de las atribuciones señaladas en esta Constitución, son finales, definitivas, obligatorias y deben publicarse en la Gaceta Oficial.",
-          article: a2201,
-          number: 8)
+        # puts 'creating subarticles for article 220'
+        # sa220008 = Subarticle.create!(content: "Revisar, en la forma que determine la Ley, las decisiones judiciales sobre [a acción de amparo de las garantías constitucionales fundamentales; atendiendo la excepción contenida en el artículo 207. Las decisiones del Tribunal Constitucional, en el ejercicio de las atribuciones señaladas en esta Constitución, son finales, definitivas, obligatorias y deben publicarse en la Gaceta Oficial.",
+        #   article: a2201,
+        #   number: 8)
 
     puts 'creating article 221'
     a221 = Article.create!(content: 'Para ser Procurador General de la Nación y Procurador de la Administración se necesitan los mismos requisitos que para ser Magistrado de la Corte Suprema de Justicia. Ambos serán nombrados por un período de diez años.',
@@ -3937,6 +3940,7 @@ t9 = Title.create!(number: 9,
       number: 279,
       new: false)
 
+
     puts 'creating article 280'
     a280 = Article.create!(content: 'Son funciones de la Contraloría General de la República, además de las que señale la Ley, las siguientes:',
       chapter: c93,
@@ -4009,8 +4013,8 @@ t9 = Title.create!(number: 9,
         number: 13)
 
 
-  puts 'creating chapter 1'
-  c94 = Chapter.create!(number: 1,
+  puts 'creating chapter 4'
+  c94 = Chapter.create!(number: 4,
     description: "Tribunal de Cuentas",
     title: t9)
 
@@ -4652,7 +4656,7 @@ t14 = Title.create!(number: 14,
 
 puts "creating title 15"
 t15 = Title.create!(number: 15,
-  description: "DISPOSICIONES FINALES Y TRANSITORIAS",
+  description: "DISPOSICIONES FINALES",
   legislation: l,
   new: false)
 
@@ -4686,7 +4690,7 @@ t15 = Title.create!(number: 15,
 
   puts 'creating chapter 2'
   c152 = Chapter.create!(number: 2,
-    description: "Disposiciones Finales",
+    description: "Disposiciones Transitorias",
     title: t15,
     new: false)
 
@@ -4879,6 +4883,6 @@ t15 = Title.create!(number: 15,
 puts 'Creating questions for each article'
 Article.all.each do |article|
   Question.create!(content: "¿Tienes alguna sugerencia?", article: article, number: 3)
-  Question.create!(content: "¿Piensas que este artículo beneficia a Panamá a largo plazo?", article: article, number: 2)
-  Question.create!(content: "¿Sientes que este artículo representa tu opinión sobre este tema?", article: article, number: 1)
+  Question.create!(content: "¿Consideras que este artículo y/o su modificación -en caso de tenerla-, es beneficioso para el país?", article: article, number: 2)
+  Question.create!(content: "¿Estás de acuerdo con la redacción y el contenido de este artículo? ¿Crees que la modificación propuesta -en caso de haber sido modificado-, mejora su contenido?", article: article, number: 1)
 end

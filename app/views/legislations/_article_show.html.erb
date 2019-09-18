@@ -1,5 +1,4 @@
 <p class='align-left'><%= raw article.spaced_content %></p>
-<% if article.subarticles.exists? %>
   <ol>
     <% article.subarticles.select{ |sa| sa.number < 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
     <li>
@@ -19,4 +18,3 @@
   <% article.subarticles.select{ |sa| sa.number >= 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
     <p class='align-left'><%= raw subarticle.spaced_content %></p>
   <% end %>
-<% end %>
