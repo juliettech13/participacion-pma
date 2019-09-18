@@ -6,7 +6,7 @@
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.input :first_name, label: "nombre", required: true, autofocus: true, placeholder: 'Juan', class: 'align-left bold-font' %>
           <%= f.input :last_name, label: "apellido", required: true, placeholder: 'Perez', class: 'bold-font' %>
-          <%= f.input :email, label: 'email:', required: true, autofocus: true, placeholder: "bob@email.com", class: "bold-font" %>
+          <%= f.input :email, label: 'email:', required: true, autofocus: true, placeholder: "juan.perez@email.com", class: "bold-font" %>
           <%= f.input :password, label: 'contraseña:', required: true, placeholder: "Mínimo 6 caracteres", class: 'bold-font' %>
           <%= f.input :password_confirmation, label: 'confirma tu contraseña:', required: true, class: 'bold-font' %>
         <br>

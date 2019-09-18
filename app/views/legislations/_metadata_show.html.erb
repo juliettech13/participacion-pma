@@ -1,8 +1,11 @@
 <p class='align-left padding-left-0'><%= raw metadata.spaced_content %></p>
 <ol>
-  <% metadata.metadatum_subarticles.order(number: :asc).each do |subarticle| %>
+  <% metadata.metadatum_subarticles.select{ |sa| sa.number < 2000 }.sort_by{ |sa| sa.number }.each do |subarticle| %>
     <li>
-      <p class='align-left'><%= raw subarticle.content %></p>
+      <p class='align-left'><%= raw subarticle.spaced_content %></p>
     </li>
   <% end %>
 </ol>
+<% metadata.metadatum_subarticles.select{ |sa| sa.number >= 2000 }.sort_by{ |sa| sa.number }.each do |subarticle|  %>
+  <p class='align-left'><%= raw subarticle.spaced_content %></p>
+<% end %>
