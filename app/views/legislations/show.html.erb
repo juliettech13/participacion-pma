@@ -27,7 +27,9 @@
       <ol>
         <% @legislation.titles.each do |title| %>
           <li>
-            <a class='font-12 cursor-link title-link' id="titleLink<%= title.number %>" data-action="slideshow#activateSelection slideshow#scrollTop" data-info="<%= title.number %>"><%= title.capitalized_title %></a>
+            <a class='font-12 cursor-link title-link' id="titleLink<%= title.number %>" data-action="slideshow#activateSelection slideshow#scrollTop" data-info="<%= title.number %>">
+              <%= title.capitalized_title %>
+              </a>
           </li>
         <% end %>
       </ol>
@@ -51,7 +53,6 @@
               <% end %>
             </div>
               <% chapter.articles.order(number: :asc).each do |article| %>
-
                 <div class="card">
                   <a class="btn btn-link article" data-toggle="collapse" data-target="#collapse_<%= article.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
                     <div class="card-header" id='headingOne'>

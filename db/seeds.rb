@@ -1627,21 +1627,21 @@ t5 = Title.create!(number: 5,
         article: a151,
         number: 2001)
 
-  puts 'creating chapter 1'
-  c510 = Chapter.create!(number: 2,
-    description: "El Régimen Provincial",
-    title: t5,
-    new: false)
+  # puts 'creating chapter 1'
+  # c510 = Chapter.create!(number: 2,
+  #   description: "El Régimen Provincial",
+  #   title: t5,
+  #   new: false)
 
     puts 'creating article 152'
     a152 = Article.create!(content: 'Se denominarán sesiones judiciales las dedicadas al ejercicio de las atribuciones jurisdiccionales de la Asamblea Nacional, sea cual fuere el tiempo en que se celebren y la forma como dicha Asamblea Nacional hubiere sido convocada. Su celebración no alterará la continuidad y la duración de una legislatura, y sólo terminarán cuando la Asamblea hubiese fallado la causa pendiente. Para ejercer funciones jurisdiccionales, la Asamblea Nacional podrá reunirse por derecho propio, sin previa convocatoria.',
-      chapter: c510,
+      chapter: c51,
       number: 152,
       new: false)
 
     puts 'creating article 153'
     a153 = Article.create!(content: 'Para ser Diputado se requiere:',
-      chapter: c510,
+      chapter: c51,
       number: 153,
       new: false)
 
@@ -1702,14 +1702,14 @@ t5 = Title.create!(number: 5,
 
     puts 'creating article 154'
     a154 = Article.create!(content: 'Los miembros de la Asamblea Nacional no son legalmente responsables por las opiniones y votos que emitan en el ejercicio de su cargo.',
-      chapter: c510,
+      chapter: c51,
       number: 154,
       new: false)
 
     puts 'creating article 155'
     a155 = Article.create!(content: 'Los miembros de la Asamblea Nacional podrán ser investigados y procesados por el Pleno de la Corte Suprema de Justicia, por la presunta comisión de algún acto delictivo o policivo, sin que para estos efectos se requiera autorización de la Asamblea Nacional. La detención preventiva o cualquier medida cautelar será determinada por el Pleno de la Corte Suprema de Justicia. /n
     El Diputado Principal o Suplente podrá ser demandado civilmente, pero no podrá decretarse secuestro u otra medida cautelar sobre su patrimonio, sin previa autorización del Pleno de la Corte Suprema de Justicia, con excepción de las medidas que tengan como fundamento asegurar el cumplimiento de obligaciones por Derecho de Familia y Derecho Laboral.',
-      chapter: c510,
+      chapter: c51,
       number: 155,
       new: false)
 
@@ -1722,7 +1722,7 @@ t5 = Title.create!(number: 5,
     puts 'creating article 156'
     a156 = Article.create!(content: 'Los Diputados principales y suplentes, cuando estos últimos estén ejerciendo el cargo, no podrán aceptar ningún empleo público remunerado. /n
     Si lo hicieren, se producirá la vacante absoluta del cargo de Diputado principal o suplente, según sea el caso. Se exceptúan los nombramientos de Ministro, Viceministro, Director General o Gerente de entidades autónomas o semiautónomas y Agentes Diplomáticos, cuya aceptación sólo produce vacante transitoria por el tiempo en que se desempeñe el cargo. El ejercicio de los cargos de maestro o profesor en centros de educación oficial o particular es compatible con la calidad de Diputado.',
-      chapter: c510,
+      chapter: c51,
       number: 156,
       new: false)
 
@@ -1733,14 +1733,14 @@ t5 = Title.create!(number: 5,
 
     puts 'creating article 157'
     a157 = Article.create!(content: 'Los Diputados devengarán los emolumentos que señale la Ley, los cuales serán imputables al Tesoro Nacional, pero su aumento sólo será efectivo después de terminar el período de la Asamblea Nacional que lo hubiere aprobado.',
-      chapter: c510,
+      chapter: c51,
       number: 157,
       new: false)
 
     puts 'creating article 158'
     a158 = Article.create!(content: 'Los Diputados no podrán hacer por sí mismos, ni por interpuestas personas, contrato alguno con Órganos del Estado o con instituciones o empresas vinculadas a este, ni admitir de nadie poder para gestionar negocios ante esos Órganos, instituciones o empresas.  /n
     Quedan exceptuados los casos siguientes:',
-      chapter: c510,
+      chapter: c51,
       number: 158,
       new: false)
 
@@ -1784,15 +1784,9 @@ t5 = Title.create!(number: 5,
         metadatum: m158,
         number: 2000)
 
-      # continua parrafo del articulo
-      puts 'creating subarticles for article 158'
-      msa00158 = Subarticle.create!(content: "Queda exceptuado el caso cuando el Diputado hace uso personal o profesional de servicios públicos o efectúe operaciones corrientes de la misma índole con instituciones o empresas vinculadas al Estado.",
-        article: a158,
-        number: 158)
-
     puts 'creating article 159'
     a159 = Article.create!(content: 'La función legislativa, es ejercida por medio de la Asamblea Nacional y consiste en expedir las leyes necesarias para el cumplimiento de los fines y el ejercicio de las funciones del Estado declaradas en esta Constitución y en especial para lo siguiente:',
-      chapter: c510,
+      chapter: c51,
       number: 159,
       new: false)
 
@@ -1885,7 +1879,7 @@ t5 = Title.create!(number: 5,
 
     puts 'creating article 160'
     a160 = Article.create!(content: 'Es función judicial de la Asamblea Nacional conocer de las acusaciones o denuncias que se presenten contra el Presidente de la República y los Magistrados de la Corte Suprema de Justicia, y juzgarlos, si a ello diere lugar, por actos ejecutados en el ejercicio de sus funciones en perjuicio del libre funcionamiento del poder público o violatorios de esta Constitución o las leyes.',
-      chapter: c510,
+      chapter: c51,
       number: 160,
       new: false)
 
@@ -1895,7 +1889,7 @@ t5 = Title.create!(number: 5,
 
     puts 'creating article 161'
     a161 = Article.create!(content: 'Son funciones administrativas de la Asamblea Nacional:',
-      chapter: c510,
+      chapter: c51,
       number: 161,
       new: false)
 
@@ -1957,13 +1951,13 @@ t5 = Title.create!(number: 5,
 
     puts 'creating article 162'
     a162 = Article.create!(content: 'Todas las Comisiones de la Asamblea Nacional serán elegidas por ésta mediante un sistema que garantice la representación proporcional de la minoría.',
-      chapter: c510,
+      chapter: c51,
       number: 162,
       new: false)
 
     puts 'creating article 163'
     a163 = Article.create!(content: 'Es prohibido a la Asamblea Nacional:',
-      chapter: c510,
+      chapter: c51,
       number: 163,
       new: false)
 
@@ -2023,7 +2017,7 @@ t5 = Title.create!(number: 5,
       En caso de ser acusado, el Magistrado será procesado, en primera instancia, por una Comisión especial de la Asamblea Nacional, que se compondrá de nueve (9) miembros, la cual no ejercerá ninguna otra función y tomará todas sus decisiones por el voto de cinco (5) de sus miembros. /n
       La sentencia condenatoria dictada por dicha comisión será recurrible ante la Asamblea Nacional, sin la participación de los diputados que hayan integrado la referida comisión En estos procesos actuará como juez de garantías el diputado designado por la referida comisión. /n
       Cualquier medida cautelar solicitada por el Procurador General será autorizada por el juez de garantías, cuyas decisiones serán recurribles ante la mencionada Comisión especial de la Asamblea Nacional.",
-      chapter: c510,
+      chapter: c51,
       number: 163.3,
       new: true)
 
@@ -3204,7 +3198,7 @@ t7 = Title.create!(number: 7,
 
     puts 'creating article 222'
     a222 = Article.create!(content: 'Son funciones especiales del Procurador General de la Nación:',
-      chapter: c72,
+      chapter: c721,
       number: 222,
       new: false)
 
@@ -3854,13 +3848,6 @@ t9 = Title.create!(number: 9,
       puts 'creating metadata for article 268'
       m268 = Metadatum.create!(content: "El Presupuesto tendrá carácter anual y contendrá la totalidad de las Inversiones, ingresos y gastos del sector público, que incluye a las entidades autónomas, semiautónomas y empresas estatales.",
         article: a268)
-
-    puts 'creating article 269'
-    a269 = Article.create!(content: 'El Órgano Ejecutivo celebrará consultas presupuestarias con las diferentes dependencias y entidades del Estado. /n
-    La Comisión de Presupuesto de la Asamblea Nacional participará en dichas consultas.',
-      chapter: c92,
-      number: 269,
-      new: false)
 
     puts 'creating article 269'
     a269 = Article.create!(content: 'El Órgano Ejecutivo celebrará consultas presupuestarias con las diferentes dependencias y entidades del Estado. /n
