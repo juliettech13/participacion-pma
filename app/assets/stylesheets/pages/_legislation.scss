@@ -314,6 +314,10 @@ textarea::placeholder{
   border-radius: 6px
 }
 
+.btn-outline-primary:hover{
+  color: white
+}
+
 @media only screen and (max-width: 600px) {
 
   .title .jumbotron {
