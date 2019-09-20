@@ -318,8 +318,7 @@ textarea::placeholder{
   color: white
 }
 
-@media only screen and (max-width: 600px) {
-
+@media only screen and (max-width: 800px) {
   .title .jumbotron {
     padding: 0;
   }
@@ -327,12 +326,18 @@ textarea::placeholder{
       font-size: 1rem;
   }
 
-  .filter{
-    width: 100%
+  .filter {
+    display: none
   }
 
   .legislation-content{
     width: 100%
   }
-}
 
+
+	@media (min-width: 320px) and (max-width: 600px) {
+	  .filter {
+      display: none
+    }
+	}
+}
