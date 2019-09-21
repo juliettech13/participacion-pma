@@ -138,7 +138,10 @@
 </div>
 <% end %>
 
-<div class="finished row">
-  <%= link_to "terminar la consulta", new_consultation_general_feedback_path(@consultation), id: 'finished', class: 'btn btn-primary text-white' %>
+<div class="finished row flex space-evenly">
+  <button id="continueto" media="(max-width: 800px)" style='display: none' class="btn btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">continúa</button>
+  <button id="prevbutton" media="(max-width: 800px)" style="display: none" class="btn btn-primary" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">título anterior</button>
+  <button id="nextbutton" media="(max-width: 800px)" class="btn btn-primary" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">próximo título</button>
+  <%= link_to "terminar la consulta", new_consultation_general_feedback_path(@consultation), class: 'btn btn-primary text-white' %>
 </div>
 </div>

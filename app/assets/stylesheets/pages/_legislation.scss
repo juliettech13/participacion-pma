@@ -318,6 +318,14 @@ textarea::placeholder{
   color: white
 }
 
+.flex{
+  display: flex
+}
+
+.space-evenly{
+  justify-content: space-evenly
+}
+
 @media only screen and (max-width: 800px) {
   .title .jumbotron {
     padding: 0;
@@ -333,7 +341,6 @@ textarea::placeholder{
   .legislation-content{
     width: 100%
   }
-
 
 	@media (min-width: 320px) and (max-width: 600px) {
 	  .filter {
