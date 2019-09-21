@@ -45,7 +45,7 @@ export default class extends Controller {
     var firstSection = document.getElementById("title1")
     var secondSection = document.getElementById("title2")
     var continueTo = document.getElementById("continueto")
-    var finished = document.getElementById("finished");
+    // var finished = document.getElementById("finished");
     var next = document.getElementById("nextbutton");
     var previous = document.getElementById("prevbutton");
 
@@ -53,11 +53,11 @@ export default class extends Controller {
       previous.style.display = 'none';
       next.style.display = '';
       continueto.style.display = 'none';
-      finished.style.display = '';
+      // finished.style.display = '';
     }
 
     if (secondSection.classList.contains("slide--current")) {
-      finished.style.display = 'none';
+      // finished.style.display = 'none';
       continueTo.style.display = 'none';
       previous.style.display = ''
       next.style.display = '';
@@ -66,7 +66,7 @@ export default class extends Controller {
     if (lastSection.classList.contains("slide--current")) {
       next.style.display = 'none';
       continueTo.style.display = 'none';
-      finished.style.display = 'none' ? '' : 'none';
+      // finished.style.display = 'none' ? '' : 'none';
       previous.style.display = ''
     }
   }

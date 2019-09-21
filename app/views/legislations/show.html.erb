@@ -70,8 +70,8 @@
                               <%= render 'article_show', article: article %>
                             </div>
                             <div class='col-xs-12 col-md-6 padding-left-0'>
-                              <p class='font-12 text-center'>
-                                <button type='button' class='badge badge-danger text-white badge-padding'>MODIFICACIÓN PROPUESTA</button>
+                              <p class='font-12'>
+                                <button type='button' class='badge badge-danger text-white badge-padding align-left'>MODIFICACIÓN PROPUESTA</button>
                               </p>
                               <%= render 'metadata_show', metadata: article.metadata.first %>
                             </div>
@@ -138,7 +138,10 @@
 </div>
 <% end %>
 
-<div class="finished row">
-  <%= link_to "terminar la consulta", new_consultation_general_feedback_path(@consultation), id: 'finished', class: 'btn btn-primary text-white' %>
+<div class="finished row flex space-evenly">
+  <button id="continueto" media="(max-width: 800px)" style='display: none' class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">continúa</button>
+  <button id="prevbutton" media="(max-width: 800px)" style="display: none" class="btn btn-primary text-white" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">título anterior</button>
+  <button id="nextbutton" media="(max-width: 800px)" class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">próximo título</button>
+  <%= link_to "terminar la consulta", new_consultation_general_feedback_path(@consultation), class: 'btn btn-primary text-white' %>
 </div>
 </div>
