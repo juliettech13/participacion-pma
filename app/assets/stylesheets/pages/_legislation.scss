@@ -342,6 +342,10 @@ textarea::placeholder{
     width: 100%
   }
 
+  // .mobile-align-left{
+  //   text-align: left
+  // }
+
 	@media (min-width: 320px) and (max-width: 600px) {
 	  .filter {
       display: none
