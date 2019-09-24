@@ -4763,113 +4763,20 @@ t15 = Title.create!(number: 15,
       number: 328.9,
       new: true)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#       # subarticulos
-#       puts 'creating subarticles for article 165'
-#       sa165 = Subarticle.create!(content: "Cuando sean orgánicas:",
-#         article: a165,
-#         number: 1)
-
-
-#       # listas
-#       puts 'creating subarticles for article 126'
-#       sa126 = Subarticle.create!(content: "Efectuar las inscripciones de nacimientos, matrimonios, defunciones, naturalizaciones y demás hechos y actos jurídicos relacionados con el estado civil de las personas, y hacer las anotaciones procedentes en las respectivas inscripciones.",
-#         article: a126,
-#         number: 1)
-
-#   # capitulo
-#   puts 'creating chapter 8'
-#   c8 = Chapter.create!(number: 8,
-#     description: "Régimen Agrario",
-#     title: t3)
-
-# # titulos
-# puts "creating title 3"
-# t3 = Title.create!(number: 1,
-#   description: "DERECHOS Y DEBERES INDIVIDUALES Y SOCIALES",
-#   legislation: l)
-
-#       # continua parrafo del articulo
-#       puts 'creating subarticles for article 63'
-#       sa2000 = Subarticle.create!(content: "La Ley organizará y determinará el funcionamiento de la jurisdicción especial de menores la cual, entre otras funciones, conocerá sobre la investigación de la paternidad, el abandono de familia y los problemas de conducta juvenil.",
-#         article: a63,
-#         number: 2000)
-
-
-#       # articulo modificado
-#       puts 'creating metadata for article 1'
-#       m1 = Metadatum.create!(content: "Las autoridades de la República están instituidas para proteger en su vida, honra y bienes a los nacionales dondequiera se encuentren y a los extranjeros que estén bajo su jurisdicción; asegurar la efectividad de los derechos y deberes individuales y sociales, y cumplir y hacer cumplir la Constitución y la Ley. /n
-#         Los derechos y garantías que consagra esta Constitución, deben considerarse como mínimos y no excluyentes de otros que incidan sobre los derechos fundamentales y la dignidad de la persona.",
-#         article: a1)
-
-
-
-
-#     # Así luciría un artículo nuevo *new: true*
-#     puts 'creating article 8'
-#     a8 = Article.create!(content: "Son fines esenciales del Estado promover la vigencia, aplicación y respeto de los Derechos Humanos de todos los ciudadanos y la comunidad, promover la prosperidad general y garantizar la efectividad de los principios, derechos, garantías y deberes consagrados en la Constitución, Tratados y Convenios Internacionales; garantizar el ejercicio de la consulta libre previa informada; facilitar la participación en paridad de todas las personas en las decisiones que las afectan y en la vida económica, política, administrativa, ambiental y cultural de la nación; defender la independencia nacional, mantener la integridad territorial y asegurar la convivencia pacífica y la vigencia de un orden justo.",
-#       chapter: c1,
-#       number: 8,
-#       new: true)
-
-#     puts 'creating article 147'
-#     a147 = Article.create!(content: "La Asamblea Nacional se compondrá de setenta y un Diputados que resulten elegidos de conformidad con la Ley y sujeto a lo que se dispone a continuación:",
-#       chapter: c1,
-#       number: 147,
-#       new: false)
-
-#       puts 'creating subarticles for article 147'
-#       sa1 = Subarticle.create!(content: "Habrá circuitos uninominales y plurinominales, garantizándose el principio de representación proporcional. Integrará un solo circuito electoral todo distrito en donde se elija más de un Diputado, salvo el distrito de Panamá, donde habrá circuitos de tres o más Diputados.",
-#         article: a147,
-#         number: 1)
-
-#       sa2 = Subarticle.create!(content: "Los circuitos se conformarán en proporción al número de electores que aparezca en el último Padrón Electoral.",
-#         article: a147,
-#         number: 2)
-
-#       sa3 = Subarticle.create!(content: "A cada comarca y a la provincia de Darién les corresponderá elegir el número de Diputados con que cuentan al momento de entrar en vigencia la presente norma.",
-#         article: a147,
-#         number: 3)
-
-#       # asi es como se quisiera modificar el articulo
-#       puts 'creating metadata for article 147'
-#       m3 = Metadatum.create!(content: "La Asamblea Nacional se compondrá de setenta y un (71) diputados elegidos de conformidad con la Ley y con sujeción a lo que se dispone a continuación:",
-#         article: a147)
-
-#       # esta es la lista para el articulo modificado
-#       puts 'creating metadata subarticles for article 147'
-#       msa1 = MetadatumSubarticle.create!(content: "Todos los diputados serán elegidos para un periodo de cinco años mediante el sistema de representación proporcional que determine la Ley, el mismo día en que se celebre la elección ordinaria de Presidente y Vicepresidente de la República.",
-#         metadatum: m3,
-#         number: 1)
-
-#       msa2 = MetadatumSubarticle.create!(content: "Salvo las excepciones a que se refiere el numeral cinco (5) y seis (6), todos los circuitos electorales serán de postulación plurinominal, en los cuales se elegirán no menos de dos diputados.",
-#         metadatum: m3,
-#         number: 2)
-
-# Esta sección se puede quedar igual. Lo unico a cambiar son las preguntas mismas.
-# Las primeras dos preguntas tendran una escala del 1 - 5 como respuestas posibles.
-# La ultima pregunta referirá a un Si/No sobre si el ciudadano quiere escribir alguna sugerencia.
 puts 'Creating questions for each article'
+
 Article.all.each do |article|
-  Question.create!(content: "¿Tienes alguna sugerencia?", article: article, number: 3)
-  Question.create!(content: "¿Consideras que este artículo y/o su modificación -en caso de tenerla-, es beneficioso para el país?", article: article, number: 2)
-  Question.create!(content: "¿Estás de acuerdo con la redacción y el contenido de este artículo? ¿Crees que la modificación propuesta -en caso de haber sido modificado-, mejora su contenido?", article: article, number: 1)
+  if !article.metadata.empty?
+    Question.create!(content: "¿Estás de acuerdo con la redacción y el contenido de este artículo?", article: article, number: 1)
+    Question.create!(content: "¿Consideras que este artículo y/o su modificatión son beneficiosos para el país?", article: article, number: 2)
+    Question.create!(content: "¿Quisieras sugerir algún comentario o modificación a este artículo y/o a su modificación?", article: article, number: 3)
+  elsif article.new == true
+    Question.create!(content: "¿Estás de acuerdo con la redacción y el contenido de este artículo?", article: article, number: 1)
+    Question.create!(content: "¿Consideras que este nuevo artículo es beneficioso para el país?", article: article, number: 2)
+    Question.create!(content: "¿Quisieras sugerir algún comentario o modificación a este artículo?", article: article, number: 3)
+  else
+    Question.create!(content: "¿Estás de acuerdo con la redacción y el contenido de este artículo?", article: article, number: 1)
+    Question.create!(content: "¿Consideras que este artículo es beneficioso para el país?", article: article, number: 2)
+    Question.create!(content: "¿Quisieras sugerir algún comentario o modificación a este artículo?", article: article, number: 3)
+  end
 end
