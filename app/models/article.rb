@@ -17,6 +17,10 @@ class Article < ApplicationRecord
     self.content.gsub("/n", "<br><br>")
   end
 
+  def changed?
+    metadata.empty?
+  end
+
   # def compare(metadata)
   #   array_of_words = content.split
   #   array_of_words.each do |word|

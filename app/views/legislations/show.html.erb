@@ -17,10 +17,9 @@
   <div class="doc-header">
     <div class="help">
       <a data-html="true" data-toggle="popover" data-trigger="hover" title="¿Cómo funciona?" data-content="<%= render 'howitworks' %>" class="badge badge-warning">Ayuda</a>
-      <a href="../download_pdf" class="badge badge-primary text-white" target="_blank">Descargar PDF</a>
+      <a href="<%= download_pdf_path %>" class="badge badge-primary text-white" target="_blank">Descargar PDF</a>
     </div>
   </div>
-
 
   <div data-controller="slideshow" class='d-flex flex-row'>
     <div class="p-2 filter">
@@ -36,18 +35,18 @@
       </ol>
     </div>
     <div class="p-2 legislation-content">
-      <% @titles.order(number: :asc).each do |title| %>
-        <% @articles = title.articles %>
-        <% @chapters = title.chapters %>
+      <% @titles.each do |title| %>
+        <% @articles = title.articles.order(number: :asc) %>
+        <% @chapters = title.chapters.order(number: :asc) %>
         <div id="title<%= title.number %>" data-target="slideshow.slide" class="slide title">
           <div class="title-info">
-            <p class='font-12'>Artículos <%= @articles.first.integer %> a <%= @articles.last.integer %> de <%= @articles_count %></p>
             <h3>Título <%= title.number %>: <%= title.capitalized_title %></h3>
+            <p class='font-12'>Artículos <%= @articles.first.integer %> a <%= @articles.last.integer %> de <%= @articles_count %></p>
           </div>
 
           <div id="accordion">
-            <% @chapters.order(number: :asc).each do |chapter| %>
-              <% @chapter_articles = chapter.articles %>
+            <% @chapters.each do |chapter| %>
+              <% @chapter_articles = chapter.articles.order(number: :asc) %>
 
               <div id="chapter<%= chapter.number %>" class="margin-top-btm-25">
                 <% if chapter.new == true %>
@@ -57,13 +56,12 @@
                 <% end %>
               </div>
 
-              <% @chapter_articles.order(number: :asc).each do |article| %>
+              <% @chapter_articles.each do |article| %>
                 <div class="card">
                   <a class="btn btn-link article" data-toggle="collapse" data-target="#collapse_<%= article.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
                     <div class="card-header" id='headingOne'>
                       <div id="supporting-content">
-                        <% if !
-                          article.metadata.empty? %>
+                        <% if !article.changed? %>
                           <div class="success-badges row">
                             <div class='col-xs-12 col-md-6 padding-left-0'>
                               <h6 class='align-left margin-btm-25'>Artículo <%= article.integer %> <strong>(actual)</strong></h6>
@@ -102,14 +100,15 @@
                   <div data-target="slideshow.slide" class="slide">
                     <p class='medium-font'><%=  @question1.content %></p>
                     <p style="font-size: 12px">(1 = no me gusta en absoluto, 5 = estoy absolutamente de acuerdo)</p>
-                    <%= render 'form_question1', article: article, answer: @answer, consultation: @consultation %>
+                    <%= render 'form_question1', article: article, answer: @answer, consultation: @consultation, question: @question1 %>
                   </div>
                 <% end %>
 
                 <% unless @question2.answers.exists?(consultation: @consultation) %>
                   <div data-target="slideshow.slide" class="slide">
                     <p class='medium-font'><%= @question2.content %></p>
-                      <%= render 'form_question2', article: article, answer: @answer, consultation: @consultation %>
+                    <p style="font-size: 12px">(1 = no me gusta en absoluto, 5 = estoy absolutamente de acuerdo)</p>
+                    <%= render 'form_question2', article: article, answer: @answer, consultation: @consultation, question: @question2 %>
                   </div>
                 <% end %>
 
@@ -123,7 +122,7 @@
                   </div>
                   <div data-target="slideshow.slide" class="slide">
                     <p class="medium-font"><%= @question3.content %></p>
-                      <%= render 'form_question3', article: article, answer: @answer, consultation: @consultation %>
+                      <%= render 'form_question3', article: article, answer: @answer, consultation: @consultation, question: @question3 %>
                   </div>
                 <% else %>
                   <p class="bold-font">Ya respondiste todas las preguntas. Gracias por tu colaboración!</p>
@@ -140,7 +139,7 @@
 
 <div class="finished row flex space-evenly">
   <button id="continueto" media="(max-width: 800px)" style='display: none' class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">continúa</button>
-  <button id="prevbutton" media="(max-width: 800px)" style="display: none" class="btn btn-primary text-white" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">título anterior</button>
+  <button id="prevbutton" media="(max-width: 800px)" style="display: none" class="btn btn-primary text-white margin-btm-25" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">título anterior</button>
   <button id="nextbutton" media="(max-width: 800px)" class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">próximo título</button>
   <%= link_to "terminar la consulta", new_consultation_general_feedback_path(@consultation), class: 'btn btn-primary text-white' %>
 </div>
