@@ -6,10 +6,22 @@ class LegislationsController < ApplicationController
   # end
 
   def show
+    @titles_descriptions = Title.select(:description, :number).as_json
     @consultation = Consultation.find_by(user: current_user)
     @titles = @legislation.titles.order(number: :asc)
     @articles_count = Article.count
     @answer = Answer.new
+
+    json = {
+      user: current_user,
+      consultation: @consultation,
+      titles: @titles
+    }
+
+    respond_to do |format|
+      format.html
+      format.json { render json: json }
+    end
   end
 
   def download_pdf

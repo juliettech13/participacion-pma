@@ -25,11 +25,11 @@
     <div class="p-2 filter">
       <h6 class='text-center'>Títulos</h6>
       <ol>
-        <% @titles.each do |title| %>
+        <% @titles_descriptions.each do |title| %>
           <li>
-            <a class='font-12 cursor-link title-link' id="titleLink<%= title.number %>" data-action="slideshow#activateSelection slideshow#scrollTop" data-info="<%= title.number %>">
-              <%= title.capitalized_title %>
-              </a>
+            <a class='font-12 cursor-link title-link' id="titleLink<%= title['number'] %>" data-action="slideshow#activateSelection slideshow#scrollTop" data-info="<%= title['number'] %>">
+              <%= title['description'] %>
+            </a>
           </li>
         <% end %>
       </ol>
