@@ -76,13 +76,13 @@
                     <p>El <strong>Consejo de la Concertación Nacional para el Desarrollo</strong>, creado mendiante <strong>Ley 20 de 2008</strong>, aprobó un paquete de "reformas constitucionales" que presentó a la consideración del Consejo de Gabinete. El documento fue aprobado, sin modificaciones, por el Órgano Ejecutivo, que a su vez autorizó al ministro de la Presidencia a presentarlo ante la Asamblea Nacional de Diputados. </p>
                     <p>Este Órgano del Estado lo acogió para darle el trámite correspondiente, de conformidad con el artículo 313.2 de la Constitución Nacional sobre reformas constitucionales.</p>
                     <p>La <strong>Comisión de Gobierno, Justicia y Asuntos Constitucionales de la Asamblea Nacional</strong> decidió realizar una gira de consultas ciudadanas a nivel nacional para escuchar las sugerencias de la población, a fin de evaluar su viabilidad y posterior incorporación al documento definitivo que será discutido en tres debates en el pleno parlamentario durante éste y el próximo periodo que <strong>culmina en abril de 2020</strong>.</p>
-                    <p>Los diputados de la <strong>bancada independiente</strong> queremos que los ciudadanos conozcan y den sus opiniones sobre este pliego de reformas, previo al referéndum en el cual los ciudadanos emitirán su decisión final.</p>
+                    <p>Los diputados de la <strong>bancada independiente</strong> <span><%= image_tag 'independent_flag.jpeg', height: '25px' %></span> queremos que los ciudadanos conozcan y den sus opiniones sobre este pliego de reformas, previo al referéndum en el cual los ciudadanos emitirán su decisión final.</p>
                   </div>
                 </div>
                 <div id="start">
                   <%= simple_form_for [@legislation, @consultation] do |f| %>
                   <%= f.input :user_id, as: :hidden %>
-                  <%= f.submit "empieza mi consulta", class: "new-consultation btn btn-primary text-white" %>
+                  <%= f.submit "empieza mi consulta", class: "btn btn-primary text-white" %>
                   <% end %>
                 </div>
               </div>
