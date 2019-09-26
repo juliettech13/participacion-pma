@@ -305,7 +305,7 @@ DEPENDENCIES
   facebook-messenger
   figaro
   font-awesome-sass (~> 5.0.9)
-  jbuilder (~> 2.0)
+  jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
   oauth2

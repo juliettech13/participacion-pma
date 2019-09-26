@@ -1,10 +1,6 @@
 class LegislationsController < ApplicationController
   before_action :set_legislation, only: [:show, :edit, :update, :destroy]
 
-  # def index
-  #   @legislations = Legislation.all
-  # end
-
   def show
     @titles_descriptions = Title.select(:description, :number).as_json
     @consultation = Consultation.find_by(user: current_user)
@@ -12,28 +8,15 @@ class LegislationsController < ApplicationController
     @articles_count = Article.count
     @answer = Answer.new
 
-    json = {
-      user: current_user,
-      consultation: @consultation,
-      titles: @titles
-    }
-
     respond_to do |format|
       format.html
-      format.json { render json: json }
+      format.json 
     end
   end
 
   def download_pdf
     send_file "#{Rails.root}/public/docs/CONSTITUCION-REFORMAS-2019.pdf", type: "application/pdf", x_sendfile: true
   end
-
-  # def new
-  #   @legislation = Legislation.new
-  # end
-
-  # def edit
-  # end
 
   # def create
   #   @legislation = Legislation.new(legislation_params)
