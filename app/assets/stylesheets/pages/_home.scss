@@ -11,7 +11,6 @@ h1{
 .home .login_form {
   background: white;
   padding: 10px 20px;
-  width: 70%;
   display: inline-block;
   margin-top: 0px;
   border-radius: 6px;
@@ -27,6 +26,15 @@ h1{
 
 .home .login-form-header h2{
   text-align: center;
+}
+
+.home-page-title-text {
+  width:60%;
+  margin-right: 10%
+}
+
+.home-pg-conditional{
+  width: 30%
 }
 
 .card {
@@ -45,6 +53,8 @@ h1{
 }
 .card-description {
   font-weight: lighter;
+  position: relative;
+   top: 50%;
 }
 
 .home .card-description p {
@@ -104,5 +114,27 @@ label, input{
 
 input::placeholder{
   font-size: 14px
+}
+
+.flex-responsive{
+  display: flex;
+  justify-content: space-between
+}
+
+@media only screen and (max-width: 600px) {
+  .flex-responsive{
+    display: block
+  }
+  .home-page-title-text{
+    width: 100%;
+    text-align: center
+  }
+  .signup-input{
+    margin-bottom: 1%;
+  }
+
+  input.signup-input{
+    margin:10px
+  }
 }
 

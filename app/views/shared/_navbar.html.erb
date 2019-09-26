@@ -1,5 +1,4 @@
 <% if user_session %>
-
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag("Flag_of_Panama.svg", style: 'width: 30px;') %>
@@ -9,17 +8,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <%#= link_to 'Instructions', new_legislation_consultation_path(legislation), :class => 'nav-item nav-link active' %>
         <%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => 'nav-item nav-link active' %>
       </div>
     </div>
   </nav>
-      <%= image_tag 'horizontal_flag.jpeg', width: '100%', height: '10px' %>
-
-
-
+  <%= image_tag 'horizontal_flag.jpeg', width: '100%', height: '10px' %>
 <% else %>
-
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag("Flag_of_Panama.svg", style: 'width: 30px;') %>
@@ -29,13 +23,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <%#= link_to 'Instructions', new_legislation_consultation_path(@legislation), :class => 'nav-item nav-link active' %>
         <%= link_to 'accede a tu cuenta', new_user_session_path, :class => 'nav-item nav-link active'  %>
         <%= link_to 'regístrate', new_user_registration_path, :class => 'nav-item nav-link active' %>
       </div>
     </div>
   </nav>
-      <%= image_tag 'horizontal_flag.jpeg', width: '100%' %>
-
-
+  <%= image_tag 'horizontal_flag.jpeg', width: '100%', height: '10px' %>
 <% end %>

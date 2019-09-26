@@ -40,7 +40,7 @@
         <% @chapters = title.chapters.order(number: :asc) %>
         <div id="title<%= title.number %>" data-target="slideshow.slide" class="slide title">
           <div class="title-info">
-            <h3>Título <%= title.number %>: <%= title.capitalized_title %></h3>
+            <h3>Título <%= title.number %>: <%= title.description %></h3>
             <p class='font-12'>Artículos <%= @articles.first.integer %> a <%= @articles.last.integer %> de <%= @articles_count %></p>
           </div>
 
