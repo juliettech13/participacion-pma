@@ -26,6 +26,7 @@ postgresql 11.5
 
 ```
 bundle
+yarn
 rails db:migrate db:seed
 ```
 
@@ -81,5 +82,5 @@ De tener algún inconveniente en producción, empiece por correr `heroku logs` e
 
 * **Juliette Chevalier** - [juliettech](https://github.com/juliet-tech)
 
-[Contribuidores](https://github.com/juliet-tech/participacion-pma/graphs/contributors)
+[+ Contribuidores](https://github.com/juliet-tech/participacion-pma/graphs/contributors)
 

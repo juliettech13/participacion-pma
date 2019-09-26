@@ -1,7 +1,7 @@
 <%= form_for answer, html: { id: "reportform" }, remote: true, update: { success: "response", failure: "error"} do |f| %>
 <div class="form-group">
   <%= f.hidden_field :user_id, :value => current_user.id  %>
-  <%= f.hidden_field :question_id, :value => article.questions.find_by(number: 3).id  %>
+  <%= f.hidden_field :question_id, :value => question.id  %>
   <%= f.hidden_field :consultation_id, :value => @consultation.id  %>
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <%= f.text_area :content, :name => "content", required: true, :class => 'form-control', placeholder: "Me parece que este artículo es bueno/malo porque .... Esto se podría arreglar agregando/quitando ...." %>
