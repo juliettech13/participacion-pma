@@ -57,7 +57,7 @@
               </div>
 
               <% @chapter_articles.each do |article| %>
-              
+
                 <div class="card">
                   <a class="btn btn-link article" data-toggle="collapse" data-target="#collapse_<%= article.id %>" aria-expanded="true" aria-controls="collapseOne" style="white-space: normal;">
                     <div class="card-header" id='headingOne'>
@@ -116,7 +116,7 @@
                 <% unless @question3.answers.exists?(consultation: @consultation) %>
                   <div data-target="slideshow.slide" class="slide">
                     <p class='medium-font'>¿Quisieras sugerir algún comentario sobre el artículo?</p>
-                    <div class=" form-group buttonspacing">
+                    <div class="form-group buttonspacing">
                       <button data-action="slideshow#next" class="btn-primary text-white">Sí</button>
                       <button data-action="slideshow#close" class="btn-primary text-white">No</button>
                     </div>

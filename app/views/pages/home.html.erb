@@ -1,21 +1,23 @@
-<div class="container home">
-  <div class="card">
-    <div class="card-description flex-responsive">
-      <div class="home-page-title-text align-left">
-        <p><strong>Bienvenido a tu plataforma de consulta ciudadana para la</strong></p>
+<div class="container home card card-description flex-responsive">
+  <!-- <div class=""> -->
+      <div class="home-page-title-text align-left flex-parent">
+        <h3><strong>Bienvenido a tu plataforma de consulta ciudadana para la</strong></h3>
         <h1>Constitución de la República de Panamá</h1>
-        <p>Los diputados de la bancada independiente hemos creado este espacio virtual de consulta ciudadana para que todos podamos compartir nuestras sugerencias para una nueva y mejor Constitución.</p>
+        <p>Los <strong class='bold-font'>diputados de la bancada independiente</strong> hemos creado este espacio virtual de consulta ciudadana para que todos podamos compartir nuestras sugerencias para una nueva y mejor Constitución.</p>
       </div>
-      <div class="text-center home-pg-conditional">
+
+      <div class="home-pg-conditional flex-parent">
         <% if current_user.nil? %>
           <%= render 'signuphomepage' %>
         <% else %>
-          <%= link_to "empecemos", new_legislation_consultation_path(@legislation), :class => 'btn btn-primary get-started-button text-white', :role => 'button' %>
-          <p>
-            Te invitamos a leer el documento completo. Anímate a contribuir con tus ideas y opiniones para que juntos demos forma a nuestra nueva Constitución.
-          </p>
+          <div class="align-right">
+          <!--   <p>
+              Te invitamos a leer el documento completo. Anímate a contribuir con tus ideas y opiniones para que juntos demos forma a nuestra nueva Constitución.
+            </p> -->
+            <%= link_to "empecemos", new_legislation_consultation_path(@legislation), class: 'btn btn-primary btn-lg text-white', role: 'button' %>
+          </div>
         <% end %>
       </div>
-    </div>
-  </div>
+    <!-- </div> -->
+  <!-- </div> -->
 </div>

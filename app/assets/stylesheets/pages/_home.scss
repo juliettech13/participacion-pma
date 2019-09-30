@@ -34,7 +34,7 @@ h1{
 }
 
 .home-page-title-text {
-  width:60%;
+  width:80%;
   margin-right: 10%
 }
 
@@ -58,17 +58,15 @@ h1{
 }
 .card-description {
   font-weight: lighter;
-  position: relative;
-   top: 50%;
 }
 
-.home .card-description p {
+.home.card-description p {
   font-size: large;
   font-weight: lighter;
   letter-spacing: 0.2px;
 }
 
-.home .card-description h1{
+.home.card-description h1{
   font-size:2.5rem
 }
 
@@ -123,12 +121,30 @@ input::placeholder{
 
 .flex-responsive{
   display: flex;
+  flex-direction: row;
   justify-content: space-between
+}
+
+.home-page-title-text h3{
+  font-size: 25px
+}
+
+.align-right{
+  text-align: right
+}
+
+.flex-parent{
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {
   .flex-responsive{
-    display: block
+    display: block;
+    padding: 10%;
+    margin-top: 20%
   }
   .home-page-title-text{
     width: 100%;
@@ -140,6 +156,10 @@ input::placeholder{
 
   input.signup-input{
     margin:10px
+  }
+
+  .flex-parent{
+    height: 20%
   }
 }
 
