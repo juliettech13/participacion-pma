@@ -237,7 +237,7 @@ button{
   margin-right: 10px
 }
 
-.medium-font{
+.font-15-bold{
   font-weight: bold;
   font-size: 15px
 }
@@ -306,6 +306,22 @@ textarea::placeholder{
   justify-content: space-evenly
 }
 
+  .line-height-25{
+   line-height: 25px
+ }
+
+  .font-medium{
+  font-size: medium
+ }
+
+  .show-btn{
+  padding: 0px 8px;
+  font-size: 18px;
+  margin-bottom: 0px;
+  color: white;
+  border-radius: 6px;
+  }
+
 @media only screen and (max-width: 800px) {
   .title .jumbotron {
     padding: 0;
@@ -322,9 +338,9 @@ textarea::placeholder{
     width: 100%
   }
 
-  // .mobile-align-left{
-  //   text-align: left
-  // }
+  .modified-batch{
+    margin-bottom: 10px
+  }
 
 	@media (min-width: 320px) and (max-width: 600px) {
 	  .filter {

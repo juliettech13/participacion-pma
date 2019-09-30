@@ -16,8 +16,8 @@
   <h1 class="display-4 font-"><%= @legislation.capitalized_title %></h1>
   <div class="doc-header">
     <div class="help">
-      <a data-html="true" data-toggle="popover" data-trigger="hover" title="¿Cómo funciona?" data-content="<%= render 'howitworks' %>" class="badge badge-warning">Ayuda</a>
-      <a href="<%= download_pdf_path %>" class="badge badge-primary text-white" target="_blank">Descargar PDF</a>
+      <a data-html="true" data-toggle="popover" data-trigger="hover" title="¿Cómo funciona?" data-content="<%= render 'howitworks' %>" class="badge badge-warning font-15-bold">Ayuda</a>
+      <a href="<%= download_pdf_path %>" class="badge badge-primary text-white font-15-bold" target="_blank">Descargar PDF</a>
     </div>
   </div>
 
@@ -27,9 +27,9 @@
       <ol>
         <% @titles_descriptions.each do |title| %>
           <li>
-            <a class='font-12 cursor-link title-link' id="titleLink<%= title['number'] %>" data-action="slideshow#activateSelection slideshow#scrollTop" data-info="<%= title['number'] %>">
+            <p><a class='font-medium cursor-link title-link line-height-25' id="titleLink<%= title['number'] %>" data-action="slideshow#activateSelection slideshow#scrollTop" data-info="<%= title['number'] %>">
               <%= title['description'] %>
-            </a>
+            </a></p>
           </li>
         <% end %>
       </ol>
@@ -70,7 +70,7 @@
                             </div>
                             <div class='col-xs-12 col-md-6 padding-left-0'>
                               <p class='font-12'>
-                                <button type='button' class='badge badge-danger text-white badge-padding align-left'>MODIFICACIÓN PROPUESTA</button>
+                                <button type='button' class='badge badge-danger text-white badge-padding align-left modified-badge'>MODIFICACIÓN PROPUESTA</button>
                               </p>
                               <%= render 'metadata_show', metadata: article.metadata.first %>
                             </div>
@@ -99,7 +99,7 @@
 
                 <% unless @question1.answers.exists?(consultation: @consultation) %>
                   <div data-target="slideshow.slide" class="slide">
-                    <p class='medium-font'><%=  @question1.content %></p>
+                    <p class='font-15-bold'><%=  @question1.content %></p>
                     <p style="font-size: 12px">(1 = no me gusta en absoluto, 5 = estoy absolutamente de acuerdo)</p>
                     <%= render 'form_question1', article: article, answer: @answer, consultation: @consultation, question: @question1 %>
                   </div>
@@ -107,7 +107,7 @@
 
                 <% unless @question2.answers.exists?(consultation: @consultation) %>
                   <div data-target="slideshow.slide" class="slide">
-                    <p class='medium-font'><%= @question2.content %></p>
+                    <p class='font-15-bold'><%= @question2.content %></p>
                     <p style="font-size: 12px">(1 = no me gusta en absoluto, 5 = estoy absolutamente de acuerdo)</p>
                     <%= render 'form_question2', article: article, answer: @answer, consultation: @consultation, question: @question2 %>
                   </div>
@@ -115,14 +115,14 @@
 
                 <% unless @question3.answers.exists?(consultation: @consultation) %>
                   <div data-target="slideshow.slide" class="slide">
-                    <p class='medium-font'>¿Quisieras sugerir algún comentario sobre el artículo?</p>
-                    <div class="form-group buttonspacing">
-                      <button data-action="slideshow#next" class="btn-primary text-white">Sí</button>
-                      <button data-action="slideshow#close" class="btn-primary text-white">No</button>
+                    <p class='font-15-bold'>¿Quisieras sugerir algún comentario sobre el artículo?</p>
+                    <div class="form-group">
+                      <button type="button" data-action="slideshow#next" class="btn-primary text-white buttonspacing show-btn">Sí</button>
+                      <button type="button" data-action="slideshow#close" class="btn-primary text-white buttonspacing show-btn">No</button>
                     </div>
                   </div>
                   <div data-target="slideshow.slide" class="slide">
-                    <p class="medium-font"><%= @question3.content %></p>
+                    <p class="font-15-bold"><%= @question3.content %></p>
                       <%= render 'form_question3', article: article, answer: @answer, consultation: @consultation, question: @question3 %>
                   </div>
                 <% else %>
@@ -139,9 +139,9 @@
 <% end %>
 
 <div class="finished row flex space-evenly">
-  <button id="continueto" media="(max-width: 800px)" style='display: none' class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">continúa</button>
+  <button id="continueto" media="(max-width: 800px)" style='display: none' class="btn btn-primary text-white margin-btm-25" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">continúa</button>
   <button id="prevbutton" media="(max-width: 800px)" style="display: none" class="btn btn-primary text-white margin-btm-25" data-action="slideshow#previous slideshow#scrolltop slideshow#showFinished">título anterior</button>
-  <button id="nextbutton" media="(max-width: 800px)" class="btn btn-primary text-white" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">próximo título</button>
-  <%= link_to "terminar la consulta", new_consultation_general_feedback_path(@consultation), class: 'btn btn-primary text-white' %>
+  <button id="nextbutton" media="(max-width: 800px)" class="btn btn-primary text-white margin-btm-25" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">próximo título</button>
+  <%= link_to "terminar la consulta", new_consultation_general_feedback_path(@consultation), class: 'btn btn-primary text-white margin-btm-25' %>
 </div>
 </div>
