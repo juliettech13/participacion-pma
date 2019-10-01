@@ -27,7 +27,7 @@
       <ol>
         <% @titles_descriptions.each do |title| %>
           <li>
-            <p><a class='font-medium cursor-link title-link line-height-25' id="titleLink<%= title['number'] %>" data-action="slideshow#activateSelection slideshow#scrollTop" data-info="<%= title['number'] %>">
+            <p><a class='font-small cursor-link title-link line-height-25' id="titleLink<%= title['number'] %>" data-action="slideshow#activateSelection slideshow#scrollTop" data-info="<%= title['number'] %>">
               <%= title['description'] %>
             </a></p>
           </li>
@@ -144,4 +144,18 @@
   <button id="nextbutton" media="(max-width: 800px)" class="btn btn-primary text-white margin-btm-25" data-action="slideshow#next slideshow#scrolltop slideshow#showFinished">próximo título</button>
   <%= link_to "terminar la consulta", new_consultation_general_feedback_path(@consultation), class: 'btn btn-primary text-white margin-btm-25' %>
 </div>
+
+<div data-controller="slideshow" class='d-flex flex-row'>
+    <div class="p-2 filter-mobile" style="display: none">
+      <h6 class='text-center'>Títulos</h6>
+      <ol>
+        <% @titles_descriptions.each do |title| %>
+          <li>
+            <p><a class='font-small cursor-link title-link line-height-25' id="titleLink<%= title['number'] %>" data-action="slideshow#activateSelection slideshow#scrollTop" data-info="<%= title['number'] %>">
+              <%= title['description'] %>
+            </a></p>
+          </li>
+        <% end %>
+      </ol>
+    </div>
 </div>

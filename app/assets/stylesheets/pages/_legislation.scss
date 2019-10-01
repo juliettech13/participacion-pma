@@ -311,8 +311,12 @@ textarea::placeholder{
  }
 
   .font-medium{
-  font-size: medium
+   font-size: medium !important
  }
+
+  .font-small{
+    font-size: small
+  }
 
   .show-btn{
   padding: 0px 8px;
@@ -320,6 +324,19 @@ textarea::placeholder{
   margin-bottom: 0px;
   color: white;
   border-radius: 6px;
+  }
+
+  .btn-primary{
+    border-radius: 4px
+  }
+
+  .goodbye-box{
+   width: 80%;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
 @media only screen and (max-width: 800px) {
@@ -334,6 +351,10 @@ textarea::placeholder{
     display: none
   }
 
+  .filter-mobile{
+    display: block
+  }
+
   .legislation-content{
     width: 100%
   }
@@ -345,6 +366,9 @@ textarea::placeholder{
 	@media (min-width: 320px) and (max-width: 600px) {
 	  .filter {
       display: none
+    }
+    .filter-mobile{
+      display: block
     }
 	}
 }

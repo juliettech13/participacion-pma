@@ -2,10 +2,11 @@
   "name": "policy_consultation_test",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "3.5",
+    "@rails/webpacker": "4.0.7",
     "bootstrap": "3",
     "jquery": "^3.3.1",
-    "stimulus": "^1.0.1"
+    "stimulus": "^1.0.1",
+    "uglifyjs-webpack-plugin": "^2.2.0"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"

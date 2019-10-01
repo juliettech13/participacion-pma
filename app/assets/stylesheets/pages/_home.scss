@@ -18,10 +18,10 @@ p{
 }
 
 .home .login_form {
-  background: white;
+  // background: white;
   padding: 10px 20px;
-  display: inline-block;
-  margin-top: 0px;
+  // display: inline-block;
+  // margin-top: 0px;
   border-radius: 6px;
   background-color: #f8f9fa;
   text-align: left;
@@ -144,6 +144,10 @@ input::placeholder{
   justify-content: center;
 }
 
+.new_user label{
+  min-width: 135px
+}
+
 @media only screen and (max-width: 600px) {
   .flex-responsive{
     display: block;
@@ -163,7 +167,8 @@ input::placeholder{
   }
 
   .flex-parent{
-    height: 20%
+    height: 20%;
+    width: 100%
   }
 }
 
