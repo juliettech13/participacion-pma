@@ -73,5 +73,6 @@ es:
                 too_short: "El correo que has escrito está muy corto. Favor intenta de nuevo."
               email:
                 invalid: "El correo que has escrito está inválido. Favor intenta denuevo."
+                taken: "Ese correo ya tiene cuenta en la plataforma."
               password_confirmation:
                 confirmation: "No hemos podido confirmar tu contraseña. Favor intenta denuevo."

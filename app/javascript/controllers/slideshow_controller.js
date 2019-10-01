@@ -16,12 +16,12 @@ export default class extends Controller {
 
   answered(){
     var answerSection = this.element.parentNode.parentNode;
-    answerSection.insertAdjacentHTML('beforeend', '<span class="badge badge-success badges p-2" id="answered_badge">Resultado Recibido</span>');
+    answerSection.insertAdjacentHTML('beforeend', '<span class="badge badge-success badges p-2 font-small" id="answered_badge">Resultado Recibido</span>');
   }
 
   revised(){
     var answerSection = this.element.parentNode.parentNode;
-    answerSection.insertAdjacentHTML('beforeend', '<span class="badge badge-success badges p-2" id="revised_badge">Sugerencia Recibida</span>');
+    answerSection.insertAdjacentHTML('beforeend', '<span class="badge badge-success badges p-2 font-small" id="revised_badge">Sugerencia Recibida</span>');
   }
 
   scrolltop(){

@@ -37,26 +37,6 @@
   font-size: 1.8rem
 }
 
-// .popover:hover {
-//   max-width: 1000px;
-//   // font-size: 8px;
-// }
-
-// .popover-body:hover {
-//   // font-size: 14px;
-
-//   // ol {
-//   //   padding-left: 18px;
-//   // }
-// }
-
-// // #accordion .card {
-// //   border-radius: 0rem;
-// //   text-align: left;
-// //   margin-top: 0rem;
-// //   font-weight: lighter;
-// // }
-
 .badge li {
   font-size: 12px;
 }
@@ -82,7 +62,7 @@
     color: black;
     position: relative;
     border-style: solid;
-    border-width: .5px;
+    border-width: .7px;
     padding: 15px;
     border-radius: 10px;
     position: relative;
@@ -257,7 +237,7 @@ button{
   margin-right: 10px
 }
 
-.medium-font{
+.font-15-bold{
   font-weight: bold;
   font-size: 15px
 }
@@ -326,6 +306,39 @@ textarea::placeholder{
   justify-content: space-evenly
 }
 
+  .line-height-25{
+   line-height: 25px
+ }
+
+  .font-medium{
+   font-size: medium !important
+ }
+
+  .font-small{
+    font-size: small !important
+  }
+
+  .show-btn{
+  padding: 0px 8px;
+  font-size: 18px;
+  margin-bottom: 0px;
+  color: white;
+  border-radius: 6px;
+  }
+
+  .btn-primary{
+    border-radius: 4px
+  }
+
+  .goodbye-box{
+   width: 80%;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
 @media only screen and (max-width: 800px) {
   .title .jumbotron {
     padding: 0;
@@ -338,17 +351,24 @@ textarea::placeholder{
     display: none
   }
 
+  .filter-mobile{
+    display: block
+  }
+
   .legislation-content{
     width: 100%
   }
 
-  // .mobile-align-left{
-  //   text-align: left
-  // }
+  .modified-batch{
+    margin-bottom: 10px
+  }
 
 	@media (min-width: 320px) and (max-width: 600px) {
 	  .filter {
       display: none
+    }
+    .filter-mobile{
+      display: block
     }
 	}
 }

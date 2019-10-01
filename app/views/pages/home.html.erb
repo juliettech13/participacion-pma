@@ -1,26 +1,23 @@
-<div class="container home">
-  <div class="row">
-    <div class="col-lg-8 col-xs-12 col-sm-10">
-      <div class="card">
-        <div class="card-description">
-          <p><strong>Bienvenido a tu plataforma de consulta ciudadana para la</strong></p>
-          <h1>Constitución de la República de Panamá</h1>
-          <% if current_user.nil? %>
-          <%= render 'signuphomepage' %>
-          <% else %>
-          <%= link_to "empecemos", new_legislation_consultation_path(@legislation), :class => 'btn btn-primary get-started-button text-white', :role => 'button' %>
-          <p>
-            Te invitamos a leer el documento completo. Anímate a contribuir con tus ideas y opiniones para que juntos demos forma a nuestra nueva Constitución.
-          </p>
-          <% end %>
-        </div>
-
+<div class="container home card-description flex-responsive">
+  <!-- <div class=""> -->
+      <div class="home-page-title-text align-left flex-parent">
+        <h3 class='margin-btm-25'><strong>Bienvenido a tu plataforma de consulta ciudadana para la</strong></h3>
+        <h1 class='margin-btm-25'>Constitución de la República de Panamá</h1>
+        <p class='margin-btm-25'>Los <strong class='bold-font'>diputados de la bancada independiente</strong> hemos creado este espacio virtual de consulta ciudadana para que todos podamos compartir nuestras sugerencias para una nueva y mejor Constitución.</p>
       </div>
-    </div>
-  </div>
+
+      <div class="home-pg-conditional flex-parent">
+        <% if current_user.nil? %>
+          <%= render 'signuphomepage' %>
+        <% else %>
+          <div class="align-right">
+          <!--   <p>
+              Te invitamos a leer el documento completo. Anímate a contribuir con tus ideas y opiniones para que juntos demos forma a nuestra nueva Constitución.
+            </p> -->
+            <%= link_to "empecemos", new_legislation_consultation_path(@legislation), class: 'btn btn-primary btn-lg text-white', role: 'button' %>
+          </div>
+        <% end %>
+      </div>
+    <!-- </div> -->
+  <!-- </div> -->
 </div>
-<%# if current_user.nil? %>
-<%#= link_to "Get Started", new_user_registration_path, :class => 'btn btn-lg btn-primary get-started-button', :role => 'button' %>
-<%# else %>
-<%#= link_to "Get Started", new_legislation_consultation_path(@legislation), :class => 'btn btn-lg btn-primary get-started-button', :role => 'button' %>
-<%# end %>

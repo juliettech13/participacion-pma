@@ -8,7 +8,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => 'nav-item nav-link active' %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => 'nav-item nav-link active align-right' %>
       </div>
     </div>
   </nav>
@@ -23,8 +23,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <%= link_to 'accede a tu cuenta', new_user_session_path, :class => 'nav-item nav-link active'  %>
-        <%= link_to 'regístrate', new_user_registration_path, :class => 'nav-item nav-link active' %>
+        <%= link_to 'accede a tu cuenta', new_user_session_path, :class => 'nav-item nav-link active align-right'  %>
+        <%= link_to 'regístrate', new_user_registration_path, :class => 'nav-item nav-link active align-right' %>
       </div>
     </div>
   </nav>

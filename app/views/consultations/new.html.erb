@@ -1,12 +1,11 @@
 <div class="container new-consultation" data-controller="instruction">
-  <div class="row">
-    <div class="col-lg-10 col-xs-12 col-sm-12">
-      <div class="card" >
+  <%# <div class="row"> %>
+    <%# <div class="col-lg-10 col-xs-12 col-sm-12"> %>
+      <div class="card text-center intro-cards">
         <div class="card-description">
 
 <!-- instruciton 1 -->
           <div data-controller="slideshow" id="instructions">
-
             <div data-target="slideshow.slide" class="slide introductory-section" id="first">
               <div id="welcome" data-target='slideshow.welcome'>
                 <div class="page-header">
@@ -88,13 +87,13 @@
               </div>
 
               <div class="navigation-btns">
-                <button id ="backbutton" class="btn btn-outline-primary" data-action="slideshow#previous slideshow#showButton" style='display: none'>atrás</button>
-                <button id= "nextbutton" class="btn btn-outline-primary" data-action="slideshow#next slideshow#showButton">adelante</button>
+                <button id ="backbutton" class="btn btn-outline-primary" data-action="slideshow#previous slideshow#showButton slideshow#scrollTop" style='display: none'>atrás</button>
+                <button id= "nextbutton" class="btn btn-outline-primary" data-action="slideshow#next slideshow#showButton slideshow#scrollTop">adelante</button>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      <%# </div> %>
+    <%# </div> %>
   </div>
 

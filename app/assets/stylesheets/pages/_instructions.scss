@@ -10,7 +10,6 @@
 }
 
 .new-consultation {
-  // margin-bottom: 35px;
   min-height: 100vh
 }
 
@@ -41,4 +40,23 @@
 
 #thank-you p {
   font-size: 24px;
+}
+
+.intro-cards{
+  width: 70%;
+  margin: 6% auto;
+}
+@media only screen and (max-width: 600px) {
+
+  #instructions{
+    font-size: medium
+  }
+
+  #how-it-works{
+    padding-right: 5%
+  }
+
+  .intro-cards{
+    width: 85%
+  }
 }
