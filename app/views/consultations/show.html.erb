@@ -1,17 +1,13 @@
 <div class="container">
-  <%# <div class="row">
-    <div class="col-lg-8 col-xs-12 col-sm-8"> %>
-      <div class="card goodbye-box">
-        <div class="card-description">
-          <div class="page-header" id="thank-you">
-            <h2>¡Gracias! 👋🏼 🇵🇦</h2>
-              <p class='font-medium'>Tus comentarios sobre la <strong><%= @consultation.legislation.title %></strong> nos ayudarán a crear un futuro más equitativo para el país!</p>
-              <p class='font-medium'><strong>Comparte en redes sociales para que más gente pueda aportar!</strong></p>
-              <br>
-              <%= social_share_button_tag("Acabo de compartir mis ideas para reformar la Constitución Panameña! Aporta tú también /#panama", :url => "participacion-panama.herokuapp.com", desc: @consultation.legislation.title) %>
-            </div>
-          </div>
+  <div class="card goodbye-box">
+    <div class="card-description">
+      <div class="page-header" id="thank-you">
+        <h2>¡Gracias! 👋🏼 🇵🇦</h2>
+          <p class='font-medium'>Tus comentarios sobre la <strong><%= @consultation.legislation.title %></strong> nos ayudarán a crear un futuro más equitativo para el país!</p>
+          <p class='font-medium'><strong>Comparte en redes sociales para que más gente pueda aportar!</strong></p>
+          <br>
+          <%= social_share_button_tag("Acabo de compartir mis ideas para reformar la Constitución Panameña! Aporta tú también /#panama", :url => "participacion-panama.herokuapp.com", desc: @consultation.legislation.title) %>
+        </div>
       </div>
-    <%# </div>
-  </div> %>
+  </div>
 </div>
