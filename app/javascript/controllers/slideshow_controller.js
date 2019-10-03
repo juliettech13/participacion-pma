@@ -26,6 +26,7 @@ export default class extends Controller {
 
   scrolltop(){
     document.body.scrollTop = document.documentElement.scrollTop = 150;
+    console.log("hello from scrolltop")
   }
 
   activateSelection(){
