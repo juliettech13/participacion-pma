@@ -1,179 +1,184 @@
 // Specific CSS for your home-page
-
-body{
-  font-family: 'Roboto', sans-serif;
-  font-size: small;
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: small;
 }
 
-body, h6, p {
-  color: #4e4a47
+body,
+h6,
+p {
+    color: #4e4a47
 }
 
-h1{
-  font-size: 28px
+h1 {
+    font-size: 28px
 }
 
-p{
-  margin-bottom: 3px
+p {
+    margin-bottom: 3px
 }
 
 .home .login_form {
-  // background: white;
-  padding: 10px 20px;
-  // display: inline-block;
-  // margin-top: 0px;
-  border-radius: 6px;
-  background-color: #f8f9fa;
-  text-align: left;
-  font-weight: bold;
-  color:#4e4a47;
+    // background: white;
+    padding: 10px 20px;
+    // display: inline-block;
+    // margin-top: 0px;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+    text-align: left;
+    font-weight: bold;
+    color: #4e4a47;
 }
 
 .home .form-group {
-  display: block;
+    display: block;
 }
 
-.home .login-form-header h2{
-  text-align: center;
+.home .login-form-header h2 {
+    text-align: center;
 }
 
 .home-page-title-text {
-  width:80%;
-  margin-right: 10%
+    width: 80%;
+    margin-right: 10%
 }
 
-.home-pg-conditional{
-  width: 30%
+.home-pg-conditional {
+    width: 30%
 }
 
 .card {
-  width: 100%;
-  border: none;
-  color: black;
-  position: relative;
-  text-align:center;
+    width: 100%;
+    border: none;
+    color: black;
+    position: relative;
+    text-align: center;
 }
 
 .card-category {
-  top: 10px;
-  left: 10px;
-  font-size: 15px;
-  text-transform: uppercase;
+    top: 10px;
+    left: 10px;
+    font-size: 15px;
+    text-transform: uppercase;
 }
+
 .card-description {
-  font-weight: lighter;
+    font-weight: lighter;
 }
 
 .home.card-description p {
-  font-size: large;
-  font-weight: lighter;
-  letter-spacing: 0.2px;
+    font-size: large;
+    font-weight: lighter;
+    letter-spacing: 0.2px;
 }
 
-.home.card-description h1{
-  font-size:2.5rem
+.home.card-description h1 {
+    font-size: 2.5rem
 }
 
 .row {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .btn-content {
-  display:flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .get-started-button {
-  max-height: 50px;
-  width: 50%;
-  margin-top: 40px;
-  margin-bottom: 40px;
+    max-height: 50px;
+    width: 50%;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .get-started-button:hover {
-  text-decoration: none !important;
-  color: white;
+    text-decoration: none !important;
+    color: white;
 }
 
-
 .banner h1 {
-  font-size: 50px;
-  font-weight: bold;
-  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
 }
 
 .banner p {
-  font-size: 25px;
-  font-weight: lighter;
-  color: rgb(255, 255, 255);
-  opacity: 0.6;
-  margin-bottom: 30px;
+    font-size: 25px;
+    font-weight: lighter;
+    color: rgb(255, 255, 255);
+    opacity: 0.6;
+    margin-bottom: 30px;
 }
 
-label, input{
-  font-size: large;
+label,
+input {
+    font-size: large;
 }
 
-.introductory-section p{
-  font-size: medium;
-  font-weight: 400;
+.introductory-section p {
+    font-size: medium;
+    font-weight: 400;
 }
 
-input::placeholder{
-  font-size: 14px
+input::placeholder {
+    font-size: 14px
 }
 
-.flex-responsive{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 10%
+.flex-responsive {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10%
 }
 
-.home-page-title-text h3{
-  font-size: 24px
+.home-page-title-text h3 {
+    font-size: 24px
 }
 
-.align-right{
-  text-align: right
+.align-right {
+    text-align: right
 }
 
-.flex-parent{
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.flex-parent {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.new_user label{
-  min-width: 135px
+.new_user label {
+    min-width: 135px
+}
+
+.border-black {
+    border: solid #524e4b 1.3px;
+    border-radius: 8px;
+    padding: 10%;
 }
 
 @media only screen and (max-width: 600px) {
-  .flex-responsive{
-    display: block;
-    padding: 10%;
-    margin-top: 20%
-  }
-  .home-page-title-text{
-    width: 100%;
-    text-align: center
-  }
-  .signup-input{
-    margin-bottom: 1%;
-  }
-
-  input.signup-input{
-    margin:10px
-  }
-
-  .flex-parent{
-    height: 20%;
-    width: 100%
-  }
-  .login_form{
-    width: 100%
-  }
+    .flex-responsive {
+        display: block;
+        padding: 10%;
+        margin-top: 20%
+    }
+    .home-page-title-text {
+        width: 100%;
+        text-align: center
+    }
+    .signup-input {
+        margin-bottom: 1%;
+    }
+    input.signup-input {
+        margin: 10px
+    }
+    .flex-parent {
+        height: 20%;
+        width: 100%
+    }
+    .login_form {
+        width: 100%
+    }
 }
-
