@@ -1,0 +1,13 @@
+<div data-controller="slideshow" class='d-flex flex-row'>
+    <div class="border-black filter<%= mobile %>">
+      <h6 class='text-center'>Títulos</h6>
+      <ol>
+        <% @titles_descriptions.each do |title| %>
+          <li>
+            <p><a class='font-small cursor-link title-link line-height-25' id="titleLink<%= title['number'] %>" data-action="slideshow#activateSelection slideshow#scrollTop" data-info="<%= title['number'] %>">
+              <%= title['description'] %>
+            </a></p>
+          </li>
+        <% end %>
+      </ol>
+    </div>
