@@ -7,7 +7,7 @@ gem 'jquery-rails'
 
 gem 'figaro'
 gem 'jbuilder', '~> 2.5'
-gem 'pg', '~> 0.21'
+gem 'pg', '~> 1.1'
 gem 'puma'
 gem 'rails', '5.2.0'
 gem 'devise'
