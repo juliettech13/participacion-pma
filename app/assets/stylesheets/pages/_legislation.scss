@@ -1,26 +1,26 @@
 #consultation_panel {
-  background: white;
-  // height: 100vh;
+    background: white;
+    // height: 100vh;
 }
 
-.legislationshow h1{
-  font-size: 2.5rem
+.legislationshow h1 {
+    font-size: 2.5rem
 }
 
-.align-left{
-  text-align: left
+.align-left {
+    text-align: left
 }
 
 .doc-header {
-  margin-bottom: 35px;
-  border-style: solid;
-  border-width: 1px;
-  padding: 15px;
-  border-radius: 10px;
+    margin-bottom: 35px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 15px;
+    border-radius: 10px;
 }
 
 .im-finished {
-  display: inline-block;
+    display: inline-block;
 }
 
 .jumbotron {
@@ -28,31 +28,30 @@
 }
 
 .title {
-  .display-4 {
-    font-size: 2.5rem;
-  }
+    .display-4 {
+        font-size: 2.5rem;
+    }
 }
 
-.title-info h3{
-  font-size: 1.8rem
+.title-info h3 {
+    font-size: 1.8rem
 }
 
 .badge li {
-  font-size: 12px;
+    font-size: 12px;
 }
 
-#accordion h5{
-  font-size: 1.3rem;
+#accordion h5 {
+    font-size: 1.3rem;
 }
 
-#accordion h6{
+#accordion h6 {
     font-size: 1.15rem;
-  }
+}
 
-#accordion p{
+#accordion p {
     font-size: 16px
-  }
-
+}
 
 #accordion .card {
     text-align: left;
@@ -75,44 +74,41 @@
 }
 
 #accordion .card:hover {
-  border-color: $blue;
-  border-width: 3px;
+    border-color: $blue;
+    border-width: 3px;
 }
 
-
 .legislationshow {
-  margin-top: 100px;
-  .display-4 {
-    font-size: 2.5rem;
-    font-weight: 400;
-    line-height: 1.2;
-    margin-bottom: 10px;
-  }
+    margin-top: 100px;
+    .display-4 {
+        font-size: 2.5rem;
+        font-weight: 400;
+        line-height: 1.2;
+        margin-bottom: 10px;
+    }
 }
 
 .finished .btn-lg {
-  margin: 15px;
+    margin: 15px;
 }
 
 .button-nav .btn-lg {
-  width: 15%;
-  margin: 0px 10px;
-  justify-content: flex-start;
-  text-align: center;
+    width: 15%;
+    margin: 0px 10px;
+    justify-content: flex-start;
+    text-align: center;
 }
 
-
 #accordion .form-control {
-  border: 1px solid #ced4da;
+    border: 1px solid #ced4da;
 }
 
 #supporting-content {
-  justify-content: flex-start;
-  // margin-left: -15px;
-  // margin-top: 10px;
-  margin-right: 0px;
+    justify-content: flex-start;
+    // margin-left: -15px;
+    // margin-top: 10px;
+    margin-right: 0px;
 }
-
 
 #supporting-content .col-6 {
     padding-right: 15px;
@@ -120,258 +116,262 @@
 }
 
 #supporting-content a {
-  font-weight: 700;
+    font-weight: 700;
 }
 
 .card-header {
-  background-color: #ffffff;
-  padding: 1rem .5rem;
-  border-bottom:.5px solid rgba(0, 0, 0, 0.125);
-  a {
-    font-weight: lighter;
-  }
+    background-color: #ffffff;
+    padding: 1rem .5rem;
+    border-bottom: .5px solid rgba(0, 0, 0, 0.125);
+    a {
+        font-weight: lighter;
+    }
 }
 
 .scrollable {
-    height: 100vh; /* or any value */
+    height: 100vh;
+    /* or any value */
     overflow-y: auto;
 }
 
 .slide {
-  display: none;
+    display: none;
 }
 
 .slide.slide--current {
-  display: block;
+    display: block;
 }
 
 .collapse .form-control {
-  margin: 14px 0px;
-  width: 100%;
+    margin: 14px 0px;
+    width: 100%;
 }
 
 .feedback .form-control {
-  margin: 14px 0px;
-  width: 100%;
+    margin: 14px 0px;
+    width: 100%;
 }
 
 .sectionnav .dropdown {
-  margin-bottom: 40px;
+    margin-bottom: 40px;
 }
 
 .buttonspacing {
-  margin: 14px 0px;
+    margin: 14px 0px;
 }
 
 .clause {
-  text-align: left;
+    text-align: left;
 }
 
 .finished {
-  margin: 20px 0px;
-  text-align: center;
+    margin: 20px 0px;
+    text-align: center;
 }
 
 .onesectionnav {
-  justify-content: space-evenly;
-  margin: 20px 0px;
-  font-weight: 800;
+    justify-content: space-evenly;
+    margin: 20px 0px;
+    font-weight: 800;
 }
 
-.panel{
-  justify-content: space-between;
-  align-items: center;
+.panel {
+    justify-content: space-between;
+    align-items: center;
 }
 
 .sectionnav {
-  align-items: center;
+    align-items: center;
 }
 
-.flex{
-  display: flex
+.flex {
+    display: flex
 }
 
-.flex-child{
-  justify-content: space-between
+.flex-child {
+    justify-content: space-between
 }
 
-.card{
-  padding-top: 0px !important
+.card {
+    padding-top: 0px !important
 }
 
-.p-2{
-  padding: 6px !important
+.p-2 {
+    padding: 6px !important
 }
 
-.popover{
-  max-width: 800px;
-  font-size: 14px;
-  max-height: 70vh;
-  overflow: auto
+.popover {
+    max-width: 800px;
+    font-size: 14px;
+    max-height: 70vh;
+    overflow: auto
 }
 
 .badges {
-  margin-top: 10px;
-  max-width: 160px
+    margin-top: 10px;
+    max-width: 160px
 }
 
-.margin-top-btm-25{
-  margin-top: 25px;
-  margin-bottom: 25px
+.margin-top-btm-25 {
+    margin-top: 25px;
+    margin-bottom: 25px
 }
 
-.font-12{
-  font-size: 12px
+.font-12 {
+    font-size: 12px
 }
 
-.badge-padding{
-  padding: 8px 12px;
+.badge-padding {
+    padding: 8px 12px;
 }
 
-button{
-  border:none;
-  border-radius: 4px;
+button {
+    border: none;
+    border-radius: 4px;
 }
 
-.margin-right-10{
-  margin-right: 10px
+.margin-right-10 {
+    margin-right: 10px
 }
 
-.font-15-bold{
-  font-weight: bold;
-  font-size: 15px
+.font-15-bold {
+    font-weight: bold;
+    font-size: 15px
 }
 
-.small-font{
-  font-size: 13px;
+.small-font {
+    font-size: 13px;
 }
 
-.padding-left-0{
-  padding-left: 0
+.padding-left-0 {
+    padding-left: 0
 }
 
-.filter{
-  width: 20%;
-  height: 100%;
-  position: sticky;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 10px;
-  top: 0;
-  margin: 10px
+.filter {
+    width: 20%;
+    height: 100%;
+    position: sticky;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    top: 0;
+    margin: 10px
 }
 
-.filter h6{
-  padding: 5px
+.filter h6 {
+    padding: 5px
 }
 
-.legislation-content{
-  width: 80%;
+.legislation-content {
+    width: 80%;
 }
 
-.cursor-link{
-  cursor: pointer
+.cursor-link {
+    cursor: pointer
 }
 
-.bold-font{
-  font-weight: bold
+.bold-font {
+    font-weight: bold
 }
 
-.title-link:hover{
-  font-weight: bold
+.title-link:hover {
+    font-weight: bold
 }
 
-.margin-btm-25{
-  margin-bottom: 25px
+.margin-btm-25 {
+    margin-bottom: 25px
 }
 
-textarea::placeholder{
-  font-size: 16px
+textarea::placeholder {
+    font-size: 16px
 }
 
 .buttonspacing input {
-  color: white;
-  border-radius: 6px
+    color: white;
+    border-radius: 6px
 }
 
-.btn-outline-primary:hover{
-  color: white
+.btn-outline-primary:hover {
+    color: white
 }
 
-.flex{
-  display: flex
+.flex {
+    display: flex
 }
 
-.space-evenly{
-  justify-content: space-evenly
+.space-evenly {
+    justify-content: space-evenly
 }
 
-  .line-height-25{
-   line-height: 25px
- }
+.line-height-25 {
+    line-height: 25px
+}
 
-  .font-medium{
-   font-size: medium !important
- }
+.font-medium {
+    font-size: medium !important
+}
 
-  .font-small{
+.font-small {
     font-size: small !important
-  }
+}
 
-  .show-btn{
-  padding: 0px 8px;
-  font-size: 18px;
-  margin-bottom: 0px;
-  color: white;
-  border-radius: 6px;
-  }
+.show-btn {
+    padding: 0px 8px;
+    font-size: 18px;
+    margin-bottom: 0px;
+    color: white;
+    border-radius: 6px;
+}
 
-  .btn-primary{
+.btn-primary {
     border-radius: 4px
-  }
+}
 
-  .goodbye-box{
+.goodbye-box {
     width: 80%;
     margin: 0 auto;
     height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
+}
+
+.filter-mobile {
+    display: none
+}
 
 @media only screen and (max-width: 800px) {
-  .title .jumbotron {
-    padding: 0;
-  }
-  .clause {
-      font-size: 1rem;
-  }
-
-  .filter {
-    display: none
-  }
-
-  .filter-mobile{
-    display: block
-  }
-
-  .legislation-content{
-    width: 100%
-  }
-
-  .modified-batch{
-    margin-bottom: 10px
-  }
-
-	@media (min-width: 320px) and (max-width: 600px) {
-	  .filter {
-      display: none
+    .title .jumbotron {
+        padding: 0;
     }
-    .filter-mobile{
-      display: block
+    .clause {
+        font-size: 1rem;
     }
-    .goodbye-box{
-      height: 80vh;
+    .filter {
+        display: none
     }
-	}
+    .filter-mobile {
+        display: block;
+        border: solid #524e4b 1.3px;
+        border-radius: 8px;
+        padding: 10%;
+    }
+    .legislation-content {
+        width: 100%
+    }
+    .modified-batch {
+        margin-bottom: 10px
+    }
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+    .filter {
+        display: none
+    }
+    .filter-mobile {
+        display: block
+    }
+    .goodbye-box {
+        height: 80vh;
+    }
 }
