@@ -54,7 +54,7 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    appsignal (2.9.11)
+    appsignal (3.0.4)
       rack
     arbre (1.1.1)
       activesupport (>= 3.0.0)
@@ -151,7 +151,9 @@ GEM
     marcel (0.3.2)
       mimemagic (~> 0.3.2)
     method_source (0.9.0)
-    mimemagic (0.3.2)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
@@ -190,7 +192,7 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     puma (3.11.4)
-    rack (2.0.5)
+    rack (2.2.3)
     rack-mini-profiler (1.0.2)
       rack (>= 1.2.0)
     rack-proxy (0.6.4)
